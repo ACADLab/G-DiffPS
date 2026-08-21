@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments / vendored sim
+.venv/
+venv/
+ENV/
+ngspice-46/
+
+# Training artifacts (regenerable; demo checkpoint is tracked under checkpoints/)
+runs_diffusion/
+runs_production/
+runs/
+checkpoints_local/
+*.zip
+
+# Logs & temp simulation files
+*.log
+!checkpoints/**/train.log
+*.jsonl
+*.lis
+*.raw
+/tmp/llm_*.sp
+llm_*.sp
+*.out
+
+# Tensorboard
+tb/
+events.out.tfevents.*
+
+# IDE / secrets
+.vscode/
+.idea/
+mykeys.txt
+*.pem
+.env
+
+# OS
+.DS_Store
+Thumbs.db

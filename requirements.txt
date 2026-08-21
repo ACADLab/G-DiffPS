@@ -1,0 +1,30 @@
+# Phase-shifter LLM design-automation framework -- runtime dependencies.
+#
+# Tested on Python 3.12 (Ubuntu 24.04 / WSL2).
+#
+# External (non-pip) dependencies, install separately:
+#   - ngspice 42       (apt install ngspice)
+#   - Ollama + qwen2.5:7b model   (https://ollama.com; then `ollama pull qwen2.5:7b`)
+
+# Core numerical / RL stack
+numpy>=1.26,<3.0
+gymnasium>=1.0
+stable-baselines3>=2.3
+torch>=2.0           # required by stable-baselines3; CPU build is fine
+torch-geometric>=2.3 # required for phase-shifter graph modeling
+scipy>=1.10          # required for differentiable ABCD physical priors
+tqdm>=4.65           # required for diffusion denoising loop progress bars
+
+
+# Logging / visualization
+tensorboard>=2.15    # required if you keep tensorboard_log= in train_production.py
+matplotlib>=3.7
+
+# Ollama HTTP client (we use plain requests; no ollama SDK needed)
+requests>=2.31
+
+# OpenRouter fallback path (optional; only needed if BACKEND="openrouter")
+openai>=1.0          # used as OpenAI-compatible client against OpenRouter
+
+# scikit-learn supplies cosine_similarity used by llm_netlist_gen.spec_to_vec
+scikit-learn>=1.3
