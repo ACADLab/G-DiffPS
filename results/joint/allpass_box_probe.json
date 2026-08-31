@@ -1,0 +1,116 @@
+{
+  "z0": 50.0,
+  "keys": [
+    "L_apA_nh",
+    "C_brA_pf",
+    "C_cA_pf",
+    "L_apB_nh",
+    "C_brB_pf",
+    "C_cB_pf"
+  ],
+  "k": 3000,
+  "fcs": {
+    "2.4": {
+      "midpoint_params": {
+        "L_apA_nh": 3.3157,
+        "C_brA_pf": 1.3263,
+        "C_cA_pf": 3.4484,
+        "L_apB_nh": 3.3157,
+        "C_brB_pf": 1.3263,
+        "C_cB_pf": 3.4484
+      },
+      "sqrt_L_over_Cbr": 49.99962300996385,
+      "sqrt_L_over_Cc": 31.008359926608954,
+      "sqrt_2L_over_Cc": 43.85244315515677,
+      "midpoint_dphi_deg": 0.0,
+      "midpoint_rl_db": 6.3033358115557,
+      "midpoint_il_db": 2.2005540443953873,
+      "midpoint_corner_ghz": 2.400002157845105,
+      "omega_sqrt_LC_at_fc": 0.9999991008986813,
+      "box_max_abs_dphi_deg": 179.97015974518115,
+      "box_max_abs_dphi_rl_db": 7.757929667632895,
+      "box_max_abs_dphi_action": [
+        0.143,
+        0.28,
+        0.414,
+        0.274,
+        0.654,
+        0.14
+      ],
+      "box_best_rl_db": 33.537951760591234,
+      "box_best_rl_dphi_deg": -135.683005762446,
+      "abs_dphi_median": 86.42620238394895,
+      "abs_dphi_p90": 162.04398347307142,
+      "frac_abs_dphi_over_45": 0.711,
+      "frac_abs_dphi_over_80": 0.5286666666666666
+    },
+    "10.0": {
+      "midpoint_params": {
+        "L_apA_nh": 0.7958,
+        "C_brA_pf": 0.3183,
+        "C_cA_pf": 0.8276,
+        "L_apB_nh": 0.7958,
+        "C_brB_pf": 0.3183,
+        "C_cB_pf": 0.8276
+      },
+      "sqrt_L_over_Cbr": 50.0015708204399,
+      "sqrt_L_over_Cc": 31.0092831327329,
+      "sqrt_2L_over_Cc": 43.85374876577813,
+      "midpoint_dphi_deg": 0.0,
+      "midpoint_rl_db": 6.303901801147185,
+      "midpoint_il_db": 2.2003150772393405,
+      "midpoint_corner_ghz": 9.999996429294406,
+      "omega_sqrt_LC_at_fc": 1.000000357070687,
+      "box_max_abs_dphi_deg": 179.92323912518486,
+      "box_max_abs_dphi_rl_db": 9.095115371829074,
+      "box_max_abs_dphi_action": [
+        0.751,
+        0.474,
+        0.447,
+        0.722,
+        0.045,
+        0.985
+      ],
+      "box_best_rl_db": 28.720039461910197,
+      "box_best_rl_dphi_deg": 170.6077143739368,
+      "abs_dphi_median": 81.41114909537427,
+      "abs_dphi_p90": 162.4122576555069,
+      "frac_abs_dphi_over_45": 0.7046666666666667,
+      "frac_abs_dphi_over_80": 0.51
+    },
+    "28.0": {
+      "midpoint_params": {
+        "L_apA_nh": 0.2842,
+        "C_brA_pf": 0.1137,
+        "C_cA_pf": 0.2956,
+        "L_apB_nh": 0.2842,
+        "C_brB_pf": 0.1137,
+        "C_cB_pf": 0.2956
+      },
+      "sqrt_L_over_Cbr": 49.995602269220576,
+      "sqrt_L_over_Cc": 31.00700518868781,
+      "sqrt_2L_over_Cc": 43.85052726641523,
+      "midpoint_dphi_deg": -2.842170943040401e-14,
+      "midpoint_rl_db": 6.302032901527864,
+      "midpoint_il_db": 2.2011491729838415,
+      "midpoint_corner_ghz": 27.99805501056592,
+      "omega_sqrt_LC_at_fc": 1.0000694687339298,
+      "box_max_abs_dphi_deg": 179.92900696047286,
+      "box_max_abs_dphi_rl_db": 2.297777545757471,
+      "box_max_abs_dphi_action": [
+        0.552,
+        0.133,
+        0.258,
+        0.351,
+        0.671,
+        0.665
+      ],
+      "box_best_rl_db": 29.849034954709307,
+      "box_best_rl_dphi_deg": 142.3394648067408,
+      "abs_dphi_median": 82.99186001938766,
+      "abs_dphi_p90": 160.22668423493758,
+      "frac_abs_dphi_over_45": 0.7093333333333334,
+      "frac_abs_dphi_over_80": 0.513
+    }
+  }
+}

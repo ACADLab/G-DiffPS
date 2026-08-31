@@ -1,0 +1,77 @@
+{
+  "unparseable_lines": 14,
+  "topologies": {
+    "Loaded_Line": {
+      "n": 681,
+      "yield_pct": 99.41262848751836,
+      "best_reward": 1.1782086590122165,
+      "mean_reward_success": 0.649415065359971,
+      "mean_reward_all": 0.6158795877367111,
+      "paper": {
+        "yield": 99.3,
+        "best": 1.82,
+        "mean": 0.65
+      }
+    },
+    "All_Pass": {
+      "n": 616,
+      "yield_pct": 48.701298701298704,
+      "best_reward": 0.9607281091860023,
+      "mean_reward_success": 0.5729789113883185,
+      "mean_reward_all": -2.2649778028952996,
+      "paper": {
+        "yield": 49.0,
+        "best": 0.96,
+        "mean": 0.57
+      }
+    },
+    "Switched_Line": {
+      "n": 672,
+      "yield_pct": 100.0,
+      "best_reward": 2.2610373762116236,
+      "mean_reward_success": 0.8801230867013956,
+      "mean_reward_all": 0.8801230867013956,
+      "paper": {
+        "yield": 100.0,
+        "best": 2.26,
+        "mean": 0.88
+      }
+    },
+    "Vector_Modulator": {
+      "n": 741,
+      "yield_pct": 100.0,
+      "best_reward": 1.991915439174809,
+      "mean_reward_success": 0.6848675496123379,
+      "mean_reward_all": 0.6848675496123379,
+      "paper": {
+        "yield": 100.0,
+        "best": 2.14,
+        "mean": 0.69
+      }
+    },
+    "Reflection_Type": {
+      "n": 669,
+      "yield_pct": 100.0,
+      "best_reward": 2.2210906912883033,
+      "mean_reward_success": 0.808978944327742,
+      "mean_reward_all": 0.808978944327742,
+      "paper": {
+        "yield": 100.0,
+        "best": 2.23,
+        "mean": 0.81
+      }
+    },
+    "Switched_Filter": {
+      "n": 621,
+      "yield_pct": 81.15942028985508,
+      "best_reward": 1.0782556944134924,
+      "mean_reward_success": 0.7108557485054676,
+      "mean_reward_all": -0.31527971457849335,
+      "paper": {
+        "yield": 82.0,
+        "best": 2.1,
+        "mean": 0.73
+      }
+    }
+  }
+}

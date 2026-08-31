@@ -1,0 +1,130 @@
+{
+  "schema_version": 5,
+  "seed": 20260825,
+  "train": {
+    "path": "/Users/deepak/Desktop/mypages/G-DiffPS/specset/specset_train.json",
+    "n": 10000,
+    "attempts_to_fill": 10000,
+    "probe_n": 5000,
+    "probe_reject_tech_fc": 0.1434,
+    "probe_reject_floor": 0.0,
+    "probe_reject_rate": 0.1434,
+    "counterfactual_independent_box": {
+      "box": [
+        1.0,
+        20.0
+      ],
+      "reject_infeasible_frac": 0.17394349754844735,
+      "vacuous_frac": 0.5605883726360028,
+      "note": "share of independent-box draws that were below the quantization floor (infeasible) or above kappa_max*floor (satisfiable by anything)"
+    },
+    "phase_kappa": {
+      "range": [
+        1.2,
+        3.0
+      ],
+      "mean": 1.963677838669932,
+      "p10": 1.3165493189879673,
+      "p50": 1.896923174937816,
+      "p90": 2.73359443666869
+    },
+    "rms_phase_err_deg_realized": {
+      "min": 0.4904674131021981,
+      "p50": 4.346335762210054,
+      "max": 38.16936547054339
+    },
+    "feasibility_margin": 1.2,
+    "schema_version": 5,
+    "spec_dim": 19,
+    "heuristic_marginals": {
+      "Reflection_Type": 3737,
+      "Loaded_Line": 443,
+      "Switched_Line": 2549,
+      "Switched_Filter": 2362,
+      "Vector_Modulator": 455,
+      "All_Pass": 454
+    }
+  },
+  "eval": {
+    "path": "/Users/deepak/Desktop/mypages/G-DiffPS/specset/specset_eval.json",
+    "n": 2000,
+    "attempts_to_fill": 2000,
+    "probe_n": 5000,
+    "probe_reject_tech_fc": 0.1432,
+    "probe_reject_floor": 0.0,
+    "probe_reject_rate": 0.1432,
+    "counterfactual_independent_box": {
+      "box": [
+        1.0,
+        20.0
+      ],
+      "reject_infeasible_frac": 0.17366946778711484,
+      "vacuous_frac": 0.569094304388422,
+      "note": "share of independent-box draws that were below the quantization floor (infeasible) or above kappa_max*floor (satisfiable by anything)"
+    },
+    "phase_kappa": {
+      "range": [
+        1.2,
+        3.0
+      ],
+      "mean": 1.9661398134374946,
+      "p10": 1.3086070339443545,
+      "p50": 1.9105220990156302,
+      "p90": 2.7256525574257724
+    },
+    "rms_phase_err_deg_realized": {
+      "min": 0.5591716746553271,
+      "p50": 4.814516333068969,
+      "max": 38.380582238555185
+    },
+    "feasibility_margin": 1.2,
+    "schema_version": 5,
+    "spec_dim": 19,
+    "heuristic_marginals": {
+      "Reflection_Type": 730,
+      "Switched_Line": 531,
+      "Switched_Filter": 481,
+      "All_Pass": 94,
+      "Vector_Modulator": 87,
+      "Loaded_Line": 77
+    }
+  },
+  "app_fc_bands": {
+    "0": [
+      1.0,
+      6.0
+    ],
+    "1": [
+      6.0,
+      20.0
+    ],
+    "2": [
+      20.0,
+      40.0
+    ],
+    "3": [
+      12.0,
+      40.0
+    ]
+  },
+  "tech_fc_bands": {
+    "0": [
+      1.0,
+      18.0
+    ],
+    "1": [
+      1.0,
+      40.0
+    ],
+    "2": [
+      1.0,
+      40.0
+    ]
+  },
+  "field_roles": {
+    "bw_pct": "KEEP \u2014 SPICE sweep half-bw + heuristic baseline",
+    "vdd": "DELIBERATELY UNSCORED \u2014 retained for future power conditioning",
+    "app": "KEEP \u2014 coupled to fc_ghz via APP_FC_BANDS",
+    "tech": "KEEP \u2014 one-hot; sets switch parasitics under realistic"
+  }
+}

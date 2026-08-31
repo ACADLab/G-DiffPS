@@ -1,0 +1,9 @@
+topology,config,success_rate_mean,best_reward_mean,n_seeds,encoder,action_space,fc_mode,bounds
+All_Pass,circuit_device,25.0,0.8720662329379147,1,circuit,device,fixed28,legacy
+All_Pass,circuit_slot,25.0,0.7682521706547902,1,circuit,slot,fixed28,legacy
+All_Pass,gin_device,20.0,0.7605476779182498,1,gin,device,fixed28,legacy
+All_Pass,gin_slot,25.0,0.9592482125755087,1,gin,slot,fixed28,legacy
+Switched_Filter,circuit_device,65.0,1.99356582642156,1,circuit,device,fixed28,legacy
+Switched_Filter,circuit_slot,10.0,0.7558754977877364,1,circuit,slot,fixed28,legacy
+Switched_Filter,gin_device,45.0,1.0859832554751405,1,gin,device,fixed28,legacy
+Switched_Filter,gin_slot,35.0,0.7604148508522834,1,gin,slot,fixed28,legacy

@@ -37,32 +37,17 @@ if REPO_ROOT not in sys.path:
 from env.graph_utils import get_topology_graph, TOPOLOGY_PARAMS
 from models.gnn_encoder import TopologyEncoder
 from models.diffusion_policy import ValueNet
-from specset.generate_specset import SPEC_BOUNDS
+from specset.schema import SPEC_DIM, normalize_spec as _normalize_spec_np
 
 TOPOLOGY_NAMES = list(TOPOLOGY_PARAMS.keys())
-SPEC_KEYS = list(SPEC_BOUNDS.keys())
 
 
 # ---------------------------------------------------------------------------
-# Spec normalization (mirrors PhaseShifterEnv._normalize exactly)
+# Spec normalization (schema v2 observation layout → torch)
 # ---------------------------------------------------------------------------
 
 def normalize_spec(spec: dict) -> torch.Tensor:
-    vec = []
-    for k in SPEC_KEYS:
-        bnd = SPEC_BOUNDS[k]
-        val = spec[k]
-        if isinstance(bnd, tuple):
-            mn, mx = bnd
-            if k in ("fc_ghz", "pmax_mw"):
-                mn, mx = np.log10(mn), np.log10(mx)
-                val = np.log10(max(val, 1e-12))
-            v = (val - mn) / (mx - mn)
-            vec.append(float(np.clip(v, 0.0, 1.0)))
-        elif isinstance(bnd, list):
-            max_val = max(bnd) if max(bnd) > 0 else 1
-            vec.append(float(val) / float(max_val))
-    return torch.tensor(vec, dtype=torch.float).unsqueeze(0)  # [1, 12]
+    return torch.tensor(_normalize_spec_np(spec), dtype=torch.float).unsqueeze(0)  # [1, SPEC_DIM]
 
 
 # ---------------------------------------------------------------------------
@@ -72,7 +57,7 @@ def normalize_spec(spec: dict) -> torch.Tensor:
 def score_topologies(spec: dict, gnn: TopologyEncoder, value_net: ValueNet,
                      device: torch.device) -> list[tuple[str, float]]:
     """Return list of (topology_name, V_score) sorted best-first."""
-    spec_tensor = normalize_spec(spec).to(device)  # [1, 12]
+    spec_tensor = normalize_spec(spec).to(device)  # [1, SPEC_DIM]
     results = []
     for name in TOPOLOGY_NAMES:
         g = get_topology_graph(name)
@@ -136,9 +121,9 @@ def main():
     parser.add_argument("--run", type=str, default=None,
                         help="Path to diffusion run dir (default: auto-detect latest).")
     parser.add_argument("--spec-idx", type=int, default=None,
-                        help="Index into specset_phaseshifter.json. Mutually exclusive with --spec.")
+                        help="Index into the train specset. Mutually exclusive with --spec.")
     parser.add_argument("--spec", type=str, default=None,
-                        help="JSON string with all 12 spec fields. Mutually exclusive with --spec-idx.")
+                        help="JSON string with all SPEC_KEYS scalar fields. Mutually exclusive with --spec-idx.")
     parser.add_argument("--batch", action="store_true",
                         help="Score all 600 specs and print topology win-count table.")
     parser.add_argument("--device", type=str, default="cpu",
@@ -159,11 +144,11 @@ def main():
     print(f"[Loaded] gnn_encoder + value_net from {run_dir}")
 
     # Load specset for --batch or --spec-idx
-    specset_path = os.path.join(REPO_ROOT, "specset/specset_phaseshifter.json")
+    from specset.schema import TRAIN_SPECSET_PATH, load_specset
+    specset_path = TRAIN_SPECSET_PATH
     specset = []
     if os.path.exists(specset_path):
-        with open(specset_path) as f:
-            specset = json.load(f)
+        specset = load_specset(specset_path)
 
     # -----------------------------------------------------------------------
     # Batch mode: score all specs, report win counts
@@ -208,7 +193,8 @@ def main():
             sys.exit(1)
         entry = specset[args.spec_idx]
         spec = entry["spec"]
-        print(f"[Spec] index {args.spec_idx} | heuristic label: {entry.get('topology', 'N/A')}")
+        print(f"[Spec] index {args.spec_idx} | heuristic_topology_deprecated: "
+              f"{entry.get('heuristic_topology_deprecated', 'N/A')}")
     else:
         # Default: first spec from dataset
         if specset:

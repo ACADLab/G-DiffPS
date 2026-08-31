@@ -1,0 +1,1229 @@
+{
+  "n_specs": 80,
+  "k": 32,
+  "switch_model": "ideal",
+  "spread": {
+    "median": 1.322599598596776,
+    "mean": 2.691531902345827,
+    "frac_above_0_3": 0.925
+  },
+  "mean_rstar": {
+    "Loaded_Line": 1.3536801119870634,
+    "Switched_Line": 0.7521233993344858,
+    "Reflection_Type": 0.3983402888326272,
+    "Switched_Filter": 0.7064589275050385,
+    "Vector_Modulator": -0.6128717842768716,
+    "All_Pass": 0.7671213496474293
+  },
+  "d2_baseline_spread_after": {
+    "median": 1.3391068817532035,
+    "mean": 1.2896578995235333,
+    "p90": 1.477134908708141,
+    "frac_above_0_3": 0.96,
+    "frac_below_0_15": 0.02
+  },
+  "accept": true,
+  "accept_strict_all": false,
+  "per_spec": [
+    {
+      "id": "spec_0443",
+      "fc_ghz": 1.5931121681609564,
+      "area_rank": 1,
+      "max_area_mm2": 19.56578615369367,
+      "spread": 1.1255393538481666,
+      "rstar": {
+        "Loaded_Line": 1.5977105962772127,
+        "Switched_Line": 0.6847449458012621,
+        "Reflection_Type": 0.6824800853384912,
+        "Switched_Filter": 0.5047679750058824,
+        "Vector_Modulator": 1.630307328854049,
+        "All_Pass": 1.531899996045826
+      }
+    },
+    {
+      "id": "spec_0369",
+      "fc_ghz": 4.576637549560492,
+      "area_rank": 2,
+      "max_area_mm2": 15.406907758420614,
+      "spread": 1.4181699875837406,
+      "rstar": {
+        "Loaded_Line": 1.7469122297023398,
+        "Switched_Line": 0.7145924651007489,
+        "Reflection_Type": 0.3287422421185992,
+        "Switched_Filter": 0.48227281135224787,
+        "Vector_Modulator": 0.4353545748857443,
+        "All_Pass": 0.4819068538575012
+      }
+    },
+    {
+      "id": "spec_0308",
+      "fc_ghz": 1.8329211399019534,
+      "area_rank": 2,
+      "max_area_mm2": 19.712747912150228,
+      "spread": 6.584230325980789,
+      "rstar": {
+        "Loaded_Line": 1.5842303259807893,
+        "Switched_Line": 0.5664963995730393,
+        "Reflection_Type": 0.36821635057430163,
+        "Switched_Filter": 0.4675762253997594,
+        "Vector_Modulator": -5.0,
+        "All_Pass": 0.49049372002620545
+      }
+    },
+    {
+      "id": "spec_0412",
+      "fc_ghz": 1.2422323136970868,
+      "area_rank": 1,
+      "max_area_mm2": 18.582687743903094,
+      "spread": 5.515417835622989,
+      "rstar": {
+        "Loaded_Line": 0.5154178356229893,
+        "Switched_Line": 0.4244808346486544,
+        "Reflection_Type": 0.16705098261407544,
+        "Switched_Filter": 0.4133760112383852,
+        "Vector_Modulator": -5.0,
+        "All_Pass": 0.4216604785664758
+      }
+    },
+    {
+      "id": "spec_0499",
+      "fc_ghz": 1.6680839416856914,
+      "area_rank": 3,
+      "max_area_mm2": 27.588039120090183,
+      "spread": 5.781673932187555,
+      "rstar": {
+        "Loaded_Line": 0.5843838336704107,
+        "Switched_Line": 0.7816739321875552,
+        "Reflection_Type": 0.49149205616204145,
+        "Switched_Filter": 0.5303044297981996,
+        "Vector_Modulator": -5.0,
+        "All_Pass": 0.5368879082739249
+      }
+    },
+    {
+      "id": "spec_0296",
+      "fc_ghz": 1.991094961597347,
+      "area_rank": 1,
+      "max_area_mm2": 19.554549544210282,
+      "spread": 1.1444107627970035,
+      "rstar": {
+        "Loaded_Line": 0.7863544429183635,
+        "Switched_Line": 0.7478029883488632,
+        "Reflection_Type": 0.46277685970538796,
+        "Switched_Filter": 0.47018759771596486,
+        "Vector_Modulator": 1.6055855874797365,
+        "All_Pass": 0.4611748246827329
+      }
+    },
+    {
+      "id": "spec_0538",
+      "fc_ghz": 1.9621884179066487,
+      "area_rank": 1,
+      "max_area_mm2": 19.260194836858393,
+      "spread": 6.611527240331216,
+      "rstar": {
+        "Loaded_Line": 0.5407475549643983,
+        "Switched_Line": 0.5037083567427153,
+        "Reflection_Type": 0.31406608697084126,
+        "Switched_Filter": 1.611527240331216,
+        "Vector_Modulator": -5.0,
+        "All_Pass": 0.4231233662100101
+      }
+    },
+    {
+      "id": "spec_0251",
+      "fc_ghz": 5.546247748597912,
+      "area_rank": 1,
+      "max_area_mm2": 13.95291385039597,
+      "spread": 1.446777039891574,
+      "rstar": {
+        "Loaded_Line": 1.8049086671468935,
+        "Switched_Line": 0.5972203439098802,
+        "Reflection_Type": 0.4928864179217033,
+        "Switched_Filter": 0.4815812961596166,
+        "Vector_Modulator": 0.35813162725531955,
+        "All_Pass": 0.45678233652352873
+      }
+    },
+    {
+      "id": "spec_0407",
+      "fc_ghz": 2.1827300616590044,
+      "area_rank": 3,
+      "max_area_mm2": 22.815741731283794,
+      "spread": 1.2211738613802117,
+      "rstar": {
+        "Loaded_Line": 1.7178000170688184,
+        "Switched_Line": 0.7225222568325158,
+        "Reflection_Type": 0.4966261556886067,
+        "Switched_Filter": 1.573107270981018,
+        "Vector_Modulator": 1.500410057546821,
+        "All_Pass": 1.544567805687376
+      }
+    },
+    {
+      "id": "spec_0511",
+      "fc_ghz": 4.846664046379868,
+      "area_rank": 1,
+      "max_area_mm2": 14.29388684867,
+      "spread": 1.2775554074906967,
+      "rstar": {
+        "Loaded_Line": 1.7524441280472387,
+        "Switched_Line": 0.5455215707523978,
+        "Reflection_Type": 0.5936169295710862,
+        "Switched_Filter": 0.4748887205565419,
+        "Vector_Modulator": 1.5326421172127653,
+        "All_Pass": 0.4877029094352944
+      }
+    },
+    {
+      "id": "spec_0213",
+      "fc_ghz": 3.2577449410935966,
+      "area_rank": 2,
+      "max_area_mm2": 19.25931861882758,
+      "spread": 6.8756456743017536,
+      "rstar": {
+        "Loaded_Line": 1.8756456743017536,
+        "Switched_Line": 0.7073433329108006,
+        "Reflection_Type": 0.5524185585237289,
+        "Switched_Filter": 0.4142500093295116,
+        "Vector_Modulator": -5.0,
+        "All_Pass": 1.3826957265502184
+      }
+    },
+    {
+      "id": "spec_0054",
+      "fc_ghz": 1.239062672292733,
+      "area_rank": 3,
+      "max_area_mm2": 34.060263844109734,
+      "spread": 1.2697542290358352,
+      "rstar": {
+        "Loaded_Line": 1.4983834229673767,
+        "Switched_Line": 0.6336618693458996,
+        "Reflection_Type": 0.4966981034007207,
+        "Switched_Filter": 0.5844752941656545,
+        "Vector_Modulator": 1.766452332436556,
+        "All_Pass": 0.5281985794063132
+      }
+    },
+    {
+      "id": "spec_0195",
+      "fc_ghz": 1.71827021875018,
+      "area_rank": 1,
+      "max_area_mm2": 18.667191572087244,
+      "spread": 0.09955648956717766,
+      "rstar": {
+        "Loaded_Line": 0.5480747681525753,
+        "Switched_Line": 0.493045956593945,
+        "Reflection_Type": 0.4990722296872983,
+        "Switched_Filter": 0.4893552718744123,
+        "Vector_Modulator": 0.4485182785853976,
+        "All_Pass": 0.48116630927000287
+      }
+    },
+    {
+      "id": "spec_0576",
+      "fc_ghz": 2.669360320130247,
+      "area_rank": 3,
+      "max_area_mm2": 20.62296125854219,
+      "spread": 1.473097287033081,
+      "rstar": {
+        "Loaded_Line": 1.7941574641434235,
+        "Switched_Line": 0.7163579862952694,
+        "Reflection_Type": 0.32106017711034246,
+        "Switched_Filter": 0.4875471941759815,
+        "Vector_Modulator": 1.6068724212378598,
+        "All_Pass": 1.388136996915433
+      }
+    },
+    {
+      "id": "spec_0593",
+      "fc_ghz": 3.1564606469799763,
+      "area_rank": 1,
+      "max_area_mm2": 17.99131323123194,
+      "spread": 6.787875613545346,
+      "rstar": {
+        "Loaded_Line": 1.6982624161239843,
+        "Switched_Line": 0.7418398488893944,
+        "Reflection_Type": 0.7491912450991567,
+        "Switched_Filter": 1.7878756135453455,
+        "Vector_Modulator": -5.0,
+        "All_Pass": 0.4830893077864016
+      }
+    },
+    {
+      "id": "spec_0513",
+      "fc_ghz": 2.0212055861312876,
+      "area_rank": 1,
+      "max_area_mm2": 18.874253006616144,
+      "spread": 1.2265004492206943,
+      "rstar": {
+        "Loaded_Line": 0.5601867185085342,
+        "Switched_Line": 0.673377891931034,
+        "Reflection_Type": 0.4320547243383201,
+        "Switched_Filter": 1.6585551735590145,
+        "Vector_Modulator": 1.649301402881851,
+        "All_Pass": 0.482075370106347
+      }
+    },
+    {
+      "id": "spec_0519",
+      "fc_ghz": 1.0218145612975649,
+      "area_rank": 1,
+      "max_area_mm2": 19.766058111913363,
+      "spread": 6.797006034096336,
+      "rstar": {
+        "Loaded_Line": 0.5279657202733323,
+        "Switched_Line": 0.4789540801443307,
+        "Reflection_Type": 0.4871419982686769,
+        "Switched_Filter": 1.7970060340963365,
+        "Vector_Modulator": -5.0,
+        "All_Pass": 0.4661550762269072
+      }
+    },
+    {
+      "id": "spec_0123",
+      "fc_ghz": 7.73001781092309,
+      "area_rank": 2,
+      "max_area_mm2": 13.378385523032991,
+      "spread": 6.730647609394845,
+      "rstar": {
+        "Loaded_Line": 1.7306476093948449,
+        "Switched_Line": 0.673223559685536,
+        "Reflection_Type": 0.49641841439830914,
+        "Switched_Filter": 0.44779601500392224,
+        "Vector_Modulator": -5.0,
+        "All_Pass": 0.45099789791281225
+      }
+    },
+    {
+      "id": "spec_0498",
+      "fc_ghz": 2.3873359759423907,
+      "area_rank": 3,
+      "max_area_mm2": 21.799325764427188,
+      "spread": 1.1263569211708322,
+      "rstar": {
+        "Loaded_Line": 1.5968071025537354,
+        "Switched_Line": 0.7501459608894206,
+        "Reflection_Type": 0.49822954595211866,
+        "Switched_Filter": 1.6245864671229509,
+        "Vector_Modulator": 1.4816567839287917,
+        "All_Pass": 1.5209451404167238
+      }
+    },
+    {
+      "id": "spec_0429",
+      "fc_ghz": 4.3328866420196315,
+      "area_rank": 1,
+      "max_area_mm2": 15.712856491237735,
+      "spread": 6.781433058707426,
+      "rstar": {
+        "Loaded_Line": 1.7814330587074259,
+        "Switched_Line": 0.749733250642101,
+        "Reflection_Type": 0.7141176574080689,
+        "Switched_Filter": 0.4775439153431041,
+        "Vector_Modulator": -5.0,
+        "All_Pass": 0.47950979284435197
+      }
+    },
+    {
+      "id": "spec_0051",
+      "fc_ghz": 6.937818947370314,
+      "area_rank": 2,
+      "max_area_mm2": 13.837950163255691,
+      "spread": 6.496900212287374,
+      "rstar": {
+        "Loaded_Line": 1.496900212287374,
+        "Switched_Line": 0.5792286663879856,
+        "Reflection_Type": 0.5810014278373187,
+        "Switched_Filter": 0.4795338805028396,
+        "Vector_Modulator": -5.0,
+        "All_Pass": 0.44561509826461676
+      }
+    },
+    {
+      "id": "spec_0430",
+      "fc_ghz": 3.0278205100794873,
+      "area_rank": 2,
+      "max_area_mm2": 18.529737781512335,
+      "spread": 1.4441894126447978,
+      "rstar": {
+        "Loaded_Line": 1.6745064464258468,
+        "Switched_Line": 0.5309505567427357,
+        "Reflection_Type": 0.230317033781049,
+        "Switched_Filter": 0.3651942992343776,
+        "Vector_Modulator": 1.3863093938077489,
+        "All_Pass": 1.4041782205544626
+      }
+    },
+    {
+      "id": "spec_0536",
+      "fc_ghz": 1.2430331825186982,
+      "area_rank": 2,
+      "max_area_mm2": 19.474672666262435,
+      "spread": 0.4027199111593423,
+      "rstar": {
+        "Loaded_Line": 0.4958226038247208,
+        "Switched_Line": 0.6526144483321061,
+        "Reflection_Type": 0.24989453717276383,
+        "Switched_Filter": 0.4392995833072423,
+        "Vector_Modulator": 0.5127572589622759,
+        "All_Pass": 0.43468903356567906
+      }
+    },
+    {
+      "id": "spec_0326",
+      "fc_ghz": 4.4158084894511,
+      "area_rank": 3,
+      "max_area_mm2": 19.543068768717145,
+      "spread": 1.3132902843344354,
+      "rstar": {
+        "Loaded_Line": 1.8674702853408554,
+        "Switched_Line": 0.7810022494178099,
+        "Reflection_Type": 0.5541800010064201,
+        "Switched_Filter": 0.5732255896094158,
+        "Vector_Modulator": 1.7139392355728966,
+        "All_Pass": 1.748337432420629
+      }
+    },
+    {
+      "id": "spec_0580",
+      "fc_ghz": 1.2773306124213435,
+      "area_rank": 3,
+      "max_area_mm2": 31.358292313717723,
+      "spread": 6.7876691141798435,
+      "rstar": {
+        "Loaded_Line": 1.6380726053711396,
+        "Switched_Line": 0.7357516992970619,
+        "Reflection_Type": 0.44603741778956696,
+        "Switched_Filter": 1.7876691141798435,
+        "Vector_Modulator": -5.0,
+        "All_Pass": 0.48432562118809863
+      }
+    },
+    {
+      "id": "spec_0454",
+      "fc_ghz": 8.177218631962697,
+      "area_rank": 3,
+      "max_area_mm2": 18.548869205036674,
+      "spread": 1.4995277494246515,
+      "rstar": {
+        "Loaded_Line": 1.86647381394891,
+        "Switched_Line": 1.6566281873506667,
+        "Reflection_Type": 0.3669460645242586,
+        "Switched_Filter": 0.45451562911960625,
+        "Vector_Modulator": 0.4269333844058728,
+        "All_Pass": 0.4709716244910787
+      }
+    },
+    {
+      "id": "spec_0549",
+      "fc_ghz": 4.593242528665579,
+      "area_rank": 2,
+      "max_area_mm2": 16.335242149022147,
+      "spread": 1.215434972554544,
+      "rstar": {
+        "Loaded_Line": 0.5577138256364347,
+        "Switched_Line": 0.5468164604367429,
+        "Reflection_Type": 0.4041035206237081,
+        "Switched_Filter": 0.47758687245760056,
+        "Vector_Modulator": 1.619538493178252,
+        "All_Pass": 0.4843351411330644
+      }
+    },
+    {
+      "id": "spec_0304",
+      "fc_ghz": 7.702474259439827,
+      "area_rank": 3,
+      "max_area_mm2": 19.189396901363693,
+      "spread": 1.3034451016241788,
+      "rstar": {
+        "Loaded_Line": 1.611060988949808,
+        "Switched_Line": 1.6542501821527904,
+        "Reflection_Type": 0.39552540248755774,
+        "Switched_Filter": 0.3570191803133126,
+        "Vector_Modulator": 0.35080508052861153,
+        "All_Pass": 0.4500988187515447
+      }
+    },
+    {
+      "id": "spec_0237",
+      "fc_ghz": 9.442988004848775,
+      "area_rank": 3,
+      "max_area_mm2": 19.633027901001572,
+      "spread": 6.810621801553532,
+      "rstar": {
+        "Loaded_Line": 1.8106218015535323,
+        "Switched_Line": 1.639924001639048,
+        "Reflection_Type": 0.45240869437742237,
+        "Switched_Filter": 0.4997465311724083,
+        "Vector_Modulator": -5.0,
+        "All_Pass": 0.49186922159468865
+      }
+    },
+    {
+      "id": "spec_0253",
+      "fc_ghz": 8.052121527946055,
+      "area_rank": 3,
+      "max_area_mm2": 19.326588325199413,
+      "spread": 1.428577608250863,
+      "rstar": {
+        "Loaded_Line": 1.8836077334643295,
+        "Switched_Line": 1.7264508513494712,
+        "Reflection_Type": 0.4550301252134665,
+        "Switched_Filter": 1.6731488011986648,
+        "Vector_Modulator": 1.6754423417043922,
+        "All_Pass": 0.477003692811285
+      }
+    },
+    {
+      "id": "spec_0381",
+      "fc_ghz": 3.7335382795965333,
+      "area_rank": 3,
+      "max_area_mm2": 19.224281340475624,
+      "spread": 6.843148511084202,
+      "rstar": {
+        "Loaded_Line": 1.8431485110842023,
+        "Switched_Line": 0.7661521234599734,
+        "Reflection_Type": -5.0,
+        "Switched_Filter": 0.4861430341639577,
+        "Vector_Modulator": 1.4927082814845072,
+        "All_Pass": 0.46697912963812194
+      }
+    },
+    {
+      "id": "spec_0236",
+      "fc_ghz": 3.9644490069501526,
+      "area_rank": 3,
+      "max_area_mm2": 19.282479443465462,
+      "spread": 1.3777205459982445,
+      "rstar": {
+        "Loaded_Line": 1.7314442821742912,
+        "Switched_Line": 1.617953619573431,
+        "Reflection_Type": 0.35372373617604674,
+        "Switched_Filter": 0.4826381229174054,
+        "Vector_Modulator": 0.482906860255712,
+        "All_Pass": 0.4853232228320432
+      }
+    },
+    {
+      "id": "spec_0563",
+      "fc_ghz": 7.038931151834577,
+      "area_rank": 3,
+      "max_area_mm2": 19.815692849410016,
+      "spread": 1.5342407711851775,
+      "rstar": {
+        "Loaded_Line": 1.830371705957309,
+        "Switched_Line": 0.6264475831266868,
+        "Reflection_Type": 0.29613093477213137,
+        "Switched_Filter": 0.49492073046458557,
+        "Vector_Modulator": 1.497824500081035,
+        "All_Pass": 1.4157013541157364
+      }
+    },
+    {
+      "id": "spec_0295",
+      "fc_ghz": 2.587201052335113,
+      "area_rank": 1,
+      "max_area_mm2": 18.803650677934343,
+      "spread": 1.3391173334597282,
+      "rstar": {
+        "Loaded_Line": 1.735266946689395,
+        "Switched_Line": 0.5422903522203347,
+        "Reflection_Type": 0.39614961322966696,
+        "Switched_Filter": 0.4847747266870277,
+        "Vector_Modulator": 0.4543035931337828,
+        "All_Pass": 0.4833158662699983
+      }
+    },
+    {
+      "id": "spec_0234",
+      "fc_ghz": 1.452505696374912,
+      "area_rank": 2,
+      "max_area_mm2": 20.110901403567976,
+      "spread": 1.1238659017392165,
+      "rstar": {
+        "Loaded_Line": 1.5344256769535978,
+        "Switched_Line": 0.7734867920207946,
+        "Reflection_Type": 0.41055977521438114,
+        "Switched_Filter": 0.4925804287346524,
+        "Vector_Modulator": 0.6558416035002248,
+        "All_Pass": 0.4980878387620583
+      }
+    },
+    {
+      "id": "spec_0565",
+      "fc_ghz": 2.5087119361758825,
+      "area_rank": 3,
+      "max_area_mm2": 20.17631063715414,
+      "spread": 1.1858421910141415,
+      "rstar": {
+        "Loaded_Line": 1.6139712478941304,
+        "Switched_Line": 0.48235912320932645,
+        "Reflection_Type": 0.5037950051615039,
+        "Switched_Filter": 0.49924785758713264,
+        "Vector_Modulator": 0.4281290568799888,
+        "All_Pass": 0.4848890682958643
+      }
+    },
+    {
+      "id": "spec_0444",
+      "fc_ghz": 5.352635729845584,
+      "area_rank": 3,
+      "max_area_mm2": 19.974174368032998,
+      "spread": 1.398808522924112,
+      "rstar": {
+        "Loaded_Line": 1.7835715199338193,
+        "Switched_Line": 1.7354130028821353,
+        "Reflection_Type": 0.45885427179029836,
+        "Switched_Filter": 0.4976289982370039,
+        "Vector_Modulator": 0.38476299700970723,
+        "All_Pass": 1.45789852683838
+      }
+    },
+    {
+      "id": "spec_0122",
+      "fc_ghz": 4.5155729122989055,
+      "area_rank": 3,
+      "max_area_mm2": 19.644779661370844,
+      "spread": 1.306026255501526,
+      "rstar": {
+        "Loaded_Line": 1.7715911529773316,
+        "Switched_Line": 0.6876704896037696,
+        "Reflection_Type": 0.5974527968721173,
+        "Switched_Filter": 0.47709732829283824,
+        "Vector_Modulator": 1.6406707640759457,
+        "All_Pass": 0.46556489747580554
+      }
+    },
+    {
+      "id": "spec_0598",
+      "fc_ghz": 1.2446638808320076,
+      "area_rank": 3,
+      "max_area_mm2": 32.37374939340114,
+      "spread": 0.30940122257914443,
+      "rstar": {
+        "Loaded_Line": 0.5878833019802265,
+        "Switched_Line": 0.7749734250680984,
+        "Reflection_Type": 0.465572202488954,
+        "Switched_Filter": 0.5405992428673001,
+        "Vector_Modulator": 0.48022292138339656,
+        "All_Pass": 0.5351701601428327
+      }
+    },
+    {
+      "id": "spec_0063",
+      "fc_ghz": 1.9977278885373955,
+      "area_rank": 3,
+      "max_area_mm2": 24.09130051660905,
+      "spread": 6.586701987469817,
+      "rstar": {
+        "Loaded_Line": 1.5867019874698167,
+        "Switched_Line": 0.5256167950285306,
+        "Reflection_Type": 0.49465917124877756,
+        "Switched_Filter": 1.4351046424206841,
+        "Vector_Modulator": -5.0,
+        "All_Pass": 0.5233449682876347
+      }
+    },
+    {
+      "id": "spec_0415",
+      "fc_ghz": 6.00972745095835,
+      "area_rank": 3,
+      "max_area_mm2": 19.19871343715814,
+      "spread": 1.287376991068556,
+      "rstar": {
+        "Loaded_Line": 1.7639779520507135,
+        "Switched_Line": 0.6247304667100815,
+        "Reflection_Type": 0.607374409507028,
+        "Switched_Filter": 0.4766009609821575,
+        "Vector_Modulator": 0.5441682061390246,
+        "All_Pass": 1.7513555767688667
+      }
+    },
+    {
+      "id": "spec_0249",
+      "fc_ghz": 6.192040863550248,
+      "area_rank": 3,
+      "max_area_mm2": 18.7521782031224,
+      "spread": 1.5115985612388119,
+      "rstar": {
+        "Loaded_Line": 1.8843669296834449,
+        "Switched_Line": 0.7877703848978661,
+        "Reflection_Type": 0.37276836844463296,
+        "Switched_Filter": 1.419084458859419,
+        "Vector_Modulator": 1.642630846503017,
+        "All_Pass": 0.4850882730770722
+      }
+    },
+    {
+      "id": "spec_0420",
+      "fc_ghz": 3.9338121249750135,
+      "area_rank": 2,
+      "max_area_mm2": 17.46718827851253,
+      "spread": 1.1353030590317847,
+      "rstar": {
+        "Loaded_Line": 1.598538842900346,
+        "Switched_Line": 0.56882021596488,
+        "Reflection_Type": 0.49757032909950055,
+        "Switched_Filter": 0.4774672927764964,
+        "Vector_Modulator": 1.5513758867155647,
+        "All_Pass": 0.4632357838685613
+      }
+    },
+    {
+      "id": "spec_0324",
+      "fc_ghz": 6.895351425475957,
+      "area_rank": 3,
+      "max_area_mm2": 18.850941318927077,
+      "spread": 6.740969828951577,
+      "rstar": {
+        "Loaded_Line": 1.6560212058075618,
+        "Switched_Line": 1.5127958238241173,
+        "Reflection_Type": 0.6425646513336155,
+        "Switched_Filter": 1.5358999284701351,
+        "Vector_Modulator": -5.0,
+        "All_Pass": 1.7409698289515774
+      }
+    },
+    {
+      "id": "spec_0514",
+      "fc_ghz": 3.32493090005167,
+      "area_rank": 1,
+      "max_area_mm2": 17.83945845143122,
+      "spread": 0.36971725482124024,
+      "rstar": {
+        "Loaded_Line": 0.552529144966902,
+        "Switched_Line": 0.5819348905877315,
+        "Reflection_Type": 0.4259416571572451,
+        "Switched_Filter": 0.43683186618247694,
+        "Vector_Modulator": 0.21221763576649127,
+        "All_Pass": 0.44633626217087563
+      }
+    },
+    {
+      "id": "spec_0441",
+      "fc_ghz": 5.205225753763992,
+      "area_rank": 2,
+      "max_area_mm2": 14.787597124297767,
+      "spread": 6.732864543925184,
+      "rstar": {
+        "Loaded_Line": 1.732864543925184,
+        "Switched_Line": 0.6908369245704552,
+        "Reflection_Type": 0.23751463180775387,
+        "Switched_Filter": 0.4564233695443234,
+        "Vector_Modulator": -5.0,
+        "All_Pass": 0.7341864462771315
+      }
+    },
+    {
+      "id": "spec_0191",
+      "fc_ghz": 6.079000615816583,
+      "area_rank": 3,
+      "max_area_mm2": 19.065986620354067,
+      "spread": 1.3880612610012242,
+      "rstar": {
+        "Loaded_Line": 1.7415787277409605,
+        "Switched_Line": 1.472620208709258,
+        "Reflection_Type": 0.5680580330450127,
+        "Switched_Filter": 0.37043836673673447,
+        "Vector_Modulator": 1.5908457125844797,
+        "All_Pass": 1.7584996277379585
+      }
+    },
+    {
+      "id": "spec_0211",
+      "fc_ghz": 1.5228796548211683,
+      "area_rank": 2,
+      "max_area_mm2": 20.293346748976656,
+      "spread": 1.1995079901317842,
+      "rstar": {
+        "Loaded_Line": 0.5522386979304449,
+        "Switched_Line": 0.7754894319831521,
+        "Reflection_Type": 0.493932857705686,
+        "Switched_Filter": 0.515887011736906,
+        "Vector_Modulator": 0.5579192772124092,
+        "All_Pass": 1.6934408478374703
+      }
+    },
+    {
+      "id": "spec_0168",
+      "fc_ghz": 1.5574870166129486,
+      "area_rank": 2,
+      "max_area_mm2": 19.63193687588173,
+      "spread": 0.10583893829788155,
+      "rstar": {
+        "Loaded_Line": 0.5421142542561111,
+        "Switched_Line": 0.4804552805833211,
+        "Reflection_Type": 0.49687128688094906,
+        "Switched_Filter": 0.491630640754905,
+        "Vector_Modulator": 0.4362753159582296,
+        "All_Pass": 0.47137655876674517
+      }
+    },
+    {
+      "id": "spec_0351",
+      "fc_ghz": 3.6102537458523076,
+      "area_rank": 3,
+      "max_area_mm2": 19.969410785769508,
+      "spread": 1.188632450966864,
+      "rstar": {
+        "Loaded_Line": 1.6409366038550148,
+        "Switched_Line": 0.6141864882397975,
+        "Reflection_Type": 0.4526464449215588,
+        "Switched_Filter": 0.4729917792060264,
+        "Vector_Modulator": 1.5452142963496587,
+        "All_Pass": 0.45230415288815085
+      }
+    },
+    {
+      "id": "spec_0590",
+      "fc_ghz": 4.632408358959404,
+      "area_rank": 3,
+      "max_area_mm2": 19.09575862431128,
+      "spread": 6.7803263474449285,
+      "rstar": {
+        "Loaded_Line": 1.7803263474449285,
+        "Switched_Line": 0.7437484049925647,
+        "Reflection_Type": 0.47716568402378956,
+        "Switched_Filter": 1.7769678782777536,
+        "Vector_Modulator": -5.0,
+        "All_Pass": 1.3768210065373876
+      }
+    },
+    {
+      "id": "spec_0386",
+      "fc_ghz": 5.232154989831926,
+      "area_rank": 3,
+      "max_area_mm2": 19.24788127735454,
+      "spread": 6.776029773178424,
+      "rstar": {
+        "Loaded_Line": 1.7760297731784238,
+        "Switched_Line": 0.6935192925207478,
+        "Reflection_Type": 0.635338653968375,
+        "Switched_Filter": 0.4566451694441779,
+        "Vector_Modulator": -5.0,
+        "All_Pass": 0.47826185528053605
+      }
+    },
+    {
+      "id": "spec_0036",
+      "fc_ghz": 4.112456829285364,
+      "area_rank": 3,
+      "max_area_mm2": 19.657443136268714,
+      "spread": 1.3319089128591164,
+      "rstar": {
+        "Loaded_Line": 1.8101379910296445,
+        "Switched_Line": 0.6087159274560501,
+        "Reflection_Type": 0.7733109649051846,
+        "Switched_Filter": 0.482688754769769,
+        "Vector_Modulator": 1.5852037312103144,
+        "All_Pass": 0.478229078170528
+      }
+    },
+    {
+      "id": "spec_0240",
+      "fc_ghz": 1.8258575845963674,
+      "area_rank": 1,
+      "max_area_mm2": 18.69714895737443,
+      "spread": 0.24946803987242827,
+      "rstar": {
+        "Loaded_Line": 0.6378149528965529,
+        "Switched_Line": 0.6960428352463649,
+        "Reflection_Type": 0.49303086385889344,
+        "Switched_Filter": 0.45690491766565805,
+        "Vector_Modulator": 0.44657479537393663,
+        "All_Pass": 0.4828012323729859
+      }
+    },
+    {
+      "id": "spec_0207",
+      "fc_ghz": 3.6627972670155016,
+      "area_rank": 1,
+      "max_area_mm2": 16.76083089626442,
+      "spread": 1.1153358985952568,
+      "rstar": {
+        "Loaded_Line": 1.6143024968488817,
+        "Switched_Line": 0.7113388369817238,
+        "Reflection_Type": 0.49896659825362477,
+        "Switched_Filter": 0.5162823897174793,
+        "Vector_Modulator": 1.5888818113938974,
+        "All_Pass": 0.5902013101665107
+      }
+    },
+    {
+      "id": "spec_0046",
+      "fc_ghz": 3.2204648222420063,
+      "area_rank": 3,
+      "max_area_mm2": 18.83494861267221,
+      "spread": 1.2941726827627398,
+      "rstar": {
+        "Loaded_Line": 1.7014753462606276,
+        "Switched_Line": 0.7466995930980493,
+        "Reflection_Type": 0.49282180725140795,
+        "Switched_Filter": 0.48437157811428555,
+        "Vector_Modulator": 1.7716013360624396,
+        "All_Pass": 0.4774286532996999
+      }
+    },
+    {
+      "id": "spec_0042",
+      "fc_ghz": 1.7728031932706725,
+      "area_rank": 1,
+      "max_area_mm2": 19.445318775296858,
+      "spread": 6.591661345992891,
+      "rstar": {
+        "Loaded_Line": 1.5916613459928919,
+        "Switched_Line": 0.7590638248666138,
+        "Reflection_Type": 0.6527219500572392,
+        "Switched_Filter": 0.49259274450978596,
+        "Vector_Modulator": -5.0,
+        "All_Pass": 1.46594428042703
+      }
+    },
+    {
+      "id": "spec_0274",
+      "fc_ghz": 4.394574427528346,
+      "area_rank": 1,
+      "max_area_mm2": 14.99191693914576,
+      "spread": 6.443417164681511,
+      "rstar": {
+        "Loaded_Line": 1.4434171646815108,
+        "Switched_Line": 0.5982990607327063,
+        "Reflection_Type": 0.5687764173959349,
+        "Switched_Filter": 0.4692518106982375,
+        "Vector_Modulator": -5.0,
+        "All_Pass": 0.4602442741959437
+      }
+    },
+    {
+      "id": "spec_0428",
+      "fc_ghz": 2.7213228589119223,
+      "area_rank": 3,
+      "max_area_mm2": 19.611841891226536,
+      "spread": 1.2239491366337594,
+      "rstar": {
+        "Loaded_Line": 1.6001112715522723,
+        "Switched_Line": 0.6355876753855016,
+        "Reflection_Type": 0.432247631175686,
+        "Switched_Filter": 1.4058658967812565,
+        "Vector_Modulator": 1.613331970512651,
+        "All_Pass": 0.38938283387889155
+      }
+    },
+    {
+      "id": "spec_0440",
+      "fc_ghz": 2.2131716676119124,
+      "area_rank": 1,
+      "max_area_mm2": 19.81119082632329,
+      "spread": 0.29791426522974324,
+      "rstar": {
+        "Loaded_Line": 0.5540635019452445,
+        "Switched_Line": 0.5751597650617346,
+        "Reflection_Type": 0.42385551760139534,
+        "Switched_Filter": 0.4904139828703281,
+        "Vector_Modulator": 0.27724549983199137,
+        "All_Pass": 0.4803075913540143
+      }
+    },
+    {
+      "id": "spec_0085",
+      "fc_ghz": 1.4403995989883531,
+      "area_rank": 2,
+      "max_area_mm2": 19.413779842448143,
+      "spread": 0.262930026020298,
+      "rstar": {
+        "Loaded_Line": 0.5268165381296284,
+        "Switched_Line": 0.4841768336161875,
+        "Reflection_Type": 0.29986570583126687,
+        "Switched_Filter": 0.38053826148189496,
+        "Vector_Modulator": 0.26388651210933034,
+        "All_Pass": 0.42401047604663333
+      }
+    },
+    {
+      "id": "spec_0496",
+      "fc_ghz": 1.3088456850946233,
+      "area_rank": 1,
+      "max_area_mm2": 19.23434851505367,
+      "spread": 6.457839009678147,
+      "rstar": {
+        "Loaded_Line": 1.457839009678147,
+        "Switched_Line": 0.7489711714771484,
+        "Reflection_Type": 0.4672972410570172,
+        "Switched_Filter": 0.47704022320423795,
+        "Vector_Modulator": -5.0,
+        "All_Pass": 1.3903215472857768
+      }
+    },
+    {
+      "id": "spec_0387",
+      "fc_ghz": 1.5498443228344612,
+      "area_rank": 3,
+      "max_area_mm2": 28.367476856839673,
+      "spread": 1.1935384782956038,
+      "rstar": {
+        "Loaded_Line": 1.5561529338736317,
+        "Switched_Line": 0.7030154133472619,
+        "Reflection_Type": 0.45161099399175253,
+        "Switched_Filter": 1.6451494722873563,
+        "Vector_Modulator": 1.5688669854674138,
+        "All_Pass": 0.5744045407619018
+      }
+    },
+    {
+      "id": "spec_0366",
+      "fc_ghz": 9.424514919934287,
+      "area_rank": 1,
+      "max_area_mm2": 11.712250346578635,
+      "spread": 1.2333131875873988,
+      "rstar": {
+        "Loaded_Line": 1.6862157608074257,
+        "Switched_Line": 0.7621444587936868,
+        "Reflection_Type": 0.728243638379515,
+        "Switched_Filter": 0.4618615923341408,
+        "Vector_Modulator": 1.3067839426959638,
+        "All_Pass": 0.45290257322002686
+      }
+    },
+    {
+      "id": "spec_0393",
+      "fc_ghz": 5.859016360071493,
+      "area_rank": 2,
+      "max_area_mm2": 14.953487276350176,
+      "spread": 6.738104714876828,
+      "rstar": {
+        "Loaded_Line": 1.738104714876828,
+        "Switched_Line": 0.783656107385957,
+        "Reflection_Type": 0.35906316105766967,
+        "Switched_Filter": 0.5304743264445885,
+        "Vector_Modulator": -5.0,
+        "All_Pass": 0.502103900785335
+      }
+    },
+    {
+      "id": "spec_0479",
+      "fc_ghz": 1.0278876556566159,
+      "area_rank": 1,
+      "max_area_mm2": 19.91113164927125,
+      "spread": 1.496984535822484,
+      "rstar": {
+        "Loaded_Line": 0.5047300743606439,
+        "Switched_Line": 0.4563809838674011,
+        "Reflection_Type": 0.2532640792339691,
+        "Switched_Filter": 1.7502486150564531,
+        "Vector_Modulator": 0.5552452681204427,
+        "All_Pass": 0.394882172041209
+      }
+    },
+    {
+      "id": "spec_0468",
+      "fc_ghz": 3.303959155897813,
+      "area_rank": 2,
+      "max_area_mm2": 19.064462928431805,
+      "spread": 1.2807377862605196,
+      "rstar": {
+        "Loaded_Line": 1.7426664608820843,
+        "Switched_Line": 0.7838520950834627,
+        "Reflection_Type": 0.4979102183896278,
+        "Switched_Filter": 0.4619286746215646,
+        "Vector_Modulator": 1.4361539659826734,
+        "All_Pass": 1.7045303372245257
+      }
+    },
+    {
+      "id": "spec_0090",
+      "fc_ghz": 2.4712665352377834,
+      "area_rank": 2,
+      "max_area_mm2": 20.70540783567988,
+      "spread": 1.4317207785176096,
+      "rstar": {
+        "Loaded_Line": 1.7431259533191246,
+        "Switched_Line": 0.7446849245207616,
+        "Reflection_Type": 0.31140517480151503,
+        "Switched_Filter": 0.4728832171178978,
+        "Vector_Modulator": 0.4840437860154201,
+        "All_Pass": 0.47397885669734774
+      }
+    },
+    {
+      "id": "spec_0129",
+      "fc_ghz": 1.0924509522508274,
+      "area_rank": 1,
+      "max_area_mm2": 18.745891455192066,
+      "spread": 6.40635933684891,
+      "rstar": {
+        "Loaded_Line": 0.49845500631298123,
+        "Switched_Line": 0.48249180490690136,
+        "Reflection_Type": 0.4968986408112663,
+        "Switched_Filter": 1.4063593368489093,
+        "Vector_Modulator": -5.0,
+        "All_Pass": 0.4778028364058916
+      }
+    },
+    {
+      "id": "spec_0478",
+      "fc_ghz": 5.021257493748555,
+      "area_rank": 2,
+      "max_area_mm2": 15.538177958995695,
+      "spread": 1.3088608496272156,
+      "rstar": {
+        "Loaded_Line": 1.7649211385896142,
+        "Switched_Line": 0.7450656553750616,
+        "Reflection_Type": 0.7670999502622452,
+        "Switched_Filter": 0.45606028896239853,
+        "Vector_Modulator": 0.4756677809471102,
+        "All_Pass": 0.4781423019640876
+      }
+    },
+    {
+      "id": "spec_0539",
+      "fc_ghz": 4.682862575276533,
+      "area_rank": 2,
+      "max_area_mm2": 16.389500835735518,
+      "spread": 1.2263895549627564,
+      "rstar": {
+        "Loaded_Line": 1.7036792933499318,
+        "Switched_Line": 0.7857285866135296,
+        "Reflection_Type": 0.4772897383871755,
+        "Switched_Filter": 0.5245008339246682,
+        "Vector_Modulator": 1.451367329220079,
+        "All_Pass": 1.541795398211649
+      }
+    },
+    {
+      "id": "spec_0032",
+      "fc_ghz": 1.4201986437851188,
+      "area_rank": 2,
+      "max_area_mm2": 19.4686821512435,
+      "spread": 1.2837320562272265,
+      "rstar": {
+        "Loaded_Line": 0.5462865016075878,
+        "Switched_Line": 0.6700518453887889,
+        "Reflection_Type": 0.44928186754699506,
+        "Switched_Filter": 0.6216008830476598,
+        "Vector_Modulator": 0.46125138363389795,
+        "All_Pass": 1.7330139237742217
+      }
+    },
+    {
+      "id": "spec_0086",
+      "fc_ghz": 5.907150183475486,
+      "area_rank": 2,
+      "max_area_mm2": 14.084348956283327,
+      "spread": 1.397956052033599,
+      "rstar": {
+        "Loaded_Line": 1.6093638954275562,
+        "Switched_Line": 0.5873451557337597,
+        "Reflection_Type": 0.2114078433939572,
+        "Switched_Filter": 0.4395718120562251,
+        "Vector_Modulator": 0.4243919856116911,
+        "All_Pass": 0.6139479330350481
+      }
+    },
+    {
+      "id": "spec_0313",
+      "fc_ghz": 4.7266694325603344,
+      "area_rank": 1,
+      "max_area_mm2": 14.870488503528936,
+      "spread": 1.5095461753977655,
+      "rstar": {
+        "Loaded_Line": 1.4390674573853235,
+        "Switched_Line": 0.7653452956184155,
+        "Reflection_Type": 0.2946056515431827,
+        "Switched_Filter": 0.4775659231444541,
+        "Vector_Modulator": 1.8041518269409482,
+        "All_Pass": 0.4803638991944882
+      }
+    },
+    {
+      "id": "spec_0228",
+      "fc_ghz": 8.985226893228962,
+      "area_rank": 2,
+      "max_area_mm2": 12.751504480967526,
+      "spread": 1.0065983318630503,
+      "rstar": {
+        "Loaded_Line": 0.5795919497273583,
+        "Switched_Line": 0.673891471604522,
+        "Reflection_Type": 0.41601286485850797,
+        "Switched_Filter": 0.45691738099041973,
+        "Vector_Modulator": 1.4226111967215582,
+        "All_Pass": 0.46160739649816385
+      }
+    },
+    {
+      "id": "spec_0512",
+      "fc_ghz": 2.5676213681018156,
+      "area_rank": 1,
+      "max_area_mm2": 19.42415288361359,
+      "spread": 0.34291578020054303,
+      "rstar": {
+        "Loaded_Line": 0.5616410053176777,
+        "Switched_Line": 0.7820416471390911,
+        "Reflection_Type": 0.44172491402934083,
+        "Switched_Filter": 0.4882548851849091,
+        "Vector_Modulator": 0.47646540388296377,
+        "All_Pass": 0.43912586693854805
+      }
+    },
+    {
+      "id": "spec_0283",
+      "fc_ghz": 1.6045578185285465,
+      "area_rank": 1,
+      "max_area_mm2": 19.687592774816558,
+      "spread": 1.2476329133326245,
+      "rstar": {
+        "Loaded_Line": 0.5503782448747083,
+        "Switched_Line": 0.7075537747283396,
+        "Reflection_Type": 0.4712746688818522,
+        "Switched_Filter": 0.4776137412806278,
+        "Vector_Modulator": 1.6350780499825435,
+        "All_Pass": 1.7189075822144766
+      }
+    },
+    {
+      "id": "spec_0342",
+      "fc_ghz": 3.3542053847207782,
+      "area_rank": 1,
+      "max_area_mm2": 17.41740525908345,
+      "spread": 1.2650467318109007,
+      "rstar": {
+        "Loaded_Line": 1.6137281210901344,
+        "Switched_Line": 0.7239496069235252,
+        "Reflection_Type": 0.4940225237233324,
+        "Switched_Filter": 0.6149250281450007,
+        "Vector_Modulator": 0.34868138927923364,
+        "All_Pass": 0.4854730578243275
+      }
+    },
+    {
+      "id": "spec_0448",
+      "fc_ghz": 1.638695727223961,
+      "area_rank": 2,
+      "max_area_mm2": 20.31621067768624,
+      "spread": 0.18165421907555757,
+      "rstar": {
+        "Loaded_Line": 0.5509322810764621,
+        "Switched_Line": 0.5705783470111948,
+        "Reflection_Type": 0.4917901457409125,
+        "Switched_Filter": 0.5024819196999233,
+        "Vector_Modulator": 0.6470210894687797,
+        "All_Pass": 0.4653668703932221
+      }
+    },
+    {
+      "id": "spec_0321",
+      "fc_ghz": 1.1433096553049946,
+      "area_rank": 3,
+      "max_area_mm2": 35.5836426941965,
+      "spread": 1.2850386983852287,
+      "rstar": {
+        "Loaded_Line": 0.5831052868870421,
+        "Switched_Line": 0.38870299468629127,
+        "Reflection_Type": 0.48697677367527664,
+        "Switched_Filter": 0.4092418262484758,
+        "Vector_Modulator": 1.6267747618868773,
+        "All_Pass": 1.6737416930715199
+      }
+    }
+  ]
+}

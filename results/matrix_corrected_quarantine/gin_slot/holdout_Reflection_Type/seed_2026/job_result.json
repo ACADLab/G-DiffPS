@@ -1,0 +1,26 @@
+{
+  "tag": "gin_slot",
+  "held_out": "Reflection_Type",
+  "seed": 2026,
+  "encoder": "gin",
+  "action_space": "slot",
+  "fc_mode": "spec",
+  "bounds": "electrical",
+  "train_returncode": 0,
+  "eval_returncode": 0,
+  "wall_s": 542.2603600025177,
+  "ckpt_dir": "results/matrix_corrected/gin_slot/holdout_Reflection_Type/seed_2026",
+  "run_dir": "results/matrix_corrected/gin_slot/holdout_Reflection_Type/seed_2026",
+  "loocv": {
+    "held_out": "Reflection_Type",
+    "n": 200,
+    "compliance": 0.02,
+    "prior_pass_rate": 0.02,
+    "best_reward": 0.8704832956226578,
+    "mean_reward_success": 0.6628784859618511,
+    "encoder": "gin",
+    "action_space": "slot",
+    "fc_mode": "spec",
+    "bounds": "electrical"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "_restored_note": "Restored verbatim after an erroneous deletion. This is the reward 2x2 at mid-action, fc=28 GHz. See seventh_topology_decision.json for why the reward 2x2 is the WRONG test and what the Delta-phi measurement shows instead.",
+  "fc_ghz": 28.0,
+  "bounds": "electrical",
+  "cells": {
+    "Switched_Line": {
+      "ideal": {
+        "score": 0.6271770831412933,
+        "rms_phase_err_deg": 14.38213393727717,
+        "il_db": 0.5564370671194059,
+        "rl_db": 28.31724116821829,
+        "params": {
+          "Z0_line": "50.0",
+          "L_short_mm": "1.038",
+          "L_long_mm": "3.116",
+          "R_on": "3.0000e+00",
+          "R_off": "1.0000e+04"
+        }
+      },
+      "realistic": {
+        "score": 0.5663286543253329,
+        "rms_phase_err_deg": 14.242305068601015,
+        "il_db": 1.7468947651851074,
+        "rl_db": 22.577974906707134,
+        "params": {
+          "Z0_line": "50.0",
+          "L_short_mm": "1.038",
+          "L_long_mm": "3.116",
+          "R_on": "3.0000e+00",
+          "R_off": "3.1680e+02"
+        }
+      }
+    },
+    "Switched_Line_SeriesShunt": {
+      "ideal": {
+        "score": 0.6254830902293586,
+        "rms_phase_err_deg": 14.38880831452661,
+        "il_db": 0.6013104850082287,
+        "rl_db": 29.183295678573447,
+        "params": {
+          "Z0_line": "50.0",
+          "L_short_mm": "1.038",
+          "L_long_mm": "3.116",
+          "R_on": "3.0000e+00",
+          "R_off": "1.0000e+04"
+        }
+      },
+      "realistic": {
+        "score": 0.5167409774199129,
+        "rms_phase_err_deg": 13.741842802780118,
+        "il_db": 3.1017267961387143,
+        "rl_db": 17.276742620935828,
+        "params": {
+          "Z0_line": "50.0",
+          "L_short_mm": "1.038",
+          "L_long_mm": "3.116",
+          "R_on": "3.0000e+00",
+          "R_off": "3.1680e+02"
+        }
+      }
+    }
+  },
+  "crossover": false,
+  "note": "crossover = SL>SeriesShunt under ideal AND SeriesShunt>SL under realistic"
+}

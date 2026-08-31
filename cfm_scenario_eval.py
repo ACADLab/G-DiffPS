@@ -14,12 +14,13 @@ if REPO_ROOT not in sys.path:
     sys.path.insert(0, REPO_ROOT)
 
 from env.phaseshifter_env import PhaseShifterEnv
-from env.graph_utils import get_topology_graph
+from env.graph_utils import get_topology_graph, SLOT_ACTION_DIM
 from models.gnn_encoder import TopologyEncoder
 from models.diffusion_policy import FlowMatchingPolicy, ValueNet
 from sim.physics_priors import check_physics_priors
 from train_diffusion import action_to_params, make_spice_netlist, parallel_eval_worker
 from baselines.eval_sac import SCENARIOS
+from specset.schema import SPEC_DIM
 
 
 def main():
@@ -35,7 +36,7 @@ def main():
     torch.manual_seed(args.seed); np.random.seed(args.seed)
 
     gnn = TopologyEncoder(in_channels=5, hidden_channels=64, out_channels=64).to(device)
-    actor = FlowMatchingPolicy(action_dim=9, spec_dim=12, graph_dim=64).to(device)
+    actor = FlowMatchingPolicy(action_dim=SLOT_ACTION_DIM, spec_dim=SPEC_DIM, graph_dim=64).to(device)
     gnn.load_state_dict(torch.load(os.path.join(args.run, "gnn_encoder.pt"), map_location=device))
     actor.load_state_dict(torch.load(os.path.join(args.run, "actor.pt"), map_location=device))
     gnn.eval(); actor.eval()

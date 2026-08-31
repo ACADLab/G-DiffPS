@@ -1,0 +1,26 @@
+[
+  {
+    "topology": "All_Pass",
+    "corrected_gin_slot": 70.5,
+    "appc_gin": 0.0,
+    "delta_pp": 70.5
+  },
+  {
+    "topology": "Switched_Filter",
+    "corrected_gin_slot": 63.0,
+    "appc_gin": 17.666666666666668,
+    "delta_pp": 45.33333333333333
+  },
+  {
+    "topology": "Switched_Line",
+    "corrected_gin_slot": 98.5,
+    "appc_gin": 100.0,
+    "delta_pp": -1.5
+  },
+  {
+    "topology": "Vector_Modulator",
+    "corrected_gin_slot": 97.0,
+    "appc_gin": 100.0,
+    "delta_pp": -3.0
+  }
+]

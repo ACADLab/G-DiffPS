@@ -161,19 +161,45 @@ Log:     R_off = 10^(3 + 0.5 × 3)      =   3,162 Ω  (physically typical)
 
 R_off spans 3 decades. Linear puts the "midpoint" at 500 kΩ — far outside the operating range of most designs (3–50 kΩ). Every early random sample has a pathologically open switch.
 
-### 4.2 Frequency-Adaptive Transmission Line Bounds
+### 4.2 Declared Medium (Board Microstrip)
 
-Quarter-wavelength at frequency f_c with ε_eff = 2.5 (matches SPICE templates):
+All area and TL-geometry numbers in this work assume a board-level microstrip:
+
+```
+eps_r   = 3.2
+h       = 0.254 mm (10 mil)
+W(50 Ω) = 0.611 mm
+eps_eff = 2.55
+```
+
+No MIM capacitors, no spiral inductors — a 19.8 mm line at 2.4 GHz does not
+exist on a die. Discrete passives use 0201 footprints with pads and keepout;
+switches are packaged SPDTs; VCVS is a packaged gain block. On-die is logged
+as future work: it would change ε_eff per technology, hence λ/4, hence every
+TL bound in §4.3. Which topology wins is entirely medium-dependent.
+
+`tech` in the spec is **switch technology** (PIN / GaAs pHEMT / SOI SPDT),
+operationalized as `(R_on, C_off)` by `sim/switch_model.py`. It is not a
+process node for on-die passives.
+
+Quarter-wave length used by the area model and SPICE templates:
 
 ```
 λ/4 [mm] = 47.43 / fc_GHz
 
 Examples:
-  fc =  2 GHz  → λ/4 = 23.7 mm
-  fc = 10 GHz  → λ/4 =  4.7 mm
-  fc = 28 GHz  → λ/4 =  1.7 mm
-  fc = 40 GHz  → λ/4 =  1.2 mm
+  fc =  2.4 GHz  → λ/4 = 19.76 mm
+  fc = 10 GHz    → λ/4 =  4.74 mm
+  fc = 28 GHz    → λ/4 =  1.69 mm
+  fc = 38 GHz    → λ/4 =  1.25 mm
 ```
+
+TL sampling bounds remain [0.4·λ/4, 2.5·λ/4] under electrical log-warp for
+`L_quarter_mm` (mid-action = λ/4 after T0.4).
+
+### 4.2b Frequency-Adaptive Transmission Line Bounds
+
+(Historical title retained; constants above supersede the older ε_eff = 2.5 note.)
 
 TL bounds are set to [0.4·λ/4, 2.5·λ/4] — the policy can explore ±60% around the nominal quarter-wave, covering the full practical design space without sampling 50 mm lines at 28 GHz.
 
@@ -475,6 +501,33 @@ The probe tests that known-best (topology, freq) pairs from the compliance heatm
 
 Both topologies now converge to rewards above 1.0.
 
+### 9.1b RESOLVED: Silent Clamping Truncated the Low Band
+
+**Symptom**: none — that was the problem. `clamp_spice_value` caps inductors and capacitors at 10 (nH / pF) and TL lengths at 50 mm, silently. Under `bounds='electrical'` the sampling windows are multiples of the resonant value at `fc`, which scales as `1/fc`, so at low carriers the window ran past the cap and a large part of the action box mapped onto the same few circuits.
+
+**Measured** (`tools/clamp_audit.py`, fraction of draws with at least one clamped parameter):
+
+| topology | 1.26 GHz | 2.00 | 3.17 | 5.02 | ≥7.96 |
+|---|---|---|---|---|---|
+| Switched_Filter | 77% | 62% | 38% | 19% | 0% |
+| Switched_Line | 72% | 23% | 0% | 0% | 0% |
+| All_Pass | 47% | 34% | 16% | 4% | 5–41% |
+| Loaded_Line / Reflection_Type / Vector_Modulator | 34–36% | 10% | 0% | 0% | 0% |
+
+The worst single offender was `Switched_Line.L_long_mm` at 72.3%: its long arm — the element that produces the phase — was being truncated at the 50 mm cap, where λ/4 alone is 37.6 mm. All_Pass was U-shaped, clamping at the 10 nH ceiling at low `fc` and the 5 fF floor at high `fc`.
+
+This mattered disproportionately because the sub-6 GHz band is where the area term binds and where the passive-only regime lives — i.e. the regime in which topology selection is actually contested.
+
+**Fix applied** (schema v5): the electrical windows are clipped to the physical limits *before* a value is drawn, so no action lands on a clamp boundary and no action volume is dead. For All_Pass the clip is applied symmetrically in log space about the designed centre and conditioned on the ratio drawn, since an asymmetric clip would move the `a = 0.5` nominal off the design. Residual boundary contact is ~0% for five topologies and ~1% for All_Pass at 40 GHz, where a resonant capacitor is 0.08 pF and the lower section genuinely sits near the 5 fF floor. Pinned by `tests/test_no_silent_clamping.py`, which also asserts the mirrored limit table matches `clamp_spice_value`.
+
+### 9.1c The archive factorization survives the `g_il` discontinuity
+
+`r_star = max over the Pareto front` is only provably `max over achievable` if reward is monotone in every archived metric, and §9.2's branch makes it non-monotone: `g_il` runs 0.79 → 1.0 → **0.0** as `il_db` goes 2 dB → 0 dB → −1 dB. A point with worse IL can outscore a better one, and if it is dominated it never enters the archive.
+
+**Audited** (`tools/monotonicity_audit.py`): every cell's Sobol+DE sweep was re-run at the archive's seed, the samples the Pareto filter discarded were kept, and each was scored against real specs from that cell. **0 violations in 3600 checks**, including all 600 Vector_Modulator checks — the only topology that produces negative IL.
+
+The structural reason: a negative-IL point is near-optimal on the IL axis, so it is rarely dominated in the first place, and the front always retains positive-IL points scoring at least as well. The assumption is empirically safe; if a future change makes it dirty, the fix is to define the archive's IL axis as `max(il_db, 0)`, which is monotone under the reward.
+
 ### 9.2 RESOLVED: Vector_Modulator Reward Hacking via Active Gain
 
 **Symptom**: Vector_Modulator achieved reward ~2.26 but IL = -0.49 dB (active gain). The network learned to set G_I/G_Q > 1.0, which the VCVS template converts to IL = -20·log10(scale) < 0 dB. The old reward used `abs(il_db)`, treating gain as near-zero loss and passing the all_close check.
@@ -526,6 +579,143 @@ All_Pass best reward 1.986 at 0.7° phase error and 1.26 dB IL (run_080429, 20k 
 ### 9.7 OPEN: Vector_Modulator Phase Error Still Elevated
 
 After the gain hacking fix, Vector_Modulator best reward is 1.061 with 19.3° phase error. The reward correctly penalizes gain-producing actions now, but the policy needs additional training steps to converge on a passive, phase-accurate design. Expected to resolve with continued training.
+
+### 9.8 LOGGED (do not fix here): Paper / Framework / Code Discrepancies
+
+**Euler steps.** §3.2 and §10.3 document 50 Euler ODE steps for CFM. The paper §3.2 says ten, with a written justification. Shipped code: `FlowMatchingPolicy` defaults to `num_steps=50`, but every call site that constructs the device-path actor (`train_diffusion.py`, `inference_joint.py`, `tools/loocv_eval.py`) passes `num_steps=10`. Slot-path training leaves the class default (50) while inference loads with 10 — a genuine train/inference solver mismatch, not only a doc error.
+
+**SAGEConv vs GIN.** §3.1 and §12 describe a two-layer SAGEConv encoder with mean pooling. Shipped `models/gnn_encoder.py` is three `GINConv` layers with sum pooling and an injected degree feature; the module docstring argues explicitly against mean aggregation on one-hot inputs. A second encoder (`models/circuit_encoder.py`) is the default for `inference_joint.py` and is absent from §12.
+
+**Dead ninth action dimension.** §3 / paper claim the nine-dimensional action covers the largest parameter set across the six topologies. `TOPOLOGY_PARAMS` maxes at All_Pass with **eight** keys; slot-mode `action_to_params` iterates `enumerate(keys)`, so index 8 is never read. `action_dim=9` has one permanently unused dimension. (Device-mode `max_sized` is a different quantity — padding at `max(len(sized_devices)+2)`.)
+
+**Premise corrections vs §5 / §7.** (1) Shipped reward uses five weights `0.35/0.20/0.15/0.15/0.15` including a dead `w_power` term; §5.1's `0.40/0.25/0.20/0.15` is stale — production path is now `WEIGHTS_AREA` (phase 0.32 / il 0.22 / rl 0.16 / gain 0.12 / area 0.18). (2) Reward is unified in `env/reward.py`. (3) `run_080429` and the other §7.1 run IDs do not exist on disk; max All_Pass `best_reward` across on-disk LOOCV is 0.978, not the claimed 1.986.
+
+### 9.9 Specset v2 and the C3 claim (honest restatement)
+
+Published Table 5 / LOOCV numbers were measured against the 600-spec pool frozen at `specset/specset_v1_frozen.json`. That pool was **shared** between train and eval: `restrict_to` filtered topologies only, so every held-out-topology trial still drew specs the actor had seen paired with other graphs. The C3 claim is therefore:
+
+> **topology transfer conditional on seen specifications** — zero gradient updates on the held-out graph, but not zero exposure to the held-out specs.
+
+Specset v2+ (`specset_train.json` / `specset_eval.json`, `spec_dim=19`) enforces disjoint pools at load time. Re-reported LOOCV is not numerically comparable to Table 5 without a full retrain (T7); when that lands, state the difference from the v1 numbers explicitly. Do **not** regenerate `specset_v1_frozen.json`.
+
+Filenames are unversioned on purpose: `schema_version` inside the file is authoritative and `specset.schema.load_specset` asserts it, so a versioned filename only goes stale on every bump. Current `SCHEMA_VERSION = 3`.
+
+### 9.10 Floor-relative sampling (house convention)
+
+**Any spec field with a physical floor is sampled relative to that floor, never from an absolute box.**
+
+Sampling such a field independently wastes draws at both ends at once: the strict end is infeasible for every topology, the lax end is satisfied by every topology, and no box width fixes both. Widening to buy acceptance rate only trades the first degeneracy for the second. Measured on the shipped generator, the hand-widened `rms_phase_err_deg` box of (1°, 20°) was **16.8% infeasible and 57.8% vacuous** — three quarters of draws carried no information.
+
+The pattern is `value = floor(conditioning fields) · κ`, with `κ` from a fixed multiplier range. Zero rejections by construction, every draw informative, and `κ` becomes an explicit difficulty knob to stratify on. Fields that follow it:
+
+| field | floor | multiplier |
+|---|---|---|
+| `max_area_mm2` | rank-ordered reference areas at `fc` (T1.5c) | `1 + ε`, `ε ~ U[0.02, 0.10]` |
+| `rms_phase_err_deg` | quantization floor `(coverage / 2^bits) / √12` (S1) | `κ ~ LogUniform[1.2, 3.0]` |
+
+Margin-stratified evaluation (S3) is the same idea applied to the reward gap. `phase_bits = 0` (analog) has no quantization floor, so it uses the 6-bit grid as a proxy — an analog part is expected to beat the finest digital one — which keeps the field floor-relative everywhere rather than falling back to a box for one level.
+
+A consequence worth stating: for a floor-relative field, its `SPEC_BOUNDS` entry is a **normalization range only** — the span the rule can produce — not a sampling box. It is derived, not chosen. `rms_phase_err_deg` reaches [0.49°, 38.97°], so it is log-normalized over (0.4, 40.0).
+
+**RESOLVED at schema v4 — all four S-parameter terms are now floor-relative.** `max_il_db`, `min_rl_db` and `rms_gain_err_db` were previously sampled from independent absolute boxes. Measured against the envelope archive, best achievable IL was ~0.002 dB against demands of 1.9–9.2 dB and gain error ~0.0000 dB against demands of 0.6–2.7 dB, giving mean satisfactions of `g_il` 0.963, `g_rl` 0.999, `g_gain` 0.979 — saturated, with only `g_area` (0.395) binding. The T1 envelope gate failed G2/G3 on exactly this.
+
+They are now anchored on the achievable frontier, conditioned on phase quality:
+
+```
+max_il_db       = min_{τ ∈ passive} IL*(fc-bin, phase) · κ_il      κ_il   ~ LogU[1.5, 15]
+min_rl_db       = max_{τ ∈ passive} RL*(fc-bin, phase) / κ_rl      κ_rl   ~ LogU[1.2, 3]
+rms_gain_err_db = min_{τ ∈ passive} GAIN*(fc-bin, phase) · κ_gain  κ_gain ~ LogU[1.5, 20]
+```
+
+Three properties of this are load-bearing:
+
+- **Conditioning on phase quality is required, not decorative.** The unconstrained loss extremum is attained by a through-line that does not shift phase at all; anchoring on it would price every loss budget against a circuit that is not a phase shifter. `tools/compute_envelope.py frontier` therefore reports the frontier subject to holding RMS phase error at or below each grid value.
+- **The anchor set is passive-only.** `min_τ IL*` including `Vector_Modulator` can be negative, which makes `max_il_db = −3 · κ` meaningless. Excluding active topologies is a modelling choice with a designer's justification: you do not relax a loss budget because someone might insert an amplifier. See `results/joint/VM_ACTIVE_TOPOLOGY.md`.
+- **One pool, anchored on `ideal`.** Anchors are switch-model dependent. Generating a pool per switch model would make the two incomparable; with one pool, `realistic` is uniformly harder and that difficulty delta becomes a reportable quantity rather than a confound.
+
+**Declared coupling:** spec difficulty now depends on the topology set, because the anchors are the best any topology in the anchor set attains. Adding or removing a topology shifts the anchors and changes what the specs demand. This is intended and is not worth engineering around, but it must be declared: **whenever the topology set changes, rebuild the archive, re-extract anchors, regenerate the pools, and re-report.**
+
+The κ values are stored as spec metadata (`il_kappa`, `rl_kappa`, `gain_kappa`, alongside `phase_kappa`), **not** as conditioning dimensions. `SPEC_DIM` stays 19 and trained checkpoints keep loading.
+
+**Result — T1 passes structurally, with no weight tuning.** Term variance shares at the envelope, 2k eval pool at schema v5:
+
+| switch model | g_il | g_phase | g_gain | g_area | g_rl | all-saturated |
+|---|---|---|---|---|---|---|
+| ideal | 0.41 | 0.36 | 0.09 | 0.08 | 0.07 | 0.7% |
+| realistic | 0.34 | 0.49 | 0.07 | 0.07 | 0.03 | 0.3% |
+
+G1 (envelope spread) 1.298 ≥ 0.25, G2 (saturation) 0.007 ≤ 0.2, G3 (no dominant term) 0.406 ≤ 0.6. Same verdict on the 10k train pool.
+
+**Caveat that must be reported with these shares.** Under `ideal`, `g_il` (0.41) edges out `g_phase` (0.36) on what is a phase-shifter benchmark. That ordering is a consequence of how tightly each term is anchored, not a statement about physics: frontier anchoring makes whichever term is anchored tightest the dominant discriminator, and the five κ ranges were chosen independently. `tools/kappa_sensitivity.py` sweeps each κ and shows the lead flipping to `g_phase` when either `il_kappa` or `phase_kappa` is halved:
+
+| knob | ×0.5 | ×1.0 | ×2.0 | ×4.0 |
+|---|---|---|---|---|
+| `phase_kappa` → `g_phase` share | 0.40 | 0.34 | 0.27 | 0.21 |
+| `il_kappa` → `g_il` share | 0.34 | 0.42 | 0.45 | 0.41 |
+
+The sensitivity is asymmetric: relaxing `phase_kappa` drains `g_phase` monotonically, while perturbing `il_kappa` moves `g_il` non-monotonically around 0.42. So the lever on term dominance is `PHASE_KAPPA_RANGE`, not the IL anchor.
+
+**Deliberately left alone.** `PHASE_KAPPA_RANGE` could be narrowed to about [1.2, 1.8] to make phase lead by design. It was not, because reporting the measured shares alongside this sensitivity table is a stronger claim than reporting a tuned number, and because the schema is frozen at v5. Realized κ distributions are published in `results/joint/kappa_sensitivity.json`.
+
+### 9.11 T1 acceptance, restated at the envelope
+
+The original T1 gate (r_sim spread < 0.15 across topologies at template defaults) was unreachable and is retired: the `all_close` bonus is a discrete +1.0, so any spec where one topology clears every threshold and another does not forces a spread ≥ 1.0 regardless of the continuous weights. Measured spread at defaults is 1.42 median (0.44 for the continuous part alone) — `tools/t1_reward_accept.py`.
+
+The live replacement is `tools/t1_envelope_gate.py`, which asks the question that actually matters: does the reward discriminate between topologies **when each is sized as well as it can be**? That is a statement about `r_star`, which is why it was blocked on the envelope.
+
+| gate | threshold | ideal | realistic |
+|---|---|---|---|
+| G1 envelope spread (median, max−min over topologies) | ≥ 0.25 | 1.061 **PASS** | 1.069 **PASS** |
+| G2 fraction of specs where all six saturate | ≤ 0.20 | 0.397 **FAIL** | 0.406 **FAIL** |
+| G3 largest single term's share of between-topology variance | ≤ 0.60 | 0.714 (`g_phase`) **FAIL** | 0.505 **PASS** |
+
+**Verdict: T1 not accepted.** The two failures have one cause, given in §9.10: `il`/`rl`/`gain` thresholds are drawn from absolute boxes loose enough that an optimally-sized circuit clears them with margin, so 40% of specs are satisfied by every topology and `g_phase` — the one field now floor-relative, hence the one with real spread — carries most of the discrimination.
+
+Note G1 and the top-2 margin measure different things and both matter: spread is 1.06 (best vs worst topology is a real gap) while the median top-2 margin is 0.009 (the best two are nearly tied). Read together: there is a good group and a bad group, and choosing within the good group is close to arbitrary at current spec difficulty.
+
+### 9.12 How `r_star` is computed
+
+`r_star(τ, s) = max_a r_sim(τ, s, a)` is on the critical path for T4 ranking, the S3 margin strata and the §9.11 gate, so how it is estimated matters.
+
+**Not best-of-K random.** At K = 32 uniform draws the chance of landing within ±10% of the optimum in every dimension is 22.7% at 3 action dims and 0.2% at 6. The bias is not just large, it *grows with action dimension*, so it would silently penalize exactly the topologies with the most design freedom (All_Pass d=6, Reflection_Type d=5).
+
+**Not per-spec DE either**, at least not as the primary path: 12k specs × 6 topologies × 2 switch models is ~144k optimizations, roughly 24 h.
+
+The factorization that makes it cheap is that the spec and the action meet only at the thresholds:
+
+```
+metrics = f(τ, a, fc, tech, switch_model)     # no spec targets
+r_sim   = g(metrics, s.targets)               # no action
+```
+
+So the reachable metric set of a cell `(τ, switch_model, fc-bin, C_off-class)` is a property of the circuit alone. `tools/compute_envelope.py archive` builds a Pareto archive of that set once per cell — Sobol sweep (1024 points) plus differential evolution on six scalarizations chosen to push toward each face of the trade-off surface — and then `r_star(τ, s) = max over archive of g(metrics, s.targets)` is arithmetic. **144 cells instead of 144k optimizations: 53 s wall clock.** Because `bounds='electrical'` scales every sizing bound with `fc`, electrical metrics are near-invariant within a bin; area is not, so it is recomputed at each spec's exact `fc`/`tech` from the archived action rather than read from the archive.
+
+Every archive point is a real sizing, so this is a **certified achievable lower bound**, not an estimate that could sit above the truth. `--mode validate` runs per-spec DE against individual specs' own rewards to measure tightness:
+
+| statistic | value |
+|---|---|
+| median gap (direct DE − archive bound) | 0.009 |
+| within 0.01 / within 0.05 | 55% / 86% |
+| archive beats per-spec DE | 22.5% |
+| p95 / max gap | 0.118 / 0.967 |
+
+The archive wins 22.5% of the time because it pools ~1030 circuit evaluations per cell against DE's per-spec budget. **The tail is the honest caveat:** a ~5% minority of cells are loose by ≳0.1, and since the top-2 margins are ~0.01–0.05 — smaller than that looseness — the S3 strata are **provisional**. Tightening them requires a per-spec DE refinement restricted to each spec's top-two topologies (2000 specs × 2 models × 2 topologies ≈ 2 h), which is the tracked next step before any per-stratum selector number is published.
+
+Computed separately under each switch model throughout; `r_star` is stored as `{ideal, realistic} → {per_topology, best, argmax, margin, stratum}`.
+
+`RunningEnvelope` in the same module maintains a per-`(spec_id, τ, switch_model)` max over rewards actually observed in training. It is free and monotonically correct but only covers visited specs, so it tightens the archive bound rather than replacing it.
+
+### 9.13 The seventh topology, and whether `realistic` is a usable benchmark
+
+T0.1c reported that realistic switches collapse the branch-selecting topologies (Switched_Line Δφ 65.7° → 3.4°) and `Switched_Line_SeriesShunt` was proposed as the remedy. **The collapse does not reproduce**, so the seventh topology is abandoned on physics grounds. Full decision record with the reward 2×2 and the arm-ratio sweep: `results/joint/SEVENTH_TOPOLOGY_DECISION.md`.
+
+Δφ retention under realistic switches, mid-action at 28 GHz: Switched_Line 0.996, Switched_Filter 1.000. Collapse requires an off-state far worse than anything shipped — C_off ≈ 400 fF at 28 GHz and 200 fF at 40 GHz, against `TECH_SWITCH` values of 20/20/25 fF, an 8–16× margin. The original 65.7° → 3.4° figure matches the C_off = 650 fF row of the isolation table (8.7 Ω, −0.7 dB isolation), a part never adopted as a tech. What realistic switches actually cost is **loss and match, not phase**: Switched_Line goes 0.56 → 1.93 dB IL and 28.3 → 22.0 dB RL, which is a correctly-signed difficulty increase and is the point of the switch model. `tests/test_realistic_switch_functional.py` pins this across 2 topologies × 3 techs × 4 carriers.
+
+**All_Pass is the one real defect, and it is not switch-related.** It reads Δφ = 0.00° under *ideal* switches too, because its two sections are identically sized at the box midpoint and Δφ vanishes by symmetry. Away from the midpoint it is healthy (box-best 179.8°, median 85.4°, 71.5% of draws over 45°). This nominal-point artifact retroactively explains three separate findings — All_Pass worst on ~95% of specs at template defaults, 0% share in Table 5, and T6 contrast 0.010 in *both* blocks (at the midpoint the two switch states are the same circuit, so contrast is identically zero) — and it means any acceptance test evaluated at template defaults is structurally unfair to All_Pass. Open item: give All_Pass a non-degenerate nominal point before any per-topology nominal comparison including it is quoted.
+
+The general lesson, which cost two separate misreadings: **do not build a measurement on a nominal point without checking the nominal point is non-degenerate.** `tests/test_state_permutation.py` was silently relying on the same class of accident (pre-T0.4 equal Switched_Line arms) and now constructs its symmetric case explicitly.
+
+**Related (joint-selection work).** Switch model, medium declaration, TL log-warp for `L_quarter_mm`, and topology ranking are tracked under the joint topology selection plan; this section only records the discrepancies above.
 
 ---
 
@@ -659,7 +849,9 @@ env/graph_utils.py          Topology graph definitions, TOPOLOGY_PARAMS
 models/gnn_encoder.py       TopologyEncoder (SAGEConv GNN)
 models/diffusion_policy.py  FlowMatchingPolicy (default), DiffusionPolicy (DDPM legacy), CriticNet, ValueNet
 specset/phaseshifter_scoring.py  Heuristic topology scorer (expert bonus)
-specset/specset_phaseshifter.json  600 training specifications
+specset/specset_train.json        training pool (10k, schema v3)
+specset/specset_eval.json         held-out eval pool (2k, disjoint by spec id)
+specset/specset_v1_frozen.json    frozen 600-spec v1 pool for published numbers
 specset/templates/          6 SPICE netlists with STATE_TABLE definitions
 inference_topology_select.py  Inference-time topology ranking (Option A)
 probe_value_net.py          6-spec calibration test for ValueNet quality

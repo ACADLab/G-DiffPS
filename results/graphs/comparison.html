@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>G-DiffPS graph comparison: component-adjacency vs bipartite net/device</title>
+<style>
+  :root {
+    --bg: #f7f5f0; --ink: #1a1a1a; --muted: #555; --line: #d4cfc4;
+    --accent: #0b5fff;
+  }
+  body {
+    margin: 0; font-family: "IBM Plex Sans", "Source Sans 3", sans-serif;
+    background: var(--bg); color: var(--ink); line-height: 1.45;
+  }
+  header {
+    padding: 2rem 1.5rem 1rem; max-width: 1100px; margin: 0 auto;
+  }
+  h1 { font-size: 1.75rem; margin: 0 0 0.4rem; letter-spacing: -0.02em; }
+  .lede { color: var(--muted); max-width: 62ch; }
+  main { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem 3rem; }
+  .card { margin: 1.75rem 0; }
+  .card h2 { font-size: 1.15rem; margin: 0 0 0.25rem; }
+  .meta { color: var(--muted); font-size: 0.85rem; margin: 0 0 0.6rem; }
+  .card img {
+    width: 100%; height: auto; display: block;
+    border: 1px solid var(--line); background: #fff;
+  }
+  table {
+    width: 100%; border-collapse: collapse; font-size: 0.9rem;
+    margin: 0.75rem 0 1.5rem; background: #fff;
+  }
+  th, td { border: 1px solid var(--line); padding: 0.45rem 0.6rem; text-align: left; }
+  th { background: #ebe6dc; font-weight: 600; }
+  h3 { margin-top: 2rem; }
+  code { font-size: 0.85em; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Circuit graph rebuild</h1>
+  <p class="lede">
+    Left: legacy component-adjacency graphs used by the paper GIN encoder
+    (missing GND/ports; three topologies disconnected). Right: bipartite
+    device/net incidence transcribed from SPICE templates (KCL/KVL structure).
+  </p>
+</header>
+<main>
+
+<section class="card">
+  <h2>Loaded Line</h2>
+  <p class="meta">old: n=5 e=6 cc=1
+     &nbsp;|&nbsp; new: nets=5 devices=7
+     e=14 cc=1 ports=('in', 'out')</p>
+  <img src="loaded_line.png" alt="Loaded_Line old vs new graph" loading="lazy"/>
+</section>
+<section class="card">
+  <h2>Switched Line</h2>
+  <p class="meta">old: n=6 e=4 cc=2
+     &nbsp;|&nbsp; new: nets=7 devices=8
+     e=16 cc=1 ports=('in', 'out')</p>
+  <img src="switched_line.png" alt="Switched_Line old vs new graph" loading="lazy"/>
+</section>
+<section class="card">
+  <h2>Reflection Type</h2>
+  <p class="meta">old: n=10 e=14 cc=1
+     &nbsp;|&nbsp; new: nets=7 devices=12
+     e=24 cc=1 ports=('p1', 'p4')</p>
+  <img src="reflection_type.png" alt="Reflection_Type old vs new graph" loading="lazy"/>
+</section>
+<section class="card">
+  <h2>Switched Filter</h2>
+  <p class="meta">old: n=10 e=8 cc=2
+     &nbsp;|&nbsp; new: nets=7 devices=12
+     e=24 cc=1 ports=('in', 'out')</p>
+  <img src="switched_filter.png" alt="Switched_Filter old vs new graph" loading="lazy"/>
+</section>
+<section class="card">
+  <h2>Vector Modulator</h2>
+  <p class="meta">old: n=5 e=6 cc=1
+     &nbsp;|&nbsp; new: nets=6 devices=7
+     e=18 cc=1 ports=('in', 'out')</p>
+  <img src="vector_modulator.png" alt="Vector_Modulator old vs new graph" loading="lazy"/>
+</section>
+<section class="card">
+  <h2>All Pass</h2>
+  <p class="meta">old: n=10 e=12 cc=2
+     &nbsp;|&nbsp; new: nets=9 devices=14
+     e=28 cc=1 ports=('in', 'out')</p>
+  <img src="all_pass.png" alt="All_Pass old vs new graph" loading="lazy"/>
+</section>
+
+<h3>Structure improvement</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Topology</th>
+      <th>Old n</th><th>Old e</th><th>Old cc</th>
+      <th>New nets</th><th>New devices</th><th>New e</th><th>New cc</th>
+      <th>Connectivity fixed</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr><td>Loaded_Line</td><td>5</td><td>6</td><td>1</td><td>5</td><td>7</td><td>14</td><td>1</td><td>—</td></tr>
+<tr><td>Switched_Line</td><td>6</td><td>4</td><td>2</td><td>7</td><td>8</td><td>16</td><td>1</td><td>yes</td></tr>
+<tr><td>Reflection_Type</td><td>10</td><td>14</td><td>1</td><td>7</td><td>12</td><td>24</td><td>1</td><td>—</td></tr>
+<tr><td>Switched_Filter</td><td>10</td><td>8</td><td>2</td><td>7</td><td>12</td><td>24</td><td>1</td><td>yes</td></tr>
+<tr><td>Vector_Modulator</td><td>5</td><td>6</td><td>1</td><td>6</td><td>7</td><td>18</td><td>1</td><td>—</td></tr>
+<tr><td>All_Pass</td><td>10</td><td>12</td><td>2</td><td>9</td><td>14</td><td>28</td><td>1</td><td>yes</td></tr>
+  </tbody>
+</table>
+
+<h3>Encoder rank diagnostic</h3>
+<p class="lede">From <code>results/rank_diagnostic/rank_report.json</code>
+(500 random specs). Legacy GIN embeddings collapse to ≤6 unique vectors;
+circuit encoder expands rank and within-topology variance.</p>
+<table>
+  <thead>
+    <tr>
+      <th>Encoder</th><th>Rank</th><th>Participation ratio</th>
+      <th>Within-topo var</th><th>Unique vectors</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr><td>dying_relu</td><td>5</td><td>1.935</td><td>5.876e-15</td><td>6</td></tr>
+<tr><td>sage_ln</td><td>6</td><td>2.464</td><td>3.903e-13</td><td>6</td></tr>
+<tr><td>gin</td><td>6</td><td>1.587</td><td>3.553e-12</td><td>6</td></tr>
+<tr><td>circuit</td><td>23</td><td>1.831</td><td>0.01053</td><td>99</td></tr>
+
+  </tbody>
+</table>
+</main>
+</body>
+</html>

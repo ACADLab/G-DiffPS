@@ -10,13 +10,17 @@ NODE_TYPES = {
 }
 
 TOPOLOGY_PARAMS = {
-    "Loaded_Line": ["Z0_line", "L_quarter_mm", "C_load_pf", "R_on", "R_off"],
-    "Switched_Line": ["Z0_line", "L_short_mm", "L_long_mm", "R_on", "R_off"],
-    "Reflection_Type": ["Z0_main", "Z0_branch", "L_quarter_mm", "C_base_pf", "C_tune_pf", "R_on", "R_off"],
-    "Switched_Filter": ["C_hpf_pf", "L_hpf_nh", "L_lpf_nh", "C_lpf_pf", "R_on", "R_off"],
-    "Vector_Modulator": ["Z0_line", "L_quarter_mm", "G_I_scale", "G_Q_scale", "R_on", "R_off"],
-    "All_Pass": ["L_apA_nh", "C_brA_pf", "C_cA_pf", "L_apB_nh", "C_brB_pf", "C_cB_pf", "R_on", "R_off"],
+    "Loaded_Line": ["Z0_line", "L_quarter_mm", "C_load_pf"],
+    "Switched_Line": ["Z0_line", "L_short_mm", "L_long_mm"],
+    "Reflection_Type": ["Z0_main", "Z0_branch", "L_quarter_mm", "C_base_pf", "C_tune_pf"],
+    "Switched_Filter": ["C_hpf_pf", "L_hpf_nh", "L_lpf_nh", "C_lpf_pf"],
+    "Vector_Modulator": ["Z0_line", "L_quarter_mm", "G_I_scale", "G_Q_scale"],
+    "All_Pass": ["L_apA_nh", "C_brA_pf", "C_cA_pf", "L_apB_nh", "C_brB_pf", "C_cB_pf"],
 }
+
+# Slot action dim = largest parameter list (All_Pass = 6 after R_on/R_off removal).
+SLOT_ACTION_DIM = max(len(v) for v in TOPOLOGY_PARAMS.values())
+
 
 def get_topology_graph(topology_name: str) -> Data:
     """Build PyG Data object for the requested topology."""

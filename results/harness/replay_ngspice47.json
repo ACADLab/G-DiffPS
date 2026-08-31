@@ -1,0 +1,953 @@
+{
+  "summary": {
+    "n_replayed": 60,
+    "n_unparseable_log_lines": 14,
+    "n_success_flips": 0,
+    "wall_time_s": {
+      "n": 60,
+      "mean": 0.06945192629961336,
+      "std": 0.12809223193769628,
+      "p50": 0.035591957999713486,
+      "p95": 0.1404778312495182,
+      "max_abs": 1.0077536669996334
+    },
+    "metric_deltas": {
+      "rms_phase_err_deg": {
+        "n": 60,
+        "mean": 0.0,
+        "std": 0.0,
+        "p50": 0.0,
+        "p95": 0.0,
+        "max_abs": 0.0
+      },
+      "il_db": {
+        "n": 60,
+        "mean": 0.0,
+        "std": 0.0,
+        "p50": 0.0,
+        "p95": 0.0,
+        "max_abs": 0.0
+      },
+      "rl_db": {
+        "n": 60,
+        "mean": 0.0,
+        "std": 0.0,
+        "p50": 0.0,
+        "p95": 0.0,
+        "max_abs": 0.0
+      },
+      "gain_err_db": {
+        "n": 60,
+        "mean": 0.0,
+        "std": 0.0,
+        "p50": 0.0,
+        "p95": 0.0,
+        "max_abs": 0.0
+      }
+    },
+    "flips": [],
+    "comparable": true
+  },
+  "records": [
+    {
+      "step": 7927,
+      "topology": "Switched_Line",
+      "wall_s": 1.0077536669996334,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.7196704954759138,
+      "replay_sim_reward": 0.5425801,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 1396,
+      "topology": "Switched_Line",
+      "wall_s": 0.044387582998751896,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.8264557830883801,
+      "replay_sim_reward": 0.5428999999999999,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 366,
+      "topology": "Switched_Line",
+      "wall_s": 0.06849687499925494,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.7869218631818181,
+      "replay_sim_reward": 0.5681467592240516,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 9105,
+      "topology": "Switched_Line",
+      "wall_s": 0.037423165998916375,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.9878690285752352,
+      "replay_sim_reward": 0.8539489205417984,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 3460,
+      "topology": "Switched_Line",
+      "wall_s": 0.03648395799973514,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 2.2468605079580484,
+      "replay_sim_reward": 1.919966825072426,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 3067,
+      "topology": "Switched_Line",
+      "wall_s": 0.037549624998064246,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.8268124373426007,
+      "replay_sim_reward": 0.6311498993014486,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 2806,
+      "topology": "Switched_Line",
+      "wall_s": 0.03554229099972872,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 1.048588794590776,
+      "replay_sim_reward": 0.8261518090067852,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 1703,
+      "topology": "Switched_Line",
+      "wall_s": 0.036905167002259986,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.4169202246804015,
+      "replay_sim_reward": 0.6300173639391768,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 9070,
+      "topology": "Switched_Line",
+      "wall_s": 0.03703987499829964,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.5923728809939219,
+      "replay_sim_reward": 0.5484221066767616,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 1278,
+      "topology": "Switched_Line",
+      "wall_s": 0.03564162499969825,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.44489495314413424,
+      "replay_sim_reward": 0.5419588,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 7865,
+      "topology": "Vector_Modulator",
+      "wall_s": 0.14379329099756433,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.4755494748255172,
+      "replay_sim_reward": 0.5563052021767769,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 8531,
+      "topology": "Vector_Modulator",
+      "wall_s": 0.13972791699779918,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.8169734085579489,
+      "replay_sim_reward": 0.5567297016315114,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 6461,
+      "topology": "Vector_Modulator",
+      "wall_s": 0.13991312500002095,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.595925905721153,
+      "replay_sim_reward": 0.5398797010700478,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 1063,
+      "topology": "Vector_Modulator",
+      "wall_s": 0.14043812499949127,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.2688887392509997,
+      "replay_sim_reward": 0.2888887392509998,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 6930,
+      "topology": "Vector_Modulator",
+      "wall_s": 0.13529704199754633,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.7234676103739448,
+      "replay_sim_reward": 0.5111786822769449,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 5027,
+      "topology": "Vector_Modulator",
+      "wall_s": 0.1398374589989544,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.6458958212482973,
+      "replay_sim_reward": 0.4112823663652339,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 332,
+      "topology": "Vector_Modulator",
+      "wall_s": 0.13338341700000456,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.18843052816207156,
+      "replay_sim_reward": 0.2884305281620716,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 322,
+      "topology": "Vector_Modulator",
+      "wall_s": 0.1373918749995937,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.9144529930037046,
+      "replay_sim_reward": 0.663440741548212,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 1190,
+      "topology": "Vector_Modulator",
+      "wall_s": 0.1383014169987291,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.7549989643341464,
+      "replay_sim_reward": 0.7500048559995911,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 2647,
+      "topology": "Vector_Modulator",
+      "wall_s": 0.14123225000003004,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.649493839994977,
+      "replay_sim_reward": 0.38413322776704373,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 3022,
+      "topology": "Reflection_Type",
+      "wall_s": 0.03527899999971851,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.4197180901589722,
+      "replay_sim_reward": 0.36259904318616104,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 6456,
+      "topology": "Reflection_Type",
+      "wall_s": 0.035906958000850864,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.4941239846913474,
+      "replay_sim_reward": 0.6405334384436916,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 7667,
+      "topology": "Reflection_Type",
+      "wall_s": 0.0363002919984865,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.6797553012629163,
+      "replay_sim_reward": 0.636826689545845,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 404,
+      "topology": "Reflection_Type",
+      "wall_s": 0.03426424999997835,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.5804287864092299,
+      "replay_sim_reward": 0.5102359963125279,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 7248,
+      "topology": "Reflection_Type",
+      "wall_s": 0.03353566599980695,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.6887669718281524,
+      "replay_sim_reward": 0.384838179497671,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 2602,
+      "topology": "Reflection_Type",
+      "wall_s": 0.034571291998872766,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.671130426711218,
+      "replay_sim_reward": 0.3693462804722104,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 9223,
+      "topology": "Reflection_Type",
+      "wall_s": 0.03572275000260561,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.8216300473955593,
+      "replay_sim_reward": 0.7417749538424476,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 8363,
+      "topology": "Reflection_Type",
+      "wall_s": 0.03593962500235648,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.6614473598445815,
+      "replay_sim_reward": 0.36085494369034987,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 9036,
+      "topology": "Reflection_Type",
+      "wall_s": 0.03542445799757843,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 2.1752240885097964,
+      "replay_sim_reward": 1.7830174893934092,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 7017,
+      "topology": "Reflection_Type",
+      "wall_s": 0.035403833997406764,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.47695698607462755,
+      "replay_sim_reward": 0.4412494864682007,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 6435,
+      "topology": "Switched_Filter",
+      "wall_s": 0.036333291998744244,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.7423947179333998,
+      "replay_sim_reward": 0.6215192117692211,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 3385,
+      "topology": "Switched_Filter",
+      "wall_s": 0.03598908300045878,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.7869285668346334,
+      "replay_sim_reward": 0.5891911948705152,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 6838,
+      "topology": "Switched_Filter",
+      "wall_s": 0.03403137499844888,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.8558723557014274,
+      "replay_sim_reward": 0.7102622408950512,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 9078,
+      "topology": "Switched_Filter",
+      "wall_s": 0.03439141600028961,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.7927241781894439,
+      "replay_sim_reward": 0.5854290894984764,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 4187,
+      "topology": "Switched_Filter",
+      "wall_s": 0.03580837499976042,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.5179886987794907,
+      "replay_sim_reward": 0.614135317276197,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 184,
+      "topology": "Switched_Filter",
+      "wall_s": 0.035508249999111285,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.47788513351335127,
+      "replay_sim_reward": 0.24408222034069116,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 2443,
+      "topology": "Switched_Filter",
+      "wall_s": 0.034865375000663335,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.8720664140738004,
+      "replay_sim_reward": 0.592141938302285,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 6491,
+      "topology": "Switched_Filter",
+      "wall_s": 0.035060124999290565,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 1.0186272272052233,
+      "replay_sim_reward": 0.5983950581841456,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 5193,
+      "topology": "Switched_Filter",
+      "wall_s": 0.03540554200299084,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.9035543458649313,
+      "replay_sim_reward": 0.667417471395213,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 2381,
+      "topology": "Switched_Filter",
+      "wall_s": 0.03577525000218884,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.8568691399625035,
+      "replay_sim_reward": 0.6115512154978712,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 2829,
+      "topology": "All_Pass",
+      "wall_s": 0.03615899999931571,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.43714118601871194,
+      "replay_sim_reward": 0.6478092033647289,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 9890,
+      "topology": "All_Pass",
+      "wall_s": 0.03422474999752012,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.5599524844985861,
+      "replay_sim_reward": 0.6090361237647723,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 4313,
+      "topology": "All_Pass",
+      "wall_s": 0.03421004100164282,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.506668790505546,
+      "replay_sim_reward": 0.6039279617631399,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 1457,
+      "topology": "All_Pass",
+      "wall_s": 0.0336395829981484,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.6940869330441704,
+      "replay_sim_reward": 0.7011936529295191,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 1311,
+      "topology": "All_Pass",
+      "wall_s": 0.034431541000230936,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.47957729281564715,
+      "replay_sim_reward": 0.5934938560842733,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 4795,
+      "topology": "All_Pass",
+      "wall_s": 0.03362566600117134,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.549720740870935,
+      "replay_sim_reward": 0.593787193217548,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 1386,
+      "topology": "All_Pass",
+      "wall_s": 0.03355337499669986,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.8182028658123632,
+      "replay_sim_reward": 0.6067011222565053,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 4594,
+      "topology": "All_Pass",
+      "wall_s": 0.03602991599836969,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.7910617545585816,
+      "replay_sim_reward": 0.6070779006229574,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 4381,
+      "topology": "All_Pass",
+      "wall_s": 0.04275687499830383,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.3759492315986413,
+      "replay_sim_reward": 0.6081304714207462,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 7620,
+      "topology": "All_Pass",
+      "wall_s": 0.03473241699975915,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.4385874344855774,
+      "replay_sim_reward": 0.6006381068668304,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 3453,
+      "topology": "Loaded_Line",
+      "wall_s": 0.03464883299966459,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.5874497478635015,
+      "replay_sim_reward": 0.6630607365380609,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 817,
+      "topology": "Loaded_Line",
+      "wall_s": 0.03440370800308301,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.4723803581940312,
+      "replay_sim_reward": 0.6472638737045859,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 9327,
+      "topology": "Loaded_Line",
+      "wall_s": 0.03354791699894122,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.5830561474106994,
+      "replay_sim_reward": 0.6520504997870264,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 6019,
+      "topology": "Loaded_Line",
+      "wall_s": 0.033153290998598095,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.7515345302787411,
+      "replay_sim_reward": 0.6501534937369258,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 6955,
+      "topology": "Loaded_Line",
+      "wall_s": 0.03405445800308371,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.6669360243092646,
+      "replay_sim_reward": 0.6421860448107592,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 1850,
+      "topology": "Loaded_Line",
+      "wall_s": 0.03413520799949765,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.7980915056909916,
+      "replay_sim_reward": 0.6252619585894527,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 4998,
+      "topology": "Loaded_Line",
+      "wall_s": 0.034276582999154925,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.6710811099324945,
+      "replay_sim_reward": 0.7001766275418466,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 1194,
+      "topology": "Loaded_Line",
+      "wall_s": 0.03488420799840242,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.27159955007788256,
+      "replay_sim_reward": 0.5476612349167478,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 7189,
+      "topology": "Loaded_Line",
+      "wall_s": 0.03410675000122865,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.5195279487768423,
+      "replay_sim_reward": 0.6665581541328967,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    },
+    {
+      "step": 3858,
+      "topology": "Loaded_Line",
+      "wall_s": 0.03448550000030082,
+      "logged_success": true,
+      "replay_success": true,
+      "logged_reward": 0.4097606039333756,
+      "replay_sim_reward": 0.6436672516833757,
+      "deltas": {
+        "rms_phase_err_deg": 0.0,
+        "il_db": 0.0,
+        "rl_db": 0.0,
+        "gain_err_db": 0.0
+      }
+    }
+  ]
+}

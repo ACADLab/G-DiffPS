@@ -1,0 +1,364 @@
+{
+  "n_topologies": 40,
+  "n_functional": 33,
+  "functional": [
+    "All_Pass",
+    "Loaded_Line",
+    "Reflection_Type",
+    "Switched_Filter",
+    "Switched_Line",
+    "Vector_Modulator",
+    "Gen_T08",
+    "Gen_T09",
+    "Gen_T11",
+    "Gen_T12",
+    "Gen_T13",
+    "Gen_T14",
+    "Gen_T15",
+    "Gen_T16",
+    "Gen_T17",
+    "Gen_T18",
+    "Gen_T19",
+    "Gen_T21",
+    "Gen_T24",
+    "Gen_T25",
+    "Gen_T27",
+    "Gen_T28",
+    "Gen_T30",
+    "Gen_T31",
+    "Gen_T32",
+    "Gen_T33",
+    "Gen_T34",
+    "Gen_T35",
+    "Gen_T36",
+    "Gen_T37",
+    "Gen_T38",
+    "Gen_T39",
+    "Gen_T40"
+  ],
+  "per_topology": {
+    "All_Pass": {
+      "functional": true,
+      "best_rms_phase_err_deg": 0.0011485811003337245,
+      "best_il_db": 0.5456718304030346,
+      "best_rl_db": 37.708953320793746,
+      "n_front": 26
+    },
+    "Loaded_Line": {
+      "functional": true,
+      "best_rms_phase_err_deg": 0.0005032146316415415,
+      "best_il_db": 0.018859439412027102,
+      "best_rl_db": 60.0,
+      "n_front": 143
+    },
+    "Reflection_Type": {
+      "functional": true,
+      "best_rms_phase_err_deg": 0.014567989741305486,
+      "best_il_db": 0.002214285269212497,
+      "best_rl_db": 50.560486624985245,
+      "n_front": 144
+    },
+    "Switched_Filter": {
+      "functional": true,
+      "best_rms_phase_err_deg": 0.008101748760760301,
+      "best_il_db": 0.5521983699636632,
+      "best_rl_db": 31.739424312239677,
+      "n_front": 20
+    },
+    "Switched_Line": {
+      "functional": true,
+      "best_rms_phase_err_deg": 0.0003762391235833239,
+      "best_il_db": 0.5451946078951363,
+      "best_rl_db": 47.97132440018371,
+      "n_front": 160
+    },
+    "Vector_Modulator": {
+      "functional": true,
+      "best_rms_phase_err_deg": 0.013252755030425589,
+      "best_il_db": -1.4747222805421374,
+      "best_rl_db": 60.0,
+      "n_front": 291
+    },
+    "Gen_T07": {
+      "functional": false,
+      "best_rms_phase_err_deg": 5.360681859205294,
+      "best_il_db": 6.4222895540755,
+      "best_rl_db": 20.832775269433817,
+      "n_front": 84
+    },
+    "Gen_T08": {
+      "functional": true,
+      "best_rms_phase_err_deg": 6.059649278815325,
+      "best_il_db": 0.21089912900854596,
+      "best_rl_db": 23.089676260704284,
+      "n_front": 965
+    },
+    "Gen_T09": {
+      "functional": true,
+      "best_rms_phase_err_deg": 34.06835287157536,
+      "best_il_db": 3.0403220813870284,
+      "best_rl_db": 18.813273419057378,
+      "n_front": 126
+    },
+    "Gen_T10": {
+      "functional": false,
+      "best_rms_phase_err_deg": 34.554818829612586,
+      "best_il_db": 6.079942136900289,
+      "best_rl_db": 17.484058384614162,
+      "n_front": 177
+    },
+    "Gen_T11": {
+      "functional": true,
+      "best_rms_phase_err_deg": 6.883841212896453e-05,
+      "best_il_db": 3.557438449551646,
+      "best_rl_db": 9.455887549458058,
+      "n_front": 86
+    },
+    "Gen_T12": {
+      "functional": true,
+      "best_rms_phase_err_deg": 0.15959617991955657,
+      "best_il_db": 2.245259122717399,
+      "best_rl_db": 30.4249362325995,
+      "n_front": 57
+    },
+    "Gen_T13": {
+      "functional": true,
+      "best_rms_phase_err_deg": 0.0024876834777866823,
+      "best_il_db": 3.7157143676204,
+      "best_rl_db": 33.841852041412544,
+      "n_front": 80
+    },
+    "Gen_T14": {
+      "functional": true,
+      "best_rms_phase_err_deg": 0.01213714290464978,
+      "best_il_db": 4.9649105593718925,
+      "best_rl_db": 24.640425193827095,
+      "n_front": 90
+    },
+    "Gen_T15": {
+      "functional": true,
+      "best_rms_phase_err_deg": 0.022834597438957972,
+      "best_il_db": 3.7528214795713297,
+      "best_rl_db": 26.572909175314145,
+      "n_front": 104
+    },
+    "Gen_T16": {
+      "functional": true,
+      "best_rms_phase_err_deg": 0.002944080875204443,
+      "best_il_db": 5.90694417494247,
+      "best_rl_db": 3.4155763722149572,
+      "n_front": 69
+    },
+    "Gen_T17": {
+      "functional": true,
+      "best_rms_phase_err_deg": 0.008864771688467336,
+      "best_il_db": 0.0969800158641178,
+      "best_rl_db": 35.99521863249034,
+      "n_front": 174
+    },
+    "Gen_T18": {
+      "functional": true,
+      "best_rms_phase_err_deg": 0.03492441033296326,
+      "best_il_db": 3.4664075787135884,
+      "best_rl_db": 34.27568129578372,
+      "n_front": 114
+    },
+    "Gen_T19": {
+      "functional": true,
+      "best_rms_phase_err_deg": 0.00588359417223999,
+      "best_il_db": 5.500416989576534,
+      "best_rl_db": 24.369640077146087,
+      "n_front": 161
+    },
+    "Gen_T20": {
+      "functional": false,
+      "best_rms_phase_err_deg": 0.00030626099861213004,
+      "best_il_db": 6.107321447267011,
+      "best_rl_db": 23.062032134401342,
+      "n_front": 729
+    },
+    "Gen_T21": {
+      "functional": true,
+      "best_rms_phase_err_deg": 0.010635516969863914,
+      "best_il_db": 4.948762846294032,
+      "best_rl_db": 28.99862513382258,
+      "n_front": 112
+    },
+    "Gen_T22": {
+      "functional": false,
+      "best_rms_phase_err_deg": 0.0004774526544222655,
+      "best_il_db": 6.081437823527732,
+      "best_rl_db": 17.486150704952028,
+      "n_front": 319
+    },
+    "Gen_T23": {
+      "functional": false,
+      "best_rms_phase_err_deg": 0.0006876072074257895,
+      "best_il_db": 9.643079800418189,
+      "best_rl_db": 39.06929337008238,
+      "n_front": 544
+    },
+    "Gen_T24": {
+      "functional": true,
+      "best_rms_phase_err_deg": 0.00376313934494665,
+      "best_il_db": 0.09576857316965547,
+      "best_rl_db": 43.57496048264386,
+      "n_front": 469
+    },
+    "Gen_T25": {
+      "functional": true,
+      "best_rms_phase_err_deg": 0.000303263296374863,
+      "best_il_db": 3.6199230053706843,
+      "best_rl_db": 9.361338829857127,
+      "n_front": 465
+    },
+    "Gen_T26": {
+      "functional": false,
+      "best_rms_phase_err_deg": 0.010304301770899854,
+      "best_il_db": 8.371666355195728,
+      "best_rl_db": 26.935741157778214,
+      "n_front": 358
+    },
+    "Gen_T27": {
+      "functional": true,
+      "best_rms_phase_err_deg": 33.86192053589571,
+      "best_il_db": 3.063276568114134,
+      "best_rl_db": 38.23691338163966,
+      "n_front": 61
+    },
+    "Gen_T28": {
+      "functional": true,
+      "best_rms_phase_err_deg": 0.05957029020907582,
+      "best_il_db": 4.967990184627817,
+      "best_rl_db": 23.968432383036152,
+      "n_front": 120
+    },
+    "Gen_T29": {
+      "functional": false,
+      "best_rms_phase_err_deg": 0.0015146910012564297,
+      "best_il_db": 6.086375221828449,
+      "best_rl_db": 17.60053520131138,
+      "n_front": 315
+    },
+    "Gen_T30": {
+      "functional": true,
+      "best_rms_phase_err_deg": 0.025107044009120012,
+      "best_il_db": 0.5343175511755986,
+      "best_rl_db": 32.28624778819882,
+      "n_front": 21
+    },
+    "Gen_T31": {
+      "functional": true,
+      "best_rms_phase_err_deg": 0.0004693209046939012,
+      "best_il_db": 3.63334645555547,
+      "best_rl_db": 9.077753567278897,
+      "n_front": 151
+    },
+    "Gen_T32": {
+      "functional": true,
+      "best_rms_phase_err_deg": 38.493809075459254,
+      "best_il_db": 2.210565133525424,
+      "best_rl_db": 17.26528898214093,
+      "n_front": 77
+    },
+    "Gen_T33": {
+      "functional": true,
+      "best_rms_phase_err_deg": 3.8227703804981705,
+      "best_il_db": 3.6040811067438048,
+      "best_rl_db": 9.291105339276623,
+      "n_front": 364
+    },
+    "Gen_T34": {
+      "functional": true,
+      "best_rms_phase_err_deg": 0.00132022128757662,
+      "best_il_db": 1.9942117394928545,
+      "best_rl_db": 32.77168282392433,
+      "n_front": 138
+    },
+    "Gen_T35": {
+      "functional": true,
+      "best_rms_phase_err_deg": 0.00035809414074223323,
+      "best_il_db": 5.2731949309860315,
+      "best_rl_db": 25.703912562635708,
+      "n_front": 110
+    },
+    "Gen_T36": {
+      "functional": true,
+      "best_rms_phase_err_deg": 0.013874027370226274,
+      "best_il_db": 2.1112730210115993,
+      "best_rl_db": 30.50344144115849,
+      "n_front": 266
+    },
+    "Gen_T37": {
+      "functional": true,
+      "best_rms_phase_err_deg": 0.027057986263604873,
+      "best_il_db": 0.6312334749675477,
+      "best_rl_db": 39.48233041869032,
+      "n_front": 155
+    },
+    "Gen_T38": {
+      "functional": true,
+      "best_rms_phase_err_deg": 0.0049486545158250895,
+      "best_il_db": 0.5098444456767134,
+      "best_rl_db": 36.85198302682396,
+      "n_front": 86
+    },
+    "Gen_T39": {
+      "functional": true,
+      "best_rms_phase_err_deg": 0.001712467296654652,
+      "best_il_db": 3.8587312578223907,
+      "best_rl_db": 33.44081092101301,
+      "n_front": 117
+    },
+    "Gen_T40": {
+      "functional": true,
+      "best_rms_phase_err_deg": 5.8007667535453646e-05,
+      "best_il_db": 2.2188951666326675,
+      "best_rl_db": 15.94425688498799,
+      "n_front": 720
+    }
+  },
+  "argmax_counts_ideal": {
+    "All_Pass": 44,
+    "Loaded_Line": 1121,
+    "Reflection_Type": 28,
+    "Switched_Filter": 0,
+    "Switched_Line": 15,
+    "Vector_Modulator": 786,
+    "Gen_T07": 0,
+    "Gen_T08": 0,
+    "Gen_T09": 0,
+    "Gen_T10": 0,
+    "Gen_T11": 0,
+    "Gen_T12": 0,
+    "Gen_T13": 0,
+    "Gen_T14": 0,
+    "Gen_T15": 0,
+    "Gen_T16": 0,
+    "Gen_T17": 0,
+    "Gen_T18": 0,
+    "Gen_T19": 0,
+    "Gen_T20": 0,
+    "Gen_T21": 0,
+    "Gen_T22": 0,
+    "Gen_T23": 0,
+    "Gen_T24": 0,
+    "Gen_T25": 0,
+    "Gen_T26": 0,
+    "Gen_T27": 0,
+    "Gen_T28": 0,
+    "Gen_T29": 0,
+    "Gen_T30": 6,
+    "Gen_T31": 0,
+    "Gen_T32": 0,
+    "Gen_T33": 0,
+    "Gen_T34": 0,
+    "Gen_T35": 0,
+    "Gen_T36": 0,
+    "Gen_T37": 0,
+    "Gen_T38": 0,
+    "Gen_T39": 0,
+    "Gen_T40": 0
+  },
+  "note": "A set where most topologies are non-functional makes held-out trivially easy; report LOOCV over all 40 and over functional."
+}

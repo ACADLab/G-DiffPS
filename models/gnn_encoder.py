@@ -57,14 +57,16 @@ class TopologyEncoder(nn.Module):
         # Linear projection after readout — no norm (preserves inter-graph geometry)
         self.proj = nn.Linear(out_channels, out_channels)
 
-    def forward(self, x, edge_index, batch=None):
+    def forward(self, x, edge_index, batch=None, return_nodes=False):
         """
         Args:
             x:          Node features [N, in_channels] — 5-dim one-hot component type
             edge_index: [2, E]
             batch:      [N] PyG batch vector (None → single graph, all nodes → graph 0)
+            return_nodes: if True, also return per-node embeddings after conv3
         Returns:
             z: Graph embedding [B, out_channels]
+            (optional) h: [N, out_channels] node embeddings
         """
         # Inject degree as structural feature
         deg = degree(edge_index[0], num_nodes=x.size(0), dtype=x.dtype).unsqueeze(1)
@@ -76,5 +78,7 @@ class TopologyEncoder(nn.Module):
 
         # Sum pooling — preserves graph-size and structural density
         z = global_add_pool(h, batch)     # [B, out_channels]
-
-        return self.proj(z)
+        z = self.proj(z)
+        if return_nodes:
+            return z, self.proj(h) if False else h  # keep raw node feats; proj is graph-level
+        return z

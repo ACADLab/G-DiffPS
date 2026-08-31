@@ -32,11 +32,12 @@ if REPO_ROOT not in sys.path:
     sys.path.insert(0, REPO_ROOT)
 
 from env.phaseshifter_env import PhaseShifterEnv
-from env.graph_utils import get_topology_graph, TOPOLOGY_PARAMS
+from env.graph_utils import get_topology_graph, TOPOLOGY_PARAMS, SLOT_ACTION_DIM
 from models.gnn_encoder import TopologyEncoder
 from models.diffusion_policy import CriticNet, ValueNet
 from sim.physics_priors import check_physics_priors
 from train_diffusion import action_to_params, make_spice_netlist, parallel_eval_worker
+from specset.schema import SPEC_DIM
 import specset.phaseshifter_scoring as scoring
 
 
@@ -49,7 +50,7 @@ TOPOLOGY_NAMES = [
 
 class GaussianPolicyNet(nn.Module):
     """Unimodal Gaussian actor: outputs mean and log-std for each action dim."""
-    def __init__(self, spec_dim: int = 12, graph_dim: int = 64, action_dim: int = 9):
+    def __init__(self, spec_dim: int = SPEC_DIM, graph_dim: int = 64, action_dim: int = SLOT_ACTION_DIM):
         super().__init__()
         self.net = nn.Sequential(
             nn.Linear(spec_dim + graph_dim, 256), nn.ReLU(),
@@ -116,9 +117,9 @@ def train(args):
     print(f"[SAC] device={device}  seed={args.seed}  steps={args.total_timesteps}  sizing={args.sizing}")
 
     gnn = TopologyEncoder(in_channels=5, hidden_channels=64, out_channels=64).to(device)
-    actor = GaussianPolicyNet(spec_dim=12, graph_dim=64, action_dim=9).to(device)
-    critic = CriticNet(spec_dim=12, graph_dim=64, action_dim=9).to(device)
-    value_net = ValueNet(spec_dim=12, graph_dim=64).to(device)
+    actor = GaussianPolicyNet(spec_dim=SPEC_DIM, graph_dim=64, action_dim=SLOT_ACTION_DIM).to(device)
+    critic = CriticNet(spec_dim=SPEC_DIM, graph_dim=64, action_dim=SLOT_ACTION_DIM).to(device)
+    value_net = ValueNet(spec_dim=SPEC_DIM, graph_dim=64).to(device)
 
     actor_opt = optim.Adam(list(actor.parameters()) + list(gnn.parameters()), lr=args.lr)
     critic_opt = optim.Adam(critic.parameters(), lr=args.lr)

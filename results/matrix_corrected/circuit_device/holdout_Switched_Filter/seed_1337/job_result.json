@@ -1,0 +1,26 @@
+{
+  "tag": "circuit_device",
+  "held_out": "Switched_Filter",
+  "seed": 1337,
+  "encoder": "circuit",
+  "action_space": "device",
+  "fc_mode": "spec",
+  "bounds": "electrical",
+  "train_returncode": 0,
+  "eval_returncode": 0,
+  "wall_s": 650.1645810604095,
+  "ckpt_dir": "results/matrix_corrected/circuit_device/holdout_Switched_Filter/seed_1337",
+  "run_dir": "results/matrix_corrected/circuit_device/holdout_Switched_Filter/seed_1337",
+  "loocv": {
+    "held_out": "Switched_Filter",
+    "n": 200,
+    "compliance": 0.59,
+    "prior_pass_rate": 1.0,
+    "best_reward": 0.72224241819755,
+    "mean_reward_success": 0.49986990950533783,
+    "encoder": "circuit",
+    "action_space": "device",
+    "fc_mode": "spec",
+    "bounds": "electrical"
+  }
+}

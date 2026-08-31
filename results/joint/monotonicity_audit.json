@@ -1,0 +1,1489 @@
+{
+  "clean": true,
+  "total_violations": 0,
+  "total_checks": 3600,
+  "by_topology": {
+    "All_Pass": {
+      "violations": 0,
+      "specs": 600,
+      "worst_gap": 0.0
+    },
+    "Loaded_Line": {
+      "violations": 0,
+      "specs": 600,
+      "worst_gap": 0.0
+    },
+    "Reflection_Type": {
+      "violations": 0,
+      "specs": 600,
+      "worst_gap": 0.0
+    },
+    "Switched_Filter": {
+      "violations": 0,
+      "specs": 600,
+      "worst_gap": 0.0
+    },
+    "Switched_Line": {
+      "violations": 0,
+      "specs": 600,
+      "worst_gap": 0.0
+    },
+    "Vector_Modulator": {
+      "violations": 0,
+      "specs": 600,
+      "worst_gap": 0.0
+    }
+  },
+  "worst": {
+    "cell": "All_Pass|ideal|0|na",
+    "topology": "All_Pass",
+    "n_front": 23,
+    "n_dominated": 1007,
+    "n_specs": 25,
+    "n_violations": 0,
+    "worst_gap": 0.0,
+    "example": null
+  },
+  "cells": [
+    {
+      "cell": "All_Pass|ideal|0|na",
+      "topology": "All_Pass",
+      "n_front": 23,
+      "n_dominated": 1007,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "All_Pass|realistic|0|2e-14",
+      "topology": "All_Pass",
+      "n_front": 31,
+      "n_dominated": 999,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "All_Pass|realistic|0|2.5e-14",
+      "topology": "All_Pass",
+      "n_front": 45,
+      "n_dominated": 985,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "All_Pass|ideal|1|na",
+      "topology": "All_Pass",
+      "n_front": 29,
+      "n_dominated": 1001,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "All_Pass|realistic|1|2e-14",
+      "topology": "All_Pass",
+      "n_front": 55,
+      "n_dominated": 975,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "All_Pass|realistic|1|2.5e-14",
+      "topology": "All_Pass",
+      "n_front": 64,
+      "n_dominated": 966,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "All_Pass|ideal|2|na",
+      "topology": "All_Pass",
+      "n_front": 25,
+      "n_dominated": 1005,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "All_Pass|realistic|2|2e-14",
+      "topology": "All_Pass",
+      "n_front": 81,
+      "n_dominated": 949,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "All_Pass|realistic|2|2.5e-14",
+      "topology": "All_Pass",
+      "n_front": 90,
+      "n_dominated": 940,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "All_Pass|ideal|3|na",
+      "topology": "All_Pass",
+      "n_front": 26,
+      "n_dominated": 1004,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "All_Pass|realistic|3|2e-14",
+      "topology": "All_Pass",
+      "n_front": 107,
+      "n_dominated": 923,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "All_Pass|realistic|3|2.5e-14",
+      "topology": "All_Pass",
+      "n_front": 111,
+      "n_dominated": 919,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "All_Pass|ideal|4|na",
+      "topology": "All_Pass",
+      "n_front": 24,
+      "n_dominated": 1006,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "All_Pass|realistic|4|2e-14",
+      "topology": "All_Pass",
+      "n_front": 115,
+      "n_dominated": 915,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "All_Pass|realistic|4|2.5e-14",
+      "topology": "All_Pass",
+      "n_front": 112,
+      "n_dominated": 918,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "All_Pass|ideal|5|na",
+      "topology": "All_Pass",
+      "n_front": 24,
+      "n_dominated": 1006,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "All_Pass|realistic|5|2e-14",
+      "topology": "All_Pass",
+      "n_front": 109,
+      "n_dominated": 921,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "All_Pass|realistic|5|2.5e-14",
+      "topology": "All_Pass",
+      "n_front": 121,
+      "n_dominated": 909,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "All_Pass|ideal|6|na",
+      "topology": "All_Pass",
+      "n_front": 22,
+      "n_dominated": 1008,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "All_Pass|realistic|6|2e-14",
+      "topology": "All_Pass",
+      "n_front": 126,
+      "n_dominated": 904,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "All_Pass|realistic|6|2.5e-14",
+      "topology": "All_Pass",
+      "n_front": 128,
+      "n_dominated": 902,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "All_Pass|ideal|7|na",
+      "topology": "All_Pass",
+      "n_front": 26,
+      "n_dominated": 1004,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "All_Pass|realistic|7|2e-14",
+      "topology": "All_Pass",
+      "n_front": 135,
+      "n_dominated": 895,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "All_Pass|realistic|7|2.5e-14",
+      "topology": "All_Pass",
+      "n_front": 145,
+      "n_dominated": 885,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Loaded_Line|ideal|0|na",
+      "topology": "Loaded_Line",
+      "n_front": 216,
+      "n_dominated": 814,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Loaded_Line|realistic|0|2e-14",
+      "topology": "Loaded_Line",
+      "n_front": 230,
+      "n_dominated": 800,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Loaded_Line|realistic|0|2.5e-14",
+      "topology": "Loaded_Line",
+      "n_front": 267,
+      "n_dominated": 763,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Loaded_Line|ideal|1|na",
+      "topology": "Loaded_Line",
+      "n_front": 217,
+      "n_dominated": 813,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Loaded_Line|realistic|1|2e-14",
+      "topology": "Loaded_Line",
+      "n_front": 342,
+      "n_dominated": 688,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Loaded_Line|realistic|1|2.5e-14",
+      "topology": "Loaded_Line",
+      "n_front": 372,
+      "n_dominated": 658,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Loaded_Line|ideal|2|na",
+      "topology": "Loaded_Line",
+      "n_front": 193,
+      "n_dominated": 837,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Loaded_Line|realistic|2|2e-14",
+      "topology": "Loaded_Line",
+      "n_front": 325,
+      "n_dominated": 705,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Loaded_Line|realistic|2|2.5e-14",
+      "topology": "Loaded_Line",
+      "n_front": 362,
+      "n_dominated": 668,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Loaded_Line|ideal|3|na",
+      "topology": "Loaded_Line",
+      "n_front": 157,
+      "n_dominated": 873,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Loaded_Line|realistic|3|2e-14",
+      "topology": "Loaded_Line",
+      "n_front": 344,
+      "n_dominated": 686,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Loaded_Line|realistic|3|2.5e-14",
+      "topology": "Loaded_Line",
+      "n_front": 386,
+      "n_dominated": 644,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Loaded_Line|ideal|4|na",
+      "topology": "Loaded_Line",
+      "n_front": 143,
+      "n_dominated": 887,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Loaded_Line|realistic|4|2e-14",
+      "topology": "Loaded_Line",
+      "n_front": 372,
+      "n_dominated": 658,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Loaded_Line|realistic|4|2.5e-14",
+      "topology": "Loaded_Line",
+      "n_front": 410,
+      "n_dominated": 620,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Loaded_Line|ideal|5|na",
+      "topology": "Loaded_Line",
+      "n_front": 127,
+      "n_dominated": 903,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Loaded_Line|realistic|5|2e-14",
+      "topology": "Loaded_Line",
+      "n_front": 391,
+      "n_dominated": 639,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Loaded_Line|realistic|5|2.5e-14",
+      "topology": "Loaded_Line",
+      "n_front": 442,
+      "n_dominated": 588,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Loaded_Line|ideal|6|na",
+      "topology": "Loaded_Line",
+      "n_front": 106,
+      "n_dominated": 924,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Loaded_Line|realistic|6|2e-14",
+      "topology": "Loaded_Line",
+      "n_front": 391,
+      "n_dominated": 639,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Loaded_Line|realistic|6|2.5e-14",
+      "topology": "Loaded_Line",
+      "n_front": 413,
+      "n_dominated": 617,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Loaded_Line|ideal|7|na",
+      "topology": "Loaded_Line",
+      "n_front": 97,
+      "n_dominated": 933,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Loaded_Line|realistic|7|2e-14",
+      "topology": "Loaded_Line",
+      "n_front": 397,
+      "n_dominated": 633,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Loaded_Line|realistic|7|2.5e-14",
+      "topology": "Loaded_Line",
+      "n_front": 415,
+      "n_dominated": 615,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Reflection_Type|ideal|0|na",
+      "topology": "Reflection_Type",
+      "n_front": 170,
+      "n_dominated": 860,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Reflection_Type|realistic|0|2e-14",
+      "topology": "Reflection_Type",
+      "n_front": 182,
+      "n_dominated": 848,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Reflection_Type|realistic|0|2.5e-14",
+      "topology": "Reflection_Type",
+      "n_front": 208,
+      "n_dominated": 822,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Reflection_Type|ideal|1|na",
+      "topology": "Reflection_Type",
+      "n_front": 156,
+      "n_dominated": 874,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Reflection_Type|realistic|1|2e-14",
+      "topology": "Reflection_Type",
+      "n_front": 209,
+      "n_dominated": 821,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Reflection_Type|realistic|1|2.5e-14",
+      "topology": "Reflection_Type",
+      "n_front": 189,
+      "n_dominated": 841,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Reflection_Type|ideal|2|na",
+      "topology": "Reflection_Type",
+      "n_front": 158,
+      "n_dominated": 872,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Reflection_Type|realistic|2|2e-14",
+      "topology": "Reflection_Type",
+      "n_front": 191,
+      "n_dominated": 839,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Reflection_Type|realistic|2|2.5e-14",
+      "topology": "Reflection_Type",
+      "n_front": 204,
+      "n_dominated": 826,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Reflection_Type|ideal|3|na",
+      "topology": "Reflection_Type",
+      "n_front": 164,
+      "n_dominated": 866,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Reflection_Type|realistic|3|2e-14",
+      "topology": "Reflection_Type",
+      "n_front": 162,
+      "n_dominated": 868,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Reflection_Type|realistic|3|2.5e-14",
+      "topology": "Reflection_Type",
+      "n_front": 165,
+      "n_dominated": 865,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Reflection_Type|ideal|4|na",
+      "topology": "Reflection_Type",
+      "n_front": 144,
+      "n_dominated": 886,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Reflection_Type|realistic|4|2e-14",
+      "topology": "Reflection_Type",
+      "n_front": 179,
+      "n_dominated": 851,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Reflection_Type|realistic|4|2.5e-14",
+      "topology": "Reflection_Type",
+      "n_front": 187,
+      "n_dominated": 843,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Reflection_Type|ideal|5|na",
+      "topology": "Reflection_Type",
+      "n_front": 140,
+      "n_dominated": 890,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Reflection_Type|realistic|5|2e-14",
+      "topology": "Reflection_Type",
+      "n_front": 188,
+      "n_dominated": 842,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Reflection_Type|realistic|5|2.5e-14",
+      "topology": "Reflection_Type",
+      "n_front": 186,
+      "n_dominated": 844,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Reflection_Type|ideal|6|na",
+      "topology": "Reflection_Type",
+      "n_front": 126,
+      "n_dominated": 904,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Reflection_Type|realistic|6|2e-14",
+      "topology": "Reflection_Type",
+      "n_front": 159,
+      "n_dominated": 871,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Reflection_Type|realistic|6|2.5e-14",
+      "topology": "Reflection_Type",
+      "n_front": 165,
+      "n_dominated": 865,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Reflection_Type|ideal|7|na",
+      "topology": "Reflection_Type",
+      "n_front": 111,
+      "n_dominated": 919,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Reflection_Type|realistic|7|2e-14",
+      "topology": "Reflection_Type",
+      "n_front": 135,
+      "n_dominated": 895,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Reflection_Type|realistic|7|2.5e-14",
+      "topology": "Reflection_Type",
+      "n_front": 138,
+      "n_dominated": 892,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Switched_Filter|ideal|0|na",
+      "topology": "Switched_Filter",
+      "n_front": 6,
+      "n_dominated": 1024,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Switched_Filter|realistic|0|2e-14",
+      "topology": "Switched_Filter",
+      "n_front": 7,
+      "n_dominated": 1023,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Switched_Filter|realistic|0|2.5e-14",
+      "topology": "Switched_Filter",
+      "n_front": 7,
+      "n_dominated": 1023,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Switched_Filter|ideal|1|na",
+      "topology": "Switched_Filter",
+      "n_front": 10,
+      "n_dominated": 1020,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Switched_Filter|realistic|1|2e-14",
+      "topology": "Switched_Filter",
+      "n_front": 13,
+      "n_dominated": 1017,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Switched_Filter|realistic|1|2.5e-14",
+      "topology": "Switched_Filter",
+      "n_front": 16,
+      "n_dominated": 1014,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Switched_Filter|ideal|2|na",
+      "topology": "Switched_Filter",
+      "n_front": 9,
+      "n_dominated": 1021,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Switched_Filter|realistic|2|2e-14",
+      "topology": "Switched_Filter",
+      "n_front": 19,
+      "n_dominated": 1011,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Switched_Filter|realistic|2|2.5e-14",
+      "topology": "Switched_Filter",
+      "n_front": 19,
+      "n_dominated": 1011,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Switched_Filter|ideal|3|na",
+      "topology": "Switched_Filter",
+      "n_front": 8,
+      "n_dominated": 1022,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Switched_Filter|realistic|3|2e-14",
+      "topology": "Switched_Filter",
+      "n_front": 10,
+      "n_dominated": 1020,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Switched_Filter|realistic|3|2.5e-14",
+      "topology": "Switched_Filter",
+      "n_front": 19,
+      "n_dominated": 1011,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Switched_Filter|ideal|4|na",
+      "topology": "Switched_Filter",
+      "n_front": 20,
+      "n_dominated": 1010,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Switched_Filter|realistic|4|2e-14",
+      "topology": "Switched_Filter",
+      "n_front": 22,
+      "n_dominated": 1008,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Switched_Filter|realistic|4|2.5e-14",
+      "topology": "Switched_Filter",
+      "n_front": 21,
+      "n_dominated": 1009,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Switched_Filter|ideal|5|na",
+      "topology": "Switched_Filter",
+      "n_front": 24,
+      "n_dominated": 1006,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Switched_Filter|realistic|5|2e-14",
+      "topology": "Switched_Filter",
+      "n_front": 20,
+      "n_dominated": 1010,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Switched_Filter|realistic|5|2.5e-14",
+      "topology": "Switched_Filter",
+      "n_front": 22,
+      "n_dominated": 1008,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Switched_Filter|ideal|6|na",
+      "topology": "Switched_Filter",
+      "n_front": 23,
+      "n_dominated": 1007,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Switched_Filter|realistic|6|2e-14",
+      "topology": "Switched_Filter",
+      "n_front": 32,
+      "n_dominated": 998,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Switched_Filter|realistic|6|2.5e-14",
+      "topology": "Switched_Filter",
+      "n_front": 34,
+      "n_dominated": 996,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Switched_Filter|ideal|7|na",
+      "topology": "Switched_Filter",
+      "n_front": 20,
+      "n_dominated": 1010,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Switched_Filter|realistic|7|2e-14",
+      "topology": "Switched_Filter",
+      "n_front": 50,
+      "n_dominated": 980,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Switched_Filter|realistic|7|2.5e-14",
+      "topology": "Switched_Filter",
+      "n_front": 53,
+      "n_dominated": 977,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Switched_Line|ideal|0|na",
+      "topology": "Switched_Line",
+      "n_front": 274,
+      "n_dominated": 756,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Switched_Line|realistic|0|2e-14",
+      "topology": "Switched_Line",
+      "n_front": 274,
+      "n_dominated": 756,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Switched_Line|realistic|0|2.5e-14",
+      "topology": "Switched_Line",
+      "n_front": 275,
+      "n_dominated": 755,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Switched_Line|ideal|1|na",
+      "topology": "Switched_Line",
+      "n_front": 163,
+      "n_dominated": 867,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Switched_Line|realistic|1|2e-14",
+      "topology": "Switched_Line",
+      "n_front": 164,
+      "n_dominated": 866,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Switched_Line|realistic|1|2.5e-14",
+      "topology": "Switched_Line",
+      "n_front": 163,
+      "n_dominated": 867,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Switched_Line|ideal|2|na",
+      "topology": "Switched_Line",
+      "n_front": 161,
+      "n_dominated": 869,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Switched_Line|realistic|2|2e-14",
+      "topology": "Switched_Line",
+      "n_front": 164,
+      "n_dominated": 866,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Switched_Line|realistic|2|2.5e-14",
+      "topology": "Switched_Line",
+      "n_front": 169,
+      "n_dominated": 861,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Switched_Line|ideal|3|na",
+      "topology": "Switched_Line",
+      "n_front": 161,
+      "n_dominated": 869,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Switched_Line|realistic|3|2e-14",
+      "topology": "Switched_Line",
+      "n_front": 178,
+      "n_dominated": 852,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Switched_Line|realistic|3|2.5e-14",
+      "topology": "Switched_Line",
+      "n_front": 178,
+      "n_dominated": 852,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Switched_Line|ideal|4|na",
+      "topology": "Switched_Line",
+      "n_front": 160,
+      "n_dominated": 870,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Switched_Line|realistic|4|2e-14",
+      "topology": "Switched_Line",
+      "n_front": 189,
+      "n_dominated": 841,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Switched_Line|realistic|4|2.5e-14",
+      "topology": "Switched_Line",
+      "n_front": 197,
+      "n_dominated": 833,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Switched_Line|ideal|5|na",
+      "topology": "Switched_Line",
+      "n_front": 162,
+      "n_dominated": 868,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Switched_Line|realistic|5|2e-14",
+      "topology": "Switched_Line",
+      "n_front": 204,
+      "n_dominated": 826,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Switched_Line|realistic|5|2.5e-14",
+      "topology": "Switched_Line",
+      "n_front": 230,
+      "n_dominated": 800,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Switched_Line|ideal|6|na",
+      "topology": "Switched_Line",
+      "n_front": 160,
+      "n_dominated": 870,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Switched_Line|realistic|6|2e-14",
+      "topology": "Switched_Line",
+      "n_front": 246,
+      "n_dominated": 784,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Switched_Line|realistic|6|2.5e-14",
+      "topology": "Switched_Line",
+      "n_front": 264,
+      "n_dominated": 766,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Switched_Line|ideal|7|na",
+      "topology": "Switched_Line",
+      "n_front": 160,
+      "n_dominated": 870,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Switched_Line|realistic|7|2e-14",
+      "topology": "Switched_Line",
+      "n_front": 294,
+      "n_dominated": 736,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Switched_Line|realistic|7|2.5e-14",
+      "topology": "Switched_Line",
+      "n_front": 326,
+      "n_dominated": 704,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Vector_Modulator|ideal|0|na",
+      "topology": "Vector_Modulator",
+      "n_front": 306,
+      "n_dominated": 724,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Vector_Modulator|realistic|0|2e-14",
+      "topology": "Vector_Modulator",
+      "n_front": 306,
+      "n_dominated": 724,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Vector_Modulator|realistic|0|2.5e-14",
+      "topology": "Vector_Modulator",
+      "n_front": 306,
+      "n_dominated": 724,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Vector_Modulator|ideal|1|na",
+      "topology": "Vector_Modulator",
+      "n_front": 291,
+      "n_dominated": 739,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Vector_Modulator|realistic|1|2e-14",
+      "topology": "Vector_Modulator",
+      "n_front": 291,
+      "n_dominated": 739,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Vector_Modulator|realistic|1|2.5e-14",
+      "topology": "Vector_Modulator",
+      "n_front": 291,
+      "n_dominated": 739,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Vector_Modulator|ideal|2|na",
+      "topology": "Vector_Modulator",
+      "n_front": 291,
+      "n_dominated": 739,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Vector_Modulator|realistic|2|2e-14",
+      "topology": "Vector_Modulator",
+      "n_front": 291,
+      "n_dominated": 739,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Vector_Modulator|realistic|2|2.5e-14",
+      "topology": "Vector_Modulator",
+      "n_front": 291,
+      "n_dominated": 739,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Vector_Modulator|ideal|3|na",
+      "topology": "Vector_Modulator",
+      "n_front": 291,
+      "n_dominated": 739,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Vector_Modulator|realistic|3|2e-14",
+      "topology": "Vector_Modulator",
+      "n_front": 291,
+      "n_dominated": 739,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Vector_Modulator|realistic|3|2.5e-14",
+      "topology": "Vector_Modulator",
+      "n_front": 291,
+      "n_dominated": 739,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Vector_Modulator|ideal|4|na",
+      "topology": "Vector_Modulator",
+      "n_front": 291,
+      "n_dominated": 739,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Vector_Modulator|realistic|4|2e-14",
+      "topology": "Vector_Modulator",
+      "n_front": 291,
+      "n_dominated": 739,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Vector_Modulator|realistic|4|2.5e-14",
+      "topology": "Vector_Modulator",
+      "n_front": 291,
+      "n_dominated": 739,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Vector_Modulator|ideal|5|na",
+      "topology": "Vector_Modulator",
+      "n_front": 291,
+      "n_dominated": 739,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Vector_Modulator|realistic|5|2e-14",
+      "topology": "Vector_Modulator",
+      "n_front": 291,
+      "n_dominated": 739,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Vector_Modulator|realistic|5|2.5e-14",
+      "topology": "Vector_Modulator",
+      "n_front": 291,
+      "n_dominated": 739,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Vector_Modulator|ideal|6|na",
+      "topology": "Vector_Modulator",
+      "n_front": 292,
+      "n_dominated": 738,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Vector_Modulator|realistic|6|2e-14",
+      "topology": "Vector_Modulator",
+      "n_front": 292,
+      "n_dominated": 738,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Vector_Modulator|realistic|6|2.5e-14",
+      "topology": "Vector_Modulator",
+      "n_front": 292,
+      "n_dominated": 738,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Vector_Modulator|ideal|7|na",
+      "topology": "Vector_Modulator",
+      "n_front": 292,
+      "n_dominated": 738,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Vector_Modulator|realistic|7|2e-14",
+      "topology": "Vector_Modulator",
+      "n_front": 292,
+      "n_dominated": 738,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    },
+    {
+      "cell": "Vector_Modulator|realistic|7|2.5e-14",
+      "topology": "Vector_Modulator",
+      "n_front": 292,
+      "n_dominated": 738,
+      "n_specs": 25,
+      "n_violations": 0,
+      "worst_gap": 0.0,
+      "example": null
+    }
+  ]
+}

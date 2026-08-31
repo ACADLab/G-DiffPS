@@ -1,0 +1,12 @@
+{
+  "held_out": "Loaded_Line",
+  "n": 200,
+  "compliance": 0.0,
+  "prior_pass_rate": 0.0,
+  "best_reward": -5.0,
+  "mean_reward_success": -5.0,
+  "encoder": "gin",
+  "action_space": "slot",
+  "fc_mode": "spec",
+  "bounds": "electrical"
+}

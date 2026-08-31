@@ -1,0 +1,1031 @@
+{
+  "n": 20,
+  "encoder": "circuit",
+  "action_space": "device",
+  "run": "results/joint_ckpt_circuit_device",
+  "k_per_topo": 8,
+  "balanced_sampling": true,
+  "warned_random_weights": false,
+  "balanced_accuracy": 0.65,
+  "mean_within_spec_spearman": 0.5652767597611372,
+  "top1_accuracy": 0.65,
+  "top2_accuracy": 0.7,
+  "heuristic_accuracy": 0.2,
+  "majority_class_baseline": 0.5,
+  "chance_uniform": 0.16666666666666666,
+  "appC_valuenet_ref": 0.1,
+  "beats_majority_baseline": true,
+  "is_constant_predictor": false,
+  "decidable_n": 3,
+  "decidable_fraction": 0.15,
+  "decidable_top1_accuracy": 1.0,
+  "oracle_margin_mean": 0.1535445177676659,
+  "oracle_margin_median": 0.0175150772503172,
+  "margin_threshold": 0.1,
+  "per_class_recall": {
+    "Switched_Line": 1.0,
+    "Vector_Modulator": 0.3
+  },
+  "confusion_oracle_to_pred": {
+    "Switched_Line": {
+      "Switched_Line": 10
+    },
+    "Vector_Modulator": {
+      "Vector_Modulator": 3,
+      "Switched_Line": 7
+    }
+  },
+  "pred_counts": {
+    "Vector_Modulator": 3,
+    "Switched_Line": 17
+  },
+  "oracle_counts": {
+    "Vector_Modulator": 10,
+    "Switched_Line": 10
+  },
+  "nonphysical_model_counts": {
+    "Vector_Modulator": 20
+  },
+  "details": [
+    {
+      "pred": "Vector_Modulator",
+      "oracle": "Vector_Modulator",
+      "heuristic": "Vector_Modulator",
+      "top1": true,
+      "top2": true,
+      "spearman": 0.6667366910003157,
+      "oracle_margin": 1.2509679035311796,
+      "decidable": true,
+      "mna_ranking": [
+        [
+          "Vector_Modulator",
+          0.6960007946029302
+        ],
+        [
+          "Switched_Line",
+          0.5664547368404951
+        ],
+        [
+          "Reflection_Type",
+          0.4579264620920822
+        ],
+        [
+          "All_Pass",
+          0.38037954808327784
+        ],
+        [
+          "Loaded_Line",
+          0.35563229252389705
+        ],
+        [
+          "Switched_Filter",
+          0.2794257199649747
+        ]
+      ],
+      "spice_best": {
+        "Loaded_Line": -1000000000.0,
+        "Switched_Line": 0.5709091152463885,
+        "Reflection_Type": -1000000000.0,
+        "Switched_Filter": 0.31817197169003075,
+        "Vector_Modulator": 1.8218770187775681,
+        "All_Pass": 0.38524314221880934
+      },
+      "ideal_models": [
+        "Vector_Modulator"
+      ],
+      "fc_ghz": 1.241854886740413,
+      "i": 0
+    },
+    {
+      "pred": "Switched_Line",
+      "oracle": "Vector_Modulator",
+      "heuristic": "Vector_Modulator",
+      "top1": false,
+      "top2": false,
+      "spearman": 0.6377481392176932,
+      "oracle_margin": 0.02050523017494943,
+      "decidable": false,
+      "mna_ranking": [
+        [
+          "Switched_Line",
+          0.6408411530654171
+        ],
+        [
+          "All_Pass",
+          0.5539960197683156
+        ],
+        [
+          "Vector_Modulator",
+          0.5415727953477185
+        ],
+        [
+          "Loaded_Line",
+          0.43709651542213757
+        ],
+        [
+          "Reflection_Type",
+          0.3777505878966482
+        ],
+        [
+          "Switched_Filter",
+          0.2761776167778525
+        ]
+      ],
+      "spice_best": {
+        "Loaded_Line": -1000000000.0,
+        "Switched_Line": 0.667818662633579,
+        "Reflection_Type": -1000000000.0,
+        "Switched_Filter": 0.3102711221834801,
+        "Vector_Modulator": 0.6883238928085285,
+        "All_Pass": 0.5664611633376728
+      },
+      "ideal_models": [
+        "Vector_Modulator"
+      ],
+      "fc_ghz": 38.07447370330412,
+      "i": 1
+    },
+    {
+      "pred": "Switched_Line",
+      "oracle": "Vector_Modulator",
+      "heuristic": "Switched_Filter",
+      "top1": false,
+      "top2": false,
+      "spearman": 0.7247137945655605,
+      "oracle_margin": 0.005007997465284686,
+      "decidable": false,
+      "mna_ranking": [
+        [
+          "Switched_Line",
+          0.682405433729995
+        ],
+        [
+          "All_Pass",
+          0.6407084641684767
+        ],
+        [
+          "Vector_Modulator",
+          0.5871686195231747
+        ],
+        [
+          "Loaded_Line",
+          0.5779761232462995
+        ],
+        [
+          "Switched_Filter",
+          0.43574172054608873
+        ],
+        [
+          "Reflection_Type",
+          0.3945642569570497
+        ]
+      ],
+      "spice_best": {
+        "Loaded_Line": -1000000000.0,
+        "Switched_Line": 0.7034556887729487,
+        "Reflection_Type": -1000000000.0,
+        "Switched_Filter": 0.44831650878858825,
+        "Vector_Modulator": 0.7084636862382334,
+        "All_Pass": 0.67154220742372
+      },
+      "ideal_models": [
+        "Vector_Modulator"
+      ],
+      "fc_ghz": 3.186360996014556,
+      "i": 2
+    },
+    {
+      "pred": "Switched_Line",
+      "oracle": "Vector_Modulator",
+      "heuristic": "Switched_Filter",
+      "top1": false,
+      "top2": false,
+      "spearman": 0.4638168285219587,
+      "oracle_margin": 0.017433550273321385,
+      "decidable": false,
+      "mna_ranking": [
+        [
+          "Switched_Line",
+          0.6926206174542537
+        ],
+        [
+          "All_Pass",
+          0.6891144253772877
+        ],
+        [
+          "Loaded_Line",
+          0.6095950330845457
+        ],
+        [
+          "Vector_Modulator",
+          0.5918998078592046
+        ],
+        [
+          "Switched_Filter",
+          0.4799938728951013
+        ],
+        [
+          "Reflection_Type",
+          0.43810322051330525
+        ]
+      ],
+      "spice_best": {
+        "Loaded_Line": -1000000000.0,
+        "Switched_Line": 0.6975754543327177,
+        "Reflection_Type": -1000000000.0,
+        "Switched_Filter": 0.48095525471211914,
+        "Vector_Modulator": 0.7150090046060391,
+        "All_Pass": 0.6812966755097577
+      },
+      "ideal_models": [
+        "Vector_Modulator"
+      ],
+      "fc_ghz": 4.846664046379868,
+      "i": 3
+    },
+    {
+      "pred": "Switched_Line",
+      "oracle": "Vector_Modulator",
+      "heuristic": "Reflection_Type",
+      "top1": false,
+      "top2": false,
+      "spearman": 0.6377481392176932,
+      "oracle_margin": 0.006938804743881644,
+      "decidable": false,
+      "mna_ranking": [
+        [
+          "Switched_Line",
+          0.6134586751174127
+        ],
+        [
+          "All_Pass",
+          0.5112024356421967
+        ],
+        [
+          "Vector_Modulator",
+          0.4912827596929851
+        ],
+        [
+          "Loaded_Line",
+          0.4657280958548863
+        ],
+        [
+          "Reflection_Type",
+          0.37493487790392505
+        ],
+        [
+          "Switched_Filter",
+          0.2984014925707532
+        ]
+      ],
+      "spice_best": {
+        "Loaded_Line": -1000000000.0,
+        "Switched_Line": 0.6351165199148121,
+        "Reflection_Type": -1000000000.0,
+        "Switched_Filter": 0.312579199264006,
+        "Vector_Modulator": 0.6420553246586937,
+        "All_Pass": 0.5610289117019382
+      },
+      "ideal_models": [
+        "Vector_Modulator"
+      ],
+      "fc_ghz": 36.77234926539009,
+      "i": 4
+    },
+    {
+      "pred": "Vector_Modulator",
+      "oracle": "Vector_Modulator",
+      "heuristic": "Vector_Modulator",
+      "top1": true,
+      "top2": true,
+      "spearman": 0.550782483869826,
+      "oracle_margin": 0.27973012889184656,
+      "decidable": true,
+      "mna_ranking": [
+        [
+          "Vector_Modulator",
+          0.8630206382265594
+        ],
+        [
+          "Switched_Line",
+          0.6366482124831145
+        ],
+        [
+          "Reflection_Type",
+          0.5501723667633567
+        ],
+        [
+          "All_Pass",
+          0.3878477957125299
+        ],
+        [
+          "Loaded_Line",
+          0.35542691777028057
+        ],
+        [
+          "Switched_Filter",
+          0.29200476991941393
+        ]
+      ],
+      "spice_best": {
+        "Loaded_Line": -1000000000.0,
+        "Switched_Line": 0.6363608711444751,
+        "Reflection_Type": -1000000000.0,
+        "Switched_Filter": 0.472846242961063,
+        "Vector_Modulator": 0.9160910000363217,
+        "All_Pass": 0.39135392407055053
+      },
+      "ideal_models": [
+        "Vector_Modulator"
+      ],
+      "fc_ghz": 1.1214382455929277,
+      "i": 5
+    },
+    {
+      "pred": "Vector_Modulator",
+      "oracle": "Vector_Modulator",
+      "heuristic": "Switched_Filter",
+      "top1": true,
+      "top2": true,
+      "spearman": 0.6667366910003157,
+      "oracle_margin": 1.234474689167329,
+      "decidable": true,
+      "mna_ranking": [
+        [
+          "Vector_Modulator",
+          0.6581473259240695
+        ],
+        [
+          "Switched_Line",
+          0.5417108839422156
+        ],
+        [
+          "Reflection_Type",
+          0.45071199791384775
+        ],
+        [
+          "All_Pass",
+          0.3871557277910439
+        ],
+        [
+          "Loaded_Line",
+          0.3621284824855978
+        ],
+        [
+          "Switched_Filter",
+          0.27829644756394756
+        ]
+      ],
+      "spice_best": {
+        "Loaded_Line": -1000000000.0,
+        "Switched_Line": 0.5426227055965269,
+        "Reflection_Type": -1000000000.0,
+        "Switched_Filter": 0.3165203810734254,
+        "Vector_Modulator": 1.777097394763856,
+        "All_Pass": 0.3885315118611843
+      },
+      "ideal_models": [
+        "Vector_Modulator"
+      ],
+      "fc_ghz": 1.2773306124213435,
+      "i": 6
+    },
+    {
+      "pred": "Switched_Line",
+      "oracle": "Vector_Modulator",
+      "heuristic": "Reflection_Type",
+      "top1": false,
+      "top2": true,
+      "spearman": 0.753702346348183,
+      "oracle_margin": 0.0603889052165566,
+      "decidable": false,
+      "mna_ranking": [
+        [
+          "Switched_Line",
+          0.6829998645056713
+        ],
+        [
+          "Vector_Modulator",
+          0.6634247021863998
+        ],
+        [
+          "All_Pass",
+          0.6146961344132928
+        ],
+        [
+          "Loaded_Line",
+          0.4905036361226565
+        ],
+        [
+          "Reflection_Type",
+          0.4667558690029418
+        ],
+        [
+          "Switched_Filter",
+          0.3518736270615258
+        ]
+      ],
+      "spice_best": {
+        "Loaded_Line": -1000000000.0,
+        "Switched_Line": 0.6832353616741765,
+        "Reflection_Type": -1000000000.0,
+        "Switched_Filter": 0.36903386598272914,
+        "Vector_Modulator": 0.7436242668907331,
+        "All_Pass": 0.6134642332354534
+      },
+      "ideal_models": [
+        "Vector_Modulator"
+      ],
+      "fc_ghz": 1.515576631239362,
+      "i": 9
+    },
+    {
+      "pred": "Switched_Line",
+      "oracle": "Vector_Modulator",
+      "heuristic": "Reflection_Type",
+      "top1": false,
+      "top2": false,
+      "spearman": 0.6377481392176932,
+      "oracle_margin": 0.012001537326622569,
+      "decidable": false,
+      "mna_ranking": [
+        [
+          "Switched_Line",
+          0.6659938028761816
+        ],
+        [
+          "All_Pass",
+          0.661789832296655
+        ],
+        [
+          "Vector_Modulator",
+          0.6027801739098231
+        ],
+        [
+          "Loaded_Line",
+          0.5340861410358817
+        ],
+        [
+          "Reflection_Type",
+          0.38948185956953707
+        ],
+        [
+          "Switched_Filter",
+          0.3103542264885095
+        ]
+      ],
+      "spice_best": {
+        "Loaded_Line": -1000000000.0,
+        "Switched_Line": 0.6906995745917367,
+        "Reflection_Type": -1000000000.0,
+        "Switched_Filter": 0.3428862789751468,
+        "Vector_Modulator": 0.7027011119183593,
+        "All_Pass": 0.6678689530969988
+      },
+      "ideal_models": [
+        "Vector_Modulator"
+      ],
+      "fc_ghz": 20.760386114303245,
+      "i": 10
+    },
+    {
+      "pred": "Switched_Line",
+      "oracle": "Vector_Modulator",
+      "heuristic": "Switched_Filter",
+      "top1": false,
+      "top2": false,
+      "spearman": 0.6377481392176932,
+      "oracle_margin": 0.017596604227313017,
+      "decidable": false,
+      "mna_ranking": [
+        [
+          "Switched_Line",
+          0.6878716141214358
+        ],
+        [
+          "All_Pass",
+          0.6278089148907428
+        ],
+        [
+          "Vector_Modulator",
+          0.6004103165666385
+        ],
+        [
+          "Loaded_Line",
+          0.5516391101271885
+        ],
+        [
+          "Reflection_Type",
+          0.40546095360540146
+        ],
+        [
+          "Switched_Filter",
+          0.3313247530362502
+        ]
+      ],
+      "spice_best": {
+        "Loaded_Line": -1000000000.0,
+        "Switched_Line": 0.6950812080720825,
+        "Reflection_Type": -1000000000.0,
+        "Switched_Filter": 0.38413010055653035,
+        "Vector_Modulator": 0.7126778122993955,
+        "All_Pass": 0.6340155315688719
+      },
+      "ideal_models": [
+        "Vector_Modulator"
+      ],
+      "fc_ghz": 3.1502348015532857,
+      "i": 11
+    },
+    {
+      "pred": "Switched_Line",
+      "oracle": "Switched_Line",
+      "heuristic": "Switched_Filter",
+      "top1": true,
+      "top2": true,
+      "spearman": 0.34786262139146906,
+      "oracle_margin": 0.007321548087534269,
+      "decidable": false,
+      "mna_ranking": [
+        [
+          "Switched_Line",
+          0.5784588547285225
+        ],
+        [
+          "All_Pass",
+          0.49240187536487334
+        ],
+        [
+          "Loaded_Line",
+          0.4908254721578507
+        ],
+        [
+          "Reflection_Type",
+          0.3957236319665959
+        ],
+        [
+          "Vector_Modulator",
+          0.3954209888050844
+        ],
+        [
+          "Switched_Filter",
+          0.33319638896367376
+        ]
+      ],
+      "spice_best": {
+        "Loaded_Line": -1000000000.0,
+        "Switched_Line": 0.5704536595767059,
+        "Reflection_Type": -1000000000.0,
+        "Switched_Filter": 0.3588617139109903,
+        "Vector_Modulator": 0.5631321114891716,
+        "All_Pass": 0.5002372299285677
+      },
+      "ideal_models": [
+        "Vector_Modulator"
+      ],
+      "fc_ghz": 2.1057336988365165,
+      "i": 7
+    },
+    {
+      "pred": "Switched_Line",
+      "oracle": "Switched_Line",
+      "heuristic": "All_Pass",
+      "top1": true,
+      "top2": true,
+      "spearman": 0.550782483869826,
+      "oracle_margin": 0.01138420521591832,
+      "decidable": false,
+      "mna_ranking": [
+        [
+          "Switched_Line",
+          0.627893833347882
+        ],
+        [
+          "All_Pass",
+          0.568079557116595
+        ],
+        [
+          "Loaded_Line",
+          0.4877517443631879
+        ],
+        [
+          "Vector_Modulator",
+          0.4757715791058778
+        ],
+        [
+          "Reflection_Type",
+          0.3831606752600784
+        ],
+        [
+          "Switched_Filter",
+          0.2925234638594476
+        ]
+      ],
+      "spice_best": {
+        "Loaded_Line": -1000000000.0,
+        "Switched_Line": 0.6431530644664216,
+        "Reflection_Type": -1000000000.0,
+        "Switched_Filter": 0.3218938282266963,
+        "Vector_Modulator": 0.6317688592505033,
+        "All_Pass": 0.5784562008215732
+      },
+      "ideal_models": [
+        "Vector_Modulator"
+      ],
+      "fc_ghz": 10.710511037888311,
+      "i": 8
+    },
+    {
+      "pred": "Switched_Line",
+      "oracle": "Switched_Line",
+      "heuristic": "All_Pass",
+      "top1": true,
+      "top2": true,
+      "spearman": 0.550782483869826,
+      "oracle_margin": 0.017919873343078097,
+      "decidable": false,
+      "mna_ranking": [
+        [
+          "Switched_Line",
+          0.6104368196423814
+        ],
+        [
+          "All_Pass",
+          0.5384571635516532
+        ],
+        [
+          "Loaded_Line",
+          0.4661555774599119
+        ],
+        [
+          "Vector_Modulator",
+          0.4446815547086186
+        ],
+        [
+          "Reflection_Type",
+          0.38019570103696115
+        ],
+        [
+          "Switched_Filter",
+          0.28859582954283824
+        ]
+      ],
+      "spice_best": {
+        "Loaded_Line": -1000000000.0,
+        "Switched_Line": 0.6190454665300471,
+        "Reflection_Type": -1000000000.0,
+        "Switched_Filter": 0.3137741612333573,
+        "Vector_Modulator": 0.601125593186969,
+        "All_Pass": 0.5384537920397623
+      },
+      "ideal_models": [
+        "Vector_Modulator"
+      ],
+      "fc_ghz": 2.6331614715428193,
+      "i": 17
+    },
+    {
+      "pred": "Switched_Line",
+      "oracle": "Switched_Line",
+      "heuristic": "Vector_Modulator",
+      "top1": true,
+      "top2": true,
+      "spearman": 0.4058397249567139,
+      "oracle_margin": 0.009798817315985087,
+      "decidable": false,
+      "mna_ranking": [
+        [
+          "Switched_Line",
+          0.5157640526040443
+        ],
+        [
+          "Loaded_Line",
+          0.4694301791143225
+        ],
+        [
+          "All_Pass",
+          0.44581708543401777
+        ],
+        [
+          "Vector_Modulator",
+          0.4161276427311683
+        ],
+        [
+          "Reflection_Type",
+          0.37527636907432904
+        ],
+        [
+          "Switched_Filter",
+          0.29966443960794437
+        ]
+      ],
+      "spice_best": {
+        "Loaded_Line": -1000000000.0,
+        "Switched_Line": 0.5204166469565981,
+        "Reflection_Type": -1000000000.0,
+        "Switched_Filter": 0.319273852062256,
+        "Vector_Modulator": 0.510617829640613,
+        "All_Pass": 0.457764559676096
+      },
+      "ideal_models": [
+        "Vector_Modulator"
+      ],
+      "fc_ghz": 14.611304294841418,
+      "i": 18
+    },
+    {
+      "pred": "Switched_Line",
+      "oracle": "Switched_Line",
+      "heuristic": "Switched_Filter",
+      "top1": true,
+      "top2": true,
+      "spearman": 0.753702346348183,
+      "oracle_margin": 0.004731655772604593,
+      "decidable": false,
+      "mna_ranking": [
+        [
+          "Switched_Line",
+          0.6013825792009377
+        ],
+        [
+          "All_Pass",
+          0.4973884889225497
+        ],
+        [
+          "Vector_Modulator",
+          0.44607328633869836
+        ],
+        [
+          "Loaded_Line",
+          0.4224496346107277
+        ],
+        [
+          "Reflection_Type",
+          0.37356294812640806
+        ],
+        [
+          "Switched_Filter",
+          0.27216292363725036
+        ]
+      ],
+      "spice_best": {
+        "Loaded_Line": -1000000000.0,
+        "Switched_Line": 0.6168115527109514,
+        "Reflection_Type": -1000000000.0,
+        "Switched_Filter": 0.27450714142184746,
+        "Vector_Modulator": 0.6120798969383469,
+        "All_Pass": 0.5193019288201429
+      },
+      "ideal_models": [
+        "Vector_Modulator"
+      ],
+      "fc_ghz": 4.2552496213211555,
+      "i": 21
+    },
+    {
+      "pred": "Switched_Line",
+      "oracle": "Switched_Line",
+      "heuristic": "Switched_Filter",
+      "top1": true,
+      "top2": true,
+      "spearman": 0.550782483869826,
+      "oracle_margin": 0.005195524611397606,
+      "decidable": false,
+      "mna_ranking": [
+        [
+          "Switched_Line",
+          0.6068759454672379
+        ],
+        [
+          "All_Pass",
+          0.517195935636038
+        ],
+        [
+          "Loaded_Line",
+          0.47510070672943683
+        ],
+        [
+          "Vector_Modulator",
+          0.4318730251689913
+        ],
+        [
+          "Reflection_Type",
+          0.38839435726924576
+        ],
+        [
+          "Switched_Filter",
+          0.30936860069225225
+        ]
+      ],
+      "spice_best": {
+        "Loaded_Line": -1000000000.0,
+        "Switched_Line": 0.6127372747087286,
+        "Reflection_Type": -1000000000.0,
+        "Switched_Filter": 0.30767263410750234,
+        "Vector_Modulator": 0.607541750097331,
+        "All_Pass": 0.5197820621627857
+      },
+      "ideal_models": [
+        "Vector_Modulator"
+      ],
+      "fc_ghz": 3.34236179192426,
+      "i": 23
+    },
+    {
+      "pred": "Switched_Line",
+      "oracle": "Switched_Line",
+      "heuristic": "Switched_Line",
+      "top1": true,
+      "top2": true,
+      "spearman": 0.4058397249567139,
+      "oracle_margin": 0.03677725456023362,
+      "decidable": false,
+      "mna_ranking": [
+        [
+          "Switched_Line",
+          0.5448630115989148
+        ],
+        [
+          "Loaded_Line",
+          0.46387213600682203
+        ],
+        [
+          "All_Pass",
+          0.4396006561187138
+        ],
+        [
+          "Vector_Modulator",
+          0.4170722460098485
+        ],
+        [
+          "Reflection_Type",
+          0.3784384083185993
+        ],
+        [
+          "Switched_Filter",
+          0.2907871959042061
+        ]
+      ],
+      "spice_best": {
+        "Loaded_Line": -1000000000.0,
+        "Switched_Line": 0.5548459596887814,
+        "Reflection_Type": -1000000000.0,
+        "Switched_Filter": 0.31248356010117706,
+        "Vector_Modulator": 0.5180687051285477,
+        "All_Pass": 0.4415496621303192
+      },
+      "ideal_models": [
+        "Vector_Modulator"
+      ],
+      "fc_ghz": 5.33543747632643,
+      "i": 30
+    },
+    {
+      "pred": "Switched_Line",
+      "oracle": "Switched_Line",
+      "heuristic": "Reflection_Type",
+      "top1": true,
+      "top2": true,
+      "spearman": 0.4928053803045812,
+      "oracle_margin": 0.006539944869220438,
+      "decidable": false,
+      "mna_ranking": [
+        [
+          "Switched_Line",
+          0.49374642005370917
+        ],
+        [
+          "Loaded_Line",
+          0.48936123358408534
+        ],
+        [
+          "All_Pass",
+          0.4663784976575516
+        ],
+        [
+          "Vector_Modulator",
+          0.42258587756666066
+        ],
+        [
+          "Switched_Filter",
+          0.39439624216518565
+        ],
+        [
+          "Reflection_Type",
+          0.3922543080973615
+        ]
+      ],
+      "spice_best": {
+        "Loaded_Line": -1000000000.0,
+        "Switched_Line": 0.5023337744058907,
+        "Reflection_Type": -1000000000.0,
+        "Switched_Filter": 0.38626632164419616,
+        "Vector_Modulator": 0.4957938295366702,
+        "All_Pass": 0.46762523907406406
+      },
+      "ideal_models": [
+        "Vector_Modulator"
+      ],
+      "fc_ghz": 2.669360320130247,
+      "i": 32
+    },
+    {
+      "pred": "Switched_Line",
+      "oracle": "Switched_Line",
+      "heuristic": "Vector_Modulator",
+      "top1": true,
+      "top2": true,
+      "spearman": 0.4638168285219587,
+      "oracle_margin": 0.03916410748302468,
+      "decidable": false,
+      "mna_ranking": [
+        [
+          "Switched_Line",
+          0.5223410592423968
+        ],
+        [
+          "Loaded_Line",
+          0.43269478964076136
+        ],
+        [
+          "Vector_Modulator",
+          0.4254419357381349
+        ],
+        [
+          "All_Pass",
+          0.39303636398893893
+        ],
+        [
+          "Reflection_Type",
+          0.38438363303382933
+        ],
+        [
+          "Switched_Filter",
+          0.2756601977608193
+        ]
+      ],
+      "spice_best": {
+        "Loaded_Line": -1000000000.0,
+        "Switched_Line": 0.555982080764553,
+        "Reflection_Type": -1000000000.0,
+        "Switched_Filter": 0.319711085582302,
+        "Vector_Modulator": 0.5168179732815283,
+        "All_Pass": 0.4017756449804233
+      },
+      "ideal_models": [
+        "Vector_Modulator"
+      ],
+      "fc_ghz": 3.5656226154249544,
+      "i": 34
+    },
+    {
+      "pred": "Switched_Line",
+      "oracle": "Switched_Line",
+      "heuristic": "Reflection_Type",
+      "top1": true,
+      "top2": true,
+      "spearman": 0.4058397249567139,
+      "oracle_margin": 0.02701207307603659,
+      "decidable": false,
+      "mna_ranking": [
+        [
+          "Switched_Line",
+          0.5613634160531894
+        ],
+        [
+          "Loaded_Line",
+          0.46138361413854795
+        ],
+        [
+          "All_Pass",
+          0.4608488728577756
+        ],
+        [
+          "Vector_Modulator",
+          0.4208308479427779
+        ],
+        [
+          "Reflection_Type",
+          0.3809636081627957
+        ],
+        [
+          "Switched_Filter",
+          0.28322815748342056
+        ]
+      ],
+      "spice_best": {
+        "Loaded_Line": -1000000000.0,
+        "Switched_Line": 0.5874011533389418,
+        "Reflection_Type": -1000000000.0,
+        "Switched_Filter": 0.30740698057520116,
+        "Vector_Modulator": 0.5603890802629052,
+        "All_Pass": 0.4899596751239733
+      },
+      "ideal_models": [
+        "Vector_Modulator"
+      ],
+      "fc_ghz": 36.53055265958259,
+      "i": 60
+    }
+  ]
+}

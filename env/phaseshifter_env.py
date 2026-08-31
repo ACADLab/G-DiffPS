@@ -32,7 +32,6 @@ Decisions captured (end of session 2):
 import gymnasium as gym
 from gymnasium import spaces
 import numpy as np
-import json
 import os
 import sys
 
@@ -40,15 +39,26 @@ import sys
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 import sim.ngspice_runner as ngspice_runner
 import netlist.llm_netlist_gen as llm_netlist_gen
-from specset.generate_specset import SPEC_BOUNDS
+from specset.schema import (
+    TRAIN_SPECSET_PATH,
+    SPEC_BOUNDS,
+    SPEC_KEYS,
+    SPEC_DIM,
+    SCHEMA_VERSION,
+    SchemaVersionError,
+    assert_disjoint_pools,
+    load_specset,
+    normalize_spec,
+)
 from specset.phaseshifter_scoring import TOPOLOGY_LABELS, score_topology
 from specset import state_sampler
 from env.exploration import (
     ExplorationConfig, compute_spec_bucket, make_bucket_key
 )
 from env.memory import Memory, MemoryConfig
-
-SPEC_KEYS = list(SPEC_BOUNDS.keys())
+from env.reward import (
+    PHASE_FLOOR_DEG, compute_sim_reward, phase_warmup_deg, WEIGHTS_AREA,
+)
 
 # Per-state metric keys extracted from each ngspice run
 PS_METRIC_KEYS = ["phase_deg", "il_db", "rl_db", "gain_err_db"]
@@ -56,13 +66,6 @@ PS_METRIC_KEYS = ["phase_deg", "il_db", "rl_db", "gain_err_db"]
 # Minimum fraction of states that must simulate successfully for the episode
 # to count. Below this, the env returns the metrics-missing failure reward.
 _MIN_SUCCESS_FRACTION = 0.5
-
-# Phase-error reward shape: smooth normalization against scale_deg, with a
-# discrete bonus when spec target is met.
-# scale_deg = 90 was chosen so an untrained agent at ~20-30 deg RMS error
-# still gets meaningful gradient signal (~0.6-0.8 phase_term) rather than
-# being crushed to zero by a 5-deg denominator.
-_PHASE_SCALE_DEG = 90.0
 
 
 def _wrap_180(deg: float) -> float:
@@ -164,10 +167,13 @@ def aggregate_state_metrics(
 class PhaseShifterEnv(gym.Env):
     def __init__(self, specset_path=None, restrict_to=None,
                  exploration: ExplorationConfig | None = None,
-                 memory: MemoryConfig | None = None):
+                 memory: MemoryConfig | None = None,
+                 eval_specset_path=None,
+                 pool: str = "train",
+                 spec_ids=None):
         """
         Args:
-            specset_path: path to the specset JSON. None uses default.
+            specset_path: path to the train specset JSON. None uses default.
             restrict_to: optional list of topology names to allow. If given,
                 the action space is reduced to len(restrict_to) and the
                 action index maps to the restricted list. Used for smoke
@@ -185,8 +191,16 @@ class PhaseShifterEnv(gym.Env):
                 selected best-of-K attempt to JSONL, and llm_netlist_gen
                 receives top-K similar past attempts as prompt priors.
                 See ps_syn/env/memory.py.
+            eval_specset_path: optional held-out eval pool. When set, loads
+                and asserts disjointness vs the train pool at init.
+            pool: which pool reset() samples from ("train" or "eval").
+            spec_ids: optional allowlist of entry ids; filters the active
+                pool after load.
         """
         super().__init__()
+        if pool not in ("train", "eval"):
+            raise ValueError(f"pool must be 'train' or 'eval', got {pool!r}")
+        self.pool = pool
         self.exploration = exploration if exploration is not None else ExplorationConfig()
         # Visit-count bookkeeping for the "on_revisit" trigger mode.
         # Keyed by (topology_name, sorted-tuple of bucketed spec). Survives
@@ -211,61 +225,73 @@ class PhaseShifterEnv(gym.Env):
 
         self.action_space = spaces.Discrete(len(self._active_topologies))
         self.observation_space = spaces.Box(
-            low=0.0, high=1.0, shape=(len(SPEC_KEYS),), dtype=np.float32
+            low=0.0, high=1.0, shape=(SPEC_DIM,), dtype=np.float32
         )
 
         if specset_path is None:
-            specset_path = os.path.join(
-                os.path.dirname(__file__),
-                "../specset/specset_phaseshifter.json"
-            )
+            specset_path = TRAIN_SPECSET_PATH
 
         try:
-            with open(specset_path, "r") as f:
-                self.dataset = json.load(f)
+            self.dataset = load_specset(specset_path)
+        except SchemaVersionError as e:
+            raise SchemaVersionError(
+                f"Train specset schema mismatch ({specset_path}): {e}"
+            ) from e
         except Exception as e:
             print(f"[Warning] Could not load specset, will use dummy spec on reset: {e}")
             self.dataset = []
 
+        self.eval_dataset: list = []
+        if eval_specset_path is not None:
+            try:
+                self.eval_dataset = load_specset(eval_specset_path)
+            except SchemaVersionError as e:
+                raise SchemaVersionError(
+                    f"Eval specset schema mismatch ({eval_specset_path}): {e}"
+                ) from e
+            if self.dataset:
+                assert_disjoint_pools(self.dataset, self.eval_dataset)
+
+        if spec_ids is not None:
+            allow = set(spec_ids)
+            if self.pool == "train":
+                self.dataset = [e for e in self.dataset if e.get("id") in allow]
+            else:
+                self.eval_dataset = [
+                    e for e in self.eval_dataset if e.get("id") in allow
+                ]
+
         self.current_spec = None
+        self.current_spec_id = None
+        self.current_entry = None
 
     def _normalize(self, spec):
-        """Normalize each spec field to [0, 1] using SPEC_BOUNDS."""
-        vec = []
-        for k in SPEC_KEYS:
-            bnd = SPEC_BOUNDS[k]
-            val = spec[k]
-            if isinstance(bnd, tuple):
-                mn, mx = bnd
-                # Log-normalize fc_ghz and pmax_mw to match the sampler
-                if k in ("fc_ghz", "pmax_mw"):
-                    mn, mx = np.log10(mn), np.log10(mx)
-                    val = np.log10(max(val, 1e-12))
-                v = (val - mn) / (mx - mn)
-                vec.append(max(0.0, min(1.0, v)))
-            elif isinstance(bnd, list):
-                # Categorical: normalize by max value of category set
-                max_val = max(bnd) if max(bnd) > 0 else 1
-                vec.append(float(val) / float(max_val))
-        return np.array(vec, dtype=np.float32)
+        """Normalize each spec field to [0, 1] (schema v2 observation layout)."""
+        return normalize_spec(spec)
 
     def reset(self, seed=None, options=None):
         super().reset(seed=seed)
 
-        if self.dataset:
-            idx = self.np_random.integers(0, len(self.dataset))
-            self.current_spec = self.dataset[idx]["spec"]
+        active = self.dataset if self.pool == "train" else self.eval_dataset
+        if active:
+            idx = self.np_random.integers(0, len(active))
+            entry = active[idx]
+            self.current_entry = entry
+            self.current_spec_id = entry.get("id")
+            self.current_spec = entry["spec"]
         else:
+            self.current_entry = None
+            self.current_spec_id = None
             self.current_spec = {
                 "fc_ghz": 28.0, "bw_pct": 30.0, "phase_coverage_deg": 360.0,
                 "phase_bits": 5, "rms_phase_err_deg": 5.0, "rms_gain_err_db": 1.0,
                 "max_il_db": 5.0, "min_rl_db": 10.0, "vdd": 1.8, "pmax_mw": 15.0,
-                "tech": 0, "app": 2,
+                "tech": 0, "app": 2, "max_area_mm2": 50.0,
             }
 
         return self._normalize(self.current_spec), {}
 
-    def _evaluate_netlist(self, netlist_path):
+    def _evaluate_netlist(self, netlist_path, warmup_deg: float = 0.0):
         """Run multi-state simulation on a netlist and compute its reward.
 
         Extracted from step() so the retry loop can call it K times. Pure
@@ -309,7 +335,21 @@ class PhaseShifterEnv(gym.Env):
             )
             agg = aggregate_state_metrics(state_indices, per_state, ideal_step_deg)
 
-        sim_reward = self.compute_reward(agg, self.current_spec)
+        # Board-level area for WEIGHTS_AREA (T1.5).
+        if agg is not None:
+            try:
+                from sim.area_model import estimate_area_mm2
+                # Prefer sized params if caller stashed them; else nominal.
+                params = getattr(self, "_last_params", None) or {}
+                agg["area_mm2"] = estimate_area_mm2(
+                    getattr(self, "_last_topology", "Loaded_Line"),
+                    params if params else None,
+                    fc_ghz=float(self.current_spec.get("fc_ghz", 28.0)),
+                )
+            except Exception:
+                agg["area_mm2"] = None
+
+        sim_reward = self.compute_reward(agg, self.current_spec, warmup_deg=warmup_deg)
         return agg, sim_reward, state_indices, bits, ideal_step_deg
 
     def step(self, action):
@@ -504,72 +544,8 @@ class PhaseShifterEnv(gym.Env):
         bonus = 0.3 - (rank / (len(TOPOLOGY_LABELS) - 1)) * 0.4
         return bonus
 
-    def compute_reward(self, metrics, targets):
-        """Multi-state phase-shifter reward.
-
-        Smooth normalized penalty on RMS phase error + binary all_close
-        bonus when spec target is met. Designed for gradient-friendly
-        early-training signal even when the agent is far from the spec.
-
-        Returns a float in [-1.0, 2.0]. -5.0 / -3.0 sentinels for total
-        sim failure / metrics missing.
-        """
-        if metrics is None:
-            return -5.0
-
-        # Required keys for the aggregated multi-state metric dict.
-        # Note: per_state and counts are info-only; not used here.
-        required = ["rms_phase_err_deg", "il_db", "rl_db", "gain_err_db"]
-        if any(metrics.get(k) is None for k in required):
-            return -3.0
-
-        # Per-metric weights — phase error dominates since it's the headline
-        w_phase = 0.40
-        w_il    = 0.25
-        w_rl    = 0.20
-        w_gain  = 0.15
-
-        r = 0.0
-
-        # Phase error: smooth normalized penalty against a wide scale_deg.
-        # Gives meaningful gradient signal even when error is tens of degrees
-        # away from the spec target (which would be e.g. 5 deg).
-        # Spec target is used only for the all_close bonus below.
-        m_phase = abs(metrics["rms_phase_err_deg"])
-        r += w_phase * max(0.0, 1.0 - m_phase / _PHASE_SCALE_DEG)
-
-        # Insertion loss: simulated IL vs max acceptable.
-        # Do NOT use abs() — negative IL means active gain (unphysical for
-        # passive circuits) and must not be rewarded as low loss.
-        t_il = max(targets["max_il_db"], 0.1)
-        m_il = metrics["il_db"]
-        if m_il < 0.0:
-            # Active gain: no IL credit (passive network constraint violated)
-            pass
-        else:
-            r += w_il * max(0.0, 1.0 - m_il / t_il)
-
-        # Return loss: simulated |S11| in dB. Saturates at 1.0 when met.
-        t_rl = max(targets["min_rl_db"], 1.0)
-        m_rl = abs(metrics["rl_db"])
-        r += w_rl * max(0.0, min(1.0, m_rl / t_rl))
-
-        # Gain (amplitude) error across states: std-dev of IL, in dB
-        t_gain = max(targets["rms_gain_err_db"], 0.1)
-        m_gain = abs(metrics["gain_err_db"])
-        r += w_gain * max(0.0, 1.0 - m_gain / t_gain)
-
-        # all_close bonus: rewards meeting the actual spec target (not
-        # the wide scale_deg). Phase error against the spec target with
-        # 20% slack on each metric.
-        t_phase_target = max(targets["rms_phase_err_deg"], 0.1)
-        all_close = (
-            m_phase <= 1.2 * t_phase_target and
-            0.0 <= m_il <= 1.2 * t_il       and
-            m_rl    >= 0.8 * t_rl           and
-            m_gain  <= 1.2 * t_gain
+    def compute_reward(self, metrics, targets, warmup_deg: float = 0.0):
+        """Delegate to env.reward.compute_sim_reward (single implementation)."""
+        return compute_sim_reward(
+            metrics, targets, weights=WEIGHTS_AREA, warmup_deg=warmup_deg,
         )
-        if all_close:
-            r += 1.0
-
-        return float(np.clip(r, -1.0, 2.0))

@@ -10,9 +10,10 @@ __pycache__/
 .ruff_cache/
 
 # Virtual environments / vendored sim
+# NB: no bare "ENV/" here — on case-insensitive filesystems it also matches the
+# tracked source package env/.
 .venv/
 venv/
-ENV/
 ngspice-46/
 
 # Training artifacts (regenerable; demo checkpoint is tracked under checkpoints/)
@@ -21,6 +22,13 @@ runs_production/
 runs/
 checkpoints_local/
 *.zip
+
+# Generated specset pools and the envelope archive (~34 MB, deterministic from a
+# seed: `specset/generate_specset.py` then `tools/compute_envelope.py archive`).
+# specset_v1_frozen.json is NOT ignored — published numbers are pinned to it.
+specset/specset_train.json
+specset/specset_eval.json
+results/joint/envelope_archive.json
 
 # Logs & temp simulation files
 *.log

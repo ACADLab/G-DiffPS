@@ -1,0 +1,2247 @@
+{
+  "n_specs": 100,
+  "k": 32,
+  "seed": 42,
+  "switch_model": "ideal",
+  "bounds": "electrical",
+  "topos": [
+    "Loaded_Line",
+    "Switched_Line",
+    "Reflection_Type",
+    "Switched_Filter",
+    "Vector_Modulator",
+    "All_Pass"
+  ],
+  "spread_before": {
+    "median": 1.2280434766982713,
+    "mean": 1.1748091237670244,
+    "p90": 1.3351400093497836,
+    "frac_above_0_3": 0.95,
+    "frac_below_0_15": 0.02
+  },
+  "spread_after": {
+    "median": 1.3391068817532035,
+    "mean": 1.2896578995235333,
+    "p90": 1.477134908708141,
+    "frac_above_0_3": 0.96,
+    "frac_below_0_15": 0.02
+  },
+  "mean_rstar_before": {
+    "Loaded_Line": 1.8534669709517095,
+    "Switched_Line": 1.843368179996284,
+    "Reflection_Type": 1.086776130189036,
+    "Switched_Filter": 0.9144663551743233,
+    "Vector_Modulator": 1.6175996027330606,
+    "All_Pass": 1.070316099760084
+  },
+  "mean_rstar_after": {
+    "Loaded_Line": 1.7222850275720807,
+    "Switched_Line": 1.698938636266348,
+    "Reflection_Type": 0.8245482239475505,
+    "Switched_Filter": 0.746220373172808,
+    "Vector_Modulator": 1.401877789772702,
+    "All_Pass": 0.8563982441414525
+  },
+  "per_spec": [
+    {
+      "id": "spec_0468",
+      "fc_ghz": 3.303959155897813,
+      "spread_before": 1.054577390499456,
+      "spread_after": 1.3466225050775495,
+      "rstar_before": {
+        "Loaded_Line": 1.9885763102802276,
+        "Switched_Line": 1.9575948862871546,
+        "Reflection_Type": 0.9339989197807715,
+        "Switched_Filter": 1.9033672334448526,
+        "Vector_Modulator": 1.9354234131387789,
+        "All_Pass": 1.9286765914090904
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.9874803980163107,
+        "Switched_Line": 1.9294173965743044,
+        "Reflection_Type": 0.640857892938761,
+        "Switched_Filter": 1.8585541586118772,
+        "Vector_Modulator": 1.8935908665184003,
+        "All_Pass": 1.6955612038493668
+      }
+    },
+    {
+      "id": "spec_0313",
+      "fc_ghz": 4.7266694325603344,
+      "spread_before": 1.2589594354119242,
+      "spread_after": 1.290186216991508,
+      "rstar_before": {
+        "Loaded_Line": 1.9644931138405475,
+        "Switched_Line": 1.9692036398766386,
+        "Reflection_Type": 0.9458405774700046,
+        "Switched_Filter": 0.7102442044647144,
+        "Vector_Modulator": 1.9066043259010945,
+        "All_Pass": 1.955963020119177
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.8930159812982748,
+        "Switched_Line": 1.8109078667260392,
+        "Reflection_Type": 0.6356485132954919,
+        "Switched_Filter": 0.6028297643067668,
+        "Vector_Modulator": 1.6041612373699068,
+        "All_Pass": 1.74614306249766
+      }
+    },
+    {
+      "id": "spec_0429",
+      "fc_ghz": 4.3328866420196315,
+      "spread_before": 1.2541409299962298,
+      "spread_after": 1.328617450302358,
+      "rstar_before": {
+        "Loaded_Line": 1.9892712996990949,
+        "Switched_Line": 1.9713071701708105,
+        "Reflection_Type": 0.9452211094626429,
+        "Switched_Filter": 0.7351303697028649,
+        "Vector_Modulator": 1.9277760238964987,
+        "All_Pass": 0.8847515664969045
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.9535111329354575,
+        "Switched_Line": 1.8547029737257297,
+        "Reflection_Type": 0.6461279908463442,
+        "Switched_Filter": 0.6323343260797983,
+        "Vector_Modulator": 1.8858815316852322,
+        "All_Pass": 0.6248936826330996
+      }
+    },
+    {
+      "id": "spec_0277",
+      "fc_ghz": 8.122091973898511,
+      "spread_before": 1.1694149202153878,
+      "spread_after": 1.3005821714329844,
+      "rstar_before": {
+        "Loaded_Line": 1.987279002500796,
+        "Switched_Line": 1.9741771077399186,
+        "Reflection_Type": 0.8302151190931036,
+        "Switched_Filter": 0.8178640822854082,
+        "Vector_Modulator": 1.9068770552092675,
+        "All_Pass": 0.9114903606603744
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.8734029780756667,
+        "Switched_Line": 1.9209539171765868,
+        "Reflection_Type": 0.6782418759873678,
+        "Switched_Filter": 0.6203717457436024,
+        "Vector_Modulator": 1.6069024889263295,
+        "All_Pass": 0.6228849372812655
+      }
+    },
+    {
+      "id": "spec_0259",
+      "fc_ghz": 6.6178631061173325,
+      "spread_before": 1.2365171149825205,
+      "spread_after": 1.2373272495575502,
+      "rstar_before": {
+        "Loaded_Line": 1.9450746111660215,
+        "Switched_Line": 1.9515598921124306,
+        "Reflection_Type": 0.7150427771299102,
+        "Switched_Filter": 1.8786274030118633,
+        "Vector_Modulator": 1.8202014667390687,
+        "All_Pass": 0.8694453141246902
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.7972735045717245,
+        "Switched_Line": 1.6225165023491885,
+        "Reflection_Type": 0.5604335954620426,
+        "Switched_Filter": 1.7977608450195928,
+        "Vector_Modulator": 1.5499368044710287,
+        "All_Pass": 0.6224868177728966
+      }
+    },
+    {
+      "id": "spec_0496",
+      "fc_ghz": 1.3088456850946233,
+      "spread_before": 0.09172739401473073,
+      "spread_after": 0.35269317226541763,
+      "rstar_before": {
+        "Loaded_Line": 1.9509249674778304,
+        "Switched_Line": 1.9689593377784727,
+        "Reflection_Type": 1.953797527112601,
+        "Switched_Filter": 1.8855366235152728,
+        "Vector_Modulator": 1.9585160617834907,
+        "All_Pass": 1.877231943763742
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.6410834403081582,
+        "Switched_Line": 1.91616042143401,
+        "Reflection_Type": 1.7514487604657454,
+        "Switched_Filter": 1.5752242815800623,
+        "Vector_Modulator": 1.92791745384548,
+        "All_Pass": 1.8445207542075395
+      }
+    },
+    {
+      "id": "spec_0283",
+      "fc_ghz": 1.6045578185285465,
+      "spread_before": 1.205409080319137,
+      "spread_after": 1.3541713117686764,
+      "rstar_before": {
+        "Loaded_Line": 0.955559787495114,
+        "Switched_Line": 1.982891217528516,
+        "Reflection_Type": 1.935764874257842,
+        "Switched_Filter": 0.7774821372093789,
+        "Vector_Modulator": 1.9362243918591098,
+        "All_Pass": 0.8417257629082708
+      },
+      "rstar_after": {
+        "Loaded_Line": 0.736130825954094,
+        "Switched_Line": 1.9695647973822066,
+        "Reflection_Type": 1.6212835167837147,
+        "Switched_Filter": 0.6153934856135301,
+        "Vector_Modulator": 1.7589455454312626,
+        "All_Pass": 0.6903984486784206
+      }
+    },
+    {
+      "id": "spec_0057",
+      "fc_ghz": 9.859395016298611,
+      "spread_before": 1.1795735660686775,
+      "spread_after": 1.3002842498433387,
+      "rstar_before": {
+        "Loaded_Line": 1.9911467469233561,
+        "Switched_Line": 1.9753389254161822,
+        "Reflection_Type": 1.9578651224991677,
+        "Switched_Filter": 0.8115731808546787,
+        "Vector_Modulator": 1.8858633639558968,
+        "All_Pass": 0.9256643960637607
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.9341133585438508,
+        "Switched_Line": 1.9160818186800888,
+        "Reflection_Type": 1.6861905988480688,
+        "Switched_Filter": 0.6365742790922349,
+        "Vector_Modulator": 1.6306756016728148,
+        "All_Pass": 0.6338291087005121
+      }
+    },
+    {
+      "id": "spec_0233",
+      "fc_ghz": 4.442987957645192,
+      "spread_before": 1.2265364309210667,
+      "spread_after": 1.3550970196812027,
+      "rstar_before": {
+        "Loaded_Line": 1.9962160417195516,
+        "Switched_Line": 1.956945219619642,
+        "Reflection_Type": 1.9594204319092035,
+        "Switched_Filter": 0.7696796107984848,
+        "Vector_Modulator": 1.8217505706821955,
+        "All_Pass": 0.8979563809409737
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.9859655627293855,
+        "Switched_Line": 1.6423850185082889,
+        "Reflection_Type": 1.8861997292567838,
+        "Switched_Filter": 0.6308685430481827,
+        "Vector_Modulator": 1.5037844097012645,
+        "All_Pass": 0.6322909005289363
+      }
+    },
+    {
+      "id": "spec_0555",
+      "fc_ghz": 6.945465926862242,
+      "spread_before": 1.2636477801773145,
+      "spread_after": 1.4119211082212977,
+      "rstar_before": {
+        "Loaded_Line": 1.9705212538052082,
+        "Switched_Line": 1.9795573802317394,
+        "Reflection_Type": 1.9758724649580897,
+        "Switched_Filter": 0.7323841213690132,
+        "Vector_Modulator": 0.8661558804509112,
+        "All_Pass": 0.7159096000544248
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.82930083204886,
+        "Switched_Line": 1.935543535929312,
+        "Reflection_Type": 1.6495528008615215,
+        "Switched_Filter": 0.6043546740387249,
+        "Vector_Modulator": 0.5355537803187175,
+        "All_Pass": 0.5236224277080144
+      }
+    },
+    {
+      "id": "spec_0053",
+      "fc_ghz": 6.099944316057017,
+      "spread_before": 1.206322029395054,
+      "spread_after": 1.1672598909788126,
+      "rstar_before": {
+        "Loaded_Line": 1.989869433500129,
+        "Switched_Line": 1.9810757882576722,
+        "Reflection_Type": 0.8244717056206037,
+        "Switched_Filter": 0.783547404105075,
+        "Vector_Modulator": 0.8935171354394376,
+        "All_Pass": 0.7932470484419515
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.699034985254211,
+        "Switched_Line": 1.6971585551930364,
+        "Reflection_Type": 0.5317750942753984,
+        "Switched_Filter": 0.5449147744294248,
+        "Vector_Modulator": 0.5584395293626215,
+        "All_Pass": 0.6222401313163419
+      }
+    },
+    {
+      "id": "spec_0153",
+      "fc_ghz": 2.6540019481937662,
+      "spread_before": 1.2386853461211969,
+      "spread_after": 1.3365684541582323,
+      "rstar_before": {
+        "Loaded_Line": 1.987080440960093,
+        "Switched_Line": 1.9698547396948012,
+        "Reflection_Type": 0.9803632602477519,
+        "Switched_Filter": 0.9062894942812991,
+        "Vector_Modulator": 0.8812803589739273,
+        "All_Pass": 0.7483950948388963
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.8898937849959219,
+        "Switched_Line": 1.6350936225968158,
+        "Reflection_Type": 0.647768862583933,
+        "Switched_Filter": 0.6054421293452277,
+        "Vector_Modulator": 0.5533253308376895,
+        "All_Pass": 0.6269128387674743
+      }
+    },
+    {
+      "id": "spec_0560",
+      "fc_ghz": 3.15598425948875,
+      "spread_before": 1.2656605016198528,
+      "spread_after": 1.2532714873712565,
+      "rstar_before": {
+        "Loaded_Line": 1.9390340852582304,
+        "Switched_Line": 1.9458536491902225,
+        "Reflection_Type": 0.9384577500775095,
+        "Switched_Filter": 0.6801931475703696,
+        "Vector_Modulator": 1.8286087269425715,
+        "All_Pass": 0.8711384843863821
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.8046248577632769,
+        "Switched_Line": 1.8661441146802589,
+        "Reflection_Type": 0.6444934367429047,
+        "Switched_Filter": 0.6151209287087311,
+        "Vector_Modulator": 1.600297777368833,
+        "All_Pass": 0.6128726273090024
+      }
+    },
+    {
+      "id": "spec_0488",
+      "fc_ghz": 7.677413775316157,
+      "spread_before": 0.19517981085122282,
+      "spread_after": 0.3871713353221937,
+      "rstar_before": {
+        "Loaded_Line": 1.9877863035072623,
+        "Switched_Line": 1.9631462222901381,
+        "Reflection_Type": 1.9465774474174764,
+        "Switched_Filter": 1.7926064926560394,
+        "Vector_Modulator": 1.9077892479762069,
+        "All_Pass": 1.8816563314502157
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.958534242135073,
+        "Switched_Line": 1.9035434791107202,
+        "Reflection_Type": 1.6371779245558624,
+        "Switched_Filter": 1.7193606880182755,
+        "Vector_Modulator": 1.7907460266368518,
+        "All_Pass": 1.5713629068128794
+      }
+    },
+    {
+      "id": "spec_0381",
+      "fc_ghz": 3.7335382795965333,
+      "spread_before": 1.2122752010620812,
+      "spread_after": 1.4844585300146471,
+      "rstar_before": {
+        "Loaded_Line": 1.9854426712975752,
+        "Switched_Line": 1.9505484667115065,
+        "Reflection_Type": 1.9877976287456889,
+        "Switched_Filter": 0.7755224276836078,
+        "Vector_Modulator": 0.7957288813544388,
+        "All_Pass": 1.8187411875713808
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.8376674293388153,
+        "Switched_Line": 1.8278644329533718,
+        "Reflection_Type": 1.980323571294664,
+        "Switched_Filter": 0.541499390909999,
+        "Vector_Modulator": 0.49586504128001696,
+        "All_Pass": 1.7964667316781409
+      }
+    },
+    {
+      "id": "spec_0251",
+      "fc_ghz": 5.546247748597912,
+      "spread_before": 1.2613920012032311,
+      "spread_after": 1.3681643660336915,
+      "rstar_before": {
+        "Loaded_Line": 1.9920777903581568,
+        "Switched_Line": 0.9541880606739639,
+        "Reflection_Type": 0.9426410651703476,
+        "Switched_Filter": 0.7306857891549255,
+        "Vector_Modulator": 1.9465856523024092,
+        "All_Pass": 0.8710346151223055
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.982716686826588,
+        "Switched_Line": 0.6358898244299932,
+        "Reflection_Type": 0.6472495881217853,
+        "Switched_Filter": 0.6145523207928963,
+        "Vector_Modulator": 1.6851916636322972,
+        "All_Pass": 0.6333642667183057
+      }
+    },
+    {
+      "id": "spec_0450",
+      "fc_ghz": 3.4615025929903096,
+      "spread_before": 1.1591433778223812,
+      "spread_after": 1.3067230222727237,
+      "rstar_before": {
+        "Loaded_Line": 1.9735532527036637,
+        "Switched_Line": 1.93474473227416,
+        "Reflection_Type": 0.8144098748812826,
+        "Switched_Filter": 1.9622508631466768,
+        "Vector_Modulator": 1.9536261042843455,
+        "All_Pass": 0.9527306169769151
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.647534124096906,
+        "Switched_Line": 1.7455270734244026,
+        "Reflection_Type": 0.5084377223412155,
+        "Switched_Filter": 1.6727338873321584,
+        "Vector_Modulator": 1.8151607446139393,
+        "All_Pass": 0.6346469790631708
+      }
+    },
+    {
+      "id": "spec_0438",
+      "fc_ghz": 4.331321574224889,
+      "spread_before": 1.1169444451554469,
+      "spread_after": 1.1839591276138592,
+      "rstar_before": {
+        "Loaded_Line": 1.9695737516605325,
+        "Switched_Line": 1.9241843920479083,
+        "Reflection_Type": 1.962548741607279,
+        "Switched_Filter": 0.8526293065050855,
+        "Vector_Modulator": 1.8857044655660737,
+        "All_Pass": 0.8941189815185359
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.7042372153832157,
+        "Switched_Line": 1.7628670470369796,
+        "Reflection_Type": 1.6595271082726764,
+        "Switched_Filter": 0.5789079194231203,
+        "Vector_Modulator": 1.7174528852186515,
+        "All_Pass": 0.6095940406468395
+      }
+    },
+    {
+      "id": "spec_0542",
+      "fc_ghz": 1.4761218334098263,
+      "spread_before": 1.1410159825588129,
+      "spread_after": 1.2766360152311358,
+      "rstar_before": {
+        "Loaded_Line": 0.9386434435387108,
+        "Switched_Line": 1.9806145651493983,
+        "Reflection_Type": 0.8812216416887555,
+        "Switched_Filter": 0.8502929762780919,
+        "Vector_Modulator": 1.9224714092194268,
+        "All_Pass": 0.8395985825905855
+      },
+      "rstar_after": {
+        "Loaded_Line": 0.6482055393930286,
+        "Switched_Line": 1.8672045455233424,
+        "Reflection_Type": 0.5905685302922066,
+        "Switched_Filter": 0.624519480859121,
+        "Vector_Modulator": 1.762723948159766,
+        "All_Pass": 0.6076272943041494
+      }
+    },
+    {
+      "id": "spec_0119",
+      "fc_ghz": 1.4452245908805914,
+      "spread_before": 1.2201701191239351,
+      "spread_after": 1.3036217972740936,
+      "rstar_before": {
+        "Loaded_Line": 0.956271510912179,
+        "Switched_Line": 1.979305918743941,
+        "Reflection_Type": 0.8745198451162085,
+        "Switched_Filter": 0.7934800587788581,
+        "Vector_Modulator": 1.79129617261674,
+        "All_Pass": 0.759135799620006
+      },
+      "rstar_after": {
+        "Loaded_Line": 0.6484166726486665,
+        "Switched_Line": 1.8846163686157964,
+        "Reflection_Type": 0.5809945713417028,
+        "Switched_Filter": 0.6323327929778734,
+        "Vector_Modulator": 1.511942205591132,
+        "All_Pass": 0.582922058746855
+      }
+    },
+    {
+      "id": "spec_0308",
+      "fc_ghz": 1.8329211399019534,
+      "spread_before": 1.252034286843891,
+      "spread_after": 1.3565740023097255,
+      "rstar_before": {
+        "Loaded_Line": 0.9632235866018685,
+        "Switched_Line": 1.9789250079777085,
+        "Reflection_Type": 0.7884122620385413,
+        "Switched_Filter": 0.7268907211338177,
+        "Vector_Modulator": 1.8626087143967642,
+        "All_Pass": 1.9375676606567205
+      },
+      "rstar_after": {
+        "Loaded_Line": 0.81542707619786,
+        "Switched_Line": 1.8343690302820619,
+        "Reflection_Type": 0.47779502797233653,
+        "Switched_Filter": 0.637466533352008,
+        "Vector_Modulator": 1.529528360115672,
+        "All_Pass": 1.607054790274349
+      }
+    },
+    {
+      "id": "spec_0287",
+      "fc_ghz": 2.794754153513096,
+      "spread_before": 1.1813518925769038,
+      "spread_after": 1.3847100660734655,
+      "rstar_before": {
+        "Loaded_Line": 1.983999852020181,
+        "Switched_Line": 1.958546655718671,
+        "Reflection_Type": 0.9377417771047013,
+        "Switched_Filter": 0.8026479594432773,
+        "Vector_Modulator": 0.8219935810548181,
+        "All_Pass": 0.8373270883851309
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.8748718274779974,
+        "Switched_Line": 1.7477525067210347,
+        "Reflection_Type": 0.6347609377109262,
+        "Switched_Filter": 0.6114203745102845,
+        "Vector_Modulator": 0.49016176140453194,
+        "All_Pass": 0.6114212716479772
+      }
+    },
+    {
+      "id": "spec_0123",
+      "fc_ghz": 7.73001781092309,
+      "spread_before": 1.4152036791406521,
+      "spread_after": 1.3147400147090544,
+      "rstar_before": {
+        "Loaded_Line": 1.9785324472393333,
+        "Switched_Line": 1.9238641913241878,
+        "Reflection_Type": 1.761514655336722,
+        "Switched_Filter": 0.5633287680986813,
+        "Vector_Modulator": 1.8900423277197964,
+        "All_Pass": 1.9483728503504214
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.774225677613075,
+        "Switched_Line": 1.5922268677463085,
+        "Reflection_Type": 1.5531308889697528,
+        "Switched_Filter": 0.5633287680986813,
+        "Vector_Modulator": 1.8059623339385902,
+        "All_Pass": 1.8780687828077358
+      }
+    },
+    {
+      "id": "spec_0311",
+      "fc_ghz": 2.0064813135017783,
+      "spread_before": 1.14718710654755,
+      "spread_after": 0.9984341512668022,
+      "rstar_before": {
+        "Loaded_Line": 0.962244795989807,
+        "Switched_Line": 0.964860737273788,
+        "Reflection_Type": 0.925202875667729,
+        "Switched_Filter": 0.7758774460978222,
+        "Vector_Modulator": 1.9230645526453722,
+        "All_Pass": 0.8303836437391351
+      },
+      "rstar_after": {
+        "Loaded_Line": 0.6925497741205792,
+        "Switched_Line": 0.6325214818077032,
+        "Reflection_Type": 0.6319114140765779,
+        "Switched_Filter": 0.5837055483484179,
+        "Vector_Modulator": 1.5821396996152202,
+        "All_Pass": 0.6239247244606738
+      }
+    },
+    {
+      "id": "spec_0058",
+      "fc_ghz": 5.070473276529114,
+      "spread_before": 1.1480242153542366,
+      "spread_after": 1.3148719278014869,
+      "rstar_before": {
+        "Loaded_Line": 1.9782774325067285,
+        "Switched_Line": 1.9801123505068878,
+        "Reflection_Type": 0.9409394492112282,
+        "Switched_Filter": 0.9204350705966312,
+        "Vector_Modulator": 1.8877799836537537,
+        "All_Pass": 0.8320881351526512
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.8211611813509836,
+        "Switched_Line": 1.948604956660705,
+        "Reflection_Type": 0.6487580210407048,
+        "Switched_Filter": 0.6337330288592183,
+        "Vector_Modulator": 1.750016656483015,
+        "All_Pass": 0.635207533732874
+      }
+    },
+    {
+      "id": "spec_0254",
+      "fc_ghz": 1.2951722369387078,
+      "spread_before": 1.2324240194026728,
+      "spread_after": 1.4766506985621526,
+      "rstar_before": {
+        "Loaded_Line": 0.9563589642317236,
+        "Switched_Line": 1.9727993849543681,
+        "Reflection_Type": 0.7403753655516953,
+        "Switched_Filter": 0.8379921256640168,
+        "Vector_Modulator": 0.8901555347207684,
+        "All_Pass": 0.8764519825143101
+      },
+      "rstar_after": {
+        "Loaded_Line": 0.6493690070823656,
+        "Switched_Line": 1.9213612666281423,
+        "Reflection_Type": 0.44471056806598974,
+        "Switched_Filter": 0.539769638012308,
+        "Vector_Modulator": 0.748541308791442,
+        "All_Pass": 0.6238433459189466
+      }
+    },
+    {
+      "id": "spec_0080",
+      "fc_ghz": 1.0470742816774425,
+      "spread_before": 0.24116891702354615,
+      "spread_after": 0.272989657646604,
+      "rstar_before": {
+        "Loaded_Line": 0.9495346175836142,
+        "Switched_Line": 0.9120139764555361,
+        "Reflection_Type": 0.8038544796755333,
+        "Switched_Filter": 0.7083657005600681,
+        "Vector_Modulator": 0.9332127179200919,
+        "All_Pass": 0.8269034594920827
+      },
+      "rstar_after": {
+        "Loaded_Line": 0.6484609669702802,
+        "Switched_Line": 0.6257688165351686,
+        "Reflection_Type": 0.511740604956926,
+        "Switched_Filter": 0.552612643640156,
+        "Vector_Modulator": 0.5992161755593718,
+        "All_Pass": 0.78473026260353
+      }
+    },
+    {
+      "id": "spec_0409",
+      "fc_ghz": 4.421508727417274,
+      "spread_before": 1.2256480942463226,
+      "spread_after": 1.3255237751130036,
+      "rstar_before": {
+        "Loaded_Line": 1.9821644413664,
+        "Switched_Line": 1.962919827385415,
+        "Reflection_Type": 1.9633247635802658,
+        "Switched_Filter": 0.7565163471200773,
+        "Vector_Modulator": 1.900053422868106,
+        "All_Pass": 0.9167689259403051
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.9025220262137785,
+        "Switched_Line": 1.9434971011343565,
+        "Reflection_Type": 1.6362864955712064,
+        "Switched_Filter": 0.6179733260213528,
+        "Vector_Modulator": 1.605816356240331,
+        "All_Pass": 0.628103323419102
+      }
+    },
+    {
+      "id": "spec_0474",
+      "fc_ghz": 2.1561404445394308,
+      "spread_before": 1.2544389370814009,
+      "spread_after": 1.5251947986390895,
+      "rstar_before": {
+        "Loaded_Line": 1.968719592348675,
+        "Switched_Line": 1.9511768425513027,
+        "Reflection_Type": 0.7142806552672741,
+        "Switched_Filter": 1.837622568215025,
+        "Vector_Modulator": 1.9298433800949029,
+        "All_Pass": 0.8976431065645489
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.883111763184397,
+        "Switched_Line": 1.9323485373092983,
+        "Reflection_Type": 0.40715373867020876,
+        "Switched_Filter": 1.8354321077418672,
+        "Vector_Modulator": 1.8171318846668334,
+        "All_Pass": 0.5993177211226469
+      }
+    },
+    {
+      "id": "spec_0397",
+      "fc_ghz": 5.4478119145272315,
+      "spread_before": 1.2288363478895097,
+      "spread_after": 1.3360891590899018,
+      "rstar_before": {
+        "Loaded_Line": 1.9617626147445835,
+        "Switched_Line": 1.9812253891379688,
+        "Reflection_Type": 1.9587118595249473,
+        "Switched_Filter": 0.7523890412484591,
+        "Vector_Modulator": 1.9262363651021603,
+        "All_Pass": 1.973451195052933
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.8699686019651964,
+        "Switched_Line": 1.9485908114094088,
+        "Reflection_Type": 1.648622274114492,
+        "Switched_Filter": 0.612501652319507,
+        "Vector_Modulator": 1.8606631684549009,
+        "All_Pass": 1.9333702667267594
+      }
+    },
+    {
+      "id": "spec_0445",
+      "fc_ghz": 2.8221033303365477,
+      "spread_before": 1.2976985330752306,
+      "spread_after": 1.3701537903590568,
+      "rstar_before": {
+        "Loaded_Line": 1.965072000352587,
+        "Switched_Line": 1.9238376208501342,
+        "Reflection_Type": 0.8072245842379785,
+        "Switched_Filter": 0.6673734672773564,
+        "Vector_Modulator": 1.7561013124615346,
+        "All_Pass": 0.7923154683709296
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.864271354505521,
+        "Switched_Line": 1.805147854231156,
+        "Reflection_Type": 0.5138863078932693,
+        "Switched_Filter": 0.4941175641464641,
+        "Vector_Modulator": 1.4149488707114002,
+        "All_Pass": 0.5829328521491197
+      }
+    },
+    {
+      "id": "spec_0344",
+      "fc_ghz": 9.667316915555626,
+      "spread_before": 1.3259742695977783,
+      "spread_after": 1.528116425706187,
+      "rstar_before": {
+        "Loaded_Line": 1.9785994200541308,
+        "Switched_Line": 0.9423559549387033,
+        "Reflection_Type": 0.6526251504563526,
+        "Switched_Filter": 0.6756556678531405,
+        "Vector_Modulator": 1.9470920337219162,
+        "All_Pass": 0.9007389778350621
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.8435762305188406,
+        "Switched_Line": 0.8091047143817075,
+        "Reflection_Type": 0.3608460816209076,
+        "Switched_Filter": 0.54953507304941,
+        "Vector_Modulator": 1.8889625073270946,
+        "All_Pass": 0.6183476918817556
+      }
+    },
+    {
+      "id": "spec_0494",
+      "fc_ghz": 7.077061527750059,
+      "spread_before": 1.3349378705621298,
+      "spread_after": 1.3217133730552941,
+      "rstar_before": {
+        "Loaded_Line": 1.9756066103751508,
+        "Switched_Line": 1.9687035686500745,
+        "Reflection_Type": 0.8637537735422026,
+        "Switched_Filter": 0.6406687398130211,
+        "Vector_Modulator": 1.861680121031077,
+        "All_Pass": 0.8364793532184013
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.767323786182617,
+        "Switched_Line": 1.8874761691435555,
+        "Reflection_Type": 0.5657627960882615,
+        "Switched_Filter": 0.5997444830073082,
+        "Vector_Modulator": 1.7424419063699808,
+        "All_Pass": 0.6295527311897358
+      }
+    },
+    {
+      "id": "spec_0384",
+      "fc_ghz": 10.61498006354207,
+      "spread_before": 1.2745167320144135,
+      "spread_after": 1.5245559486244806,
+      "rstar_before": {
+        "Loaded_Line": 1.9663762408341556,
+        "Switched_Line": 1.94287015000174,
+        "Reflection_Type": 0.6918595088197421,
+        "Switched_Filter": 0.8894798933456971,
+        "Vector_Modulator": 1.8129367622184949,
+        "All_Pass": 0.7751244875898429
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.6332975010910538,
+        "Switched_Line": 1.901201426673094,
+        "Reflection_Type": 0.3766454780486135,
+        "Switched_Filter": 0.6208634286375273,
+        "Vector_Modulator": 1.5380240184783598,
+        "All_Pass": 0.5609633646669342
+      }
+    },
+    {
+      "id": "spec_0126",
+      "fc_ghz": 18.207907213330905,
+      "spread_before": 1.103551271980089,
+      "spread_after": 1.3067230267270986,
+      "rstar_before": {
+        "Loaded_Line": 1.9867429748607348,
+        "Switched_Line": 1.919983993310598,
+        "Reflection_Type": 0.9590913310503428,
+        "Switched_Filter": 0.8831917028806456,
+        "Vector_Modulator": 1.8417225144382416,
+        "All_Pass": 1.8266585493618457
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.9463058516564073,
+        "Switched_Line": 1.869237362700734,
+        "Reflection_Type": 0.6395828249293086,
+        "Switched_Filter": 0.7785283940924986,
+        "Vector_Modulator": 1.5885834189570862,
+        "All_Pass": 1.6508484995025334
+      }
+    },
+    {
+      "id": "spec_0124",
+      "fc_ghz": 16.233780625951287,
+      "spread_before": 1.2432806912815106,
+      "spread_after": 1.3532156925273542,
+      "rstar_before": {
+        "Loaded_Line": 1.9564727780567144,
+        "Switched_Line": 1.8826854800837265,
+        "Reflection_Type": 0.9441321447113803,
+        "Switched_Filter": 0.7167669883758028,
+        "Vector_Modulator": 1.8849662907631797,
+        "All_Pass": 0.7131920867752038
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.8239647370580085,
+        "Switched_Line": 1.8520523907099085,
+        "Reflection_Type": 0.6411982914746003,
+        "Switched_Filter": 0.49883669818255416,
+        "Vector_Modulator": 1.793776088594199,
+        "All_Pass": 0.5720740197501983
+      }
+    },
+    {
+      "id": "spec_0431",
+      "fc_ghz": 14.461007502219658,
+      "spread_before": 1.2806436348142527,
+      "spread_after": 1.366699274819624,
+      "rstar_before": {
+        "Loaded_Line": 1.9770366859712882,
+        "Switched_Line": 1.9587962318702141,
+        "Reflection_Type": 0.9349469724198243,
+        "Switched_Filter": 0.7611133621237949,
+        "Vector_Modulator": 1.8952152355577092,
+        "All_Pass": 0.6963930511570355
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.9762440459681192,
+        "Switched_Line": 1.8183775794131196,
+        "Reflection_Type": 0.6140000153255967,
+        "Switched_Filter": 0.6201067489884793,
+        "Vector_Modulator": 1.6697580590456327,
+        "All_Pass": 0.6095447711484951
+      }
+    },
+    {
+      "id": "spec_0278",
+      "fc_ghz": 13.665942064512851,
+      "spread_before": 1.4083914813140666,
+      "spread_after": 1.6160895981936036,
+      "rstar_before": {
+        "Loaded_Line": 1.9766464150635548,
+        "Switched_Line": 1.9481119967600473,
+        "Reflection_Type": 0.5682549337494882,
+        "Switched_Filter": 0.7764928930103066,
+        "Vector_Modulator": 1.920714301514351,
+        "All_Pass": 0.8554875326307292
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.9448743106880437,
+        "Switched_Line": 1.8785682609194847,
+        "Reflection_Type": 0.32878471249444,
+        "Switched_Filter": 0.5541287681131911,
+        "Vector_Modulator": 1.8627314838391786,
+        "All_Pass": 0.6270469629165786
+      }
+    },
+    {
+      "id": "spec_0164",
+      "fc_ghz": 13.820859163015086,
+      "spread_before": 1.3204033032174092,
+      "spread_after": 1.303663435731191,
+      "rstar_before": {
+        "Loaded_Line": 1.9433612276792207,
+        "Switched_Line": 1.885462684802075,
+        "Reflection_Type": 0.9447527141071378,
+        "Switched_Filter": 0.6229579244618114,
+        "Vector_Modulator": 1.8380279244645283,
+        "All_Pass": 0.6910999291205885
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.8091525427406574,
+        "Switched_Line": 1.8030195793097472,
+        "Reflection_Type": 0.6452381318646349,
+        "Switched_Filter": 0.5054891070094665,
+        "Vector_Modulator": 1.6117034751175416,
+        "All_Pass": 0.5344959179829043
+      }
+    },
+    {
+      "id": "spec_0175",
+      "fc_ghz": 17.075473802371082,
+      "spread_before": 1.241200581892989,
+      "spread_after": 1.3270968731316355,
+      "rstar_before": {
+        "Loaded_Line": 1.9910664146108865,
+        "Switched_Line": 1.9805530026679148,
+        "Reflection_Type": 0.7498658327178974,
+        "Switched_Filter": 0.7864446248661981,
+        "Vector_Modulator": 1.8509340640135257,
+        "All_Pass": 1.9260878932399241
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.9500042470451708,
+        "Switched_Line": 1.9582931570910498,
+        "Reflection_Type": 0.6926858042077364,
+        "Switched_Filter": 0.6311962839594144,
+        "Vector_Modulator": 1.6135033674712005,
+        "All_Pass": 1.6032808242967649
+      }
+    },
+    {
+      "id": "spec_0070",
+      "fc_ghz": 13.138380211411965,
+      "spread_before": 1.2204383126756868,
+      "spread_after": 1.3905379001463254,
+      "rstar_before": {
+        "Loaded_Line": 1.863948644684597,
+        "Switched_Line": 1.9430686517659352,
+        "Reflection_Type": 0.9426595404983859,
+        "Switched_Filter": 0.7226303390902485,
+        "Vector_Modulator": 1.716513015878138,
+        "All_Pass": 0.8523899175228431
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.689308241438872,
+        "Switched_Line": 1.9253820730561144,
+        "Reflection_Type": 0.6459613463143709,
+        "Switched_Filter": 0.534844172909789,
+        "Vector_Modulator": 1.4883735829500118,
+        "All_Pass": 0.5881966956264062
+      }
+    },
+    {
+      "id": "spec_0589",
+      "fc_ghz": 14.66744709580484,
+      "spread_before": 1.1953776566210936,
+      "spread_after": 1.3448433998165945,
+      "rstar_before": {
+        "Loaded_Line": 1.986456293629999,
+        "Switched_Line": 1.9591305747143888,
+        "Reflection_Type": 1.9532877765495464,
+        "Switched_Filter": 0.7910786370089055,
+        "Vector_Modulator": 1.9188788818339222,
+        "All_Pass": 1.8648596289860087
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.9790090818343131,
+        "Switched_Line": 1.859272114606478,
+        "Reflection_Type": 1.823864666443717,
+        "Switched_Filter": 0.6341656820177185,
+        "Vector_Modulator": 1.787652401833456,
+        "All_Pass": 1.5531909821420262
+      }
+    },
+    {
+      "id": "spec_0043",
+      "fc_ghz": 13.702095221179208,
+      "spread_before": 1.2551060608066182,
+      "spread_after": 1.366532486256388,
+      "rstar_before": {
+        "Loaded_Line": 1.993856997167204,
+        "Switched_Line": 1.9761986762525632,
+        "Reflection_Type": 0.9302492757687603,
+        "Switched_Filter": 0.7387509363605858,
+        "Vector_Modulator": 0.8695062451588162,
+        "All_Pass": 0.9031085369379139
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.9090238400273227,
+        "Switched_Line": 1.9038132922824547,
+        "Reflection_Type": 0.6340568899103367,
+        "Switched_Filter": 0.627110393806497,
+        "Vector_Modulator": 0.5424913537709348,
+        "All_Pass": 0.7286572546498562
+      }
+    },
+    {
+      "id": "spec_0100",
+      "fc_ghz": 11.74720148251122,
+      "spread_before": 1.1378153640881385,
+      "spread_after": 1.3684456221451664,
+      "rstar_before": {
+        "Loaded_Line": 1.989116813242819,
+        "Switched_Line": 1.9775553913558328,
+        "Reflection_Type": 1.9645022838220654,
+        "Switched_Filter": 0.8513014491546804,
+        "Vector_Modulator": 0.9055655595228403,
+        "All_Pass": 1.9011426935917983
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.9447637080990423,
+        "Switched_Line": 1.8682819586018278,
+        "Reflection_Type": 1.8458576283171917,
+        "Switched_Filter": 0.6376709467623173,
+        "Vector_Modulator": 0.5763180859538758,
+        "All_Pass": 1.6398037988262197
+      }
+    },
+    {
+      "id": "spec_0223",
+      "fc_ghz": 14.659152252500736,
+      "spread_before": 1.0691819145421835,
+      "spread_after": 1.3367564065278974,
+      "rstar_before": {
+        "Loaded_Line": 1.9958730218008363,
+        "Switched_Line": 1.9823960880848506,
+        "Reflection_Type": 0.9699875469443044,
+        "Switched_Filter": 0.9561577064625941,
+        "Vector_Modulator": 0.9428289491134835,
+        "All_Pass": 0.9266911072586528
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.9443960370595978,
+        "Switched_Line": 1.7305090098388907,
+        "Reflection_Type": 0.6395282110336513,
+        "Switched_Filter": 0.6359324059099151,
+        "Vector_Modulator": 0.6076396305317004,
+        "All_Pass": 0.6361697094104516
+      }
+    },
+    {
+      "id": "spec_0011",
+      "fc_ghz": 16.41322002436192,
+      "spread_before": 1.1565796809691968,
+      "spread_after": 1.33733398774331,
+      "rstar_before": {
+        "Loaded_Line": 1.974142835940763,
+        "Switched_Line": 1.9720020607181301,
+        "Reflection_Type": 0.817563154971566,
+        "Switched_Filter": 0.85691004361741,
+        "Vector_Modulator": 1.9580489426187524,
+        "All_Pass": 0.9290962223482717
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.9706151667809864,
+        "Switched_Line": 1.9672561231146648,
+        "Reflection_Type": 0.6618457791263679,
+        "Switched_Filter": 0.6332811790376763,
+        "Vector_Modulator": 1.8097617329595181,
+        "All_Pass": 0.6337227097331574
+      }
+    },
+    {
+      "id": "spec_0334",
+      "fc_ghz": 19.841149069966747,
+      "spread_before": 1.1266993295049401,
+      "spread_after": 1.3524963221704542,
+      "rstar_before": {
+        "Loaded_Line": 1.9925844520453384,
+        "Switched_Line": 1.9757390179505236,
+        "Reflection_Type": 1.9136190580154584,
+        "Switched_Filter": 0.8658851225403984,
+        "Vector_Modulator": 1.9484218271871474,
+        "All_Pass": 0.8724964465810633
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.9729559171113673,
+        "Switched_Line": 1.8570458656450646,
+        "Reflection_Type": 1.7975723601238465,
+        "Switched_Filter": 0.6383546791395797,
+        "Vector_Modulator": 1.7739979760865632,
+        "All_Pass": 0.6204595949409131
+      }
+    },
+    {
+      "id": "spec_0583",
+      "fc_ghz": 12.602369626238108,
+      "spread_before": 1.2895348467418017,
+      "spread_after": 1.414883812461043,
+      "rstar_before": {
+        "Loaded_Line": 1.9593611249648633,
+        "Switched_Line": 1.8814339732189151,
+        "Reflection_Type": 0.9299023500290704,
+        "Switched_Filter": 0.6698262782230616,
+        "Vector_Modulator": 1.7302152222449667,
+        "All_Pass": 0.8279225048126494
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.9329451434076588,
+        "Switched_Line": 1.6086671323942068,
+        "Reflection_Type": 0.6339192345995124,
+        "Switched_Filter": 0.5180613309466157,
+        "Vector_Modulator": 1.481853688879297,
+        "All_Pass": 0.5440525976591614
+      }
+    },
+    {
+      "id": "spec_0270",
+      "fc_ghz": 10.724893523841363,
+      "spread_before": 1.1575891729409307,
+      "spread_after": 1.247686577616287,
+      "rstar_before": {
+        "Loaded_Line": 1.9925166282868108,
+        "Switched_Line": 1.956419201447979,
+        "Reflection_Type": 0.9515563925325016,
+        "Switched_Filter": 0.83492745534588,
+        "Vector_Modulator": 0.9399691862478797,
+        "All_Pass": 0.948023218606068
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.8519616648457977,
+        "Switched_Line": 1.756611107706966,
+        "Reflection_Type": 0.6439979332713593,
+        "Switched_Filter": 0.6156271902035794,
+        "Vector_Modulator": 0.6042750872295105,
+        "All_Pass": 0.6163008497491336
+      }
+    },
+    {
+      "id": "spec_0041",
+      "fc_ghz": 17.25694739279752,
+      "spread_before": 0.43966142504347583,
+      "spread_after": 0.2620524317765235,
+      "rstar_before": {
+        "Loaded_Line": 0.9588276697489216,
+        "Switched_Line": 0.9301282948476604,
+        "Reflection_Type": 0.5191662447054458,
+        "Switched_Filter": 0.8634123195942295,
+        "Vector_Modulator": 0.7797465296784236,
+        "All_Pass": 0.7340662833449132
+      },
+      "rstar_after": {
+        "Loaded_Line": 0.6451722932319838,
+        "Switched_Line": 0.5980397233060712,
+        "Reflection_Type": 0.3831198614554603,
+        "Switched_Filter": 0.5961022828822283,
+        "Vector_Modulator": 0.4746419020415278,
+        "All_Pass": 0.596361102112082
+      }
+    },
+    {
+      "id": "spec_0031",
+      "fc_ghz": 19.439449625210028,
+      "spread_before": 1.229703922685176,
+      "spread_after": 1.137687293942012,
+      "rstar_before": {
+        "Loaded_Line": 1.9776549765530913,
+        "Switched_Line": 1.9414822550294322,
+        "Reflection_Type": 0.9578545032349205,
+        "Switched_Filter": 0.8344882155454328,
+        "Vector_Modulator": 1.8729563799266509,
+        "All_Pass": 0.7479510538679152
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.6970394405838132,
+        "Switched_Line": 1.6483225943691315,
+        "Reflection_Type": 0.6436155207385291,
+        "Switched_Filter": 0.6809539512478796,
+        "Vector_Modulator": 1.7456300780936314,
+        "All_Pass": 0.6079427841516194
+      }
+    },
+    {
+      "id": "spec_0131",
+      "fc_ghz": 11.066583931296925,
+      "spread_before": 1.2099406949362388,
+      "spread_after": 1.3860362660582362,
+      "rstar_before": {
+        "Loaded_Line": 1.981881647808597,
+        "Switched_Line": 1.9127249397897468,
+        "Reflection_Type": 0.9367613432941213,
+        "Switched_Filter": 0.7719409528723581,
+        "Vector_Modulator": 1.843174160981027,
+        "All_Pass": 1.834222703795323
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.93036276198309,
+        "Switched_Line": 1.8533563056582643,
+        "Reflection_Type": 0.6456297432810193,
+        "Switched_Filter": 0.5443264959248538,
+        "Vector_Modulator": 1.6632666274767023,
+        "All_Pass": 1.51376367823413
+      }
+    },
+    {
+      "id": "spec_0419",
+      "fc_ghz": 18.987004664043333,
+      "spread_before": 1.1655138639187839,
+      "spread_after": 1.4661568283225621,
+      "rstar_before": {
+        "Loaded_Line": 1.9745581988123067,
+        "Switched_Line": 1.9823639200519527,
+        "Reflection_Type": 0.8168500561331687,
+        "Switched_Filter": 0.8558313627642794,
+        "Vector_Modulator": 0.862877776241606,
+        "All_Pass": 0.8601295043802574
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.8196795949273186,
+        "Switched_Line": 1.9754690933832637,
+        "Reflection_Type": 0.5093122650607016,
+        "Switched_Filter": 0.63150446941527,
+        "Vector_Modulator": 0.5582411600661608,
+        "All_Pass": 0.6314749710033485
+      }
+    },
+    {
+      "id": "spec_0506",
+      "fc_ghz": 10.530414882555482,
+      "spread_before": 1.3346705835250334,
+      "spread_after": 1.3367727388035031,
+      "rstar_before": {
+        "Loaded_Line": 1.983232943578344,
+        "Switched_Line": 1.966244550879137,
+        "Reflection_Type": 1.9221826620536309,
+        "Switched_Filter": 0.6485623600533106,
+        "Vector_Modulator": 1.7230113314938844,
+        "All_Pass": 0.8024803232117415
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.9121211701074234,
+        "Switched_Line": 1.9329671494532028,
+        "Reflection_Type": 1.64886760726103,
+        "Switched_Filter": 0.5961944106496996,
+        "Vector_Modulator": 1.4836346057455674,
+        "All_Pass": 0.6052186919904831
+      }
+    },
+    {
+      "id": "spec_0584",
+      "fc_ghz": 14.510381610163181,
+      "spread_before": 1.303735340753276,
+      "spread_after": 1.4319860725284663,
+      "rstar_before": {
+        "Loaded_Line": 1.9858184231074771,
+        "Switched_Line": 1.9308420088539506,
+        "Reflection_Type": 0.8518968448860786,
+        "Switched_Filter": 1.7998526649305266,
+        "Vector_Modulator": 1.9474098485010476,
+        "All_Pass": 0.6820830823542012
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.9736904390523802,
+        "Switched_Line": 1.7594402749774032,
+        "Reflection_Type": 0.5417043665239138,
+        "Switched_Filter": 1.4933603329666338,
+        "Vector_Modulator": 1.9156798660689578,
+        "All_Pass": 0.5792091036031364
+      }
+    },
+    {
+      "id": "spec_0184",
+      "fc_ghz": 17.548394394251645,
+      "spread_before": 1.3302857690843346,
+      "spread_after": 1.3108257875838525,
+      "rstar_before": {
+        "Loaded_Line": 1.961164075178758,
+        "Switched_Line": 1.9552765835706891,
+        "Reflection_Type": 0.9099743138925553,
+        "Switched_Filter": 0.6308783060944234,
+        "Vector_Modulator": 1.8895204003734103,
+        "All_Pass": 0.913464729914632
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.9162728546017043,
+        "Switched_Line": 1.8912124023208698,
+        "Reflection_Type": 0.607043805088469,
+        "Switched_Filter": 0.6125183064946403,
+        "Vector_Modulator": 1.5917997661188927,
+        "All_Pass": 0.6054470670178518
+      }
+    },
+    {
+      "id": "spec_0446",
+      "fc_ghz": 15.169152622443768,
+      "spread_before": 1.214283969318926,
+      "spread_after": 1.1042513062110917,
+      "rstar_before": {
+        "Loaded_Line": 1.9767990917380738,
+        "Switched_Line": 1.9327193536747749,
+        "Reflection_Type": 0.9482070433762547,
+        "Switched_Filter": 0.7625151224191477,
+        "Vector_Modulator": 1.953698172014501,
+        "All_Pass": 0.8505368510288729
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.7155374595281385,
+        "Switched_Line": 1.6056171024759953,
+        "Reflection_Type": 0.6453821533863282,
+        "Switched_Filter": 0.6236158461677127,
+        "Vector_Modulator": 1.7278671523788045,
+        "All_Pass": 0.6347868748620614
+      }
+    },
+    {
+      "id": "spec_0272",
+      "fc_ghz": 11.448550290768955,
+      "spread_before": 1.2709862152988263,
+      "spread_after": 1.4814928000220364,
+      "rstar_before": {
+        "Loaded_Line": 1.9899540131725195,
+        "Switched_Line": 0.9111633477845994,
+        "Reflection_Type": 0.7289850878994809,
+        "Switched_Filter": 0.7189677978736932,
+        "Vector_Modulator": 1.9426140663255056,
+        "All_Pass": 1.9527161988313777
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.8968458607283796,
+        "Switched_Line": 0.6211168653300979,
+        "Reflection_Type": 0.4337436370263851,
+        "Switched_Filter": 0.618074790839951,
+        "Vector_Modulator": 1.9152364370484216,
+        "All_Pass": 1.8448583880294827
+      }
+    },
+    {
+      "id": "spec_0329",
+      "fc_ghz": 17.917019885697986,
+      "spread_before": 1.2223682172690045,
+      "spread_after": 1.3208227634545708,
+      "rstar_before": {
+        "Loaded_Line": 1.9491915359391665,
+        "Switched_Line": 1.9742840059520272,
+        "Reflection_Type": 0.9047861974081012,
+        "Switched_Filter": 0.7519157886830228,
+        "Vector_Modulator": 0.8985775837142796,
+        "All_Pass": 0.8791726128883216
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.8823037017196471,
+        "Switched_Line": 1.6877120604488303,
+        "Reflection_Type": 0.5614809382650763,
+        "Switched_Filter": 0.613872668599559,
+        "Vector_Modulator": 0.5710079953103984,
+        "All_Pass": 0.6260479578932904
+      }
+    },
+    {
+      "id": "spec_0340",
+      "fc_ghz": 16.62213068058479,
+      "spread_before": 1.1335835703762567,
+      "spread_after": 1.3696889243197705,
+      "rstar_before": {
+        "Loaded_Line": 1.9921247722627635,
+        "Switched_Line": 1.976971424309267,
+        "Reflection_Type": 0.9411533584199694,
+        "Switched_Filter": 0.858541201886507,
+        "Vector_Modulator": 1.90982553314426,
+        "All_Pass": 1.9530737265188527
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.9861425650667606,
+        "Switched_Line": 1.759372684473858,
+        "Reflection_Type": 0.6462121061570839,
+        "Switched_Filter": 0.61645364074699,
+        "Vector_Modulator": 1.6662621926889378,
+        "All_Pass": 1.7352297784436606
+      }
+    },
+    {
+      "id": "spec_0096",
+      "fc_ghz": 14.567469926098868,
+      "spread_before": 1.2990431991995373,
+      "spread_after": 1.3391412323153296,
+      "rstar_before": {
+        "Loaded_Line": 1.986065439214309,
+        "Switched_Line": 1.9679984781790698,
+        "Reflection_Type": 0.9399811867196673,
+        "Switched_Filter": 0.6870222400147716,
+        "Vector_Modulator": 1.8796298040059325,
+        "All_Pass": 1.7741349529185337
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.9123541636321923,
+        "Switched_Line": 1.9487368432530094,
+        "Reflection_Type": 0.6465998513141509,
+        "Switched_Filter": 0.6095956109376799,
+        "Vector_Modulator": 1.7857332701912654,
+        "All_Pass": 1.4456678672308025
+      }
+    },
+    {
+      "id": "spec_0354",
+      "fc_ghz": 19.25460490043171,
+      "spread_before": 1.1641357181699292,
+      "spread_after": 1.3028195669944669,
+      "rstar_before": {
+        "Loaded_Line": 1.9786823391104944,
+        "Switched_Line": 1.9516597570653653,
+        "Reflection_Type": 0.8145466209405653,
+        "Switched_Filter": 0.8619329607887335,
+        "Vector_Modulator": 1.9133825993171432,
+        "All_Pass": 0.9120038588071578
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.795989282018983,
+        "Switched_Line": 1.7662631989074629,
+        "Reflection_Type": 0.493169715024516,
+        "Switched_Filter": 0.8514130928082594,
+        "Vector_Modulator": 1.683360108330783,
+        "All_Pass": 0.6173276909171275
+      }
+    },
+    {
+      "id": "spec_0305",
+      "fc_ghz": 10.97402462859437,
+      "spread_before": 0.2883553116101534,
+      "spread_after": 0.14919392698933676,
+      "rstar_before": {
+        "Loaded_Line": 0.9794023080249153,
+        "Switched_Line": 0.9229580938021822,
+        "Reflection_Type": 0.8496099550651135,
+        "Switched_Filter": 0.691046996414762,
+        "Vector_Modulator": 0.8214067164137341,
+        "All_Pass": 0.8238779485598625
+      },
+      "rstar_after": {
+        "Loaded_Line": 0.6436439457577898,
+        "Switched_Line": 0.5943897051623364,
+        "Reflection_Type": 0.5354588266858823,
+        "Switched_Filter": 0.49445001876845307,
+        "Vector_Modulator": 0.49958438546707784,
+        "All_Pass": 0.5743093320023832
+      }
+    },
+    {
+      "id": "spec_0200",
+      "fc_ghz": 15.736800465279602,
+      "spread_before": 1.2882785670437955,
+      "spread_after": 1.4665290155217976,
+      "rstar_before": {
+        "Loaded_Line": 1.9605957236539653,
+        "Switched_Line": 1.9803271911599913,
+        "Reflection_Type": 0.7685752030929679,
+        "Switched_Filter": 0.6920486241161957,
+        "Vector_Modulator": 1.9047131960692272,
+        "All_Pass": 0.9137979477143362
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.935234180915769,
+        "Switched_Line": 1.9659438958809523,
+        "Reflection_Type": 0.4994148803591546,
+        "Switched_Filter": 0.6011330550112056,
+        "Vector_Modulator": 1.6764529949647233,
+        "All_Pass": 0.5973006536282582
+      }
+    },
+    {
+      "id": "spec_0160",
+      "fc_ghz": 15.60154852332153,
+      "spread_before": 1.225214649284685,
+      "spread_after": 1.4377035546462311,
+      "rstar_before": {
+        "Loaded_Line": 1.9869777122269547,
+        "Switched_Line": 1.971847020201523,
+        "Reflection_Type": 1.9268809408973606,
+        "Switched_Filter": 0.7617630629422699,
+        "Vector_Modulator": 0.8469510780700729,
+        "All_Pass": 0.808544906885981
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.9465590302052718,
+        "Switched_Line": 1.6566980237302835,
+        "Reflection_Type": 1.5850639475200496,
+        "Switched_Filter": 0.5905558431780807,
+        "Vector_Modulator": 0.5088554755590408,
+        "All_Pass": 0.7474517917681626
+      }
+    },
+    {
+      "id": "spec_0020",
+      "fc_ghz": 12.949412684983228,
+      "spread_before": 1.3369592584386685,
+      "spread_after": 1.615884749451109,
+      "rstar_before": {
+        "Loaded_Line": 1.9807892611416569,
+        "Switched_Line": 1.9430403762248885,
+        "Reflection_Type": 0.6438300027029885,
+        "Switched_Filter": 1.917916764808972,
+        "Vector_Modulator": 1.874881818471001,
+        "All_Pass": 0.833285974948429
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.969205569875491,
+        "Switched_Line": 1.874269197138504,
+        "Reflection_Type": 0.35332082042438184,
+        "Switched_Filter": 1.7814822763198475,
+        "Vector_Modulator": 1.7951475806249553,
+        "All_Pass": 0.578296736462141
+      }
+    },
+    {
+      "id": "spec_0087",
+      "fc_ghz": 37.480930127969756,
+      "spread_before": 1.0893225734215666,
+      "spread_after": 1.1286011762618748,
+      "rstar_before": {
+        "Loaded_Line": 1.974204275429237,
+        "Switched_Line": 0.9592898578679032,
+        "Reflection_Type": 0.947607322973562,
+        "Switched_Filter": 0.8848817020076705,
+        "Vector_Modulator": 1.9537607205169343,
+        "All_Pass": 1.9151737625681886
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.7029429942662282,
+        "Switched_Line": 0.6312107895702372,
+        "Reflection_Type": 0.6492023541653216,
+        "Switched_Filter": 0.6314897948375847,
+        "Vector_Modulator": 1.6758154611611529,
+        "All_Pass": 1.759811965832112
+      }
+    },
+    {
+      "id": "spec_0106",
+      "fc_ghz": 31.229355346877526,
+      "spread_before": 1.3954736791754612,
+      "spread_after": 1.5711924349920279,
+      "rstar_before": {
+        "Loaded_Line": 1.9740934609977003,
+        "Switched_Line": 1.957712581408562,
+        "Reflection_Type": 0.5786197818222392,
+        "Switched_Filter": 0.7612550493646003,
+        "Vector_Modulator": 1.8997990990783127,
+        "All_Pass": 1.8748163117286925
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.871149563111183,
+        "Switched_Line": 1.8378614997480023,
+        "Reflection_Type": 0.29995712811915515,
+        "Switched_Filter": 0.6160313067815255,
+        "Vector_Modulator": 1.7906004417396952,
+        "All_Pass": 1.7874033030207763
+      }
+    },
+    {
+      "id": "spec_0037",
+      "fc_ghz": 23.04655300939354,
+      "spread_before": 1.2679312883171245,
+      "spread_after": 1.3682034122241136,
+      "rstar_before": {
+        "Loaded_Line": 1.9519305368578141,
+        "Switched_Line": 1.8987317742957655,
+        "Reflection_Type": 0.8252006829900344,
+        "Switched_Filter": 0.6839992485406896,
+        "Vector_Modulator": 1.8703505986543238,
+        "All_Pass": 1.7551588957731574
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.838594262109154,
+        "Switched_Line": 1.8771158397653323,
+        "Reflection_Type": 0.5089124275412187,
+        "Switched_Filter": 0.5766501312358602,
+        "Vector_Modulator": 1.652366178105641,
+        "All_Pass": 1.6458324582574608
+      }
+    },
+    {
+      "id": "spec_0385",
+      "fc_ghz": 30.293197959857416,
+      "spread_before": 1.1136605394933028,
+      "spread_after": 1.2946157645351475,
+      "rstar_before": {
+        "Loaded_Line": 1.987527599289536,
+        "Switched_Line": 1.957746338194044,
+        "Reflection_Type": 1.9565089169080465,
+        "Switched_Filter": 0.8882908841432579,
+        "Vector_Modulator": 0.8738670597962332,
+        "All_Pass": 0.9246121738819207
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.8329259683815655,
+        "Switched_Line": 1.621297917886453,
+        "Reflection_Type": 1.8343394417937637,
+        "Switched_Filter": 0.8315131968495569,
+        "Vector_Modulator": 0.5397236772586164,
+        "All_Pass": 0.622259516775945
+      }
+    },
+    {
+      "id": "spec_0113",
+      "fc_ghz": 38.6066148881792,
+      "spread_before": 1.3005334094448018,
+      "spread_after": 1.4560666366458483,
+      "rstar_before": {
+        "Loaded_Line": 1.9828069662337646,
+        "Switched_Line": 1.9707855548288973,
+        "Reflection_Type": 0.7783197640784596,
+        "Switched_Filter": 0.6822735567889627,
+        "Vector_Modulator": 1.9125811525974243,
+        "All_Pass": 0.8727608440123954
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.8281956021930958,
+        "Switched_Line": 1.911505056148235,
+        "Reflection_Type": 0.4554384195023866,
+        "Switched_Filter": 0.6352259445035884,
+        "Vector_Modulator": 1.7783958271222091,
+        "All_Pass": 0.6200156104619495
+      }
+    },
+    {
+      "id": "spec_0425",
+      "fc_ghz": 35.72424692385612,
+      "spread_before": 1.094695798327661,
+      "spread_after": 1.2525765874443229,
+      "rstar_before": {
+        "Loaded_Line": 1.9802479222444038,
+        "Switched_Line": 1.9477700217548346,
+        "Reflection_Type": 0.9499461381712565,
+        "Switched_Filter": 0.9272955782580575,
+        "Vector_Modulator": 0.9081688609593099,
+        "All_Pass": 0.8855521239167429
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.816247510077792,
+        "Switched_Line": 1.839361167018806,
+        "Reflection_Type": 0.6485158805858777,
+        "Switched_Filter": 0.6347998132178592,
+        "Vector_Modulator": 0.5867845795744829,
+        "All_Pass": 0.6376434014997386
+      }
+    },
+    {
+      "id": "spec_0055",
+      "fc_ghz": 23.024512086711358,
+      "spread_before": 1.3828629608427647,
+      "spread_after": 1.2060677663846802,
+      "rstar_before": {
+        "Loaded_Line": 1.9630329021536834,
+        "Switched_Line": 1.9412494589834046,
+        "Reflection_Type": 0.8295662620768933,
+        "Switched_Filter": 0.5801699413109187,
+        "Vector_Modulator": 0.7949595071594105,
+        "All_Pass": 0.8003239173871958
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.7490669039682167,
+        "Switched_Line": 1.7459808241866603,
+        "Reflection_Type": 0.7218898829664275,
+        "Switched_Filter": 0.5801699413109187,
+        "Vector_Modulator": 0.5429991375835367,
+        "All_Pass": 0.6226808458431456
+      }
+    },
+    {
+      "id": "spec_0439",
+      "fc_ghz": 24.23271089742753,
+      "spread_before": 1.2939762418882599,
+      "spread_after": 1.3571585517610063,
+      "rstar_before": {
+        "Loaded_Line": 1.974052132292368,
+        "Switched_Line": 1.9624377328869707,
+        "Reflection_Type": 1.8745825401236957,
+        "Switched_Filter": 0.6800758904041081,
+        "Vector_Modulator": 1.863488041755094,
+        "All_Pass": 0.7436643610093753
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.8990473662857594,
+        "Switched_Line": 1.9309482806486304,
+        "Reflection_Type": 1.6492056920507743,
+        "Switched_Filter": 0.5737897288876241,
+        "Vector_Modulator": 1.6380564169734253,
+        "All_Pass": 0.6157243905765044
+      }
+    },
+    {
+      "id": "spec_0142",
+      "fc_ghz": 20.760386114303245,
+      "spread_before": 1.0893022862808408,
+      "spread_after": 1.3491635046663264,
+      "rstar_before": {
+        "Loaded_Line": 1.9950555848915537,
+        "Switched_Line": 1.955818277354231,
+        "Reflection_Type": 0.9384008321030416,
+        "Switched_Filter": 0.905753298610713,
+        "Vector_Modulator": 1.9275930132566952,
+        "All_Pass": 1.9288576060344873
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.9889649294207161,
+        "Switched_Line": 1.879247878335057,
+        "Reflection_Type": 0.6398014247543896,
+        "Switched_Filter": 0.6544974992743985,
+        "Vector_Modulator": 1.809175570298415,
+        "All_Pass": 1.9056241982355333
+      }
+    },
+    {
+      "id": "spec_0394",
+      "fc_ghz": 23.51346176219396,
+      "spread_before": 1.2975343026628683,
+      "spread_after": 1.460416474132077,
+      "rstar_before": {
+        "Loaded_Line": 1.9774374296083677,
+        "Switched_Line": 1.9460970830172295,
+        "Reflection_Type": 0.6799031269454995,
+        "Switched_Filter": 0.6876443756708173,
+        "Vector_Modulator": 0.8240477390346149,
+        "All_Pass": 0.7922658313590973
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.7757743212886927,
+        "Switched_Line": 1.8263881195421132,
+        "Reflection_Type": 0.36597164541003613,
+        "Switched_Filter": 0.6035564079176696,
+        "Vector_Modulator": 0.5799913131972756,
+        "All_Pass": 0.5286932597863313
+      }
+    },
+    {
+      "id": "spec_0290",
+      "fc_ghz": 36.53055265958259,
+      "spread_before": 1.4676440916898694,
+      "spread_after": 1.7611564064477243,
+      "rstar_before": {
+        "Loaded_Line": 1.9816065823961215,
+        "Switched_Line": 1.928409451188541,
+        "Reflection_Type": 0.5139624907062522,
+        "Switched_Filter": 1.7125553510410687,
+        "Vector_Modulator": 1.8020780414284685,
+        "All_Pass": 0.8681310114844832
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.9604751618357765,
+        "Switched_Line": 1.6953613182893847,
+        "Reflection_Type": 0.19931875538805222,
+        "Switched_Filter": 1.634960191604101,
+        "Vector_Modulator": 1.4669370615699608,
+        "All_Pass": 0.5509351242183474
+      }
+    },
+    {
+      "id": "spec_0128",
+      "fc_ghz": 37.45019495392964,
+      "spread_before": 1.1157323319000492,
+      "spread_after": 1.3305072258913404,
+      "rstar_before": {
+        "Loaded_Line": 1.9939978855106688,
+        "Switched_Line": 0.9464941016156703,
+        "Reflection_Type": 0.8885603348954766,
+        "Switched_Filter": 0.9167937051609609,
+        "Vector_Modulator": 1.829579281361804,
+        "All_Pass": 0.8782655536106198
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.9397981095999803,
+        "Switched_Line": 0.9289199359156208,
+        "Reflection_Type": 0.8432360457537037,
+        "Switched_Filter": 0.6271464808292206,
+        "Vector_Modulator": 1.4983977001751203,
+        "All_Pass": 0.6092908837086399
+      }
+    },
+    {
+      "id": "spec_0423",
+      "fc_ghz": 25.495911167604373,
+      "spread_before": 1.3181254014745831,
+      "spread_after": 1.431210793479897,
+      "rstar_before": {
+        "Loaded_Line": 1.9689704344038335,
+        "Switched_Line": 1.9765206864040223,
+        "Reflection_Type": 0.7897513663599831,
+        "Switched_Filter": 0.6583952849294391,
+        "Vector_Modulator": 1.920666607014578,
+        "All_Pass": 0.916307433579229
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.9280729092982982,
+        "Switched_Line": 1.949259232126784,
+        "Reflection_Type": 0.518048438646887,
+        "Switched_Filter": 0.6276977370188316,
+        "Vector_Modulator": 1.881859473786436,
+        "All_Pass": 0.6263540910291598
+      }
+    },
+    {
+      "id": "spec_0264",
+      "fc_ghz": 26.406127778674925,
+      "spread_before": 1.2827961657483358,
+      "spread_after": 1.4732572538734483,
+      "rstar_before": {
+        "Loaded_Line": 1.9783248396691824,
+        "Switched_Line": 1.9651140589944065,
+        "Reflection_Type": 0.7909925536573827,
+        "Switched_Filter": 0.8780837562958115,
+        "Vector_Modulator": 1.832020604354927,
+        "All_Pass": 0.6955286739208467
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.8825043036928237,
+        "Switched_Line": 1.9510076217120897,
+        "Reflection_Type": 0.47775036783864133,
+        "Switched_Filter": 0.6069849460910935,
+        "Vector_Modulator": 1.5905875793900668,
+        "All_Pass": 0.5854038186544892
+      }
+    },
+    {
+      "id": "spec_0225",
+      "fc_ghz": 26.300351956542663,
+      "spread_before": 1.3115433203144555,
+      "spread_after": 1.3390725311910776,
+      "rstar_before": {
+        "Loaded_Line": 1.9744781443178754,
+        "Switched_Line": 0.9391248293416827,
+        "Reflection_Type": 0.7578201766191769,
+        "Switched_Filter": 0.8619571130344287,
+        "Vector_Modulator": 0.8601270961284241,
+        "All_Pass": 0.6629348240034199
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.8012455289641953,
+        "Switched_Line": 0.6243146104888204,
+        "Reflection_Type": 0.4621729977731176,
+        "Switched_Filter": 0.6113928132811352,
+        "Vector_Modulator": 0.531193881100744,
+        "All_Pass": 0.60758885043557
+      }
+    },
+    {
+      "id": "spec_0137",
+      "fc_ghz": 36.77234926539009,
+      "spread_before": 1.227250605507033,
+      "spread_after": 1.4295568694432124,
+      "rstar_before": {
+        "Loaded_Line": 1.9901007975207337,
+        "Switched_Line": 1.9172702210050683,
+        "Reflection_Type": 0.9082939800829872,
+        "Switched_Filter": 0.8540027208989169,
+        "Vector_Modulator": 0.7680794683784108,
+        "All_Pass": 0.7628501920137007
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.8858567709813059,
+        "Switched_Line": 1.5885273966976663,
+        "Reflection_Type": 0.6063182958261871,
+        "Switched_Filter": 0.6098936621624254,
+        "Vector_Modulator": 0.4562999015380934,
+        "All_Pass": 0.5647360555881118
+      }
+    },
+    {
+      "id": "spec_0140",
+      "fc_ghz": 31.66657099167995,
+      "spread_before": 1.244178823147484,
+      "spread_after": 1.299381574502335,
+      "rstar_before": {
+        "Loaded_Line": 1.9845018404088455,
+        "Switched_Line": 1.9554173536835164,
+        "Reflection_Type": 0.8433223934130225,
+        "Switched_Filter": 0.7403230172613615,
+        "Vector_Modulator": 1.9006477229303018,
+        "All_Pass": 0.8077831868841008
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.8437774643430176,
+        "Switched_Line": 1.6768737285525308,
+        "Reflection_Type": 0.5443958898406828,
+        "Switched_Filter": 0.6254431368973525,
+        "Vector_Modulator": 1.7658040182468482,
+        "All_Pass": 0.5555828943281932
+      }
+    },
+    {
+      "id": "spec_0475",
+      "fc_ghz": 29.711804491682926,
+      "spread_before": 1.1620149050201243,
+      "spread_after": 1.4219549339737405,
+      "rstar_before": {
+        "Loaded_Line": 1.9852070801890571,
+        "Switched_Line": 1.9648805627192187,
+        "Reflection_Type": 0.823192175168933,
+        "Switched_Filter": 1.905781308877056,
+        "Vector_Modulator": 1.9349264933849908,
+        "All_Pass": 0.865718314723744
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.9369847543802032,
+        "Switched_Line": 1.9083049806818138,
+        "Reflection_Type": 0.5150298204064628,
+        "Switched_Filter": 1.5906706028442916,
+        "Vector_Modulator": 1.8601756632967168,
+        "All_Pass": 0.6231926439399158
+      }
+    },
+    {
+      "id": "spec_0220",
+      "fc_ghz": 39.27035058942876,
+      "spread_before": 1.2886340725903906,
+      "spread_after": 1.3412257069241895,
+      "rstar_before": {
+        "Loaded_Line": 1.9582760606245109,
+        "Switched_Line": 1.945973354239989,
+        "Reflection_Type": 0.8142081832887644,
+        "Switched_Filter": 0.6696419880341201,
+        "Vector_Modulator": 1.8658226252653236,
+        "All_Pass": 0.8639551811605796
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.8262300955789796,
+        "Switched_Line": 1.7364506634735952,
+        "Reflection_Type": 0.4850043886547901,
+        "Switched_Filter": 0.6259362104287018,
+        "Vector_Modulator": 1.65022547333171,
+        "All_Pass": 0.5812738917586475
+      }
+    },
+    {
+      "id": "spec_0472",
+      "fc_ghz": 23.749028679827113,
+      "spread_before": 1.3516704400383706,
+      "spread_after": 1.2546786524772182,
+      "rstar_before": {
+        "Loaded_Line": 1.984367016411019,
+        "Switched_Line": 1.9689801236530966,
+        "Reflection_Type": 0.9219058982472577,
+        "Switched_Filter": 0.6326965763726483,
+        "Vector_Modulator": 0.8623931253094218,
+        "All_Pass": 0.8224607422663585
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.644202420780204,
+        "Switched_Line": 1.8078757189450645,
+        "Reflection_Type": 0.7684998742358807,
+        "Switched_Filter": 0.5531970664678464,
+        "Vector_Modulator": 0.6556704171211905,
+        "All_Pass": 0.6199818458884919
+      }
+    },
+    {
+      "id": "spec_0323",
+      "fc_ghz": 36.35649834440372,
+      "spread_before": 1.3722688878837932,
+      "spread_after": 1.422588313520863,
+      "rstar_before": {
+        "Loaded_Line": 1.942985797400309,
+        "Switched_Line": 1.9332728328130977,
+        "Reflection_Type": 0.5707169095165159,
+        "Switched_Filter": 0.8089522656900375,
+        "Vector_Modulator": 1.8541196669176863,
+        "All_Pass": 1.928242961766152
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.8496013336245225,
+        "Switched_Line": 1.8914570531877772,
+        "Reflection_Type": 0.4688687396669142,
+        "Switched_Filter": 0.5700682090011614,
+        "Vector_Modulator": 1.7673316949303581,
+        "All_Pass": 1.8850719727726157
+      }
+    },
+    {
+      "id": "spec_0408",
+      "fc_ghz": 27.316060246552425,
+      "spread_before": 1.2543235700696136,
+      "spread_after": 1.3311183039231875,
+      "rstar_before": {
+        "Loaded_Line": 1.977783391658313,
+        "Switched_Line": 1.9010078431454003,
+        "Reflection_Type": 1.8570763538265636,
+        "Switched_Filter": 1.6788942347015552,
+        "Vector_Modulator": 0.7533691371854656,
+        "All_Pass": 0.7234598215886994
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.9141928661900431,
+        "Switched_Line": 1.8850722025435989,
+        "Reflection_Type": 1.621105737426252,
+        "Switched_Filter": 1.4812010768702124,
+        "Vector_Modulator": 0.6264878879685211,
+        "All_Pass": 0.5830745622668556
+      }
+    },
+    {
+      "id": "spec_0490",
+      "fc_ghz": 21.758604514475415,
+      "spread_before": 1.300929192780945,
+      "spread_after": 1.306692471793038,
+      "rstar_before": {
+        "Loaded_Line": 1.9566664773777651,
+        "Switched_Line": 1.9290480427878292,
+        "Reflection_Type": 0.8173552471198913,
+        "Switched_Filter": 0.6557372845968202,
+        "Vector_Modulator": 1.800391100552892,
+        "All_Pass": 0.6742469870719701
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.7757130930616607,
+        "Switched_Line": 1.7533906903822754,
+        "Reflection_Type": 0.5236818836137463,
+        "Switched_Filter": 0.4690206212686229,
+        "Vector_Modulator": 1.464367975022682,
+        "All_Pass": 0.5676530449290786
+      }
+    },
+    {
+      "id": "spec_0503",
+      "fc_ghz": 38.00927642498205,
+      "spread_before": 1.3680124698091596,
+      "spread_after": 1.3443965938312714,
+      "rstar_before": {
+        "Loaded_Line": 0.9705488673196712,
+        "Switched_Line": 1.9728280046026678,
+        "Reflection_Type": 0.6048155347935082,
+        "Switched_Filter": 1.9428430718546892,
+        "Vector_Modulator": 0.9088476973801417,
+        "All_Pass": 0.9165352917617833
+      },
+      "rstar_after": {
+        "Loaded_Line": 0.648347603373577,
+        "Switched_Line": 1.6312991519980122,
+        "Reflection_Type": 0.2970185265649793,
+        "Switched_Filter": 1.6414151203962506,
+        "Vector_Modulator": 0.5812647381887076,
+        "All_Pass": 0.6315657227406586
+      }
+    },
+    {
+      "id": "spec_0573",
+      "fc_ghz": 20.843153793060523,
+      "spread_before": 1.1428559665471065,
+      "spread_after": 1.3912066687219942,
+      "rstar_before": {
+        "Loaded_Line": 1.985229296711788,
+        "Switched_Line": 1.9277273775022605,
+        "Reflection_Type": 0.8535847221761789,
+        "Switched_Filter": 0.853257894783403,
+        "Vector_Modulator": 1.9201222777863558,
+        "All_Pass": 0.8423733301646814
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.9552618854015535,
+        "Switched_Line": 1.816798944574498,
+        "Reflection_Type": 0.5640552166795593,
+        "Switched_Filter": 0.5946102194841849,
+        "Vector_Modulator": 1.766163284733116,
+        "All_Pass": 0.7038756781729856
+      }
+    },
+    {
+      "id": "spec_0062",
+      "fc_ghz": 27.218288326862766,
+      "spread_before": 1.3914786493852702,
+      "spread_after": 1.5742458013004632,
+      "rstar_before": {
+        "Loaded_Line": 1.9815450990308485,
+        "Switched_Line": 1.96498692811202,
+        "Reflection_Type": 0.5900664496455783,
+        "Switched_Filter": 0.8836453782638158,
+        "Vector_Modulator": 1.9355862478840342,
+        "All_Pass": 0.854995124702967
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.8439332367599437,
+        "Switched_Line": 1.8949827429388708,
+        "Reflection_Type": 0.3207369416384076,
+        "Switched_Filter": 0.6040874353599721,
+        "Vector_Modulator": 1.799300394949019,
+        "All_Pass": 0.6172043308676101
+      }
+    },
+    {
+      "id": "spec_0219",
+      "fc_ghz": 33.12475563740927,
+      "spread_before": 1.1886901890384847,
+      "spread_after": 1.4105657051687597,
+      "rstar_before": {
+        "Loaded_Line": 1.9628404336214351,
+        "Switched_Line": 1.9667800049721205,
+        "Reflection_Type": 0.8254501029220833,
+        "Switched_Filter": 0.7780898159336357,
+        "Vector_Modulator": 1.8338834007543527,
+        "All_Pass": 0.8386354529146186
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.8535633433190406,
+        "Switched_Line": 1.9228822770319098,
+        "Reflection_Type": 0.5123165718631502,
+        "Switched_Filter": 0.6553274679270145,
+        "Vector_Modulator": 1.7380558090959408,
+        "All_Pass": 0.6175426312777763
+      }
+    },
+    {
+      "id": "spec_0566",
+      "fc_ghz": 20.298603177851703,
+      "spread_before": 1.12459117552687,
+      "spread_after": 1.2990497506153837,
+      "rstar_before": {
+        "Loaded_Line": 1.973972055318276,
+        "Switched_Line": 1.9625333818982247,
+        "Reflection_Type": 1.9399171674089686,
+        "Switched_Filter": 0.849380879791406,
+        "Vector_Modulator": 1.9177882447432282,
+        "All_Pass": 0.8935005683288703
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.9310139468278504,
+        "Switched_Line": 1.7637256914420232,
+        "Reflection_Type": 1.665849919735663,
+        "Switched_Filter": 0.6319641962124668,
+        "Vector_Modulator": 1.7753677546284317,
+        "All_Pass": 0.6336728726996296
+      }
+    },
+    {
+      "id": "spec_0338",
+      "fc_ghz": 23.16856297188357,
+      "spread_before": 1.1966041341898093,
+      "spread_after": 1.421863603399852,
+      "rstar_before": {
+        "Loaded_Line": 1.9789525781232977,
+        "Switched_Line": 1.9741257582754992,
+        "Reflection_Type": 0.7823484439334883,
+        "Switched_Filter": 0.8123637076580476,
+        "Vector_Modulator": 1.8528381876738869,
+        "All_Pass": 0.9270680509043302
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.8709450479986929,
+        "Switched_Line": 1.9017871040849332,
+        "Reflection_Type": 0.47992350068508116,
+        "Switched_Filter": 0.7491488714174098,
+        "Vector_Modulator": 1.548642519825811,
+        "All_Pass": 0.6332335238758543
+      }
+    },
+    {
+      "id": "spec_0178",
+      "fc_ghz": 21.590113456588,
+      "spread_before": 1.1234148479796344,
+      "spread_after": 1.3354683766364759,
+      "rstar_before": {
+        "Loaded_Line": 1.9858462322551196,
+        "Switched_Line": 1.9806668003896233,
+        "Reflection_Type": 1.9877848255114694,
+        "Switched_Filter": 1.8819500840629089,
+        "Vector_Modulator": 1.9640088999750112,
+        "All_Pass": 0.8643699775318349
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.9326841135518475,
+        "Switched_Line": 1.93970051778355,
+        "Reflection_Type": 1.9713435488034583,
+        "Switched_Filter": 1.641182503387513,
+        "Vector_Modulator": 1.896466855363685,
+        "All_Pass": 0.6358751721669824
+      }
+    },
+    {
+      "id": "spec_0372",
+      "fc_ghz": 20.059639980802892,
+      "spread_before": 1.150048710377885,
+      "spread_after": 1.1738602924036616,
+      "rstar_before": {
+        "Loaded_Line": 1.9659278882021196,
+        "Switched_Line": 1.9673076339998508,
+        "Reflection_Type": 0.9138949949524445,
+        "Switched_Filter": 0.8172589236219658,
+        "Vector_Modulator": 1.8731080576626677,
+        "All_Pass": 0.9135589186921824
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.783782276841188,
+        "Switched_Line": 1.744117402391156,
+        "Reflection_Type": 0.6099219844375263,
+        "Switched_Filter": 0.6106709640036753,
+        "Vector_Modulator": 1.5563900122326584,
+        "All_Pass": 0.6704608446869653
+      }
+    },
+    {
+      "id": "spec_0245",
+      "fc_ghz": 21.112656108620264,
+      "spread_before": 1.3306257555795677,
+      "spread_after": 1.342112714575095,
+      "rstar_before": {
+        "Loaded_Line": 1.9638283383882205,
+        "Switched_Line": 1.9182895351017284,
+        "Reflection_Type": 1.9132072447356372,
+        "Switched_Filter": 0.6332025828086528,
+        "Vector_Modulator": 1.7591750577247502,
+        "All_Pass": 0.7008562644444407
+      },
+      "rstar_after": {
+        "Loaded_Line": 1.6956975381802595,
+        "Switched_Line": 1.7151267618884072,
+        "Reflection_Type": 1.858631064356056,
+        "Switched_Filter": 0.5165183497809609,
+        "Vector_Modulator": 1.4818146257303688,
+        "All_Pass": 0.5897706879686725
+      }
+    },
+    {
+      "id": "spec_0453",
+      "fc_ghz": 38.471762972035016,
+      "spread_before": 1.1893593982691626,
+      "spread_after": 1.276271374790309,
+      "rstar_before": {
+        "Loaded_Line": 0.9595930821097746,
+        "Switched_Line": 1.9732533002981825,
+        "Reflection_Type": 1.9820851136860647,
+        "Switched_Filter": 0.792725715416902,
+        "Vector_Modulator": 1.9208572013600613,
+        "All_Pass": 1.938715065607393
+      },
+      "rstar_after": {
+        "Loaded_Line": 0.8565590159338957,
+        "Switched_Line": 1.7589818457928197,
+        "Reflection_Type": 1.9006418248064794,
+        "Switched_Filter": 0.6243704500161705,
+        "Vector_Modulator": 1.8092364976804365,
+        "All_Pass": 1.6139559227583935
+      }
+    },
+    {
+      "id": "spec_0049",
+      "fc_ghz": 1.8929863369733517,
+      "spread_before": 0.07357485375691264,
+      "spread_after": 0.0625817790976626,
+      "rstar_before": {
+        "Loaded_Line": 0.9689861920725901,
+        "Switched_Line": 0.9723355363911744,
+        "Reflection_Type": 0.9171630711719863,
+        "Switched_Filter": 0.8987606826342618,
+        "Vector_Modulator": 0.9202015641398757,
+        "All_Pass": 0.9475112263877697
+      },
+      "rstar_after": {
+        "Loaded_Line": 0.6491913390972915,
+        "Switched_Line": 0.6372996804876424,
+        "Reflection_Type": 0.6041715688468352,
+        "Switched_Filter": 0.5866095599996289,
+        "Vector_Modulator": 0.5889582421545368,
+        "All_Pass": 0.6368188576142789
+      }
+    }
+  ]
+}

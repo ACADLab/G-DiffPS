@@ -1,0 +1,62 @@
+{
+  "n_per_topology": 800,
+  "encoder": "untrained",
+  "run": null,
+  "bounds": "electrical",
+  "pool_states": "endpoints",
+  "fc_range_ghz": [
+    2.0,
+    40.0
+  ],
+  "target": "cos/sin of measured dphi between the two contrasted states",
+  "per_topology": {
+    "Loaded_Line": {
+      "n": 800,
+      "r2_contrast": 0.8818081855545453,
+      "r2_mean": 0.8778329983805259,
+      "r2_both": 0.8890845820432849,
+      "dphi_std_deg": 30.887726545573187
+    },
+    "Switched_Line": {
+      "n": 800,
+      "r2_contrast": 0.1756265010205904,
+      "r2_mean": -0.0017503680552719558,
+      "r2_both": 0.22494333366640296,
+      "dphi_std_deg": 80.04186811892218
+    },
+    "Reflection_Type": {
+      "n": 800,
+      "r2_contrast": 0.27018331113608884,
+      "r2_mean": 0.30331408858509246,
+      "r2_both": 0.2911000625772737,
+      "dphi_std_deg": 26.89889060311455
+    },
+    "Switched_Filter": {
+      "n": 800,
+      "r2_contrast": 0.2947521177335679,
+      "r2_mean": 0.36240288029255063,
+      "r2_both": 0.3819836452790718,
+      "dphi_std_deg": 109.36152310337185
+    },
+    "Vector_Modulator": {
+      "n": 800,
+      "r2_contrast": 0.8262108838159156,
+      "r2_mean": 0.8537897585781434,
+      "r2_both": 0.8895978912637488,
+      "dphi_std_deg": 14.87058119190798
+    },
+    "All_Pass": {
+      "n": 800,
+      "r2_contrast": 0.009912296155375144,
+      "r2_mean": 0.07215915302498288,
+      "r2_both": 0.053150004378067495,
+      "dphi_std_deg": 101.10773037912902
+    }
+  },
+  "pooled": {
+    "n": 4800,
+    "r2_contrast": 0.3256368136346227,
+    "r2_mean": 0.30462527334493594,
+    "r2_both": 0.3431599929158101
+  }
+}

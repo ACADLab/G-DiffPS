@@ -1,0 +1,26 @@
+{
+  "tag": "gin_slot_fixed28",
+  "held_out": "Switched_Line",
+  "seed": 1337,
+  "encoder": "gin",
+  "action_space": "slot",
+  "fc_mode": "fixed28",
+  "bounds": "legacy",
+  "train_returncode": 0,
+  "eval_returncode": 0,
+  "wall_s": 524.0862190723419,
+  "ckpt_dir": "results/matrix_fixed28_control/gin_slot_fixed28/holdout_Switched_Line/seed_1337",
+  "run_dir": "results/matrix_fixed28_control/gin_slot_fixed28/holdout_Switched_Line/seed_1337",
+  "loocv": {
+    "held_out": "Switched_Line",
+    "n": 200,
+    "compliance": 0.965,
+    "prior_pass_rate": 1.0,
+    "best_reward": 2.1365021743639954,
+    "mean_reward_success": 0.8572957372349477,
+    "encoder": "gin",
+    "action_space": "slot",
+    "fc_mode": "fixed28",
+    "bounds": "legacy"
+  }
+}

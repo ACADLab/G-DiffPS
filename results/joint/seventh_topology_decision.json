@@ -1,0 +1,500 @@
+{
+  "fc_ghz": 28.0,
+  "bounds": "electrical",
+  "spec": {
+    "fc_ghz": 28.0,
+    "tech": 0,
+    "phase_bits": 1,
+    "phase_coverage_deg": 180.0,
+    "rms_phase_err_deg": 5.0,
+    "max_il_db": 3.0,
+    "min_rl_db": 15.0,
+    "max_gain_err_db": 1.0,
+    "max_area_mm2": 5.0
+  },
+  "A_reward_matrix": {
+    "cells": {
+      "Switched_Line/ideal": {
+        "score": 0.45891296138440757,
+        "rms_phase_err_deg": 6.29121470254461,
+        "il_db": 0.5571807778505729,
+        "rl_db": 28.31674516061334,
+        "R_off_ohm": 10000.0
+      },
+      "Switched_Line_SeriesShunt/ideal": {
+        "score": 0.45567524719879443,
+        "rms_phase_err_deg": 6.301333383425917,
+        "il_db": 0.6018978692702852,
+        "rl_db": 29.183932584009945,
+        "R_off_ohm": 10000.0
+      },
+      "Switched_Line/realistic": {
+        "score": 0.35472760165463957,
+        "rms_phase_err_deg": 6.026354902913131,
+        "il_db": 1.9300179519466558,
+        "rl_db": 21.946691326068333,
+        "R_off_ohm": 284.21
+      },
+      "Switched_Line_SeriesShunt/realistic": {
+        "score": 0.27540027959488655,
+        "rms_phase_err_deg": 5.229451604982408,
+        "il_db": 3.3854918704412427,
+        "rl_db": 16.40582401497162,
+        "R_off_ohm": 284.21
+      }
+    },
+    "crossover": false,
+    "crossover_definition": "SL beats shunt under ideal AND shunt beats SL under realistic"
+  },
+  "B_dphi_table": {
+    "Switched_Line": {
+      "ideal": 98.8971211561396,
+      "realistic": 98.52255283537335,
+      "retention": 0.9962125457608125
+    },
+    "Switched_Filter": {
+      "ideal": 179.99999883642442,
+      "realistic": 179.99999897390245,
+      "retention": 1.0000000007637668
+    },
+    "All_Pass": {
+      "ideal": 2.842170943040401e-14,
+      "realistic": 0.0,
+      "retention": NaN
+    }
+  },
+  "C_arm_ratio": {
+    "sweep": [
+      {
+        "arm_ratio": 1.0,
+        "dphi_ideal": 0.0,
+        "dphi_realistic": 0.0,
+        "retention": NaN
+      },
+      {
+        "arm_ratio": 1.02,
+        "dphi_ideal": 0.9900598506542337,
+        "dphi_realistic": 1.0069857131687172,
+        "retention": 1.0170957972927583
+      },
+      {
+        "arm_ratio": 1.05,
+        "dphi_ideal": 2.475054856971582,
+        "dphi_realistic": 2.5153755989076103,
+        "retention": 1.0162908477856383
+      },
+      {
+        "arm_ratio": 1.1,
+        "dphi_ideal": 4.949798131504906,
+        "dphi_realistic": 5.023899756574991,
+        "retention": 1.0149706357918795
+      },
+      {
+        "arm_ratio": 1.25,
+        "dphi_ideal": 12.372261143602657,
+        "dphi_realistic": 12.511152813486547,
+        "retention": 1.011226053853196
+      },
+      {
+        "arm_ratio": 1.5,
+        "dphi_ideal": 24.73803332645943,
+        "dphi_realistic": 24.88333119979393,
+        "retention": 1.0058734609747289
+      },
+      {
+        "arm_ratio": 2.0,
+        "dphi_ideal": 49.46054178027427,
+        "dphi_realistic": 49.394667027837215,
+        "retention": 0.9986681352434492
+      },
+      {
+        "arm_ratio": 3.0,
+        "dphi_ideal": 98.95028320646249,
+        "dphi_realistic": 98.57578230492626,
+        "retention": 0.9962152619537752
+      }
+    ],
+    "t04_nominal": {
+      "dphi_ideal": 98.8971211561396,
+      "arm_ratio_at_mid_action": 2.998927038626609,
+      "dphi_realistic": 98.52255283537335,
+      "retention": 0.9962125457608125
+    }
+  },
+  "D_allpass": {
+    "ideal": {
+      "midpoint_dphi_deg": 2.842170943040401e-14,
+      "midpoint_branches_identical": true,
+      "box_best_dphi_deg": 179.80205169230481,
+      "box_best_action": [
+        0.7874425114599553,
+        0.07025205916566668,
+        0.31929649126012305,
+        0.3791795049599731,
+        0.8994313825403332,
+        0.6463360791251781
+      ],
+      "box_median_dphi_deg": 85.34822077596468,
+      "box_frac_over_45deg": 0.71484375,
+      "k": 512
+    },
+    "realistic": {
+      "midpoint_dphi_deg": 0.0,
+      "midpoint_branches_identical": true,
+      "box_best_dphi_deg": 179.7850679182156,
+      "box_best_action": [
+        0.8715764380859595,
+        0.22693820883891724,
+        0.5171675784546903,
+        0.06089304150194863,
+        0.6287080660400716,
+        0.6727716784275841
+      ],
+      "box_median_dphi_deg": 78.06421029401243,
+      "box_frac_over_45deg": 0.693359375,
+      "k": 512
+    }
+  },
+  "E_collapse_boundary": {
+    "sweep": [
+      {
+        "fc_ghz": 2.4,
+        "c_off_ff": 20,
+        "r_off_ohm": 3315.7279810811524,
+        "dphi_ideal": 98.91533007122754,
+        "dphi_deg": 98.9406708196287,
+        "retention": 1.0002561862593282
+      },
+      {
+        "fc_ghz": 2.4,
+        "c_off_ff": 25,
+        "r_off_ohm": 2652.5823848649225,
+        "dphi_ideal": 98.91533007122754,
+        "dphi_deg": 98.94901991081723,
+        "retention": 1.0003405927025206
+      },
+      {
+        "fc_ghz": 2.4,
+        "c_off_ff": 50,
+        "r_off_ohm": 1326.2911924324612,
+        "dphi_ideal": 98.91533007122754,
+        "dphi_deg": 98.9814728939654,
+        "retention": 1.000668681211398
+      },
+      {
+        "fc_ghz": 2.4,
+        "c_off_ff": 100,
+        "r_off_ohm": 663.1455962162306,
+        "dphi_ideal": 98.91533007122754,
+        "dphi_deg": 98.99471445062974,
+        "retention": 1.000802548799514
+      },
+      {
+        "fc_ghz": 2.4,
+        "c_off_ff": 200,
+        "r_off_ohm": 331.5727981081153,
+        "dphi_ideal": 98.91533007122754,
+        "dphi_deg": 98.73509237843712,
+        "retention": 0.9981778588550365
+      },
+      {
+        "fc_ghz": 2.4,
+        "c_off_ff": 400,
+        "r_off_ohm": 165.78639905405765,
+        "dphi_ideal": 98.91533007122754,
+        "dphi_deg": 96.68071759102072,
+        "retention": 0.9774088356314667
+      },
+      {
+        "fc_ghz": 2.4,
+        "c_off_ff": 650,
+        "r_off_ohm": 102.02239941788162,
+        "dphi_ideal": 98.91533007122754,
+        "dphi_deg": 91.68755989463838,
+        "retention": 0.926929726955523
+      },
+      {
+        "fc_ghz": 2.4,
+        "c_off_ff": 1000,
+        "r_off_ohm": 66.31455962162306,
+        "dphi_ideal": 98.91533007122754,
+        "dphi_deg": 82.57811950527827,
+        "retention": 0.8348364145963514
+      },
+      {
+        "fc_ghz": 2.4,
+        "c_off_ff": 2000,
+        "r_off_ohm": 33.15727981081153,
+        "dphi_ideal": 98.91533007122754,
+        "dphi_deg": 57.680611157354946,
+        "retention": 0.5831311599103995
+      },
+      {
+        "fc_ghz": 2.4,
+        "c_off_ff": 5000,
+        "r_off_ohm": 13.262911924324612,
+        "dphi_ideal": 98.91533007122754,
+        "dphi_deg": 23.31274422264636,
+        "retention": 0.23568383389975223
+      },
+      {
+        "fc_ghz": 10.0,
+        "c_off_ff": 20,
+        "r_off_ohm": 795.7747154594766,
+        "dphi_ideal": 98.90850259347138,
+        "dphi_deg": 98.99196507522362,
+        "retention": 1.0008438352574731
+      },
+      {
+        "fc_ghz": 10.0,
+        "c_off_ff": 25,
+        "r_off_ohm": 636.6197723675813,
+        "dphi_ideal": 98.90850259347138,
+        "dphi_deg": 98.98543285639664,
+        "retention": 1.0007777922110646
+      },
+      {
+        "fc_ghz": 10.0,
+        "c_off_ff": 50,
+        "r_off_ohm": 318.30988618379064,
+        "dphi_ideal": 98.90850259347138,
+        "dphi_deg": 98.6852333467391,
+        "retention": 0.997742668821406
+      },
+      {
+        "fc_ghz": 10.0,
+        "c_off_ff": 100,
+        "r_off_ohm": 159.15494309189532,
+        "dphi_ideal": 98.90850259347138,
+        "dphi_deg": 96.41190236117734,
+        "retention": 0.9747584872196939
+      },
+      {
+        "fc_ghz": 10.0,
+        "c_off_ff": 200,
+        "r_off_ohm": 79.57747154594766,
+        "dphi_ideal": 98.90850259347138,
+        "dphi_deg": 87.06360974900034,
+        "retention": 0.8802439372360603
+      },
+      {
+        "fc_ghz": 10.0,
+        "c_off_ff": 400,
+        "r_off_ohm": 39.78873577297383,
+        "dphi_ideal": 98.90850259347138,
+        "dphi_deg": 65.12823175043862,
+        "retention": 0.6584694949647081
+      },
+      {
+        "fc_ghz": 10.0,
+        "c_off_ff": 650,
+        "r_off_ohm": 24.48537586029159,
+        "dphi_ideal": 98.90850259347138,
+        "dphi_deg": 45.04948278078223,
+        "retention": 0.455466229894737
+      },
+      {
+        "fc_ghz": 10.0,
+        "c_off_ff": 1000,
+        "r_off_ohm": 15.915494309189537,
+        "dphi_ideal": 98.90850259347138,
+        "dphi_deg": 28.96138794050455,
+        "retention": 0.29280989177988215
+      },
+      {
+        "fc_ghz": 10.0,
+        "c_off_ff": 2000,
+        "r_off_ohm": 7.9577471545947684,
+        "dphi_ideal": 98.90850259347138,
+        "dphi_deg": 11.366926386650675,
+        "retention": 0.11492365255361744
+      },
+      {
+        "fc_ghz": 10.0,
+        "c_off_ff": 5000,
+        "r_off_ohm": 3.183098861837907,
+        "dphi_ideal": 98.90850259347138,
+        "dphi_deg": 0.4139935599989144,
+        "retention": 0.00418562155066172
+      },
+      {
+        "fc_ghz": 28.0,
+        "c_off_ff": 20,
+        "r_off_ohm": 284.20525552124167,
+        "dphi_ideal": 98.8971211561396,
+        "dphi_deg": 98.52255283537335,
+        "retention": 0.9962125457608125
+      },
+      {
+        "fc_ghz": 28.0,
+        "c_off_ff": 25,
+        "r_off_ohm": 227.36420441699335,
+        "dphi_ideal": 98.8971211561396,
+        "dphi_deg": 98.03746875399767,
+        "retention": 0.9913076094420917
+      },
+      {
+        "fc_ghz": 28.0,
+        "c_off_ff": 50,
+        "r_off_ohm": 113.68210220849667,
+        "dphi_ideal": 98.8971211561396,
+        "dphi_deg": 93.19123743533322,
+        "retention": 0.9423048552465153
+      },
+      {
+        "fc_ghz": 28.0,
+        "c_off_ff": 100,
+        "r_off_ohm": 56.841051104248336,
+        "dphi_ideal": 98.8971211561396,
+        "dphi_deg": 78.00487857349422,
+        "retention": 0.7887477174420423
+      },
+      {
+        "fc_ghz": 28.0,
+        "c_off_ff": 200,
+        "r_off_ohm": 28.420525552124168,
+        "dphi_ideal": 98.8971211561396,
+        "dphi_deg": 51.211620074961274,
+        "retention": 0.5178272074685363
+      },
+      {
+        "fc_ghz": 28.0,
+        "c_off_ff": 400,
+        "r_off_ohm": 14.210262776062084,
+        "dphi_ideal": 98.8971211561396,
+        "dphi_deg": 25.35308566664054,
+        "retention": 0.2563581767624244
+      },
+      {
+        "fc_ghz": 28.0,
+        "c_off_ff": 650,
+        "r_off_ohm": 8.744777092961282,
+        "dphi_ideal": 98.8971211561396,
+        "dphi_deg": 13.170206278453549,
+        "retention": 0.13317077508919917
+      },
+      {
+        "fc_ghz": 28.0,
+        "c_off_ff": 1000,
+        "r_off_ohm": 5.6841051104248335,
+        "dphi_ideal": 98.8971211561396,
+        "dphi_deg": 6.129791396923167,
+        "retention": 0.061981494762070995
+      },
+      {
+        "fc_ghz": 28.0,
+        "c_off_ff": 2000,
+        "r_off_ohm": 2.8420525552124167,
+        "dphi_ideal": 98.8971211561396,
+        "dphi_deg": 0.35624322936297403,
+        "retention": 0.0036021597514505426
+      },
+      {
+        "fc_ghz": 28.0,
+        "c_off_ff": 5000,
+        "r_off_ohm": 1.1368210220849666,
+        "dphi_ideal": 98.8971211561396,
+        "dphi_deg": 4.155113004747761,
+        "retention": 0.042014499069064244
+      },
+      {
+        "fc_ghz": 40.0,
+        "c_off_ff": 20,
+        "r_off_ohm": 198.94367886486916,
+        "dphi_ideal": 98.88949885940619,
+        "dphi_deg": 97.57119107180247,
+        "retention": 0.9866688798830098
+      },
+      {
+        "fc_ghz": 40.0,
+        "c_off_ff": 25,
+        "r_off_ohm": 159.15494309189532,
+        "dphi_ideal": 98.88949885940619,
+        "dphi_deg": 96.39330419416427,
+        "retention": 0.9747577377372412
+      },
+      {
+        "fc_ghz": 40.0,
+        "c_off_ff": 50,
+        "r_off_ohm": 79.57747154594766,
+        "dphi_ideal": 98.88949885940619,
+        "dphi_deg": 87.04606575587235,
+        "retention": 0.880235684879221
+      },
+      {
+        "fc_ghz": 40.0,
+        "c_off_ff": 100,
+        "r_off_ohm": 39.78873577297383,
+        "dphi_ideal": 98.88949885940619,
+        "dphi_deg": 65.11161367700016,
+        "retention": 0.6584279870764748
+      },
+      {
+        "fc_ghz": 40.0,
+        "c_off_ff": 200,
+        "r_off_ohm": 19.894367886486915,
+        "dphi_ideal": 98.88949885940619,
+        "dphi_deg": 36.86246080366479,
+        "retention": 0.3727641582659158
+      },
+      {
+        "fc_ghz": 40.0,
+        "c_off_ff": 400,
+        "r_off_ohm": 9.947183943243457,
+        "dphi_ideal": 98.88949885940619,
+        "dphi_deg": 15.910396141539366,
+        "retention": 0.16089065396275892
+      },
+      {
+        "fc_ghz": 40.0,
+        "c_off_ff": 650,
+        "r_off_ohm": 6.121343965072898,
+        "dphi_ideal": 98.88949885940619,
+        "dphi_deg": 7.135126658037649,
+        "retention": 0.07215252115072246
+      },
+      {
+        "fc_ghz": 40.0,
+        "c_off_ff": 1000,
+        "r_off_ohm": 3.9788735772973842,
+        "dphi_ideal": 98.88949885940619,
+        "dphi_deg": 2.2212890332662596,
+        "retention": 0.02246233481700949
+      },
+      {
+        "fc_ghz": 40.0,
+        "c_off_ff": 2000,
+        "r_off_ohm": 1.9894367886486921,
+        "dphi_ideal": 98.88949885940619,
+        "dphi_deg": 2.2674534925294267,
+        "retention": 0.02292916354802369
+      },
+      {
+        "fc_ghz": 40.0,
+        "c_off_ff": 5000,
+        "r_off_ohm": 0.7957747154594768,
+        "dphi_ideal": 98.88949885940619,
+        "dphi_deg": 4.901507382385944,
+        "retention": 0.04956549925846572
+      }
+    ],
+    "collapse_c_off_ff_by_fc": {
+      "2.4": 5000,
+      "10.0": 650,
+      "28.0": 400,
+      "40.0": 200
+    },
+    "tech_c_off_ff": {
+      "0": 20.0,
+      "1": 20.0,
+      "2": 25.0
+    }
+  },
+  "verdict": {
+    "t01c_collapse_reproduces": false,
+    "switched_line_retention": 0.9962125457608125,
+    "switched_filter_retention": 1.0000000007637668,
+    "allpass_is_switch_limited": false,
+    "decision": "ABANDON seventh topology: no collapse to remedy under T0.4 bounds"
+  }
+}

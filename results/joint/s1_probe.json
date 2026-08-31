@@ -1,0 +1,46 @@
+{
+  "n_specs": 600,
+  "n_feasible": 431,
+  "n_infeasible": 169,
+  "frac_infeasible": 0.2816666666666667,
+  "spread_full": {
+    "all_median": 1.4319904993574044,
+    "feasible_median": 1.4355523887471355,
+    "infeasible_median": 1.4170271655204463,
+    "feasible_frac_below_0_15": 0.0
+  },
+  "spread_continuous_proxy": {
+    "note": "subtract 1.0 from scores > 1.0 then clip to [0,1] (all_close proxy)",
+    "all_median": 0.4456778302373906,
+    "feasible_median": 0.4505982139452338,
+    "infeasible_median": 0.4355438369624555,
+    "feasible_frac_below_0_15": 0.0069605568445475635
+  },
+  "per_topo_extremes": {
+    "Loaded_Line": {
+      "n_worst": 0,
+      "n_best": 60
+    },
+    "Switched_Line": {
+      "n_worst": 0,
+      "n_best": 40
+    },
+    "Reflection_Type": {
+      "n_worst": 29,
+      "n_best": 0
+    },
+    "Switched_Filter": {
+      "n_worst": 0,
+      "n_best": 405
+    },
+    "Vector_Modulator": {
+      "n_worst": 3,
+      "n_best": 95
+    },
+    "All_Pass": {
+      "n_worst": 568,
+      "n_best": 0
+    }
+  },
+  "verdict": "NEITHER_EXPLAINS: feasible median 1.436 vs all 1.432; continuous proxy 0.451. Cause is structural (template defaults uneven across topologies). Stop gate: regenerate still justified by S0/S4/S5/S6 hygiene, but T1 criterion must be restated against sized designs (r*), not template defaults."
+}

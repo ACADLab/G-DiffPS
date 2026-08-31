@@ -1,0 +1,184 @@
+{
+  "n_topologies": 6,
+  "uniform_frac": 0.16666666666666666,
+  "gate": {
+    "hi_frac": 0.3,
+    "lo_frac": 0.05
+  },
+  "pools": {
+    "train": {
+      "original": {
+        "shares": {
+          "Switched_Line": {
+            "n": 2182,
+            "frac": 0.2182
+          },
+          "Loaded_Line": {
+            "n": 431,
+            "frac": 0.0431
+          },
+          "Reflection_Type": {
+            "n": 4196,
+            "frac": 0.4196
+          },
+          "Switched_Filter": {
+            "n": 2112,
+            "frac": 0.2112
+          },
+          "Vector_Modulator": {
+            "n": 624,
+            "frac": 0.0624
+          },
+          "All_Pass": {
+            "n": 455,
+            "frac": 0.0455
+          }
+        },
+        "gate": {
+          "over_hi": {
+            "Reflection_Type": 0.4196
+          },
+          "under_lo": {
+            "Loaded_Line": 0.0431,
+            "All_Pass": 0.0455
+          },
+          "max_frac": 0.4196,
+          "min_frac": 0.0431,
+          "spread": 0.37649999999999995,
+          "tv_from_uniform": 0.349,
+          "degenerate": true
+        }
+      },
+      "normalized_pm1": {
+        "shares": {
+          "Switched_Line": {
+            "n": 4974,
+            "frac": 0.4974
+          },
+          "Loaded_Line": {
+            "n": 925,
+            "frac": 0.0925
+          },
+          "Reflection_Type": {
+            "n": 2969,
+            "frac": 0.2969
+          },
+          "Switched_Filter": {
+            "n": 960,
+            "frac": 0.096
+          },
+          "Vector_Modulator": {
+            "n": 32,
+            "frac": 0.0032
+          },
+          "All_Pass": {
+            "n": 140,
+            "frac": 0.014
+          }
+        },
+        "gate": {
+          "over_hi": {
+            "Switched_Line": 0.4974
+          },
+          "under_lo": {
+            "Vector_Modulator": 0.0032,
+            "All_Pass": 0.014
+          },
+          "max_frac": 0.4974,
+          "min_frac": 0.0032,
+          "spread": 0.49420000000000003,
+          "tv_from_uniform": 0.46096666666666664,
+          "degenerate": true
+        }
+      }
+    },
+    "eval": {
+      "original": {
+        "shares": {
+          "Switched_Line": {
+            "n": 430,
+            "frac": 0.215
+          },
+          "Loaded_Line": {
+            "n": 76,
+            "frac": 0.038
+          },
+          "Reflection_Type": {
+            "n": 834,
+            "frac": 0.417
+          },
+          "Switched_Filter": {
+            "n": 457,
+            "frac": 0.2285
+          },
+          "Vector_Modulator": {
+            "n": 113,
+            "frac": 0.0565
+          },
+          "All_Pass": {
+            "n": 90,
+            "frac": 0.045
+          }
+        },
+        "gate": {
+          "over_hi": {
+            "Reflection_Type": 0.417
+          },
+          "under_lo": {
+            "Loaded_Line": 0.038,
+            "All_Pass": 0.045
+          },
+          "max_frac": 0.417,
+          "min_frac": 0.038,
+          "spread": 0.379,
+          "tv_from_uniform": 0.3605,
+          "degenerate": true
+        }
+      },
+      "normalized_pm1": {
+        "shares": {
+          "Switched_Line": {
+            "n": 1011,
+            "frac": 0.5055
+          },
+          "Loaded_Line": {
+            "n": 200,
+            "frac": 0.1
+          },
+          "Reflection_Type": {
+            "n": 577,
+            "frac": 0.2885
+          },
+          "Switched_Filter": {
+            "n": 181,
+            "frac": 0.0905
+          },
+          "Vector_Modulator": {
+            "n": 5,
+            "frac": 0.0025
+          },
+          "All_Pass": {
+            "n": 26,
+            "frac": 0.013
+          }
+        },
+        "gate": {
+          "over_hi": {
+            "Switched_Line": 0.5055
+          },
+          "under_lo": {
+            "Vector_Modulator": 0.0025,
+            "All_Pass": 0.013
+          },
+          "max_frac": 0.5055,
+          "min_frac": 0.0025,
+          "spread": 0.503,
+          "tv_from_uniform": 0.4606666666666666,
+          "degenerate": true
+        }
+      }
+    }
+  },
+  "s3_required": true,
+  "s3_decision": "S3 REQUIRED: at least one class is outside [5%, 30%] \u2014 margin stratification is needed so selector performance is reported per difficulty stratum rather than against a prior that a constant predictor can exploit."
+}

@@ -1,0 +1,26 @@
+{
+  "tag": "gin_device",
+  "held_out": "Vector_Modulator",
+  "seed": 2026,
+  "encoder": "gin",
+  "action_space": "device",
+  "fc_mode": "spec",
+  "bounds": "electrical",
+  "train_returncode": 0,
+  "eval_returncode": 0,
+  "wall_s": 209.6986701488495,
+  "ckpt_dir": "results/matrix_corrected/gin_device/holdout_Vector_Modulator/seed_2026",
+  "run_dir": "results/matrix_corrected/gin_device/holdout_Vector_Modulator/seed_2026",
+  "loocv": {
+    "held_out": "Vector_Modulator",
+    "n": 200,
+    "compliance": 0.965,
+    "prior_pass_rate": 1.0,
+    "best_reward": 2.221749739906019,
+    "mean_reward_success": 0.8349290976370262,
+    "encoder": "gin",
+    "action_space": "device",
+    "fc_mode": "spec",
+    "bounds": "electrical"
+  }
+}

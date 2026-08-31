@@ -1,0 +1,26 @@
+{
+  "tag": "gin_slot",
+  "held_out": "Loaded_Line",
+  "seed": 1337,
+  "encoder": "gin",
+  "action_space": "slot",
+  "fc_mode": "spec",
+  "bounds": "electrical",
+  "train_returncode": 0,
+  "eval_returncode": 0,
+  "wall_s": 531.0900559425354,
+  "ckpt_dir": "results/matrix_corrected/gin_slot/holdout_Loaded_Line/seed_1337",
+  "run_dir": "results/matrix_corrected/gin_slot/holdout_Loaded_Line/seed_1337",
+  "loocv": {
+    "held_out": "Loaded_Line",
+    "n": 200,
+    "compliance": 0.0,
+    "prior_pass_rate": 0.0,
+    "best_reward": -5.0,
+    "mean_reward_success": -5.0,
+    "encoder": "gin",
+    "action_space": "slot",
+    "fc_mode": "spec",
+    "bounds": "electrical"
+  }
+}

@@ -1,0 +1,976 @@
+{
+  "summary": {
+    "n_comparisons": 120,
+    "de_maxiter": 40,
+    "gap_mean": -0.03914944665955293,
+    "gap_p50": 0.00864947736062105,
+    "gap_p95": 0.11846477505066098,
+    "gap_max": 0.9666573559107537,
+    "frac_archive_within_0p01": 0.55,
+    "frac_archive_within_0p05": 0.8583333333333333,
+    "frac_archive_beats_de": 0.225,
+    "note": "gap = direct_DE - archive_bound. Negative means the archive found a better sizing than per-spec DE, which is possible because the archive pools far more circuit evaluations."
+  },
+  "rows": [
+    {
+      "spec_id": "eval_01693",
+      "topology": "Loaded_Line",
+      "switch_model": "ideal",
+      "archive": 1.8677220375578938,
+      "direct_de": 1.876865251285979,
+      "gap": 0.009143213728085131
+    },
+    {
+      "spec_id": "eval_01693",
+      "topology": "Switched_Line",
+      "switch_model": "ideal",
+      "archive": 1.7507406879848555,
+      "direct_de": 1.7732257454318823,
+      "gap": 0.02248505744702678
+    },
+    {
+      "spec_id": "eval_01693",
+      "topology": "Reflection_Type",
+      "switch_model": "ideal",
+      "archive": 1.7983620089396188,
+      "direct_de": 1.8177773260582026,
+      "gap": 0.019415317118583797
+    },
+    {
+      "spec_id": "eval_01693",
+      "topology": "Switched_Filter",
+      "switch_model": "ideal",
+      "archive": 0.7328333394848344,
+      "direct_de": 0.7861079471225834,
+      "gap": 0.05327460763774894
+    },
+    {
+      "spec_id": "eval_01693",
+      "topology": "Vector_Modulator",
+      "switch_model": "ideal",
+      "archive": 1.8792588702159256,
+      "direct_de": 1.8700128701609544,
+      "gap": -0.009246000054971226
+    },
+    {
+      "spec_id": "eval_01693",
+      "topology": "All_Pass",
+      "switch_model": "ideal",
+      "archive": 0.7849921080737655,
+      "direct_de": 0.7856816684655733,
+      "gap": 0.0006895603918077864
+    },
+    {
+      "spec_id": "eval_01693",
+      "topology": "Loaded_Line",
+      "switch_model": "realistic",
+      "archive": 1.816030006423059,
+      "direct_de": 1.810057335214337,
+      "gap": -0.005972671208722025
+    },
+    {
+      "spec_id": "eval_01693",
+      "topology": "Switched_Line",
+      "switch_model": "realistic",
+      "archive": 1.6898856064205607,
+      "direct_de": 1.6996424949870508,
+      "gap": 0.00975688856649004
+    },
+    {
+      "spec_id": "eval_01693",
+      "topology": "Reflection_Type",
+      "switch_model": "realistic",
+      "archive": 1.775344546214364,
+      "direct_de": 1.8007418001818678,
+      "gap": 0.025397253967503808
+    },
+    {
+      "spec_id": "eval_01693",
+      "topology": "Switched_Filter",
+      "switch_model": "realistic",
+      "archive": 0.6924205268938639,
+      "direct_de": 0.7126006706411533,
+      "gap": 0.02018014374728938
+    },
+    {
+      "spec_id": "eval_01693",
+      "topology": "Vector_Modulator",
+      "switch_model": "realistic",
+      "archive": 1.8792588702159256,
+      "direct_de": 1.8700128701609544,
+      "gap": -0.009246000054971226
+    },
+    {
+      "spec_id": "eval_01693",
+      "topology": "All_Pass",
+      "switch_model": "realistic",
+      "archive": 0.7163429565355343,
+      "direct_de": 0.7155946014874515,
+      "gap": -0.0007483550480827939
+    },
+    {
+      "spec_id": "eval_01626",
+      "topology": "Loaded_Line",
+      "switch_model": "ideal",
+      "archive": 1.803098549371026,
+      "direct_de": 1.8212940868414904,
+      "gap": 0.018195537470464318
+    },
+    {
+      "spec_id": "eval_01626",
+      "topology": "Switched_Line",
+      "switch_model": "ideal",
+      "archive": 0.8043550275913794,
+      "direct_de": 0.8050007974992568,
+      "gap": 0.0006457699078773471
+    },
+    {
+      "spec_id": "eval_01626",
+      "topology": "Reflection_Type",
+      "switch_model": "ideal",
+      "archive": 0.7880742749334504,
+      "direct_de": 0.8084172616074551,
+      "gap": 0.020342986674004693
+    },
+    {
+      "spec_id": "eval_01626",
+      "topology": "Switched_Filter",
+      "switch_model": "ideal",
+      "archive": 0.6906403108486905,
+      "direct_de": 0.7887225620427343,
+      "gap": 0.09808225119404379
+    },
+    {
+      "spec_id": "eval_01626",
+      "topology": "Vector_Modulator",
+      "switch_model": "ideal",
+      "archive": 1.8136452638371325,
+      "direct_de": 1.818684448211048,
+      "gap": 0.005039184373915484
+    },
+    {
+      "spec_id": "eval_01626",
+      "topology": "All_Pass",
+      "switch_model": "ideal",
+      "archive": 0.7995695923591416,
+      "direct_de": 0.793908093545092,
+      "gap": -0.005661498814049648
+    },
+    {
+      "spec_id": "eval_01626",
+      "topology": "Loaded_Line",
+      "switch_model": "realistic",
+      "archive": 1.771784077841517,
+      "direct_de": 1.794192253165368,
+      "gap": 0.022408175323850976
+    },
+    {
+      "spec_id": "eval_01626",
+      "topology": "Switched_Line",
+      "switch_model": "realistic",
+      "archive": 0.7760480971310431,
+      "direct_de": 0.7788359065545603,
+      "gap": 0.0027878094235171957
+    },
+    {
+      "spec_id": "eval_01626",
+      "topology": "Reflection_Type",
+      "switch_model": "realistic",
+      "archive": 0.7759177216137031,
+      "direct_de": 0.8052529907410013,
+      "gap": 0.029335269127298225
+    },
+    {
+      "spec_id": "eval_01626",
+      "topology": "Switched_Filter",
+      "switch_model": "realistic",
+      "archive": 0.6233326465569419,
+      "direct_de": 0.769427924672047,
+      "gap": 0.14609527811510514
+    },
+    {
+      "spec_id": "eval_01626",
+      "topology": "Vector_Modulator",
+      "switch_model": "realistic",
+      "archive": 1.8136452638371325,
+      "direct_de": 1.818684448211048,
+      "gap": 0.005039184373915484
+    },
+    {
+      "spec_id": "eval_01626",
+      "topology": "All_Pass",
+      "switch_model": "realistic",
+      "archive": 0.7376842158965216,
+      "direct_de": 0.7756854285325221,
+      "gap": 0.038001212636000536
+    },
+    {
+      "spec_id": "eval_01268",
+      "topology": "Loaded_Line",
+      "switch_model": "ideal",
+      "archive": 1.8924411035013844,
+      "direct_de": 1.9049561492714386,
+      "gap": 0.012515045770054245
+    },
+    {
+      "spec_id": "eval_01268",
+      "topology": "Switched_Line",
+      "switch_model": "ideal",
+      "archive": 1.8017617366323686,
+      "direct_de": 1.8040803475601987,
+      "gap": 0.0023186109278301448
+    },
+    {
+      "spec_id": "eval_01268",
+      "topology": "Reflection_Type",
+      "switch_model": "ideal",
+      "archive": 0.7823384629024801,
+      "direct_de": 0.8158971082928522,
+      "gap": 0.03355864539037212
+    },
+    {
+      "spec_id": "eval_01268",
+      "topology": "Switched_Filter",
+      "switch_model": "ideal",
+      "archive": 1.6121403501350664,
+      "direct_de": 1.8238916029561643,
+      "gap": 0.21175125282109786
+    },
+    {
+      "spec_id": "eval_01268",
+      "topology": "Vector_Modulator",
+      "switch_model": "ideal",
+      "archive": 1.88530404815355,
+      "direct_de": 1.8772308059307063,
+      "gap": -0.008073242222843557
+    },
+    {
+      "spec_id": "eval_01268",
+      "topology": "All_Pass",
+      "switch_model": "ideal",
+      "archive": 1.8162920165177363,
+      "direct_de": 1.816640105265129,
+      "gap": 0.00034808874739278295
+    },
+    {
+      "spec_id": "eval_01268",
+      "topology": "Loaded_Line",
+      "switch_model": "realistic",
+      "archive": 1.8601842431085047,
+      "direct_de": 1.872348467933909,
+      "gap": 0.012164224825404357
+    },
+    {
+      "spec_id": "eval_01268",
+      "topology": "Switched_Line",
+      "switch_model": "realistic",
+      "archive": 1.7816078459705254,
+      "direct_de": 1.7957679207282276,
+      "gap": 0.014160074757702201
+    },
+    {
+      "spec_id": "eval_01268",
+      "topology": "Reflection_Type",
+      "switch_model": "realistic",
+      "archive": 0.7778243709701458,
+      "direct_de": 0.8125860610450762,
+      "gap": 0.03476169007493046
+    },
+    {
+      "spec_id": "eval_01268",
+      "topology": "Switched_Filter",
+      "switch_model": "realistic",
+      "archive": 1.7812628374106727,
+      "direct_de": 1.8134421864633654,
+      "gap": 0.03217934905269271
+    },
+    {
+      "spec_id": "eval_01268",
+      "topology": "Vector_Modulator",
+      "switch_model": "realistic",
+      "archive": 1.88530404815355,
+      "direct_de": 1.8772308059307063,
+      "gap": -0.008073242222843557
+    },
+    {
+      "spec_id": "eval_01268",
+      "topology": "All_Pass",
+      "switch_model": "realistic",
+      "archive": 1.8008887193695637,
+      "direct_de": 1.809660477794536,
+      "gap": 0.008771758424972242
+    },
+    {
+      "spec_id": "eval_01018",
+      "topology": "Loaded_Line",
+      "switch_model": "ideal",
+      "archive": 1.8876629614278508,
+      "direct_de": 1.8959016269536226,
+      "gap": 0.008238665525771793
+    },
+    {
+      "spec_id": "eval_01018",
+      "topology": "Switched_Line",
+      "switch_model": "ideal",
+      "archive": 1.768566056313271,
+      "direct_de": 1.773904416118579,
+      "gap": 0.005338359805308057
+    },
+    {
+      "spec_id": "eval_01018",
+      "topology": "Reflection_Type",
+      "switch_model": "ideal",
+      "archive": 1.6249792689266216,
+      "direct_de": 0.8118769833718648,
+      "gap": -0.8131022855547568
+    },
+    {
+      "spec_id": "eval_01018",
+      "topology": "Switched_Filter",
+      "switch_model": "ideal",
+      "archive": 1.7512304828596403,
+      "direct_de": 1.786111437943477,
+      "gap": 0.03488095508383671
+    },
+    {
+      "spec_id": "eval_01018",
+      "topology": "Vector_Modulator",
+      "switch_model": "ideal",
+      "archive": 1.881205729502684,
+      "direct_de": 1.8795827977471358,
+      "gap": -0.0016229317555482847
+    },
+    {
+      "spec_id": "eval_01018",
+      "topology": "All_Pass",
+      "switch_model": "ideal",
+      "archive": 1.779540846344589,
+      "direct_de": 1.7788600715977427,
+      "gap": -0.0006807747468462466
+    },
+    {
+      "spec_id": "eval_01018",
+      "topology": "Loaded_Line",
+      "switch_model": "realistic",
+      "archive": 1.8665143136424023,
+      "direct_de": 1.8737602190249767,
+      "gap": 0.0072459053825744135
+    },
+    {
+      "spec_id": "eval_01018",
+      "topology": "Switched_Line",
+      "switch_model": "realistic",
+      "archive": 1.7317204828538704,
+      "direct_de": 1.7550764862500805,
+      "gap": 0.023356003396210134
+    },
+    {
+      "spec_id": "eval_01018",
+      "topology": "Reflection_Type",
+      "switch_model": "realistic",
+      "archive": 1.6190776544741174,
+      "direct_de": 0.8032481631092937,
+      "gap": -0.8158294913648237
+    },
+    {
+      "spec_id": "eval_01018",
+      "topology": "Switched_Filter",
+      "switch_model": "realistic",
+      "archive": 1.739274044222793,
+      "direct_de": 1.7643531688421623,
+      "gap": 0.025079124619369342
+    },
+    {
+      "spec_id": "eval_01018",
+      "topology": "Vector_Modulator",
+      "switch_model": "realistic",
+      "archive": 1.881205729502684,
+      "direct_de": 1.8795827977471358,
+      "gap": -0.0016229317555482847
+    },
+    {
+      "spec_id": "eval_01018",
+      "topology": "All_Pass",
+      "switch_model": "realistic",
+      "archive": 1.7323109256421563,
+      "direct_de": 1.7598234688980368,
+      "gap": 0.027512543255880484
+    },
+    {
+      "spec_id": "eval_00537",
+      "topology": "Loaded_Line",
+      "switch_model": "ideal",
+      "archive": 1.8340735669353065,
+      "direct_de": 1.8379063275556284,
+      "gap": 0.0038327606203218956
+    },
+    {
+      "spec_id": "eval_00537",
+      "topology": "Switched_Line",
+      "switch_model": "ideal",
+      "archive": 0.800852123188873,
+      "direct_de": 0.8033709252886185,
+      "gap": 0.002518802099745532
+    },
+    {
+      "spec_id": "eval_00537",
+      "topology": "Reflection_Type",
+      "switch_model": "ideal",
+      "archive": 1.7999857336585927,
+      "direct_de": 1.8151483564351245,
+      "gap": 0.015162622776531798
+    },
+    {
+      "spec_id": "eval_00537",
+      "topology": "Switched_Filter",
+      "switch_model": "ideal",
+      "archive": 0.7691899332303238,
+      "direct_de": 0.8028525214071616,
+      "gap": 0.03366258817683776
+    },
+    {
+      "spec_id": "eval_00537",
+      "topology": "Vector_Modulator",
+      "switch_model": "ideal",
+      "archive": 1.8270177089268365,
+      "direct_de": 1.824799297008732,
+      "gap": -0.002218411918104568
+    },
+    {
+      "spec_id": "eval_00537",
+      "topology": "All_Pass",
+      "switch_model": "ideal",
+      "archive": 0.7974689319055337,
+      "direct_de": 0.8024360217953909,
+      "gap": 0.004967089889857168
+    },
+    {
+      "spec_id": "eval_00537",
+      "topology": "Loaded_Line",
+      "switch_model": "realistic",
+      "archive": 1.7725394423076108,
+      "direct_de": 1.772103080742102,
+      "gap": -0.00043636156550874716
+    },
+    {
+      "spec_id": "eval_00537",
+      "topology": "Switched_Line",
+      "switch_model": "realistic",
+      "archive": 0.7463083416388635,
+      "direct_de": 0.7465386570218497,
+      "gap": 0.00023031538298623477
+    },
+    {
+      "spec_id": "eval_00537",
+      "topology": "Reflection_Type",
+      "switch_model": "realistic",
+      "archive": 1.7887428994077454,
+      "direct_de": 1.7981695629302101,
+      "gap": 0.009426663522464684
+    },
+    {
+      "spec_id": "eval_00537",
+      "topology": "Switched_Filter",
+      "switch_model": "realistic",
+      "archive": 0.7318397089638234,
+      "direct_de": 0.7451429705648059,
+      "gap": 0.013303261600982497
+    },
+    {
+      "spec_id": "eval_00537",
+      "topology": "Vector_Modulator",
+      "switch_model": "realistic",
+      "archive": 1.8270177089268365,
+      "direct_de": 1.824799297008732,
+      "gap": -0.002218411918104568
+    },
+    {
+      "spec_id": "eval_00537",
+      "topology": "All_Pass",
+      "switch_model": "realistic",
+      "archive": 0.7197023321377705,
+      "direct_de": 0.749665614987811,
+      "gap": 0.029963282850040573
+    },
+    {
+      "spec_id": "eval_00081",
+      "topology": "Loaded_Line",
+      "switch_model": "ideal",
+      "archive": 1.8990628154124882,
+      "direct_de": 1.9047970829926077,
+      "gap": 0.005734267580119523
+    },
+    {
+      "spec_id": "eval_00081",
+      "topology": "Switched_Line",
+      "switch_model": "ideal",
+      "archive": 1.8009431058572862,
+      "direct_de": 1.8066084134456017,
+      "gap": 0.005665307588315516
+    },
+    {
+      "spec_id": "eval_00081",
+      "topology": "Reflection_Type",
+      "switch_model": "ideal",
+      "archive": 1.825869710847096,
+      "direct_de": 1.8348696814385594,
+      "gap": 0.008999970591463402
+    },
+    {
+      "spec_id": "eval_00081",
+      "topology": "Switched_Filter",
+      "switch_model": "ideal",
+      "archive": 1.6887467275433874,
+      "direct_de": 1.8068851639390875,
+      "gap": 0.1181384363957001
+    },
+    {
+      "spec_id": "eval_00081",
+      "topology": "Vector_Modulator",
+      "switch_model": "ideal",
+      "archive": 1.8964732407290645,
+      "direct_de": 1.8983624619188457,
+      "gap": 0.0018892211897811872
+    },
+    {
+      "spec_id": "eval_00081",
+      "topology": "All_Pass",
+      "switch_model": "ideal",
+      "archive": 1.798784135014767,
+      "direct_de": 1.7996650726943404,
+      "gap": 0.0008809376795733126
+    },
+    {
+      "spec_id": "eval_00081",
+      "topology": "Loaded_Line",
+      "switch_model": "realistic",
+      "archive": 1.8091169025612426,
+      "direct_de": 1.8134566545513442,
+      "gap": 0.004339751990101615
+    },
+    {
+      "spec_id": "eval_00081",
+      "topology": "Switched_Line",
+      "switch_model": "realistic",
+      "archive": 1.758040493934597,
+      "direct_de": 1.764884136455242,
+      "gap": 0.006843642520644844
+    },
+    {
+      "spec_id": "eval_00081",
+      "topology": "Reflection_Type",
+      "switch_model": "realistic",
+      "archive": 1.802283723953416,
+      "direct_de": 1.8231054766069945,
+      "gap": 0.02082175265357855
+    },
+    {
+      "spec_id": "eval_00081",
+      "topology": "Switched_Filter",
+      "switch_model": "realistic",
+      "archive": 1.7475705774323798,
+      "direct_de": 1.7634446640536179,
+      "gap": 0.015874086621238126
+    },
+    {
+      "spec_id": "eval_00081",
+      "topology": "Vector_Modulator",
+      "switch_model": "realistic",
+      "archive": 1.8964732407290645,
+      "direct_de": 1.8983624619188457,
+      "gap": 0.0018892211897811872
+    },
+    {
+      "spec_id": "eval_00081",
+      "topology": "All_Pass",
+      "switch_model": "realistic",
+      "archive": 1.7496907387212004,
+      "direct_de": 1.7587833295564241,
+      "gap": 0.009092590835223735
+    },
+    {
+      "spec_id": "eval_00033",
+      "topology": "Loaded_Line",
+      "switch_model": "ideal",
+      "archive": 1.9357544676095824,
+      "direct_de": 1.9436455927786227,
+      "gap": 0.007891125169040336
+    },
+    {
+      "spec_id": "eval_00033",
+      "topology": "Switched_Line",
+      "switch_model": "ideal",
+      "archive": 1.8706201033754795,
+      "direct_de": 1.8716613044484265,
+      "gap": 0.001041201072947029
+    },
+    {
+      "spec_id": "eval_00033",
+      "topology": "Reflection_Type",
+      "switch_model": "ideal",
+      "archive": 1.8126284623161106,
+      "direct_de": 1.879124292593278,
+      "gap": 0.06649583027716743
+    },
+    {
+      "spec_id": "eval_00033",
+      "topology": "Switched_Filter",
+      "switch_model": "ideal",
+      "archive": 1.8212018354572872,
+      "direct_de": 1.8842377838500222,
+      "gap": 0.06303594839273496
+    },
+    {
+      "spec_id": "eval_00033",
+      "topology": "Vector_Modulator",
+      "switch_model": "ideal",
+      "archive": 1.9350660635192525,
+      "direct_de": 1.93897172750879,
+      "gap": 0.003905663989537622
+    },
+    {
+      "spec_id": "eval_00033",
+      "topology": "All_Pass",
+      "switch_model": "ideal",
+      "archive": 1.8778434136032027,
+      "direct_de": 1.8795230912878755,
+      "gap": 0.001679677684672809
+    },
+    {
+      "spec_id": "eval_00033",
+      "topology": "Loaded_Line",
+      "switch_model": "realistic",
+      "archive": 1.8956775986959014,
+      "direct_de": 1.9172960180040344,
+      "gap": 0.02161841930813302
+    },
+    {
+      "spec_id": "eval_00033",
+      "topology": "Switched_Line",
+      "switch_model": "realistic",
+      "archive": 1.8427666325111178,
+      "direct_de": 1.8485008915059442,
+      "gap": 0.00573425899482638
+    },
+    {
+      "spec_id": "eval_00033",
+      "topology": "Reflection_Type",
+      "switch_model": "realistic",
+      "archive": 1.739340503512285,
+      "direct_de": 1.8507442904792624,
+      "gap": 0.11140378696697728
+    },
+    {
+      "spec_id": "eval_00033",
+      "topology": "Switched_Filter",
+      "switch_model": "realistic",
+      "archive": 1.7895026156856328,
+      "direct_de": 1.86434292006262,
+      "gap": 0.07484030437698719
+    },
+    {
+      "spec_id": "eval_00033",
+      "topology": "Vector_Modulator",
+      "switch_model": "realistic",
+      "archive": 1.9350660635192525,
+      "direct_de": 1.93897172750879,
+      "gap": 0.003905663989537622
+    },
+    {
+      "spec_id": "eval_00033",
+      "topology": "All_Pass",
+      "switch_model": "realistic",
+      "archive": 1.853060556767688,
+      "direct_de": 1.8596049089221192,
+      "gap": 0.0065443521544310546
+    },
+    {
+      "spec_id": "eval_00614",
+      "topology": "Loaded_Line",
+      "switch_model": "ideal",
+      "archive": 0.6415866714944081,
+      "direct_de": 0.6413783152595851,
+      "gap": -0.0002083562348229595
+    },
+    {
+      "spec_id": "eval_00614",
+      "topology": "Switched_Line",
+      "switch_model": "ideal",
+      "archive": 1.8767589482280242,
+      "direct_de": 0.5808426009579902,
+      "gap": -1.2959163472700341
+    },
+    {
+      "spec_id": "eval_00614",
+      "topology": "Reflection_Type",
+      "switch_model": "ideal",
+      "archive": 0.8095671903989639,
+      "direct_de": 0.777765930550692,
+      "gap": -0.03180125984827187
+    },
+    {
+      "spec_id": "eval_00614",
+      "topology": "Switched_Filter",
+      "switch_model": "ideal",
+      "archive": 1.8918207575652695,
+      "direct_de": 1.9280261463165245,
+      "gap": 0.03620538875125501
+    },
+    {
+      "spec_id": "eval_00614",
+      "topology": "Vector_Modulator",
+      "switch_model": "ideal",
+      "archive": 1.898531331798389,
+      "direct_de": 1.9159395403517774,
+      "gap": 0.017408208553388427
+    },
+    {
+      "spec_id": "eval_00614",
+      "topology": "All_Pass",
+      "switch_model": "ideal",
+      "archive": 1.889204170325737,
+      "direct_de": 1.9053008074547577,
+      "gap": 0.016096637129020763
+    },
+    {
+      "spec_id": "eval_00614",
+      "topology": "Loaded_Line",
+      "switch_model": "realistic",
+      "archive": 0.6418105222056365,
+      "direct_de": 0.641767513086277,
+      "gap": -4.300911935950502e-05
+    },
+    {
+      "spec_id": "eval_00614",
+      "topology": "Switched_Line",
+      "switch_model": "realistic",
+      "archive": 1.8858172112559024,
+      "direct_de": 0.5822638970065908,
+      "gap": -1.3035533142493116
+    },
+    {
+      "spec_id": "eval_00614",
+      "topology": "Reflection_Type",
+      "switch_model": "realistic",
+      "archive": 0.8078745069328923,
+      "direct_de": 0.7958202846297735,
+      "gap": -0.012054222303118811
+    },
+    {
+      "spec_id": "eval_00614",
+      "topology": "Switched_Filter",
+      "switch_model": "realistic",
+      "archive": 1.8910066935578889,
+      "direct_de": 1.9307062036377194,
+      "gap": 0.039699510079830524
+    },
+    {
+      "spec_id": "eval_00614",
+      "topology": "Vector_Modulator",
+      "switch_model": "realistic",
+      "archive": 1.898531331798389,
+      "direct_de": 1.9159395403517774,
+      "gap": 0.017408208553388427
+    },
+    {
+      "spec_id": "eval_00614",
+      "topology": "All_Pass",
+      "switch_model": "realistic",
+      "archive": 1.904011867615906,
+      "direct_de": 1.936877746186708,
+      "gap": 0.03286587857080203
+    },
+    {
+      "spec_id": "eval_00350",
+      "topology": "Loaded_Line",
+      "switch_model": "ideal",
+      "archive": 1.7972656604476556,
+      "direct_de": 1.9672211279941632,
+      "gap": 0.1699554675465076
+    },
+    {
+      "spec_id": "eval_00350",
+      "topology": "Switched_Line",
+      "switch_model": "ideal",
+      "archive": 1.9583551603879008,
+      "direct_de": 1.9651982965065309,
+      "gap": 0.006843136118630078
+    },
+    {
+      "spec_id": "eval_00350",
+      "topology": "Reflection_Type",
+      "switch_model": "ideal",
+      "archive": 1.7891614489392875,
+      "direct_de": 1.9138266584342056,
+      "gap": 0.1246652094949181
+    },
+    {
+      "spec_id": "eval_00350",
+      "topology": "Switched_Filter",
+      "switch_model": "ideal",
+      "archive": 1.8995196038121562,
+      "direct_de": 1.958322424518409,
+      "gap": 0.058802820706252756
+    },
+    {
+      "spec_id": "eval_00350",
+      "topology": "Vector_Modulator",
+      "switch_model": "ideal",
+      "archive": 1.9712362616655406,
+      "direct_de": 1.987996775102504,
+      "gap": 0.016760513436963498
+    },
+    {
+      "spec_id": "eval_00350",
+      "topology": "All_Pass",
+      "switch_model": "ideal",
+      "archive": 1.9675387996447578,
+      "direct_de": 1.9672881790827397,
+      "gap": -0.0002506205620180779
+    },
+    {
+      "spec_id": "eval_00350",
+      "topology": "Loaded_Line",
+      "switch_model": "realistic",
+      "archive": 1.78875927157597,
+      "direct_de": 0.6736426132788296,
+      "gap": -1.1151166582971404
+    },
+    {
+      "spec_id": "eval_00350",
+      "topology": "Switched_Line",
+      "switch_model": "realistic",
+      "archive": 1.9492434121441566,
+      "direct_de": 1.9632118466352555,
+      "gap": 0.013968434491098858
+    },
+    {
+      "spec_id": "eval_00350",
+      "topology": "Reflection_Type",
+      "switch_model": "realistic",
+      "archive": 1.7884205450696713,
+      "direct_de": 1.903028445546125,
+      "gap": 0.11460790047645375
+    },
+    {
+      "spec_id": "eval_00350",
+      "topology": "Switched_Filter",
+      "switch_model": "realistic",
+      "archive": 1.8143306804451946,
+      "direct_de": 1.9598611745453325,
+      "gap": 0.14553049410013785
+    },
+    {
+      "spec_id": "eval_00350",
+      "topology": "Vector_Modulator",
+      "switch_model": "realistic",
+      "archive": 1.9712362616655406,
+      "direct_de": 1.987996775102504,
+      "gap": 0.016760513436963498
+    },
+    {
+      "spec_id": "eval_00350",
+      "topology": "All_Pass",
+      "switch_model": "realistic",
+      "archive": 1.9072969652237584,
+      "direct_de": 1.969463230792722,
+      "gap": 0.06216626556896365
+    },
+    {
+      "spec_id": "eval_00150",
+      "topology": "Loaded_Line",
+      "switch_model": "ideal",
+      "archive": 1.8811704386729828,
+      "direct_de": 1.9046286654151496,
+      "gap": 0.0234582267421668
+    },
+    {
+      "spec_id": "eval_00150",
+      "topology": "Switched_Line",
+      "switch_model": "ideal",
+      "archive": 1.787217106870075,
+      "direct_de": 1.795744303166345,
+      "gap": 0.008527196296269857
+    },
+    {
+      "spec_id": "eval_00150",
+      "topology": "Reflection_Type",
+      "switch_model": "ideal",
+      "archive": 0.7892948569457935,
+      "direct_de": 1.7559522128565472,
+      "gap": 0.9666573559107537
+    },
+    {
+      "spec_id": "eval_00150",
+      "topology": "Switched_Filter",
+      "switch_model": "ideal",
+      "archive": 1.4532985231704991,
+      "direct_de": 0.48852451392839813,
+      "gap": -0.964774009242101
+    },
+    {
+      "spec_id": "eval_00150",
+      "topology": "Vector_Modulator",
+      "switch_model": "ideal",
+      "archive": 1.8811170594719626,
+      "direct_de": 1.8820506421378367,
+      "gap": 0.0009335826658740665
+    },
+    {
+      "spec_id": "eval_00150",
+      "topology": "All_Pass",
+      "switch_model": "ideal",
+      "archive": 1.7794124423122222,
+      "direct_de": 1.7783209561600102,
+      "gap": -0.0010914861522119956
+    },
+    {
+      "spec_id": "eval_00150",
+      "topology": "Loaded_Line",
+      "switch_model": "realistic",
+      "archive": 1.8428552875983875,
+      "direct_de": 1.8476487069571048,
+      "gap": 0.004793419358717355
+    },
+    {
+      "spec_id": "eval_00150",
+      "topology": "Switched_Line",
+      "switch_model": "realistic",
+      "archive": 1.7446065277233114,
+      "direct_de": 1.76073965780389,
+      "gap": 0.016133130080578706
+    },
+    {
+      "spec_id": "eval_00150",
+      "topology": "Reflection_Type",
+      "switch_model": "realistic",
+      "archive": 1.5427657555346714,
+      "direct_de": 0.7995608864286627,
+      "gap": -0.7432048691060087
+    },
+    {
+      "spec_id": "eval_00150",
+      "topology": "Switched_Filter",
+      "switch_model": "realistic",
+      "archive": 1.7557216252167314,
+      "direct_de": 0.4762612216119463,
+      "gap": -1.279460403604785
+    },
+    {
+      "spec_id": "eval_00150",
+      "topology": "Vector_Modulator",
+      "switch_model": "realistic",
+      "archive": 1.8811170594719626,
+      "direct_de": 1.8820506421378367,
+      "gap": 0.0009335826658740665
+    },
+    {
+      "spec_id": "eval_00150",
+      "topology": "All_Pass",
+      "switch_model": "realistic",
+      "archive": 1.6112097648727102,
+      "direct_de": 1.7124944459682476,
+      "gap": 0.10128468109553745
+    }
+  ]
+}

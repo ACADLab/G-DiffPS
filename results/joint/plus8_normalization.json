@@ -1,0 +1,87 @@
+{
+  "v1_frozen_original_scorer": {
+    "Switched_Filter": {
+      "n": 212,
+      "frac": 0.35333333333333333
+    },
+    "Reflection_Type": {
+      "n": 157,
+      "frac": 0.26166666666666666
+    },
+    "Switched_Line": {
+      "n": 118,
+      "frac": 0.19666666666666666
+    },
+    "Vector_Modulator": {
+      "n": 70,
+      "frac": 0.11666666666666667
+    },
+    "Loaded_Line": {
+      "n": 24,
+      "frac": 0.04
+    },
+    "All_Pass": {
+      "n": 19,
+      "frac": 0.03166666666666667
+    }
+  },
+  "v2_train_original_scorer": {
+    "Reflection_Type": {
+      "n": 3985,
+      "frac": 0.3985
+    },
+    "Switched_Line": {
+      "n": 2290,
+      "frac": 0.229
+    },
+    "Switched_Filter": {
+      "n": 2062,
+      "frac": 0.2062
+    },
+    "Vector_Modulator": {
+      "n": 732,
+      "frac": 0.0732
+    },
+    "Loaded_Line": {
+      "n": 493,
+      "frac": 0.0493
+    },
+    "All_Pass": {
+      "n": 438,
+      "frac": 0.0438
+    }
+  },
+  "v2_train_normalized_pm1": {
+    "Switched_Line": {
+      "n": 5035,
+      "frac": 0.5035
+    },
+    "Reflection_Type": {
+      "n": 2853,
+      "frac": 0.2853
+    },
+    "Loaded_Line": {
+      "n": 1009,
+      "frac": 0.1009
+    },
+    "Switched_Filter": {
+      "n": 911,
+      "frac": 0.0911
+    },
+    "All_Pass": {
+      "n": 152,
+      "frac": 0.0152
+    },
+    "Vector_Modulator": {
+      "n": 40,
+      "frac": 0.004
+    }
+  },
+  "verdict": {
+    "switched_filter_v1_frac": 0.35333333333333333,
+    "switched_filter_v2_coupled_frac": 0.2062,
+    "switched_filter_v2_normalized_frac": 0.0911,
+    "plus8_was_main_driver": true,
+    "note": "If normalized \u00b11 flattens SF share toward uniform, the imbalance was the hand-tuned +8, not the box. Coupling (S2) also changes the prior."
+  }
+}

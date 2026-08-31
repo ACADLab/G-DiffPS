@@ -1,0 +1,98 @@
+{
+  "specset": "specset/specset_eval.json",
+  "n_specs": 2000,
+  "gates": {
+    "all_pass": true
+  },
+  "per_switch_model": {
+    "ideal": {
+      "envelope_spread": {
+        "mean": 1.268470472650887,
+        "p50": 1.2979444833741731,
+        "p10": 1.0981690557648656,
+        "p90": 1.4395449281451391
+      },
+      "top2_margin": {
+        "mean": 0.33078266520840954,
+        "p50": 0.09669751594964027,
+        "p90": 1.0614782831014786
+      },
+      "frac_all_topologies_saturated": 0.0065,
+      "best_r_star_p50": NaN,
+      "term_variance_share": {
+        "g_phase": 0.36152455960630964,
+        "g_il": 0.40573391217208665,
+        "g_rl": 0.06685739659547774,
+        "g_gain": 0.08688294583771784,
+        "g_area": 0.07900118578840816
+      },
+      "term_decomposition_n": 400,
+      "gates": {
+        "G1_envelope_spread": {
+          "pass": true,
+          "value": 1.2979444833741731,
+          "threshold": 0.25,
+          "cmp": ">="
+        },
+        "G2_not_all_saturated": {
+          "pass": true,
+          "value": 0.0065,
+          "threshold": 0.2,
+          "cmp": "<="
+        },
+        "G3_no_dominant_term": {
+          "pass": true,
+          "value": 0.40573391217208665,
+          "dominant_term": "g_il",
+          "threshold": 0.6,
+          "cmp": "<="
+        }
+      }
+    },
+    "realistic": {
+      "envelope_spread": {
+        "mean": 0.9013247623751378,
+        "p50": 1.121676041391449,
+        "p10": 0.1078828286183699,
+        "p90": 1.343687085978941
+      },
+      "top2_margin": {
+        "mean": 0.5383683614930382,
+        "p50": 0.32906926127925384,
+        "p90": 1.1936753548241645
+      },
+      "frac_all_topologies_saturated": 0.0025,
+      "best_r_star_p50": NaN,
+      "term_variance_share": {
+        "g_phase": 0.4867434402742485,
+        "g_il": 0.3375144669021566,
+        "g_rl": 0.03497077355266363,
+        "g_gain": 0.06912147534443021,
+        "g_area": 0.0716498439265011
+      },
+      "term_decomposition_n": 400,
+      "gates": {
+        "G1_envelope_spread": {
+          "pass": true,
+          "value": 1.121676041391449,
+          "threshold": 0.25,
+          "cmp": ">="
+        },
+        "G2_not_all_saturated": {
+          "pass": true,
+          "value": 0.0025,
+          "threshold": 0.2,
+          "cmp": "<="
+        },
+        "G3_no_dominant_term": {
+          "pass": true,
+          "value": 0.4867434402742485,
+          "dominant_term": "g_phase",
+          "threshold": 0.6,
+          "cmp": "<="
+        }
+      }
+    }
+  },
+  "verdict": "T1 ACCEPTED at the envelope"
+}

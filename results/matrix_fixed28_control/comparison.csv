@@ -1,0 +1,7 @@
+topology,config,success_rate_mean,best_reward_mean,n_seeds,encoder,action_space,fc_mode,bounds
+All_Pass,gin_slot_fixed28,31.0,0.8255445635247085,2,gin,slot,fixed28,legacy
+Loaded_Line,gin_slot_fixed28,63.5,1.5575812017215422,2,gin,slot,fixed28,legacy
+Reflection_Type,gin_slot_fixed28,87.0,2.2124687108743766,2,gin,slot,fixed28,legacy
+Switched_Filter,gin_slot_fixed28,75.75,1.535890495578915,2,gin,slot,fixed28,legacy
+Switched_Line,gin_slot_fixed28,96.75,2.1729653682818855,2,gin,slot,fixed28,legacy
+Vector_Modulator,gin_slot_fixed28,79.25,1.5347120972196469,2,gin,slot,fixed28,legacy

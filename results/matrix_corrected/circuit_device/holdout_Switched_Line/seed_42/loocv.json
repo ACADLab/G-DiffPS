@@ -1,0 +1,12 @@
+{
+  "held_out": "Switched_Line",
+  "n": 200,
+  "compliance": 0.97,
+  "prior_pass_rate": 1.0,
+  "best_reward": 0.9904682133308202,
+  "mean_reward_success": 0.7829971429278874,
+  "encoder": "circuit",
+  "action_space": "device",
+  "fc_mode": "spec",
+  "bounds": "electrical"
+}

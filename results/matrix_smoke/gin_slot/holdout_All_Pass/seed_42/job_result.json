@@ -1,0 +1,26 @@
+{
+  "tag": "gin_slot",
+  "held_out": "All_Pass",
+  "seed": 42,
+  "encoder": "gin",
+  "action_space": "slot",
+  "fc_mode": "fixed28",
+  "bounds": "legacy",
+  "train_returncode": 0,
+  "eval_returncode": 0,
+  "wall_s": 5.210092067718506,
+  "ckpt_dir": "/Users/deepak/Desktop/mypages/G-DiffPS/runs_diffusion/run_20260821_080843",
+  "run_dir": "results/matrix_smoke/gin_slot/holdout_All_Pass/seed_42",
+  "loocv": {
+    "held_out": "All_Pass",
+    "n": 20,
+    "compliance": 0.25,
+    "prior_pass_rate": 0.55,
+    "best_reward": 0.9592482125755087,
+    "mean_reward_success": 0.5136249347305838,
+    "encoder": "gin",
+    "action_space": "slot",
+    "fc_mode": "fixed28",
+    "bounds": "legacy"
+  }
+}

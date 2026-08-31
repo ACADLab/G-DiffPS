@@ -1,0 +1,26 @@
+{
+  "tag": "gin_device",
+  "held_out": "All_Pass",
+  "seed": 42,
+  "encoder": "gin",
+  "action_space": "device",
+  "fc_mode": "fixed28",
+  "bounds": "legacy",
+  "train_returncode": 0,
+  "eval_returncode": 0,
+  "wall_s": 4.264142036437988,
+  "ckpt_dir": "results/matrix_smoke2/gin_device/holdout_All_Pass/seed_42",
+  "run_dir": "results/matrix_smoke2/gin_device/holdout_All_Pass/seed_42",
+  "loocv": {
+    "held_out": "All_Pass",
+    "n": 10,
+    "compliance": 0.2,
+    "prior_pass_rate": 0.3,
+    "best_reward": 0.6936452446035535,
+    "mean_reward_success": 0.5599693061341934,
+    "encoder": "gin",
+    "action_space": "device",
+    "fc_mode": "fixed28",
+    "bounds": "legacy"
+  }
+}

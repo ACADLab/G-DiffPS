@@ -1,0 +1,54 @@
+{
+  "n_total": 200,
+  "per_topology": {
+    "Switched_Line": {
+      "n": 43,
+      "pearson": 0.4218573696914546,
+      "spearman": 0.5714285714285714,
+      "spice_mean": 0.8081092004463741,
+      "mna_mean": 0.7166918347931188,
+      "il_pearson_vs_spice": 0.9999998461353775
+    },
+    "Vector_Modulator": {
+      "n": 57,
+      "pearson": 0.20065225474951648,
+      "spearman": 0.3944127560280011,
+      "spice_mean": 0.6759627239664104,
+      "mna_mean": 0.6935175585544459
+    },
+    "Reflection_Type": {
+      "n": 40,
+      "pearson": 0.7706543156016524,
+      "spearman": 0.6504690431519701,
+      "spice_mean": 0.7410284357943863,
+      "mna_mean": 0.6111732321332961
+    },
+    "Switched_Filter": {
+      "n": 32,
+      "pearson": 0.5182646772148426,
+      "spearman": 0.907624633431085,
+      "spice_mean": 0.5235032937059968,
+      "mna_mean": 0.3594314262657441
+    },
+    "All_Pass": {
+      "n": 18,
+      "pearson": 0.7960793577661203,
+      "spearman": 0.7894736842105263,
+      "spice_mean": 0.4877465447630459,
+      "mna_mean": 0.5064495988744682
+    },
+    "Loaded_Line": {
+      "n": 10,
+      "pearson": 0.9658342104731094,
+      "spearman": 0.7939393939393938,
+      "spice_mean": 1.1573413470822767,
+      "mna_mean": 1.1182669528403129,
+      "il_pearson_vs_spice": 0.9999772897452817
+    }
+  },
+  "gate_pass": true,
+  "gate": {
+    "Loaded_Line": true,
+    "Switched_Line": true
+  }
+}

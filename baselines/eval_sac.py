@@ -22,11 +22,12 @@ if REPO_ROOT not in sys.path:
     sys.path.insert(0, REPO_ROOT)
 
 from env.phaseshifter_env import PhaseShifterEnv
-from env.graph_utils import get_topology_graph, TOPOLOGY_PARAMS
+from env.graph_utils import get_topology_graph, TOPOLOGY_PARAMS, SLOT_ACTION_DIM
 from models.gnn_encoder import TopologyEncoder
 from baselines.train_sac import GaussianPolicyNet
 from train_diffusion import action_to_params, make_spice_netlist, parallel_eval_worker
 from sim.physics_priors import check_physics_priors
+from specset.schema import SPEC_DIM
 
 
 SCENARIOS = [
@@ -46,7 +47,7 @@ SCENARIOS = [
 def load_sac(checkpoint_path, device):
     ckpt = torch.load(checkpoint_path, map_location=device)
     gnn = TopologyEncoder().to(device)
-    actor = GaussianPolicyNet(spec_dim=12, graph_dim=64, action_dim=9).to(device)
+    actor = GaussianPolicyNet(spec_dim=SPEC_DIM, graph_dim=64, action_dim=SLOT_ACTION_DIM).to(device)
     # The SAC checkpoint was saved with the OLD GNN (ReLU only). Use strict=False
     # so new LayerNorm/LeakyReLU params get their fresh init (they zero-out anyway,
     # but that's fine because we are using SAC-trained weights to produce SAC's design).

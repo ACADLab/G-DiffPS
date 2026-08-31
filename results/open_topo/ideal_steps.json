@@ -1,0 +1,239 @@
+{
+  "fc_probe_ghz": 7.96,
+  "steps": {
+    "All_Pass": {
+      "raw_p90": null,
+      "snapped": -90.0,
+      "frozen": true
+    },
+    "Loaded_Line": {
+      "raw_p90": null,
+      "snapped": -22.5,
+      "frozen": true
+    },
+    "Reflection_Type": {
+      "raw_p90": null,
+      "snapped": -22.5,
+      "frozen": true
+    },
+    "Switched_Filter": {
+      "raw_p90": null,
+      "snapped": -180.0,
+      "frozen": true
+    },
+    "Switched_Line": {
+      "raw_p90": null,
+      "snapped": -90.0,
+      "frozen": true
+    },
+    "Vector_Modulator": {
+      "raw_p90": null,
+      "snapped": -22.5,
+      "frozen": true
+    },
+    "Gen_T07": {
+      "raw_p90": 96.66400983044137,
+      "snapped": -90.0,
+      "n_finite": 255,
+      "frozen": false
+    },
+    "Gen_T08": {
+      "raw_p90": 75.9420620360683,
+      "snapped": -90.0,
+      "n_finite": 256,
+      "frozen": false
+    },
+    "Gen_T09": {
+      "raw_p90": 56.64334083959508,
+      "snapped": -45.0,
+      "n_finite": 256,
+      "frozen": false
+    },
+    "Gen_T10": {
+      "raw_p90": 66.3901846852058,
+      "snapped": -45.0,
+      "n_finite": 256,
+      "frozen": false
+    },
+    "Gen_T11": {
+      "raw_p90": 53.47459528092527,
+      "snapped": -45.0,
+      "n_finite": 256,
+      "frozen": false
+    },
+    "Gen_T12": {
+      "raw_p90": 153.70868421530517,
+      "snapped": -180.0,
+      "n_finite": 255,
+      "frozen": false
+    },
+    "Gen_T13": {
+      "raw_p90": 154.62065472152466,
+      "snapped": -180.0,
+      "n_finite": 256,
+      "frozen": false
+    },
+    "Gen_T14": {
+      "raw_p90": 156.91188441935148,
+      "snapped": -180.0,
+      "n_finite": 255,
+      "frozen": false
+    },
+    "Gen_T15": {
+      "raw_p90": 167.8555243765473,
+      "snapped": -180.0,
+      "n_finite": 256,
+      "frozen": false
+    },
+    "Gen_T16": {
+      "raw_p90": 109.45326870565478,
+      "snapped": -90.0,
+      "n_finite": 256,
+      "frozen": false
+    },
+    "Gen_T17": {
+      "raw_p90": 82.45281184949856,
+      "snapped": -90.0,
+      "n_finite": 249,
+      "frozen": false
+    },
+    "Gen_T18": {
+      "raw_p90": 141.404947119347,
+      "snapped": -180.0,
+      "n_finite": 256,
+      "frozen": false
+    },
+    "Gen_T19": {
+      "raw_p90": 105.73839978090061,
+      "snapped": -90.0,
+      "n_finite": 253,
+      "frozen": false
+    },
+    "Gen_T20": {
+      "raw_p90": 50.96842025576859,
+      "snapped": -45.0,
+      "n_finite": 256,
+      "frozen": false
+    },
+    "Gen_T21": {
+      "raw_p90": 151.56083062400242,
+      "snapped": -180.0,
+      "n_finite": 255,
+      "frozen": false
+    },
+    "Gen_T22": {
+      "raw_p90": 66.87754642815696,
+      "snapped": -45.0,
+      "n_finite": 256,
+      "frozen": false
+    },
+    "Gen_T23": {
+      "raw_p90": 62.0068957937926,
+      "snapped": -45.0,
+      "n_finite": 256,
+      "frozen": false
+    },
+    "Gen_T24": {
+      "raw_p90": 71.22647302615209,
+      "snapped": -90.0,
+      "n_finite": 256,
+      "frozen": false
+    },
+    "Gen_T25": {
+      "raw_p90": 104.11363096323419,
+      "snapped": -90.0,
+      "n_finite": 256,
+      "frozen": false
+    },
+    "Gen_T26": {
+      "raw_p90": 170.59153607956364,
+      "snapped": -180.0,
+      "n_finite": 256,
+      "frozen": false
+    },
+    "Gen_T27": {
+      "raw_p90": 57.31759978708067,
+      "snapped": -45.0,
+      "n_finite": 256,
+      "frozen": false
+    },
+    "Gen_T28": {
+      "raw_p90": 158.17612875457192,
+      "snapped": -180.0,
+      "n_finite": 255,
+      "frozen": false
+    },
+    "Gen_T29": {
+      "raw_p90": 52.179395435378176,
+      "snapped": -45.0,
+      "n_finite": 252,
+      "frozen": false
+    },
+    "Gen_T30": {
+      "raw_p90": 134.86154652001537,
+      "snapped": -90.0,
+      "n_finite": 255,
+      "frozen": false
+    },
+    "Gen_T31": {
+      "raw_p90": 58.1867296536661,
+      "snapped": -45.0,
+      "n_finite": 256,
+      "frozen": false
+    },
+    "Gen_T32": {
+      "raw_p90": 127.81055122334055,
+      "snapped": -90.0,
+      "n_finite": 254,
+      "frozen": false
+    },
+    "Gen_T33": {
+      "raw_p90": 72.33481642821255,
+      "snapped": -90.0,
+      "n_finite": 256,
+      "frozen": false
+    },
+    "Gen_T34": {
+      "raw_p90": 144.22373553703392,
+      "snapped": -180.0,
+      "n_finite": 254,
+      "frozen": false
+    },
+    "Gen_T35": {
+      "raw_p90": 165.67635297403308,
+      "snapped": -180.0,
+      "n_finite": 256,
+      "frozen": false
+    },
+    "Gen_T36": {
+      "raw_p90": 141.62984304896844,
+      "snapped": -180.0,
+      "n_finite": 256,
+      "frozen": false
+    },
+    "Gen_T37": {
+      "raw_p90": 165.30620789519253,
+      "snapped": -180.0,
+      "n_finite": 256,
+      "frozen": false
+    },
+    "Gen_T38": {
+      "raw_p90": 171.5122767728269,
+      "snapped": -180.0,
+      "n_finite": 256,
+      "frozen": false
+    },
+    "Gen_T39": {
+      "raw_p90": 166.08036153719942,
+      "snapped": -180.0,
+      "n_finite": 256,
+      "frozen": false
+    },
+    "Gen_T40": {
+      "raw_p90": 122.78362266088266,
+      "snapped": -90.0,
+      "n_finite": 256,
+      "frozen": false
+    }
+  }
+}

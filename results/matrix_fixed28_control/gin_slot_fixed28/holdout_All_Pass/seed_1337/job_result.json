@@ -1,0 +1,26 @@
+{
+  "tag": "gin_slot_fixed28",
+  "held_out": "All_Pass",
+  "seed": 1337,
+  "encoder": "gin",
+  "action_space": "slot",
+  "fc_mode": "fixed28",
+  "bounds": "legacy",
+  "train_returncode": 0,
+  "eval_returncode": 0,
+  "wall_s": 601.6163191795349,
+  "ckpt_dir": "results/matrix_fixed28_control/gin_slot_fixed28/holdout_All_Pass/seed_1337",
+  "run_dir": "results/matrix_fixed28_control/gin_slot_fixed28/holdout_All_Pass/seed_1337",
+  "loocv": {
+    "held_out": "All_Pass",
+    "n": 200,
+    "compliance": 0.26,
+    "prior_pass_rate": 0.445,
+    "best_reward": 0.8501655103356109,
+    "mean_reward_success": 0.5309428384199463,
+    "encoder": "gin",
+    "action_space": "slot",
+    "fc_mode": "fixed28",
+    "bounds": "legacy"
+  }
+}

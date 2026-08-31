@@ -1,0 +1,5 @@
+topology,config,success_rate_mean,best_reward_mean,n_seeds,encoder,action_space,fc_mode,bounds
+All_Pass,circuit_device,40.0,0.6061919700777301,1,circuit,device,fixed28,legacy
+All_Pass,circuit_slot,10.0,0.7692810109365213,1,circuit,slot,fixed28,legacy
+All_Pass,gin_device,20.0,0.6936452446035535,1,gin,device,fixed28,legacy
+All_Pass,gin_slot,40.0,0.8424340497381818,1,gin,slot,fixed28,legacy

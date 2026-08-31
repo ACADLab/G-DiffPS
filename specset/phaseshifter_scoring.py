@@ -27,7 +27,7 @@ def score_topology(topology: str, spec: dict) -> float:
     bits = spec["phase_bits"]            # 0 = analog continuous; else 3,4,5,6
     pwr_mw = spec["pmax_mw"]
     coverage = spec["phase_coverage_deg"]
-    tech = spec["tech"]                  # 0=CMOS, 1=SiGe, 2=GaAs
+    tech = spec["tech"]                  # 0=PIN, 1=GaAs pHEMT, 2=SOI SPDT
 
     if topology == "Switched_Line":
         # Digital, simple control, but transmission lines get large at low fc
@@ -89,8 +89,8 @@ def score_topology(topology: str, spec: dict) -> float:
         if coverage > 180:
             score -= 3
 
-    # Technology preference
+    # Technology preference (tech reinterpreted as switch tech: 2 = SOI SPDT)
     if tech == 2 and topology in ("Switched_Line", "Reflection_Type"):
-        score += 1                       # GaAs MMIC favors distributed
+        score += 1
 
     return score

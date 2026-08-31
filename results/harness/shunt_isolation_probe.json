@@ -1,0 +1,118 @@
+{
+  "isolation": [
+    {
+      "model": "R_off=10k",
+      "fc_ghz": 2.4,
+      "z_off_ohm": 10000.0,
+      "isolation_db": -40.086427475652854
+    },
+    {
+      "model": "R_off=10k",
+      "fc_ghz": 28.0,
+      "z_off_ohm": 10000.0,
+      "isolation_db": -40.086427475652854
+    },
+    {
+      "model": "C_off=20fF",
+      "fc_ghz": 2.4,
+      "z_off_ohm": 3315.727981081153,
+      "isolation_db": -30.669665548188732
+    },
+    {
+      "model": "C_off=20fF",
+      "fc_ghz": 28.0,
+      "z_off_ohm": 284.20525552124167,
+      "isolation_db": -11.691266025102982
+    },
+    {
+      "model": "C_off=650fF",
+      "fc_ghz": 2.4,
+      "z_off_ohm": 102.02239941788164,
+      "isolation_db": -6.107990498265802
+    },
+    {
+      "model": "C_off=650fF",
+      "fc_ghz": 28.0,
+      "z_off_ohm": 8.744777092961284,
+      "isolation_db": -0.7281681476273504
+    }
+  ],
+  "probes": [
+    {
+      "topology": "Switched_Line",
+      "fc_ghz": 28.0,
+      "variants": {
+        "ideal_no_shunt": {
+          "R_off": 10000.0,
+          "dphi_deg": 98.8971211561396
+        },
+        "realistic_no_shunt": {
+          "R_off": 284.21,
+          "dphi_deg": 98.52255283537335
+        },
+        "realistic_shunt_off_arm_mids": {
+          "devices": [
+            "Sh_long_a",
+            "Sh_long_b",
+            "Sh_short_a",
+            "Sh_short_b"
+          ],
+          "dphi_deg": 97.39556138353987
+        }
+      }
+    },
+    {
+      "topology": "Switched_Filter",
+      "fc_ghz": 28.0,
+      "variants": {
+        "ideal_no_shunt": {
+          "R_off": 10000.0,
+          "dphi_deg": 179.99999883642442
+        },
+        "realistic_no_shunt": {
+          "R_off": 284.21,
+          "dphi_deg": 179.99999897390245
+        },
+        "realistic_shunt_off_arm_mids": {
+          "devices": [
+            "Sh_lpf_a",
+            "Sh_lpf_b",
+            "Sh_hpf_a",
+            "Sh_hpf_b"
+          ],
+          "dphi_deg": 179.99999917940983
+        }
+      }
+    },
+    {
+      "topology": "All_Pass",
+      "fc_ghz": 28.0,
+      "variants": {
+        "ideal_no_shunt": {
+          "R_off": 10000.0,
+          "dphi_deg": 2.842170943040401e-14
+        },
+        "realistic_no_shunt": {
+          "R_off": 284.21,
+          "dphi_deg": 0.0
+        },
+        "realistic_shunt_branch_io": {
+          "devices": [
+            "Sh_B_in",
+            "Sh_B_out",
+            "Sh_A_in",
+            "Sh_A_out"
+          ],
+          "dphi_deg": 0.0
+        },
+        "realistic_shunt_mid_nodes": {
+          "devices": [
+            "Sh_mB",
+            "Sh_mA"
+          ],
+          "dphi_deg": 2.842170943040401e-14
+        }
+      }
+    }
+  ]
+}

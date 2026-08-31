@@ -1,0 +1,203 @@
+{
+  "rows": [
+    {
+      "bounds": "legacy",
+      "split": "1.0",
+      "fc_ghz": 2.4,
+      "midpoint_dphi_deg": 2.842170943040401e-14,
+      "compliant_volume": 0.001953125,
+      "best_dphi_deg": 63.467210635204154,
+      "in_train_band": false
+    },
+    {
+      "bounds": "legacy",
+      "split": "1.0",
+      "fc_ghz": 5.0,
+      "midpoint_dphi_deg": 0.0,
+      "compliant_volume": 0.044921875,
+      "best_dphi_deg": 178.9839831347328,
+      "in_train_band": false
+    },
+    {
+      "bounds": "legacy",
+      "split": "1.0",
+      "fc_ghz": 10.0,
+      "midpoint_dphi_deg": 2.842170943040401e-14,
+      "compliant_volume": 0.11328125,
+      "best_dphi_deg": 179.82469325337627,
+      "in_train_band": true
+    },
+    {
+      "bounds": "legacy",
+      "split": "1.0",
+      "fc_ghz": 14.0,
+      "midpoint_dphi_deg": 0.0,
+      "compliant_volume": 0.154296875,
+      "best_dphi_deg": 179.94564234739542,
+      "in_train_band": true
+    },
+    {
+      "bounds": "legacy",
+      "split": "1.0",
+      "fc_ghz": 20.0,
+      "midpoint_dphi_deg": 0.0,
+      "compliant_volume": 0.15625,
+      "best_dphi_deg": 179.7026511787946,
+      "in_train_band": true
+    },
+    {
+      "bounds": "legacy",
+      "split": "1.0",
+      "fc_ghz": 28.0,
+      "midpoint_dphi_deg": 0.0,
+      "compliant_volume": 0.140625,
+      "best_dphi_deg": 179.54089349500464,
+      "in_train_band": true
+    },
+    {
+      "bounds": "legacy",
+      "split": "1.0",
+      "fc_ghz": 38.0,
+      "midpoint_dphi_deg": 2.842170943040401e-14,
+      "compliant_volume": 0.158203125,
+      "best_dphi_deg": 179.71867556434216,
+      "in_train_band": false
+    },
+    {
+      "bounds": "electrical",
+      "split": "1.0",
+      "fc_ghz": 2.4,
+      "midpoint_dphi_deg": 0.0,
+      "compliant_volume": 0.158203125,
+      "best_dphi_deg": 179.9159738799127,
+      "in_train_band": false
+    },
+    {
+      "bounds": "electrical",
+      "split": "1.0",
+      "fc_ghz": 5.0,
+      "midpoint_dphi_deg": 5.684341886080802e-14,
+      "compliant_volume": 0.1484375,
+      "best_dphi_deg": 179.6909347132563,
+      "in_train_band": false
+    },
+    {
+      "bounds": "electrical",
+      "split": "1.0",
+      "fc_ghz": 10.0,
+      "midpoint_dphi_deg": 0.0,
+      "compliant_volume": 0.1484375,
+      "best_dphi_deg": 179.80117568100798,
+      "in_train_band": true
+    },
+    {
+      "bounds": "electrical",
+      "split": "1.0",
+      "fc_ghz": 14.0,
+      "midpoint_dphi_deg": 2.842170943040401e-14,
+      "compliant_volume": 0.1484375,
+      "best_dphi_deg": 179.8037685403948,
+      "in_train_band": true
+    },
+    {
+      "bounds": "electrical",
+      "split": "1.0",
+      "fc_ghz": 20.0,
+      "midpoint_dphi_deg": 5.684341886080802e-14,
+      "compliant_volume": 0.1484375,
+      "best_dphi_deg": 179.76042234606768,
+      "in_train_band": true
+    },
+    {
+      "bounds": "electrical",
+      "split": "1.0",
+      "fc_ghz": 28.0,
+      "midpoint_dphi_deg": 2.842170943040401e-14,
+      "compliant_volume": 0.1484375,
+      "best_dphi_deg": 179.80205169230481,
+      "in_train_band": true
+    },
+    {
+      "bounds": "electrical",
+      "split": "1.0",
+      "fc_ghz": 38.0,
+      "midpoint_dphi_deg": 2.842170943040401e-14,
+      "compliant_volume": 0.1484375,
+      "best_dphi_deg": 179.8356485240904,
+      "in_train_band": false
+    },
+    {
+      "bounds": "electrical",
+      "split": "8.0",
+      "fc_ghz": 2.4,
+      "midpoint_dphi_deg": 86.70093402848079,
+      "compliant_volume": 0.2265625,
+      "best_dphi_deg": 179.59689822755269,
+      "in_train_band": false
+    },
+    {
+      "bounds": "electrical",
+      "split": "8.0",
+      "fc_ghz": 5.0,
+      "midpoint_dphi_deg": 86.70084518985277,
+      "compliant_volume": 0.18359375,
+      "best_dphi_deg": 179.8508627169714,
+      "in_train_band": false
+    },
+    {
+      "bounds": "electrical",
+      "split": "8.0",
+      "fc_ghz": 10.0,
+      "midpoint_dphi_deg": 86.69177253132807,
+      "compliant_volume": 0.177734375,
+      "best_dphi_deg": 179.60923301706072,
+      "in_train_band": true
+    },
+    {
+      "bounds": "electrical",
+      "split": "8.0",
+      "fc_ghz": 14.0,
+      "midpoint_dphi_deg": 86.70712576165408,
+      "compliant_volume": 0.173828125,
+      "best_dphi_deg": 179.61615502681332,
+      "in_train_band": true
+    },
+    {
+      "bounds": "electrical",
+      "split": "8.0",
+      "fc_ghz": 20.0,
+      "midpoint_dphi_deg": 86.70874576332045,
+      "compliant_volume": 0.17578125,
+      "best_dphi_deg": 179.60323866782397,
+      "in_train_band": true
+    },
+    {
+      "bounds": "electrical",
+      "split": "8.0",
+      "fc_ghz": 28.0,
+      "midpoint_dphi_deg": 86.71020382887633,
+      "compliant_volume": 0.17578125,
+      "best_dphi_deg": 179.56634653456905,
+      "in_train_band": true
+    },
+    {
+      "bounds": "electrical",
+      "split": "8.0",
+      "fc_ghz": 38.0,
+      "midpoint_dphi_deg": 86.6802403704607,
+      "compliant_volume": 0.173828125,
+      "best_dphi_deg": 179.59620340662616,
+      "in_train_band": false
+    }
+  ],
+  "n_samples": 512,
+  "train_band_ghz": [
+    10.0,
+    28.0
+  ],
+  "criteria": {
+    "dphi_deg": 60.0,
+    "rl_db": 12.0,
+    "il_db": 3.0
+  }
+}

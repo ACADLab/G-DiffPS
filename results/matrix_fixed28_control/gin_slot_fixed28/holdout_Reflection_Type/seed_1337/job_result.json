@@ -1,0 +1,26 @@
+{
+  "tag": "gin_slot_fixed28",
+  "held_out": "Reflection_Type",
+  "seed": 1337,
+  "encoder": "gin",
+  "action_space": "slot",
+  "fc_mode": "fixed28",
+  "bounds": "legacy",
+  "train_returncode": 0,
+  "eval_returncode": 0,
+  "wall_s": 546.9247460365295,
+  "ckpt_dir": "results/matrix_fixed28_control/gin_slot_fixed28/holdout_Reflection_Type/seed_1337",
+  "run_dir": "results/matrix_fixed28_control/gin_slot_fixed28/holdout_Reflection_Type/seed_1337",
+  "loocv": {
+    "held_out": "Reflection_Type",
+    "n": 200,
+    "compliance": 0.865,
+    "prior_pass_rate": 1.0,
+    "best_reward": 2.219949600793352,
+    "mean_reward_success": 0.7734327811546313,
+    "encoder": "gin",
+    "action_space": "slot",
+    "fc_mode": "fixed28",
+    "bounds": "legacy"
+  }
+}

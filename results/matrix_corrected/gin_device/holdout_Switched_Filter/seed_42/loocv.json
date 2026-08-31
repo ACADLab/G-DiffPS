@@ -1,0 +1,12 @@
+{
+  "held_out": "Switched_Filter",
+  "n": 200,
+  "compliance": 0.56,
+  "prior_pass_rate": 1.0,
+  "best_reward": 0.7320569540147683,
+  "mean_reward_success": 0.5040598080504723,
+  "encoder": "gin",
+  "action_space": "device",
+  "fc_mode": "spec",
+  "bounds": "electrical"
+}

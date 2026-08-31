@@ -1,0 +1,135 @@
+{
+  "specset": "/Users/deepak/Desktop/mypages/G-DiffPS/specset/specset_eval.json",
+  "n": 2000,
+  "hi_frac": 0.3,
+  "lo_frac": 0.05,
+  "by_switch_model": {
+    "ideal": {
+      "all specs": {
+        "n": 2000,
+        "shares": {
+          "All_Pass": 0.025,
+          "Loaded_Line": 0.5605,
+          "Reflection_Type": 0.014,
+          "Switched_Filter": 0.0,
+          "Switched_Line": 0.0075,
+          "Vector_Modulator": 0.393
+        },
+        "tv_from_uniform": 0.6201666666666666,
+        "violations": [
+          "All_Pass",
+          "Loaded_Line",
+          "Reflection_Type",
+          "Switched_Filter",
+          "Switched_Line",
+          "Vector_Modulator"
+        ]
+      },
+      "active-allowed": {
+        "n": 983,
+        "shares": {
+          "All_Pass": 0.015259409969481181,
+          "Loaded_Line": 0.18107833163784334,
+          "Reflection_Type": 0.004069175991861648,
+          "Switched_Filter": 0.0,
+          "Switched_Line": 0.0,
+          "Vector_Modulator": 0.7995930824008138
+        },
+        "tv_from_uniform": 0.6473380807053238,
+        "violations": [
+          "All_Pass",
+          "Reflection_Type",
+          "Switched_Filter",
+          "Switched_Line",
+          "Vector_Modulator"
+        ]
+      },
+      "passive-only": {
+        "n": 1017,
+        "shares": {
+          "All_Pass": 0.0344149459193707,
+          "Loaded_Line": 0.9272369714847591,
+          "Reflection_Type": 0.02359882005899705,
+          "Switched_Filter": 0.0,
+          "Switched_Line": 0.014749262536873156,
+          "Vector_Modulator": 0.0
+        },
+        "tv_from_uniform": 0.7605703048180924,
+        "violations": [
+          "All_Pass",
+          "Loaded_Line",
+          "Reflection_Type",
+          "Switched_Filter",
+          "Switched_Line",
+          "Vector_Modulator"
+        ]
+      },
+      "margin": {
+        "p10": 0.008101502702954311,
+        "p50": 0.09669751594964027,
+        "p90": 1.0614782831014786
+      }
+    },
+    "realistic": {
+      "all specs": {
+        "n": 2000,
+        "shares": {
+          "All_Pass": 0.024,
+          "Loaded_Line": 0.265,
+          "Reflection_Type": 0.089,
+          "Switched_Filter": 0.023,
+          "Switched_Line": 0.143,
+          "Vector_Modulator": 0.456
+        },
+        "tv_from_uniform": 0.38766666666666666,
+        "violations": [
+          "All_Pass",
+          "Switched_Filter",
+          "Vector_Modulator"
+        ]
+      },
+      "active-allowed": {
+        "n": 983,
+        "shares": {
+          "All_Pass": 0.014242115971515769,
+          "Loaded_Line": 0.052899287894201424,
+          "Reflection_Type": 0.003051881993896236,
+          "Switched_Filter": 0.0,
+          "Switched_Line": 0.002034587995930824,
+          "Vector_Modulator": 0.9277721261444557
+        },
+        "tv_from_uniform": 0.7611054594777891,
+        "violations": [
+          "All_Pass",
+          "Reflection_Type",
+          "Switched_Filter",
+          "Switched_Line",
+          "Vector_Modulator"
+        ]
+      },
+      "passive-only": {
+        "n": 1017,
+        "shares": {
+          "All_Pass": 0.03343166175024582,
+          "Loaded_Line": 0.47000983284169123,
+          "Reflection_Type": 0.1720747295968535,
+          "Switched_Filter": 0.04523107177974434,
+          "Switched_Line": 0.27925270403146507,
+          "Vector_Modulator": 0.0
+        },
+        "tv_from_uniform": 0.4213372664700098,
+        "violations": [
+          "All_Pass",
+          "Loaded_Line",
+          "Switched_Filter",
+          "Vector_Modulator"
+        ]
+      },
+      "margin": {
+        "p10": 0.011669858719677184,
+        "p50": 0.32906926127925384,
+        "p90": 1.1936753548241645
+      }
+    }
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "n_specs": 600,
+  "switch_model": "ideal",
+  "bounds": "electrical",
+  "n_states_scored": {
+    "Loaded_Line": 2,
+    "Switched_Line": 2,
+    "Reflection_Type": 2,
+    "Switched_Filter": 2,
+    "Vector_Modulator": 8,
+    "All_Pass": 2
+  },
+  "counts": {
+    "Loaded_Line": 600,
+    "Switched_Line": 600,
+    "Reflection_Type": 600,
+    "Switched_Filter": 600,
+    "Vector_Modulator": 600,
+    "All_Pass": 600
+  },
+  "mean_parts_before": {
+    "Loaded_Line": {
+      "g_phase": 0.8822258179032652,
+      "g_il": 0.9888100640407683,
+      "g_rl": 1.0,
+      "g_gain": 0.9782876249050071,
+      "reward": 1.184950859476716
+    },
+    "Switched_Line": {
+      "g_phase": 0.9119344583130466,
+      "g_il": 0.8513396418687665,
+      "g_rl": 1.0,
+      "g_gain": 0.9984812204771761,
+      "reward": 1.404217171854896
+    },
+    "Reflection_Type": {
+      "g_phase": 0.856223827364052,
+      "g_il": 0.9351590186145018,
+      "g_rl": 0.904469176643716,
+      "g_gain": 0.9253182342401561,
+      "reward": 0.9411782549328997
+    },
+    "Switched_Filter": {
+      "g_phase": 0.9916702624127449,
+      "g_il": 0.8452130702060263,
+      "g_rl": 0.9999799785346911,
+      "g_gain": 0.9827629213804109,
+      "reward": 1.9418719742062633
+    },
+    "Vector_Modulator": {
+      "g_phase": 0.976837739828629,
+      "g_il": 0.6329688889254813,
+      "g_rl": 1.0,
+      "g_gain": 0.7730923720110144,
+      "reward": 1.757784175860102
+    },
+    "All_Pass": {
+      "g_phase": 0.2928932188134492,
+      "g_il": 0.48626895034305145,
+      "g_rl": 0.4903181852636065,
+      "g_gain": 0.9999999999999994,
+      "reward": 0.5733141444428588
+    }
+  },
+  "mean_parts_after": {
+    "Loaded_Line": {
+      "g_phase": 0.08336717093459411,
+      "g_il": 0.9888100640407683,
+      "g_rl": 1.0,
+      "g_gain": 0.9782876249050071,
+      "reward": 0.9053503330376791
+    },
+    "Switched_Line": {
+      "g_phase": 0.2211961625393101,
+      "g_il": 0.8513396418687665,
+      "g_rl": 1.0,
+      "g_gain": 0.9984812204771761,
+      "reward": 1.1624587683340897
+    },
+    "Reflection_Type": {
+      "g_phase": 0.005693482998951058,
+      "g_il": 0.9351590186145018,
+      "g_rl": 0.904469176643716,
+      "g_gain": 0.9253182342401561,
+      "reward": 0.6434926344051138
+    },
+    "Switched_Filter": {
+      "g_phase": 0.8106767267388464,
+      "g_il": 0.8452130702060263,
+      "g_rl": 0.9999799785346911,
+      "g_gain": 0.9827629213804109,
+      "reward": 1.8785242367204005
+    },
+    "Vector_Modulator": {
+      "g_phase": 0.5575307224293126,
+      "g_il": 0.6329688889254813,
+      "g_rl": 1.0,
+      "g_gain": 0.7730923720110144,
+      "reward": 1.611026719770344
+    },
+    "All_Pass": {
+      "g_phase": 0.0,
+      "g_il": 0.48626895034305145,
+      "g_rl": 0.4903181852636065,
+      "g_gain": 0.9999999999999994,
+      "reward": 0.47080151785815055
+    }
+  },
+  "winners_before": {
+    "Switched_Filter": 412,
+    "Switched_Line": 96,
+    "Loaded_Line": 92
+  },
+  "winners_after": {
+    "Switched_Filter": 496,
+    "Switched_Line": 85,
+    "Loaded_Line": 18,
+    "Reflection_Type": 1
+  },
+  "switched_filter_g_phase_before": 0.9916702624127449,
+  "switched_filter_g_phase_after": 0.8106767267388464
+}

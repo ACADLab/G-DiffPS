@@ -14,7 +14,8 @@ def compute_tline_abcd(Z0, L_mm, freq_hz):
         A, B, C, D: Complex ABCD matrix components
     """
     c_speed = 3e8
-    vp = c_speed / 2.0  # Assumes eps_eff = 2.5/4.0 average. Baseline eps_eff=2.5.
+    # Match SPICE templates and lam4 = 47.43/fc_ghz: eps_eff=2.5 -> vp = c/sqrt(2.5).
+    vp = c_speed / np.sqrt(2.5)  # 1.897e8 m/s
     beta = 2 * np.pi * freq_hz / vp
     theta = beta * (L_mm * 1e-3)
     
@@ -139,14 +140,30 @@ def compute_switched_line_s_params(Z0_line, L_short_mm, L_long_mm, R_on, R_off, 
     
     return s11, s21
 
-def check_physics_priors(topology_name: str, params_dict: dict, fc_ghz: float) -> bool:
+def check_physics_priors(
+    topology_name: str,
+    params_dict: dict,
+    fc_ghz: float,
+    pmax_mw: float | None = None,
+) -> bool:
     """
     Microwave physics pre-filter.
     Returns True if parameters yield physically sane performance (s11 and s21),
     Returns False if they are wildly non-resonant.
+
+    When ``pmax_mw`` is set, Vector_Modulator is also gated on the VCVS drive
+    proxy ``vm_drive_pwr_mw`` (T1.5d — continuous power left the reward).
     """
     name = topology_name.lower().replace("_", "")
     freq_hz = fc_ghz * 1e9
+
+    if name == "vectormodulator" and pmax_mw is not None:
+        from sim.mna_scorer import vm_drive_pwr_mw
+        # Worst-state over the 16-state I/Q table.
+        from env.netlist_graph import VM_IQ
+        worst = max(vm_drive_pwr_mw(params_dict, state=s) for s in range(len(VM_IQ)))
+        if worst > float(pmax_mw):
+            return False
     
     # Parse parameters
     try:
@@ -299,6 +316,6 @@ def check_physics_priors(topology_name: str, params_dict: dict, fc_ghz: float) -
             
         return True
     except Exception as e:
-        # Fallback to True if parsing fails to avoid breaking simulations
-        print(f"[Physics Priors Filter Warning] {e}")
-        return True
+        # Fail closed: a parse / numeric failure must not silently disable the shield.
+        print(f"[Physics Priors Filter Warning] rejecting on exception: {e}")
+        return False

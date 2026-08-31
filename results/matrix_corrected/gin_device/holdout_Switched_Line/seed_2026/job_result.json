@@ -1,0 +1,26 @@
+{
+  "tag": "gin_device",
+  "held_out": "Switched_Line",
+  "seed": 2026,
+  "encoder": "gin",
+  "action_space": "device",
+  "fc_mode": "spec",
+  "bounds": "electrical",
+  "train_returncode": 0,
+  "eval_returncode": 0,
+  "wall_s": 421.72014904022217,
+  "ckpt_dir": "results/matrix_corrected/gin_device/holdout_Switched_Line/seed_2026",
+  "run_dir": "results/matrix_corrected/gin_device/holdout_Switched_Line/seed_2026",
+  "loocv": {
+    "held_out": "Switched_Line",
+    "n": 200,
+    "compliance": 0.99,
+    "prior_pass_rate": 1.0,
+    "best_reward": 1.0268283849712014,
+    "mean_reward_success": 0.7842245428372655,
+    "encoder": "gin",
+    "action_space": "device",
+    "fc_mode": "spec",
+    "bounds": "electrical"
+  }
+}

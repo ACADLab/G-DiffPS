@@ -1,0 +1,12 @@
+{
+  "held_out": "All_Pass",
+  "n": 20,
+  "compliance": 0.25,
+  "prior_pass_rate": 0.5,
+  "best_reward": 0.7682521706547902,
+  "mean_reward_success": 0.5120285447660466,
+  "encoder": "circuit",
+  "action_space": "slot",
+  "fc_mode": "fixed28",
+  "bounds": "legacy"
+}

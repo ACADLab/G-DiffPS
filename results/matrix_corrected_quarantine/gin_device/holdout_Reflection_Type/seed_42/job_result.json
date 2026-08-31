@@ -1,0 +1,26 @@
+{
+  "tag": "gin_device",
+  "held_out": "Reflection_Type",
+  "seed": 42,
+  "encoder": "gin",
+  "action_space": "device",
+  "fc_mode": "spec",
+  "bounds": "electrical",
+  "train_returncode": 0,
+  "eval_returncode": 0,
+  "wall_s": 426.06859612464905,
+  "ckpt_dir": "results/matrix_corrected/gin_device/holdout_Reflection_Type/seed_42",
+  "run_dir": "results/matrix_corrected/gin_device/holdout_Reflection_Type/seed_42",
+  "loocv": {
+    "held_out": "Reflection_Type",
+    "n": 200,
+    "compliance": 0.0,
+    "prior_pass_rate": 0.0,
+    "best_reward": -5.0,
+    "mean_reward_success": -5.0,
+    "encoder": "gin",
+    "action_space": "device",
+    "fc_mode": "spec",
+    "bounds": "electrical"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "held_out": "Vector_Modulator",
+  "n": 200,
+  "compliance": 0.965,
+  "prior_pass_rate": 1.0,
+  "best_reward": 2.221749739906019,
+  "mean_reward_success": 0.8349290976370262,
+  "encoder": "gin",
+  "action_space": "device",
+  "fc_mode": "spec",
+  "bounds": "electrical"
+}

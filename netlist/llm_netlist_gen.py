@@ -462,7 +462,10 @@ class LLMNetlistGen:
         # Phase-shifter sizing_hints in the specset are static placeholders, so
         # phase-shifter generation does not consume few-shot matches; this is
         # only used when an explicit reference dataset is passed at construction.
-        matches = [d for d in self.dataset if d["topology"] == topology]
+        matches = [
+            d for d in self.dataset
+            if d.get("heuristic_topology_deprecated", d.get("topology")) == topology
+        ]
 
         if not matches:
             few_shot = "No reference examples available."

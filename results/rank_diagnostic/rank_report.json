@@ -1,0 +1,42 @@
+{
+  "dying_relu": {
+    "rank": 5,
+    "participation_ratio": 1.9354379177093506,
+    "within_topo_var": 5.875506754360591e-15,
+    "n_unique_vectors": 6,
+    "shape": [
+      500,
+      64
+    ]
+  },
+  "sage_ln": {
+    "rank": 6,
+    "participation_ratio": 2.4643611907958984,
+    "within_topo_var": 3.9027048917503654e-13,
+    "n_unique_vectors": 6,
+    "shape": [
+      500,
+      64
+    ]
+  },
+  "gin": {
+    "rank": 6,
+    "participation_ratio": 1.5874886512756348,
+    "within_topo_var": 3.5530134787712295e-12,
+    "n_unique_vectors": 6,
+    "shape": [
+      500,
+      64
+    ]
+  },
+  "circuit": {
+    "rank": 23,
+    "participation_ratio": 1.831083059310913,
+    "within_topo_var": 0.010529122160126766,
+    "n_unique_vectors": 99,
+    "shape": [
+      500,
+      64
+    ]
+  }
+}

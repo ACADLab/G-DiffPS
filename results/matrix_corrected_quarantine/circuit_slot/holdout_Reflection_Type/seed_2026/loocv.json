@@ -1,0 +1,12 @@
+{
+  "held_out": "Reflection_Type",
+  "n": 200,
+  "compliance": 0.005,
+  "prior_pass_rate": 0.005,
+  "best_reward": 0.9088380050171071,
+  "mean_reward_success": 0.9088380050171071,
+  "encoder": "circuit",
+  "action_space": "slot",
+  "fc_mode": "spec",
+  "bounds": "electrical"
+}

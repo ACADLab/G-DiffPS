@@ -1,0 +1,4335 @@
+{
+  "original_six": [
+    "All_Pass",
+    "Loaded_Line",
+    "Reflection_Type",
+    "Switched_Filter",
+    "Switched_Line",
+    "Vector_Modulator"
+  ],
+  "composed": [
+    {
+      "name": "Gen_T07",
+      "device_count": 11,
+      "param_keys": [
+        "C_c0_As0_pf",
+        "C_c0_As1_pf",
+        "L_c0_Bs0_nh",
+        "L_cs1_nh"
+      ],
+      "netlist": {
+        "Rc0_inA": {
+          "dtype": "R_switch",
+          "nets": [
+            "in",
+            "c0_a_in"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_inB": {
+          "dtype": "R_switch",
+          "nets": [
+            "in",
+            "c0_b_in"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            1
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Cc0_As0_sh": {
+          "dtype": "C",
+          "nets": [
+            "c0_a_in",
+            "0"
+          ],
+          "sizes": "C_c0_As0_pf",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_As0_th": {
+          "dtype": "R_fixed",
+          "nets": [
+            "c0_a_in",
+            "c0_A_n0"
+          ],
+          "sizes": null,
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Cc0_As1_": {
+          "dtype": "C",
+          "nets": [
+            "c0_A_n0",
+            "c0_a_out"
+          ],
+          "sizes": "C_c0_As1_pf",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lc0_Bs0_sh": {
+          "dtype": "L",
+          "nets": [
+            "c0_b_in",
+            "0"
+          ],
+          "sizes": "L_c0_Bs0_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_Bs0_th": {
+          "dtype": "R_fixed",
+          "nets": [
+            "c0_b_in",
+            "c0_b_out"
+          ],
+          "sizes": null,
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_outA": {
+          "dtype": "R_switch",
+          "nets": [
+            "c0_a_out",
+            "n0"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_outB": {
+          "dtype": "R_switch",
+          "nets": [
+            "c0_b_out",
+            "n0"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            1
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lcs1_sh": {
+          "dtype": "L",
+          "nets": [
+            "n0",
+            "0"
+          ],
+          "sizes": "L_cs1_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rcs1_th": {
+          "dtype": "R_fixed",
+          "nets": [
+            "n0",
+            "out"
+          ],
+          "sizes": null,
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        }
+      },
+      "port_nets": [
+        "in",
+        "out"
+      ],
+      "sections": [
+        "BRANCH2",
+        "SHUNT_L"
+      ],
+      "wl_hash": "75650b1dbd8c3988",
+      "ideal_step_deg": -90.0,
+      "ideal_step_raw_p90": 96.66400983044137
+    },
+    {
+      "name": "Gen_T08",
+      "device_count": 4,
+      "param_keys": [
+        "L_cs0_nh",
+        "L_cs1_nh"
+      ],
+      "netlist": {
+        "Lcs0_": {
+          "dtype": "L",
+          "nets": [
+            "in",
+            "n0"
+          ],
+          "sizes": "L_cs0_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rcs0_bp": {
+          "dtype": "R_switch",
+          "nets": [
+            "in",
+            "n0"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lcs1_": {
+          "dtype": "L",
+          "nets": [
+            "n0",
+            "out"
+          ],
+          "sizes": "L_cs1_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rcs1_bp": {
+          "dtype": "R_switch",
+          "nets": [
+            "n0",
+            "out"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        }
+      },
+      "port_nets": [
+        "in",
+        "out"
+      ],
+      "sections": [
+        "SW_SER_BYPASS",
+        "SW_SER_BYPASS"
+      ],
+      "wl_hash": "b436c4df46593c5d",
+      "ideal_step_deg": -90.0,
+      "ideal_step_raw_p90": 75.9420620360683
+    },
+    {
+      "name": "Gen_T09",
+      "device_count": 4,
+      "param_keys": [
+        "C_cs0_pf",
+        "L_cs1_mm",
+        "Z0_cs1"
+      ],
+      "netlist": {
+        "Rcs0_sw": {
+          "dtype": "R_switch",
+          "nets": [
+            "in",
+            "cs0_nld"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Ccs0_": {
+          "dtype": "C",
+          "nets": [
+            "cs0_nld",
+            "0"
+          ],
+          "sizes": "C_cs0_pf",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rcs0_th": {
+          "dtype": "R_fixed",
+          "nets": [
+            "in",
+            "n0"
+          ],
+          "sizes": null,
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Tcs1_": {
+          "dtype": "TLine",
+          "nets": [
+            "n0",
+            "out"
+          ],
+          "sizes": "L_cs1_mm",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [
+            "Z0_cs1"
+          ],
+          "is_control_pins": []
+        }
+      },
+      "port_nets": [
+        "in",
+        "out"
+      ],
+      "sections": [
+        "SW_SHUNT_C",
+        "SER_TL"
+      ],
+      "wl_hash": "444b39e6e2f2114f",
+      "ideal_step_deg": -45.0,
+      "ideal_step_raw_p90": 56.64334083959508
+    },
+    {
+      "name": "Gen_T10",
+      "device_count": 5,
+      "param_keys": [
+        "L_cs0_nh",
+        "C_cs1_pf"
+      ],
+      "netlist": {
+        "Lcs0_sh": {
+          "dtype": "L",
+          "nets": [
+            "in",
+            "0"
+          ],
+          "sizes": "L_cs0_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rcs0_th": {
+          "dtype": "R_fixed",
+          "nets": [
+            "in",
+            "n0"
+          ],
+          "sizes": null,
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rcs1_sw": {
+          "dtype": "R_switch",
+          "nets": [
+            "n0",
+            "cs1_nld"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Ccs1_": {
+          "dtype": "C",
+          "nets": [
+            "cs1_nld",
+            "0"
+          ],
+          "sizes": "C_cs1_pf",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rcs1_th": {
+          "dtype": "R_fixed",
+          "nets": [
+            "n0",
+            "out"
+          ],
+          "sizes": null,
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        }
+      },
+      "port_nets": [
+        "in",
+        "out"
+      ],
+      "sections": [
+        "SHUNT_L",
+        "SW_SHUNT_C"
+      ],
+      "wl_hash": "543afab950893d70",
+      "ideal_step_deg": -45.0,
+      "ideal_step_raw_p90": 66.3901846852058
+    },
+    {
+      "name": "Gen_T11",
+      "device_count": 4,
+      "param_keys": [
+        "L_cs0_nh",
+        "L_cs1_nh"
+      ],
+      "netlist": {
+        "Rcs0_sw": {
+          "dtype": "R_switch",
+          "nets": [
+            "in",
+            "cs0_nld"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lcs0_": {
+          "dtype": "L",
+          "nets": [
+            "cs0_nld",
+            "0"
+          ],
+          "sizes": "L_cs0_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rcs0_th": {
+          "dtype": "R_fixed",
+          "nets": [
+            "in",
+            "n0"
+          ],
+          "sizes": null,
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lcs1_": {
+          "dtype": "L",
+          "nets": [
+            "n0",
+            "out"
+          ],
+          "sizes": "L_cs1_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        }
+      },
+      "port_nets": [
+        "in",
+        "out"
+      ],
+      "sections": [
+        "SW_SHUNT_L",
+        "SER_L"
+      ],
+      "wl_hash": "89086cca7799cede",
+      "ideal_step_deg": -45.0,
+      "ideal_step_raw_p90": 53.47459528092527
+    },
+    {
+      "name": "Gen_T12",
+      "device_count": 12,
+      "param_keys": [
+        "L_c0_As0_nh",
+        "C_c0_As0_br_pf",
+        "C_c0_As0_c_pf",
+        "C_c0_As1_pf",
+        "L_c0_Bs0_nh",
+        "C_cs1_pf"
+      ],
+      "netlist": {
+        "Rc0_inA": {
+          "dtype": "R_switch",
+          "nets": [
+            "in",
+            "c0_a_in"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_inB": {
+          "dtype": "R_switch",
+          "nets": [
+            "in",
+            "c0_b_in"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            1
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lc0_As0_1": {
+          "dtype": "L",
+          "nets": [
+            "c0_a_in",
+            "c0_As0_m"
+          ],
+          "sizes": "L_c0_As0_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lc0_As0_2": {
+          "dtype": "L",
+          "nets": [
+            "c0_As0_m",
+            "c0_A_n0"
+          ],
+          "sizes": "L_c0_As0_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Cc0_As0_br": {
+          "dtype": "C",
+          "nets": [
+            "c0_a_in",
+            "c0_A_n0"
+          ],
+          "sizes": "C_c0_As0_br_pf",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Cc0_As0_c": {
+          "dtype": "C",
+          "nets": [
+            "c0_As0_m",
+            "0"
+          ],
+          "sizes": "C_c0_As0_c_pf",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Cc0_As1_": {
+          "dtype": "C",
+          "nets": [
+            "c0_A_n0",
+            "c0_a_out"
+          ],
+          "sizes": "C_c0_As1_pf",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lc0_Bs0_sh": {
+          "dtype": "L",
+          "nets": [
+            "c0_b_in",
+            "0"
+          ],
+          "sizes": "L_c0_Bs0_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_Bs0_th": {
+          "dtype": "R_fixed",
+          "nets": [
+            "c0_b_in",
+            "c0_b_out"
+          ],
+          "sizes": null,
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_outA": {
+          "dtype": "R_switch",
+          "nets": [
+            "c0_a_out",
+            "n0"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_outB": {
+          "dtype": "R_switch",
+          "nets": [
+            "c0_b_out",
+            "n0"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            1
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Ccs1_": {
+          "dtype": "C",
+          "nets": [
+            "n0",
+            "out"
+          ],
+          "sizes": "C_cs1_pf",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        }
+      },
+      "port_nets": [
+        "in",
+        "out"
+      ],
+      "sections": [
+        "BRANCH2",
+        "SER_C"
+      ],
+      "wl_hash": "67ccfff3eba5ca94",
+      "ideal_step_deg": -180.0,
+      "ideal_step_raw_p90": 153.70868421530517
+    },
+    {
+      "name": "Gen_T13",
+      "device_count": 8,
+      "param_keys": [
+        "L_c0_As0_mm",
+        "Z0_c0_As0",
+        "L_c0_Bs0_nh",
+        "L_cs1_nh"
+      ],
+      "netlist": {
+        "Rc0_inA": {
+          "dtype": "R_switch",
+          "nets": [
+            "in",
+            "c0_a_in"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_inB": {
+          "dtype": "R_switch",
+          "nets": [
+            "in",
+            "c0_b_in"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            1
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Tc0_As0_": {
+          "dtype": "TLine",
+          "nets": [
+            "c0_a_in",
+            "c0_a_out"
+          ],
+          "sizes": "L_c0_As0_mm",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [
+            "Z0_c0_As0"
+          ],
+          "is_control_pins": []
+        },
+        "Lc0_Bs0_": {
+          "dtype": "L",
+          "nets": [
+            "c0_b_in",
+            "c0_b_out"
+          ],
+          "sizes": "L_c0_Bs0_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_outA": {
+          "dtype": "R_switch",
+          "nets": [
+            "c0_a_out",
+            "n0"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_outB": {
+          "dtype": "R_switch",
+          "nets": [
+            "c0_b_out",
+            "n0"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            1
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lcs1_sh": {
+          "dtype": "L",
+          "nets": [
+            "n0",
+            "0"
+          ],
+          "sizes": "L_cs1_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rcs1_th": {
+          "dtype": "R_fixed",
+          "nets": [
+            "n0",
+            "out"
+          ],
+          "sizes": null,
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        }
+      },
+      "port_nets": [
+        "in",
+        "out"
+      ],
+      "sections": [
+        "BRANCH2",
+        "SHUNT_L"
+      ],
+      "wl_hash": "d0aea031dea61e0f",
+      "ideal_step_deg": -180.0,
+      "ideal_step_raw_p90": 154.62065472152466
+    },
+    {
+      "name": "Gen_T14",
+      "device_count": 14,
+      "param_keys": [
+        "C_cs0_pf",
+        "C_c1_As0_pf",
+        "L_c1_As1_nh",
+        "C_c1_As1_br_pf",
+        "C_c1_As1_c_pf",
+        "L_c1_Bs0_nh"
+      ],
+      "netlist": {
+        "Rcs0_sw": {
+          "dtype": "R_switch",
+          "nets": [
+            "in",
+            "cs0_nld"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Ccs0_": {
+          "dtype": "C",
+          "nets": [
+            "cs0_nld",
+            "0"
+          ],
+          "sizes": "C_cs0_pf",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rcs0_th": {
+          "dtype": "R_fixed",
+          "nets": [
+            "in",
+            "n0"
+          ],
+          "sizes": null,
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc1_inA": {
+          "dtype": "R_switch",
+          "nets": [
+            "n0",
+            "c1_a_in"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc1_inB": {
+          "dtype": "R_switch",
+          "nets": [
+            "n0",
+            "c1_b_in"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            1
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Cc1_As0_": {
+          "dtype": "C",
+          "nets": [
+            "c1_a_in",
+            "c1_A_n0"
+          ],
+          "sizes": "C_c1_As0_pf",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lc1_As1_1": {
+          "dtype": "L",
+          "nets": [
+            "c1_A_n0",
+            "c1_As1_m"
+          ],
+          "sizes": "L_c1_As1_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lc1_As1_2": {
+          "dtype": "L",
+          "nets": [
+            "c1_As1_m",
+            "c1_a_out"
+          ],
+          "sizes": "L_c1_As1_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Cc1_As1_br": {
+          "dtype": "C",
+          "nets": [
+            "c1_A_n0",
+            "c1_a_out"
+          ],
+          "sizes": "C_c1_As1_br_pf",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Cc1_As1_c": {
+          "dtype": "C",
+          "nets": [
+            "c1_As1_m",
+            "0"
+          ],
+          "sizes": "C_c1_As1_c_pf",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lc1_Bs0_sh": {
+          "dtype": "L",
+          "nets": [
+            "c1_b_in",
+            "0"
+          ],
+          "sizes": "L_c1_Bs0_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc1_Bs0_th": {
+          "dtype": "R_fixed",
+          "nets": [
+            "c1_b_in",
+            "c1_b_out"
+          ],
+          "sizes": null,
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc1_outA": {
+          "dtype": "R_switch",
+          "nets": [
+            "c1_a_out",
+            "out"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc1_outB": {
+          "dtype": "R_switch",
+          "nets": [
+            "c1_b_out",
+            "out"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            1
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        }
+      },
+      "port_nets": [
+        "in",
+        "out"
+      ],
+      "sections": [
+        "SW_SHUNT_C",
+        "BRANCH2"
+      ],
+      "wl_hash": "e8da205a919d60b6",
+      "ideal_step_deg": -180.0,
+      "ideal_step_raw_p90": 156.91188441935148
+    },
+    {
+      "name": "Gen_T15",
+      "device_count": 14,
+      "param_keys": [
+        "L_c0_As0_mm",
+        "Z0_c0_As0",
+        "C_c0_As1_pf",
+        "L_c0_Bs0_mm",
+        "Z0_c0_Bs0",
+        "L_c1_As0_mm",
+        "Z0_c1_As0",
+        "C_c1_Bs0_pf"
+      ],
+      "netlist": {
+        "Rc0_inA": {
+          "dtype": "R_switch",
+          "nets": [
+            "in",
+            "c0_a_in"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_inB": {
+          "dtype": "R_switch",
+          "nets": [
+            "in",
+            "c0_b_in"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            1
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Tc0_As0_": {
+          "dtype": "TLine",
+          "nets": [
+            "c0_a_in",
+            "c0_A_n0"
+          ],
+          "sizes": "L_c0_As0_mm",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [
+            "Z0_c0_As0"
+          ],
+          "is_control_pins": []
+        },
+        "Cc0_As1_": {
+          "dtype": "C",
+          "nets": [
+            "c0_A_n0",
+            "c0_a_out"
+          ],
+          "sizes": "C_c0_As1_pf",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Tc0_Bs0_stub": {
+          "dtype": "TLine",
+          "nets": [
+            "c0_b_in",
+            "0"
+          ],
+          "sizes": "L_c0_Bs0_mm",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [
+            "Z0_c0_Bs0"
+          ],
+          "is_control_pins": []
+        },
+        "Rc0_Bs0_th": {
+          "dtype": "R_fixed",
+          "nets": [
+            "c0_b_in",
+            "c0_b_out"
+          ],
+          "sizes": null,
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_outA": {
+          "dtype": "R_switch",
+          "nets": [
+            "c0_a_out",
+            "n0"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_outB": {
+          "dtype": "R_switch",
+          "nets": [
+            "c0_b_out",
+            "n0"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            1
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc1_inA": {
+          "dtype": "R_switch",
+          "nets": [
+            "n0",
+            "c1_a_in"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc1_inB": {
+          "dtype": "R_switch",
+          "nets": [
+            "n0",
+            "c1_b_in"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            1
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Tc1_As0_": {
+          "dtype": "TLine",
+          "nets": [
+            "c1_a_in",
+            "c1_a_out"
+          ],
+          "sizes": "L_c1_As0_mm",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [
+            "Z0_c1_As0"
+          ],
+          "is_control_pins": []
+        },
+        "Cc1_Bs0_": {
+          "dtype": "C",
+          "nets": [
+            "c1_b_in",
+            "c1_b_out"
+          ],
+          "sizes": "C_c1_Bs0_pf",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc1_outA": {
+          "dtype": "R_switch",
+          "nets": [
+            "c1_a_out",
+            "out"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc1_outB": {
+          "dtype": "R_switch",
+          "nets": [
+            "c1_b_out",
+            "out"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            1
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        }
+      },
+      "port_nets": [
+        "in",
+        "out"
+      ],
+      "sections": [
+        "BRANCH2",
+        "BRANCH2"
+      ],
+      "wl_hash": "d5f5ecea277e2843",
+      "ideal_step_deg": -180.0,
+      "ideal_step_raw_p90": 167.8555243765473
+    },
+    {
+      "name": "Gen_T16",
+      "device_count": 8,
+      "param_keys": [
+        "L_cs0_mm",
+        "Z0_cs0",
+        "C_c1_As0_pf",
+        "L_c1_Bs0_nh"
+      ],
+      "netlist": {
+        "Tcs0_stub": {
+          "dtype": "TLine",
+          "nets": [
+            "in",
+            "0"
+          ],
+          "sizes": "L_cs0_mm",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [
+            "Z0_cs0"
+          ],
+          "is_control_pins": []
+        },
+        "Rcs0_th": {
+          "dtype": "R_fixed",
+          "nets": [
+            "in",
+            "n0"
+          ],
+          "sizes": null,
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc1_inA": {
+          "dtype": "R_switch",
+          "nets": [
+            "n0",
+            "c1_a_in"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc1_inB": {
+          "dtype": "R_switch",
+          "nets": [
+            "n0",
+            "c1_b_in"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            1
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Cc1_As0_": {
+          "dtype": "C",
+          "nets": [
+            "c1_a_in",
+            "c1_a_out"
+          ],
+          "sizes": "C_c1_As0_pf",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lc1_Bs0_": {
+          "dtype": "L",
+          "nets": [
+            "c1_b_in",
+            "c1_b_out"
+          ],
+          "sizes": "L_c1_Bs0_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc1_outA": {
+          "dtype": "R_switch",
+          "nets": [
+            "c1_a_out",
+            "out"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc1_outB": {
+          "dtype": "R_switch",
+          "nets": [
+            "c1_b_out",
+            "out"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            1
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        }
+      },
+      "port_nets": [
+        "in",
+        "out"
+      ],
+      "sections": [
+        "SHUNT_STUB",
+        "BRANCH2"
+      ],
+      "wl_hash": "e7fecf7a58193c74",
+      "ideal_step_deg": -90.0,
+      "ideal_step_raw_p90": 109.45326870565478
+    },
+    {
+      "name": "Gen_T17",
+      "device_count": 6,
+      "param_keys": [
+        "L_cs0_nh",
+        "C_cs0_br_pf",
+        "C_cs0_c_pf",
+        "L_cs1_nh"
+      ],
+      "netlist": {
+        "Lcs0_1": {
+          "dtype": "L",
+          "nets": [
+            "in",
+            "cs0_m"
+          ],
+          "sizes": "L_cs0_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lcs0_2": {
+          "dtype": "L",
+          "nets": [
+            "cs0_m",
+            "n0"
+          ],
+          "sizes": "L_cs0_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Ccs0_br": {
+          "dtype": "C",
+          "nets": [
+            "in",
+            "n0"
+          ],
+          "sizes": "C_cs0_br_pf",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Ccs0_c": {
+          "dtype": "C",
+          "nets": [
+            "cs0_m",
+            "0"
+          ],
+          "sizes": "C_cs0_c_pf",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lcs1_": {
+          "dtype": "L",
+          "nets": [
+            "n0",
+            "out"
+          ],
+          "sizes": "L_cs1_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rcs1_bp": {
+          "dtype": "R_switch",
+          "nets": [
+            "n0",
+            "out"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        }
+      },
+      "port_nets": [
+        "in",
+        "out"
+      ],
+      "sections": [
+        "BRIDGED_T",
+        "SW_SER_BYPASS"
+      ],
+      "wl_hash": "b925a33b66167209",
+      "ideal_step_deg": -90.0,
+      "ideal_step_raw_p90": 82.45281184949856
+    },
+    {
+      "name": "Gen_T18",
+      "device_count": 12,
+      "param_keys": [
+        "C_c0_As0_pf",
+        "L_c0_As1_nh",
+        "L_c0_Bs0_nh",
+        "C_c0_Bs0_br_pf",
+        "C_c0_Bs0_c_pf"
+      ],
+      "netlist": {
+        "Rc0_inA": {
+          "dtype": "R_switch",
+          "nets": [
+            "in",
+            "c0_a_in"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_inB": {
+          "dtype": "R_switch",
+          "nets": [
+            "in",
+            "c0_b_in"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            1
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Cc0_As0_sh": {
+          "dtype": "C",
+          "nets": [
+            "c0_a_in",
+            "0"
+          ],
+          "sizes": "C_c0_As0_pf",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_As0_th": {
+          "dtype": "R_fixed",
+          "nets": [
+            "c0_a_in",
+            "c0_A_n0"
+          ],
+          "sizes": null,
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lc0_As1_sh": {
+          "dtype": "L",
+          "nets": [
+            "c0_A_n0",
+            "0"
+          ],
+          "sizes": "L_c0_As1_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_As1_th": {
+          "dtype": "R_fixed",
+          "nets": [
+            "c0_A_n0",
+            "c0_a_out"
+          ],
+          "sizes": null,
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lc0_Bs0_1": {
+          "dtype": "L",
+          "nets": [
+            "c0_b_in",
+            "c0_Bs0_m"
+          ],
+          "sizes": "L_c0_Bs0_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lc0_Bs0_2": {
+          "dtype": "L",
+          "nets": [
+            "c0_Bs0_m",
+            "c0_b_out"
+          ],
+          "sizes": "L_c0_Bs0_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Cc0_Bs0_br": {
+          "dtype": "C",
+          "nets": [
+            "c0_b_in",
+            "c0_b_out"
+          ],
+          "sizes": "C_c0_Bs0_br_pf",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Cc0_Bs0_c": {
+          "dtype": "C",
+          "nets": [
+            "c0_Bs0_m",
+            "0"
+          ],
+          "sizes": "C_c0_Bs0_c_pf",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_outA": {
+          "dtype": "R_switch",
+          "nets": [
+            "c0_a_out",
+            "out"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_outB": {
+          "dtype": "R_switch",
+          "nets": [
+            "c0_b_out",
+            "out"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            1
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        }
+      },
+      "port_nets": [
+        "in",
+        "out"
+      ],
+      "sections": [
+        "BRANCH2"
+      ],
+      "wl_hash": "fddec7d839fb6522",
+      "ideal_step_deg": -180.0,
+      "ideal_step_raw_p90": 141.404947119347
+    },
+    {
+      "name": "Gen_T19",
+      "device_count": 11,
+      "param_keys": [
+        "C_c0_As0_pf",
+        "L_c0_As1_mm",
+        "Z0_c0_As1",
+        "L_c0_Bs0_nh",
+        "L_cs1_nh"
+      ],
+      "netlist": {
+        "Rc0_inA": {
+          "dtype": "R_switch",
+          "nets": [
+            "in",
+            "c0_a_in"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_inB": {
+          "dtype": "R_switch",
+          "nets": [
+            "in",
+            "c0_b_in"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            1
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Cc0_As0_sh": {
+          "dtype": "C",
+          "nets": [
+            "c0_a_in",
+            "0"
+          ],
+          "sizes": "C_c0_As0_pf",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_As0_th": {
+          "dtype": "R_fixed",
+          "nets": [
+            "c0_a_in",
+            "c0_A_n0"
+          ],
+          "sizes": null,
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Tc0_As1_stub": {
+          "dtype": "TLine",
+          "nets": [
+            "c0_A_n0",
+            "0"
+          ],
+          "sizes": "L_c0_As1_mm",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [
+            "Z0_c0_As1"
+          ],
+          "is_control_pins": []
+        },
+        "Rc0_As1_th": {
+          "dtype": "R_fixed",
+          "nets": [
+            "c0_A_n0",
+            "c0_a_out"
+          ],
+          "sizes": null,
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lc0_Bs0_": {
+          "dtype": "L",
+          "nets": [
+            "c0_b_in",
+            "c0_b_out"
+          ],
+          "sizes": "L_c0_Bs0_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_outA": {
+          "dtype": "R_switch",
+          "nets": [
+            "c0_a_out",
+            "n0"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_outB": {
+          "dtype": "R_switch",
+          "nets": [
+            "c0_b_out",
+            "n0"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            1
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lcs1_": {
+          "dtype": "L",
+          "nets": [
+            "n0",
+            "out"
+          ],
+          "sizes": "L_cs1_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rcs1_bp": {
+          "dtype": "R_switch",
+          "nets": [
+            "n0",
+            "out"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        }
+      },
+      "port_nets": [
+        "in",
+        "out"
+      ],
+      "sections": [
+        "BRANCH2",
+        "SW_SER_BYPASS"
+      ],
+      "wl_hash": "b1a7025301e8a613",
+      "ideal_step_deg": -90.0,
+      "ideal_step_raw_p90": 105.73839978090061
+    },
+    {
+      "name": "Gen_T20",
+      "device_count": 5,
+      "param_keys": [
+        "L_cs0_nh",
+        "L_cs1_nh"
+      ],
+      "netlist": {
+        "Rcs0_sw": {
+          "dtype": "R_switch",
+          "nets": [
+            "in",
+            "cs0_nld"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lcs0_": {
+          "dtype": "L",
+          "nets": [
+            "cs0_nld",
+            "0"
+          ],
+          "sizes": "L_cs0_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rcs0_th": {
+          "dtype": "R_fixed",
+          "nets": [
+            "in",
+            "n0"
+          ],
+          "sizes": null,
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lcs1_sh": {
+          "dtype": "L",
+          "nets": [
+            "n0",
+            "0"
+          ],
+          "sizes": "L_cs1_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rcs1_th": {
+          "dtype": "R_fixed",
+          "nets": [
+            "n0",
+            "out"
+          ],
+          "sizes": null,
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        }
+      },
+      "port_nets": [
+        "in",
+        "out"
+      ],
+      "sections": [
+        "SW_SHUNT_L",
+        "SHUNT_L"
+      ],
+      "wl_hash": "71efeff16ab54894",
+      "ideal_step_deg": -45.0,
+      "ideal_step_raw_p90": 50.96842025576859
+    },
+    {
+      "name": "Gen_T21",
+      "device_count": 13,
+      "param_keys": [
+        "L_cs0_nh",
+        "L_c1_As0_nh",
+        "C_c1_As0_br_pf",
+        "C_c1_As0_c_pf",
+        "L_c1_As1_nh",
+        "C_c1_Bs0_pf"
+      ],
+      "netlist": {
+        "Lcs0_sh": {
+          "dtype": "L",
+          "nets": [
+            "in",
+            "0"
+          ],
+          "sizes": "L_cs0_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rcs0_th": {
+          "dtype": "R_fixed",
+          "nets": [
+            "in",
+            "n0"
+          ],
+          "sizes": null,
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc1_inA": {
+          "dtype": "R_switch",
+          "nets": [
+            "n0",
+            "c1_a_in"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc1_inB": {
+          "dtype": "R_switch",
+          "nets": [
+            "n0",
+            "c1_b_in"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            1
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lc1_As0_1": {
+          "dtype": "L",
+          "nets": [
+            "c1_a_in",
+            "c1_As0_m"
+          ],
+          "sizes": "L_c1_As0_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lc1_As0_2": {
+          "dtype": "L",
+          "nets": [
+            "c1_As0_m",
+            "c1_A_n0"
+          ],
+          "sizes": "L_c1_As0_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Cc1_As0_br": {
+          "dtype": "C",
+          "nets": [
+            "c1_a_in",
+            "c1_A_n0"
+          ],
+          "sizes": "C_c1_As0_br_pf",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Cc1_As0_c": {
+          "dtype": "C",
+          "nets": [
+            "c1_As0_m",
+            "0"
+          ],
+          "sizes": "C_c1_As0_c_pf",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lc1_As1_": {
+          "dtype": "L",
+          "nets": [
+            "c1_A_n0",
+            "c1_a_out"
+          ],
+          "sizes": "L_c1_As1_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Cc1_Bs0_sh": {
+          "dtype": "C",
+          "nets": [
+            "c1_b_in",
+            "0"
+          ],
+          "sizes": "C_c1_Bs0_pf",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc1_Bs0_th": {
+          "dtype": "R_fixed",
+          "nets": [
+            "c1_b_in",
+            "c1_b_out"
+          ],
+          "sizes": null,
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc1_outA": {
+          "dtype": "R_switch",
+          "nets": [
+            "c1_a_out",
+            "out"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc1_outB": {
+          "dtype": "R_switch",
+          "nets": [
+            "c1_b_out",
+            "out"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            1
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        }
+      },
+      "port_nets": [
+        "in",
+        "out"
+      ],
+      "sections": [
+        "SHUNT_L",
+        "BRANCH2"
+      ],
+      "wl_hash": "d5cf18c7cd019766",
+      "ideal_step_deg": -180.0,
+      "ideal_step_raw_p90": 151.56083062400242
+    },
+    {
+      "name": "Gen_T22",
+      "device_count": 5,
+      "param_keys": [
+        "C_cs0_pf",
+        "L_cs1_nh"
+      ],
+      "netlist": {
+        "Ccs0_sh": {
+          "dtype": "C",
+          "nets": [
+            "in",
+            "0"
+          ],
+          "sizes": "C_cs0_pf",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rcs0_th": {
+          "dtype": "R_fixed",
+          "nets": [
+            "in",
+            "n0"
+          ],
+          "sizes": null,
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rcs1_sw": {
+          "dtype": "R_switch",
+          "nets": [
+            "n0",
+            "cs1_nld"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lcs1_": {
+          "dtype": "L",
+          "nets": [
+            "cs1_nld",
+            "0"
+          ],
+          "sizes": "L_cs1_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rcs1_th": {
+          "dtype": "R_fixed",
+          "nets": [
+            "n0",
+            "out"
+          ],
+          "sizes": null,
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        }
+      },
+      "port_nets": [
+        "in",
+        "out"
+      ],
+      "sections": [
+        "SHUNT_C",
+        "SW_SHUNT_L"
+      ],
+      "wl_hash": "b9028e2c3c9aa473",
+      "ideal_step_deg": -45.0,
+      "ideal_step_raw_p90": 66.87754642815696
+    },
+    {
+      "name": "Gen_T23",
+      "device_count": 5,
+      "param_keys": [
+        "L_cs0_nh",
+        "L_cs1_mm",
+        "Z0_cs1"
+      ],
+      "netlist": {
+        "Rcs0_sw": {
+          "dtype": "R_switch",
+          "nets": [
+            "in",
+            "cs0_nld"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lcs0_": {
+          "dtype": "L",
+          "nets": [
+            "cs0_nld",
+            "0"
+          ],
+          "sizes": "L_cs0_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rcs0_th": {
+          "dtype": "R_fixed",
+          "nets": [
+            "in",
+            "n0"
+          ],
+          "sizes": null,
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Tcs1_stub": {
+          "dtype": "TLine",
+          "nets": [
+            "n0",
+            "0"
+          ],
+          "sizes": "L_cs1_mm",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [
+            "Z0_cs1"
+          ],
+          "is_control_pins": []
+        },
+        "Rcs1_th": {
+          "dtype": "R_fixed",
+          "nets": [
+            "n0",
+            "out"
+          ],
+          "sizes": null,
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        }
+      },
+      "port_nets": [
+        "in",
+        "out"
+      ],
+      "sections": [
+        "SW_SHUNT_L",
+        "SHUNT_STUB"
+      ],
+      "wl_hash": "e8f02b33b0d7f44b",
+      "ideal_step_deg": -45.0,
+      "ideal_step_raw_p90": 62.0068957937926
+    },
+    {
+      "name": "Gen_T24",
+      "device_count": 3,
+      "param_keys": [
+        "L_cs0_nh",
+        "L_cs1_mm",
+        "Z0_cs1"
+      ],
+      "netlist": {
+        "Lcs0_": {
+          "dtype": "L",
+          "nets": [
+            "in",
+            "n0"
+          ],
+          "sizes": "L_cs0_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rcs0_bp": {
+          "dtype": "R_switch",
+          "nets": [
+            "in",
+            "n0"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Tcs1_": {
+          "dtype": "TLine",
+          "nets": [
+            "n0",
+            "out"
+          ],
+          "sizes": "L_cs1_mm",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [
+            "Z0_cs1"
+          ],
+          "is_control_pins": []
+        }
+      },
+      "port_nets": [
+        "in",
+        "out"
+      ],
+      "sections": [
+        "SW_SER_BYPASS",
+        "SER_TL"
+      ],
+      "wl_hash": "d3c32b9ce3915c4d",
+      "ideal_step_deg": -90.0,
+      "ideal_step_raw_p90": 71.22647302615209
+    },
+    {
+      "name": "Gen_T25",
+      "device_count": 5,
+      "param_keys": [
+        "L_cs0_nh",
+        "L_cs1_nh"
+      ],
+      "netlist": {
+        "Lcs0_": {
+          "dtype": "L",
+          "nets": [
+            "in",
+            "n0"
+          ],
+          "sizes": "L_cs0_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rcs0_bp": {
+          "dtype": "R_switch",
+          "nets": [
+            "in",
+            "n0"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rcs1_sw": {
+          "dtype": "R_switch",
+          "nets": [
+            "n0",
+            "cs1_nld"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lcs1_": {
+          "dtype": "L",
+          "nets": [
+            "cs1_nld",
+            "0"
+          ],
+          "sizes": "L_cs1_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rcs1_th": {
+          "dtype": "R_fixed",
+          "nets": [
+            "n0",
+            "out"
+          ],
+          "sizes": null,
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        }
+      },
+      "port_nets": [
+        "in",
+        "out"
+      ],
+      "sections": [
+        "SW_SER_BYPASS",
+        "SW_SHUNT_L"
+      ],
+      "wl_hash": "5eb9b0008364eb79",
+      "ideal_step_deg": -90.0,
+      "ideal_step_raw_p90": 104.11363096323419
+    },
+    {
+      "name": "Gen_T26",
+      "device_count": 11,
+      "param_keys": [
+        "C_cs0_pf",
+        "L_c1_As0_mm",
+        "Z0_c1_As0",
+        "L_c1_Bs0_nh"
+      ],
+      "netlist": {
+        "Rcs0_sw": {
+          "dtype": "R_switch",
+          "nets": [
+            "in",
+            "cs0_nld"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Ccs0_": {
+          "dtype": "C",
+          "nets": [
+            "cs0_nld",
+            "0"
+          ],
+          "sizes": "C_cs0_pf",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rcs0_th": {
+          "dtype": "R_fixed",
+          "nets": [
+            "in",
+            "n0"
+          ],
+          "sizes": null,
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc1_inA": {
+          "dtype": "R_switch",
+          "nets": [
+            "n0",
+            "c1_a_in"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc1_inB": {
+          "dtype": "R_switch",
+          "nets": [
+            "n0",
+            "c1_b_in"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            1
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Tc1_As0_stub": {
+          "dtype": "TLine",
+          "nets": [
+            "c1_a_in",
+            "0"
+          ],
+          "sizes": "L_c1_As0_mm",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [
+            "Z0_c1_As0"
+          ],
+          "is_control_pins": []
+        },
+        "Rc1_As0_th": {
+          "dtype": "R_fixed",
+          "nets": [
+            "c1_a_in",
+            "c1_a_out"
+          ],
+          "sizes": null,
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lc1_Bs0_sh": {
+          "dtype": "L",
+          "nets": [
+            "c1_b_in",
+            "0"
+          ],
+          "sizes": "L_c1_Bs0_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc1_Bs0_th": {
+          "dtype": "R_fixed",
+          "nets": [
+            "c1_b_in",
+            "c1_b_out"
+          ],
+          "sizes": null,
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc1_outA": {
+          "dtype": "R_switch",
+          "nets": [
+            "c1_a_out",
+            "out"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc1_outB": {
+          "dtype": "R_switch",
+          "nets": [
+            "c1_b_out",
+            "out"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            1
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        }
+      },
+      "port_nets": [
+        "in",
+        "out"
+      ],
+      "sections": [
+        "SW_SHUNT_C",
+        "BRANCH2"
+      ],
+      "wl_hash": "36be7c0ba547415a",
+      "ideal_step_deg": -180.0,
+      "ideal_step_raw_p90": 170.59153607956364
+    },
+    {
+      "name": "Gen_T27",
+      "device_count": 7,
+      "param_keys": [
+        "C_cs0_pf",
+        "L_cs1_nh",
+        "C_cs1_br_pf",
+        "C_cs1_c_pf"
+      ],
+      "netlist": {
+        "Rcs0_sw": {
+          "dtype": "R_switch",
+          "nets": [
+            "in",
+            "cs0_nld"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Ccs0_": {
+          "dtype": "C",
+          "nets": [
+            "cs0_nld",
+            "0"
+          ],
+          "sizes": "C_cs0_pf",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rcs0_th": {
+          "dtype": "R_fixed",
+          "nets": [
+            "in",
+            "n0"
+          ],
+          "sizes": null,
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lcs1_1": {
+          "dtype": "L",
+          "nets": [
+            "n0",
+            "cs1_m"
+          ],
+          "sizes": "L_cs1_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lcs1_2": {
+          "dtype": "L",
+          "nets": [
+            "cs1_m",
+            "out"
+          ],
+          "sizes": "L_cs1_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Ccs1_br": {
+          "dtype": "C",
+          "nets": [
+            "n0",
+            "out"
+          ],
+          "sizes": "C_cs1_br_pf",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Ccs1_c": {
+          "dtype": "C",
+          "nets": [
+            "cs1_m",
+            "0"
+          ],
+          "sizes": "C_cs1_c_pf",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        }
+      },
+      "port_nets": [
+        "in",
+        "out"
+      ],
+      "sections": [
+        "SW_SHUNT_C",
+        "BRIDGED_T"
+      ],
+      "wl_hash": "770a9140cfa308d3",
+      "ideal_step_deg": -45.0,
+      "ideal_step_raw_p90": 57.31759978708067
+    },
+    {
+      "name": "Gen_T28",
+      "device_count": 14,
+      "param_keys": [
+        "C_c0_As0_pf",
+        "L_c0_As1_mm",
+        "Z0_c0_As1",
+        "L_c0_Bs0_nh",
+        "C_c0_Bs0_br_pf",
+        "C_c0_Bs0_c_pf",
+        "L_cs1_nh"
+      ],
+      "netlist": {
+        "Rc0_inA": {
+          "dtype": "R_switch",
+          "nets": [
+            "in",
+            "c0_a_in"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_inB": {
+          "dtype": "R_switch",
+          "nets": [
+            "in",
+            "c0_b_in"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            1
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Cc0_As0_sh": {
+          "dtype": "C",
+          "nets": [
+            "c0_a_in",
+            "0"
+          ],
+          "sizes": "C_c0_As0_pf",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_As0_th": {
+          "dtype": "R_fixed",
+          "nets": [
+            "c0_a_in",
+            "c0_A_n0"
+          ],
+          "sizes": null,
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Tc0_As1_": {
+          "dtype": "TLine",
+          "nets": [
+            "c0_A_n0",
+            "c0_a_out"
+          ],
+          "sizes": "L_c0_As1_mm",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [
+            "Z0_c0_As1"
+          ],
+          "is_control_pins": []
+        },
+        "Lc0_Bs0_1": {
+          "dtype": "L",
+          "nets": [
+            "c0_b_in",
+            "c0_Bs0_m"
+          ],
+          "sizes": "L_c0_Bs0_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lc0_Bs0_2": {
+          "dtype": "L",
+          "nets": [
+            "c0_Bs0_m",
+            "c0_b_out"
+          ],
+          "sizes": "L_c0_Bs0_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Cc0_Bs0_br": {
+          "dtype": "C",
+          "nets": [
+            "c0_b_in",
+            "c0_b_out"
+          ],
+          "sizes": "C_c0_Bs0_br_pf",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Cc0_Bs0_c": {
+          "dtype": "C",
+          "nets": [
+            "c0_Bs0_m",
+            "0"
+          ],
+          "sizes": "C_c0_Bs0_c_pf",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_outA": {
+          "dtype": "R_switch",
+          "nets": [
+            "c0_a_out",
+            "n0"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_outB": {
+          "dtype": "R_switch",
+          "nets": [
+            "c0_b_out",
+            "n0"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            1
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rcs1_sw": {
+          "dtype": "R_switch",
+          "nets": [
+            "n0",
+            "cs1_nld"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lcs1_": {
+          "dtype": "L",
+          "nets": [
+            "cs1_nld",
+            "0"
+          ],
+          "sizes": "L_cs1_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rcs1_th": {
+          "dtype": "R_fixed",
+          "nets": [
+            "n0",
+            "out"
+          ],
+          "sizes": null,
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        }
+      },
+      "port_nets": [
+        "in",
+        "out"
+      ],
+      "sections": [
+        "BRANCH2",
+        "SW_SHUNT_L"
+      ],
+      "wl_hash": "7931a5617e775341",
+      "ideal_step_deg": -180.0,
+      "ideal_step_raw_p90": 158.17612875457192
+    },
+    {
+      "name": "Gen_T29",
+      "device_count": 6,
+      "param_keys": [
+        "L_cs0_nh",
+        "C_cs1_pf"
+      ],
+      "netlist": {
+        "Rcs0_sw": {
+          "dtype": "R_switch",
+          "nets": [
+            "in",
+            "cs0_nld"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lcs0_": {
+          "dtype": "L",
+          "nets": [
+            "cs0_nld",
+            "0"
+          ],
+          "sizes": "L_cs0_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rcs0_th": {
+          "dtype": "R_fixed",
+          "nets": [
+            "in",
+            "n0"
+          ],
+          "sizes": null,
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rcs1_sw": {
+          "dtype": "R_switch",
+          "nets": [
+            "n0",
+            "cs1_nld"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Ccs1_": {
+          "dtype": "C",
+          "nets": [
+            "cs1_nld",
+            "0"
+          ],
+          "sizes": "C_cs1_pf",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rcs1_th": {
+          "dtype": "R_fixed",
+          "nets": [
+            "n0",
+            "out"
+          ],
+          "sizes": null,
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        }
+      },
+      "port_nets": [
+        "in",
+        "out"
+      ],
+      "sections": [
+        "SW_SHUNT_L",
+        "SW_SHUNT_C"
+      ],
+      "wl_hash": "7c604252a0c80ff3",
+      "ideal_step_deg": -45.0,
+      "ideal_step_raw_p90": 52.179395435378176
+    },
+    {
+      "name": "Gen_T30",
+      "device_count": 9,
+      "param_keys": [
+        "C_c0_As0_pf",
+        "L_c0_Bs0_nh",
+        "C_c0_Bs0_br_pf",
+        "C_c0_Bs0_c_pf"
+      ],
+      "netlist": {
+        "Rc0_inA": {
+          "dtype": "R_switch",
+          "nets": [
+            "in",
+            "c0_a_in"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_inB": {
+          "dtype": "R_switch",
+          "nets": [
+            "in",
+            "c0_b_in"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            1
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Cc0_As0_": {
+          "dtype": "C",
+          "nets": [
+            "c0_a_in",
+            "c0_a_out"
+          ],
+          "sizes": "C_c0_As0_pf",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lc0_Bs0_1": {
+          "dtype": "L",
+          "nets": [
+            "c0_b_in",
+            "c0_Bs0_m"
+          ],
+          "sizes": "L_c0_Bs0_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lc0_Bs0_2": {
+          "dtype": "L",
+          "nets": [
+            "c0_Bs0_m",
+            "c0_b_out"
+          ],
+          "sizes": "L_c0_Bs0_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Cc0_Bs0_br": {
+          "dtype": "C",
+          "nets": [
+            "c0_b_in",
+            "c0_b_out"
+          ],
+          "sizes": "C_c0_Bs0_br_pf",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Cc0_Bs0_c": {
+          "dtype": "C",
+          "nets": [
+            "c0_Bs0_m",
+            "0"
+          ],
+          "sizes": "C_c0_Bs0_c_pf",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_outA": {
+          "dtype": "R_switch",
+          "nets": [
+            "c0_a_out",
+            "out"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_outB": {
+          "dtype": "R_switch",
+          "nets": [
+            "c0_b_out",
+            "out"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            1
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        }
+      },
+      "port_nets": [
+        "in",
+        "out"
+      ],
+      "sections": [
+        "BRANCH2"
+      ],
+      "wl_hash": "01e6a760c8ead381",
+      "ideal_step_deg": -90.0,
+      "ideal_step_raw_p90": 134.86154652001537
+    },
+    {
+      "name": "Gen_T31",
+      "device_count": 4,
+      "param_keys": [
+        "L_cs0_nh",
+        "L_cs1_nh"
+      ],
+      "netlist": {
+        "Lcs0_": {
+          "dtype": "L",
+          "nets": [
+            "in",
+            "n0"
+          ],
+          "sizes": "L_cs0_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rcs0_bp": {
+          "dtype": "R_switch",
+          "nets": [
+            "in",
+            "n0"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lcs1_sh": {
+          "dtype": "L",
+          "nets": [
+            "n0",
+            "0"
+          ],
+          "sizes": "L_cs1_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rcs1_th": {
+          "dtype": "R_fixed",
+          "nets": [
+            "n0",
+            "out"
+          ],
+          "sizes": null,
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        }
+      },
+      "port_nets": [
+        "in",
+        "out"
+      ],
+      "sections": [
+        "SW_SER_BYPASS",
+        "SHUNT_L"
+      ],
+      "wl_hash": "d0da50afdeec12d4",
+      "ideal_step_deg": -45.0,
+      "ideal_step_raw_p90": 58.1867296536661
+    },
+    {
+      "name": "Gen_T32",
+      "device_count": 8,
+      "param_keys": [
+        "L_c0_As0_nh",
+        "L_c0_Bs0_nh",
+        "C_cs1_pf"
+      ],
+      "netlist": {
+        "Rc0_inA": {
+          "dtype": "R_switch",
+          "nets": [
+            "in",
+            "c0_a_in"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_inB": {
+          "dtype": "R_switch",
+          "nets": [
+            "in",
+            "c0_b_in"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            1
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lc0_As0_": {
+          "dtype": "L",
+          "nets": [
+            "c0_a_in",
+            "c0_a_out"
+          ],
+          "sizes": "L_c0_As0_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lc0_Bs0_sh": {
+          "dtype": "L",
+          "nets": [
+            "c0_b_in",
+            "0"
+          ],
+          "sizes": "L_c0_Bs0_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_Bs0_th": {
+          "dtype": "R_fixed",
+          "nets": [
+            "c0_b_in",
+            "c0_b_out"
+          ],
+          "sizes": null,
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_outA": {
+          "dtype": "R_switch",
+          "nets": [
+            "c0_a_out",
+            "n0"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_outB": {
+          "dtype": "R_switch",
+          "nets": [
+            "c0_b_out",
+            "n0"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            1
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Ccs1_": {
+          "dtype": "C",
+          "nets": [
+            "n0",
+            "out"
+          ],
+          "sizes": "C_cs1_pf",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        }
+      },
+      "port_nets": [
+        "in",
+        "out"
+      ],
+      "sections": [
+        "BRANCH2",
+        "SER_C"
+      ],
+      "wl_hash": "571c60e1366b2802",
+      "ideal_step_deg": -90.0,
+      "ideal_step_raw_p90": 127.81055122334055
+    },
+    {
+      "name": "Gen_T33",
+      "device_count": 4,
+      "param_keys": [
+        "C_cs0_pf",
+        "L_cs1_nh"
+      ],
+      "netlist": {
+        "Ccs0_sh": {
+          "dtype": "C",
+          "nets": [
+            "in",
+            "0"
+          ],
+          "sizes": "C_cs0_pf",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rcs0_th": {
+          "dtype": "R_fixed",
+          "nets": [
+            "in",
+            "n0"
+          ],
+          "sizes": null,
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lcs1_": {
+          "dtype": "L",
+          "nets": [
+            "n0",
+            "out"
+          ],
+          "sizes": "L_cs1_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rcs1_bp": {
+          "dtype": "R_switch",
+          "nets": [
+            "n0",
+            "out"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        }
+      },
+      "port_nets": [
+        "in",
+        "out"
+      ],
+      "sections": [
+        "SHUNT_C",
+        "SW_SER_BYPASS"
+      ],
+      "wl_hash": "cc58bbf2628b4755",
+      "ideal_step_deg": -90.0,
+      "ideal_step_raw_p90": 72.33481642821255
+    },
+    {
+      "name": "Gen_T34",
+      "device_count": 12,
+      "param_keys": [
+        "C_c0_As0_pf",
+        "L_c0_As1_nh",
+        "C_c0_As1_br_pf",
+        "C_c0_As1_c_pf",
+        "L_c0_Bs0_nh",
+        "L_cs1_mm",
+        "Z0_cs1"
+      ],
+      "netlist": {
+        "Rc0_inA": {
+          "dtype": "R_switch",
+          "nets": [
+            "in",
+            "c0_a_in"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_inB": {
+          "dtype": "R_switch",
+          "nets": [
+            "in",
+            "c0_b_in"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            1
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Cc0_As0_sh": {
+          "dtype": "C",
+          "nets": [
+            "c0_a_in",
+            "0"
+          ],
+          "sizes": "C_c0_As0_pf",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_As0_th": {
+          "dtype": "R_fixed",
+          "nets": [
+            "c0_a_in",
+            "c0_A_n0"
+          ],
+          "sizes": null,
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lc0_As1_1": {
+          "dtype": "L",
+          "nets": [
+            "c0_A_n0",
+            "c0_As1_m"
+          ],
+          "sizes": "L_c0_As1_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lc0_As1_2": {
+          "dtype": "L",
+          "nets": [
+            "c0_As1_m",
+            "c0_a_out"
+          ],
+          "sizes": "L_c0_As1_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Cc0_As1_br": {
+          "dtype": "C",
+          "nets": [
+            "c0_A_n0",
+            "c0_a_out"
+          ],
+          "sizes": "C_c0_As1_br_pf",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Cc0_As1_c": {
+          "dtype": "C",
+          "nets": [
+            "c0_As1_m",
+            "0"
+          ],
+          "sizes": "C_c0_As1_c_pf",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lc0_Bs0_": {
+          "dtype": "L",
+          "nets": [
+            "c0_b_in",
+            "c0_b_out"
+          ],
+          "sizes": "L_c0_Bs0_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_outA": {
+          "dtype": "R_switch",
+          "nets": [
+            "c0_a_out",
+            "n0"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_outB": {
+          "dtype": "R_switch",
+          "nets": [
+            "c0_b_out",
+            "n0"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            1
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Tcs1_": {
+          "dtype": "TLine",
+          "nets": [
+            "n0",
+            "out"
+          ],
+          "sizes": "L_cs1_mm",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [
+            "Z0_cs1"
+          ],
+          "is_control_pins": []
+        }
+      },
+      "port_nets": [
+        "in",
+        "out"
+      ],
+      "sections": [
+        "BRANCH2",
+        "SER_TL"
+      ],
+      "wl_hash": "fa0f8eb274968874",
+      "ideal_step_deg": -180.0,
+      "ideal_step_raw_p90": 144.22373553703392
+    },
+    {
+      "name": "Gen_T35",
+      "device_count": 9,
+      "param_keys": [
+        "L_c0_As0_nh",
+        "L_c0_As1_mm",
+        "Z0_c0_As1",
+        "C_c0_Bs0_pf",
+        "L_cs1_mm",
+        "Z0_cs1"
+      ],
+      "netlist": {
+        "Rc0_inA": {
+          "dtype": "R_switch",
+          "nets": [
+            "in",
+            "c0_a_in"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_inB": {
+          "dtype": "R_switch",
+          "nets": [
+            "in",
+            "c0_b_in"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            1
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lc0_As0_": {
+          "dtype": "L",
+          "nets": [
+            "c0_a_in",
+            "c0_A_n0"
+          ],
+          "sizes": "L_c0_As0_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Tc0_As1_": {
+          "dtype": "TLine",
+          "nets": [
+            "c0_A_n0",
+            "c0_a_out"
+          ],
+          "sizes": "L_c0_As1_mm",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [
+            "Z0_c0_As1"
+          ],
+          "is_control_pins": []
+        },
+        "Cc0_Bs0_": {
+          "dtype": "C",
+          "nets": [
+            "c0_b_in",
+            "c0_b_out"
+          ],
+          "sizes": "C_c0_Bs0_pf",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_outA": {
+          "dtype": "R_switch",
+          "nets": [
+            "c0_a_out",
+            "n0"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_outB": {
+          "dtype": "R_switch",
+          "nets": [
+            "c0_b_out",
+            "n0"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            1
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Tcs1_stub": {
+          "dtype": "TLine",
+          "nets": [
+            "n0",
+            "0"
+          ],
+          "sizes": "L_cs1_mm",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [
+            "Z0_cs1"
+          ],
+          "is_control_pins": []
+        },
+        "Rcs1_th": {
+          "dtype": "R_fixed",
+          "nets": [
+            "n0",
+            "out"
+          ],
+          "sizes": null,
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        }
+      },
+      "port_nets": [
+        "in",
+        "out"
+      ],
+      "sections": [
+        "BRANCH2",
+        "SHUNT_STUB"
+      ],
+      "wl_hash": "90ee3ff369048535",
+      "ideal_step_deg": -180.0,
+      "ideal_step_raw_p90": 165.67635297403308
+    },
+    {
+      "name": "Gen_T36",
+      "device_count": 8,
+      "param_keys": [
+        "L_cs0_nh",
+        "L_c1_As0_mm",
+        "Z0_c1_As0",
+        "C_c1_Bs0_pf"
+      ],
+      "netlist": {
+        "Lcs0_": {
+          "dtype": "L",
+          "nets": [
+            "in",
+            "n0"
+          ],
+          "sizes": "L_cs0_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc1_inA": {
+          "dtype": "R_switch",
+          "nets": [
+            "n0",
+            "c1_a_in"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc1_inB": {
+          "dtype": "R_switch",
+          "nets": [
+            "n0",
+            "c1_b_in"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            1
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Tc1_As0_": {
+          "dtype": "TLine",
+          "nets": [
+            "c1_a_in",
+            "c1_a_out"
+          ],
+          "sizes": "L_c1_As0_mm",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [
+            "Z0_c1_As0"
+          ],
+          "is_control_pins": []
+        },
+        "Cc1_Bs0_sh": {
+          "dtype": "C",
+          "nets": [
+            "c1_b_in",
+            "0"
+          ],
+          "sizes": "C_c1_Bs0_pf",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc1_Bs0_th": {
+          "dtype": "R_fixed",
+          "nets": [
+            "c1_b_in",
+            "c1_b_out"
+          ],
+          "sizes": null,
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc1_outA": {
+          "dtype": "R_switch",
+          "nets": [
+            "c1_a_out",
+            "out"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc1_outB": {
+          "dtype": "R_switch",
+          "nets": [
+            "c1_b_out",
+            "out"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            1
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        }
+      },
+      "port_nets": [
+        "in",
+        "out"
+      ],
+      "sections": [
+        "SER_L",
+        "BRANCH2"
+      ],
+      "wl_hash": "ee6c8bfe1f695eff",
+      "ideal_step_deg": -180.0,
+      "ideal_step_raw_p90": 141.62984304896844
+    },
+    {
+      "name": "Gen_T37",
+      "device_count": 8,
+      "param_keys": [
+        "L_c0_As0_nh",
+        "L_c0_Bs0_mm",
+        "Z0_c0_Bs0",
+        "L_cs1_nh"
+      ],
+      "netlist": {
+        "Rc0_inA": {
+          "dtype": "R_switch",
+          "nets": [
+            "in",
+            "c0_a_in"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_inB": {
+          "dtype": "R_switch",
+          "nets": [
+            "in",
+            "c0_b_in"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            1
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lc0_As0_": {
+          "dtype": "L",
+          "nets": [
+            "c0_a_in",
+            "c0_a_out"
+          ],
+          "sizes": "L_c0_As0_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Tc0_Bs0_": {
+          "dtype": "TLine",
+          "nets": [
+            "c0_b_in",
+            "c0_b_out"
+          ],
+          "sizes": "L_c0_Bs0_mm",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [
+            "Z0_c0_Bs0"
+          ],
+          "is_control_pins": []
+        },
+        "Rc0_outA": {
+          "dtype": "R_switch",
+          "nets": [
+            "c0_a_out",
+            "n0"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_outB": {
+          "dtype": "R_switch",
+          "nets": [
+            "c0_b_out",
+            "n0"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            1
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lcs1_": {
+          "dtype": "L",
+          "nets": [
+            "n0",
+            "out"
+          ],
+          "sizes": "L_cs1_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rcs1_bp": {
+          "dtype": "R_switch",
+          "nets": [
+            "n0",
+            "out"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        }
+      },
+      "port_nets": [
+        "in",
+        "out"
+      ],
+      "sections": [
+        "BRANCH2",
+        "SW_SER_BYPASS"
+      ],
+      "wl_hash": "3d6ce1bb5ffe5b2e",
+      "ideal_step_deg": -180.0,
+      "ideal_step_raw_p90": 165.30620789519253
+    },
+    {
+      "name": "Gen_T38",
+      "device_count": 8,
+      "param_keys": [
+        "L_c0_As0_nh",
+        "L_c0_As1_mm",
+        "Z0_c0_As1",
+        "C_c0_Bs0_pf",
+        "L_cs1_mm",
+        "Z0_cs1"
+      ],
+      "netlist": {
+        "Rc0_inA": {
+          "dtype": "R_switch",
+          "nets": [
+            "in",
+            "c0_a_in"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_inB": {
+          "dtype": "R_switch",
+          "nets": [
+            "in",
+            "c0_b_in"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            1
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lc0_As0_": {
+          "dtype": "L",
+          "nets": [
+            "c0_a_in",
+            "c0_A_n0"
+          ],
+          "sizes": "L_c0_As0_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Tc0_As1_": {
+          "dtype": "TLine",
+          "nets": [
+            "c0_A_n0",
+            "c0_a_out"
+          ],
+          "sizes": "L_c0_As1_mm",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [
+            "Z0_c0_As1"
+          ],
+          "is_control_pins": []
+        },
+        "Cc0_Bs0_": {
+          "dtype": "C",
+          "nets": [
+            "c0_b_in",
+            "c0_b_out"
+          ],
+          "sizes": "C_c0_Bs0_pf",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_outA": {
+          "dtype": "R_switch",
+          "nets": [
+            "c0_a_out",
+            "n0"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_outB": {
+          "dtype": "R_switch",
+          "nets": [
+            "c0_b_out",
+            "n0"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            1
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Tcs1_": {
+          "dtype": "TLine",
+          "nets": [
+            "n0",
+            "out"
+          ],
+          "sizes": "L_cs1_mm",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [
+            "Z0_cs1"
+          ],
+          "is_control_pins": []
+        }
+      },
+      "port_nets": [
+        "in",
+        "out"
+      ],
+      "sections": [
+        "BRANCH2",
+        "SER_TL"
+      ],
+      "wl_hash": "e8fbf04f79a3bed8",
+      "ideal_step_deg": -180.0,
+      "ideal_step_raw_p90": 171.5122767728269
+    },
+    {
+      "name": "Gen_T39",
+      "device_count": 10,
+      "param_keys": [
+        "C_cs0_pf",
+        "C_c1_As0_pf",
+        "L_c1_As1_nh",
+        "L_c1_Bs0_nh"
+      ],
+      "netlist": {
+        "Ccs0_": {
+          "dtype": "C",
+          "nets": [
+            "in",
+            "n0"
+          ],
+          "sizes": "C_cs0_pf",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc1_inA": {
+          "dtype": "R_switch",
+          "nets": [
+            "n0",
+            "c1_a_in"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc1_inB": {
+          "dtype": "R_switch",
+          "nets": [
+            "n0",
+            "c1_b_in"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            1
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Cc1_As0_sh": {
+          "dtype": "C",
+          "nets": [
+            "c1_a_in",
+            "0"
+          ],
+          "sizes": "C_c1_As0_pf",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc1_As0_th": {
+          "dtype": "R_fixed",
+          "nets": [
+            "c1_a_in",
+            "c1_A_n0"
+          ],
+          "sizes": null,
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lc1_As1_": {
+          "dtype": "L",
+          "nets": [
+            "c1_A_n0",
+            "c1_a_out"
+          ],
+          "sizes": "L_c1_As1_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lc1_Bs0_sh": {
+          "dtype": "L",
+          "nets": [
+            "c1_b_in",
+            "0"
+          ],
+          "sizes": "L_c1_Bs0_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc1_Bs0_th": {
+          "dtype": "R_fixed",
+          "nets": [
+            "c1_b_in",
+            "c1_b_out"
+          ],
+          "sizes": null,
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc1_outA": {
+          "dtype": "R_switch",
+          "nets": [
+            "c1_a_out",
+            "out"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc1_outB": {
+          "dtype": "R_switch",
+          "nets": [
+            "c1_b_out",
+            "out"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            1
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        }
+      },
+      "port_nets": [
+        "in",
+        "out"
+      ],
+      "sections": [
+        "SER_C",
+        "BRANCH2"
+      ],
+      "wl_hash": "ee4d2f29380ae9a2",
+      "ideal_step_deg": -180.0,
+      "ideal_step_raw_p90": 166.08036153719942
+    },
+    {
+      "name": "Gen_T40",
+      "device_count": 7,
+      "param_keys": [
+        "L_c0_As0_nh",
+        "L_c0_Bs0_nh"
+      ],
+      "netlist": {
+        "Rc0_inA": {
+          "dtype": "R_switch",
+          "nets": [
+            "in",
+            "c0_a_in"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_inB": {
+          "dtype": "R_switch",
+          "nets": [
+            "in",
+            "c0_b_in"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            1
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lc0_As0_sh": {
+          "dtype": "L",
+          "nets": [
+            "c0_a_in",
+            "0"
+          ],
+          "sizes": "L_c0_As0_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_As0_th": {
+          "dtype": "R_fixed",
+          "nets": [
+            "c0_a_in",
+            "c0_a_out"
+          ],
+          "sizes": null,
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Lc0_Bs0_": {
+          "dtype": "L",
+          "nets": [
+            "c0_b_in",
+            "c0_b_out"
+          ],
+          "sizes": "L_c0_Bs0_nh",
+          "switch_param": null,
+          "on_in_states": [],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_outA": {
+          "dtype": "R_switch",
+          "nets": [
+            "c0_a_out",
+            "out"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            0
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        },
+        "Rc0_outB": {
+          "dtype": "R_switch",
+          "nets": [
+            "c0_b_out",
+            "out"
+          ],
+          "sizes": null,
+          "switch_param": "R_sw",
+          "on_in_states": [
+            1
+          ],
+          "aux_sizes": [],
+          "is_control_pins": []
+        }
+      },
+      "port_nets": [
+        "in",
+        "out"
+      ],
+      "sections": [
+        "BRANCH2"
+      ],
+      "wl_hash": "84685d5ee4dc7f42",
+      "ideal_step_deg": -90.0,
+      "ideal_step_raw_p90": 122.78362266088266
+    }
+  ],
+  "abort_checkpoint": {
+    "n_distinct_valid": 34,
+    "n_emit_roundtrip": 34,
+    "fc_probe_ghz": [
+      7.96,
+      28.0,
+      38.0
+    ],
+    "passes_25": true
+  }
+}

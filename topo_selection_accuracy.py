@@ -7,7 +7,8 @@ For each spec:
   2. CFM actor sizes each topology (k samples); SPICE-eval; take best reward/topo.
   3. Empirical-best topology = argmax_topo (best SPICE reward), among feasible.
   4. Record top-1 / top-2 agreement of ValueNet ranking with the empirical best,
-     and agreement with the specset heuristic label.
+     and heuristic_agreement with the deprecated stored heuristic label (not
+     ground truth — S0 retired heuristic labels as accuracy targets).
 
 Usage:
   python topo_selection_accuracy.py --run runs_diffusion/run_20260530_031117 \
@@ -22,21 +23,27 @@ if REPO_ROOT not in sys.path:
     sys.path.insert(0, REPO_ROOT)
 
 from env.phaseshifter_env import PhaseShifterEnv
-from env.graph_utils import get_topology_graph
+from env.graph_utils import get_topology_graph, SLOT_ACTION_DIM
 from models.gnn_encoder import TopologyEncoder
 from models.diffusion_policy import FlowMatchingPolicy, ValueNet
 from sim.physics_priors import check_physics_priors
 from train_diffusion import action_to_params, make_spice_netlist, parallel_eval_worker
+from specset.schema import SPEC_DIM, load_specset
 
 TOPOS = ["Loaded_Line", "Switched_Line", "Reflection_Type",
          "Switched_Filter", "Vector_Modulator", "All_Pass"]
 FEASIBLE_REWARD = 0.5   # a topology counts as "achievable" for this spec above this
 
+# S3 strata, from r_star margin terciles written by tools/compute_envelope.py.
+STRATA = ("boundary", "medium", "easy")
+
 
 def load_models(run_dir, device):
     gnn = TopologyEncoder(in_channels=5, hidden_channels=64, out_channels=64).to(device)
-    actor = FlowMatchingPolicy(action_dim=9, spec_dim=12, graph_dim=64).to(device)
-    value_net = ValueNet(spec_dim=12, graph_dim=64).to(device)
+    actor = FlowMatchingPolicy(
+        action_dim=SLOT_ACTION_DIM, spec_dim=SPEC_DIM, graph_dim=64
+    ).to(device)
+    value_net = ValueNet(spec_dim=SPEC_DIM, graph_dim=64).to(device)
     gnn.load_state_dict(torch.load(os.path.join(run_dir, "gnn_encoder.pt"), map_location=device))
     actor.load_state_dict(torch.load(os.path.join(run_dir, "actor.pt"), map_location=device))
     value_net.load_state_dict(torch.load(os.path.join(run_dir, "value_net.pt"), map_location=device))
@@ -68,6 +75,12 @@ def main():
     ap.add_argument("--seed", type=int, default=42)
     ap.add_argument("--out", default="results/topo_select/acc.json")
     ap.add_argument("--device", default="cuda")
+    ap.add_argument("--specset", default=os.path.join(
+        REPO_ROOT, "specset", "specset_eval.json"),
+        help="Held-out eval pool. Must carry r_star for S3 stratification.")
+    ap.add_argument("--switch-model", default="ideal",
+                    choices=("ideal", "realistic"),
+                    help="Which r_star envelope to stratify against.")
     args = ap.parse_args()
 
     device = torch.device(args.device if torch.cuda.is_available() else "cpu")
@@ -76,7 +89,14 @@ def main():
     gnn, actor, value_net = load_models(args.run, device)
     env = PhaseShifterEnv()
 
-    specset = json.load(open(os.path.join(REPO_ROOT, "specset/specset_phaseshifter.json")))
+    specset = load_specset(args.specset)
+    if isinstance(specset, dict) and "specs" in specset:
+        specset = specset["specs"]
+    n_strat = sum(1 for e in specset
+                  if (e.get("r_star") or {}).get(args.switch_model, {}).get("stratum"))
+    if n_strat == 0:
+        print("[warn] no r_star strata in this specset — S3 stratified accuracy "
+              "will be omitted. Run `tools/compute_envelope.py assign` first.")
     idxs = list(range(len(specset)))
     random.shuffle(idxs)
     idxs = idxs[:args.n_specs]
@@ -88,12 +108,19 @@ def main():
         with torch.no_grad():
             z_cache[t] = gnn(g.x.to(device), g.edge_index.to(device))
 
-    top1 = top2 = label_match = feasible_specs = 0
+    top1 = top2 = heuristic_agree = feasible_specs = 0
+    n_with_heuristic = 0
     records = []
+    # S3: per-stratum tallies, so aggregate accuracy cannot hide behind a prior.
+    strat = {s: {"n": 0, "top1": 0, "top2": 0, "emp_best": []} for s in STRATA}
     for n, i in enumerate(idxs):
         entry = specset[i]
         spec = entry["spec"]
-        label = entry["topology"]
+        rs = (entry.get("r_star") or {}).get(args.switch_model, {})
+        stratum = rs.get("stratum")
+        margin = rs.get("margin")
+        # S0: heuristic labels are deprecated; not ground truth for accuracy.
+        heur_label = entry.get("heuristic_topology_deprecated")
         spec_norm = torch.tensor(env._normalize(spec), dtype=torch.float, device=device).unsqueeze(0)
 
         # ValueNet ranking (no SPICE)
@@ -109,35 +136,90 @@ def main():
         emp_best = max(TOPOS, key=lambda t: rewards[t])
         emp_best_r = rewards[emp_best]
 
-        rec = {"spec_id": entry["id"], "label": label, "vn_top1": ranked[0],
+        rec = {"spec_id": entry["id"], "heuristic_topology_deprecated": heur_label,
+               "vn_top1": ranked[0],
                "vn_top2": ranked[:2], "emp_best": emp_best,
-               "emp_best_reward": emp_best_r, "feasible": emp_best_r >= FEASIBLE_REWARD}
+               "emp_best_reward": emp_best_r, "feasible": emp_best_r >= FEASIBLE_REWARD,
+               "r_star_stratum": stratum, "r_star_margin": margin}
         records.append(rec)
 
         if emp_best_r >= FEASIBLE_REWARD:
             feasible_specs += 1
-            if ranked[0] == emp_best: top1 += 1
-            if emp_best in ranked[:2]: top2 += 1
-            if ranked[0] == label: label_match += 1
+            hit1 = ranked[0] == emp_best
+            hit2 = emp_best in ranked[:2]
+            if hit1: top1 += 1
+            if hit2: top2 += 1
+            if stratum in strat:
+                strat[stratum]["n"] += 1
+                strat[stratum]["top1"] += int(hit1)
+                strat[stratum]["top2"] += int(hit2)
+                strat[stratum]["emp_best"].append(emp_best)
+            if heur_label is not None:
+                n_with_heuristic += 1
+                if ranked[0] == heur_label:
+                    heuristic_agree += 1
 
         if (n + 1) % 20 == 0:
             d = max(1, feasible_specs)
+            h = max(1, n_with_heuristic)
             print(f"  [{n+1}/{len(idxs)}] feasible={feasible_specs}  "
                   f"top1={top1/d*100:.1f}%  top2={top2/d*100:.1f}%  "
-                  f"label_match={label_match/d*100:.1f}%", flush=True)
+                  f"heuristic_agreement={heuristic_agree/h*100:.1f}%", flush=True)
 
     d = max(1, feasible_specs)
+    h = max(1, n_with_heuristic)
+
+    # Majority-class baseline: a constant predictor's score on this pool. With one
+    # class near 50% this is the number aggregate accuracy must be read against,
+    # not 1/6.
+    from collections import Counter
+    emp_counts = Counter(r["emp_best"] for r in records
+                         if r["feasible"])
+    majority_top1 = (max(emp_counts.values()) / d) if emp_counts else None
+
+    strata_out = {}
+    for s in STRATA:
+        b = strat[s]
+        if b["n"] == 0:
+            strata_out[s] = None
+            continue
+        c = Counter(b["emp_best"])
+        strata_out[s] = {
+            "n": b["n"],
+            "top1_accuracy": b["top1"] / b["n"],
+            "top2_accuracy": b["top2"] / b["n"],
+            "majority_baseline_top1": max(c.values()) / b["n"],
+            "emp_best_distribution": dict(c),
+        }
+
     summary = {
         "run": args.run, "seed": args.seed, "n_specs": len(idxs), "k": args.k,
+        "specset": args.specset, "switch_model": args.switch_model,
         "feasible_specs": feasible_specs,
         "top1_accuracy": top1 / d,
         "top2_accuracy": top2 / d,
-        "valuenet_vs_heuristic_label": label_match / d,
+        # Not ground-truth accuracy — agreement with retired heuristic labels (S0).
+        "heuristic_agreement": heuristic_agree / h if n_with_heuristic else None,
+        "n_with_heuristic_label": n_with_heuristic,
         "random_baseline_top1": 1.0 / len(TOPOS),
+        "majority_baseline_top1": majority_top1,
+        "s3_strata": strata_out,
     }
     print("\n=== TOPOLOGY SELECTION ACCURACY ===")
     for k_, v_ in summary.items():
-        print(f"  {k_}: {v_}")
+        if k_ != "s3_strata":
+            print(f"  {k_}: {v_}")
+    print("\n  --- S3 margin strata "
+          f"(r_star, switch_model={args.switch_model}) ---")
+    print(f"  {'stratum':10s} {'n':>5s} {'top1':>7s} {'top2':>7s} {'majority':>9s}")
+    for s in STRATA:
+        v = strata_out[s]
+        if v is None:
+            print(f"  {s:10s}     -       -       -         -")
+            continue
+        print(f"  {s:10s} {v['n']:5d} {v['top1_accuracy']:7.1%} "
+              f"{v['top2_accuracy']:7.1%} {v['majority_baseline_top1']:9.1%}")
+    print("  boundary = smallest r_star top-2 gap (hardest decisions).")
 
     os.makedirs(os.path.dirname(args.out), exist_ok=True)
     json.dump({"summary": summary, "records": records}, open(args.out, "w"), indent=2)

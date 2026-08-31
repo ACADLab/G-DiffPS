@@ -1,0 +1,728 @@
+{
+  "schema": "frontier_anchors/2",
+  "switch_model": "ideal",
+  "fc_edges_ghz": [
+    1.0,
+    1.5858331751372434,
+    2.5148668593658705,
+    3.9881592966356054,
+    6.324555320336758,
+    10.029689644980785,
+    15.905414575341009,
+    25.22333409788722,
+    40.0
+  ],
+  "phase_grid_deg": [
+    1.0,
+    2.0,
+    3.0,
+    5.0,
+    8.0,
+    12.0,
+    20.0,
+    40.0
+  ],
+  "rl_anchor_cap_db": 40.0,
+  "gain_anchor_floor_db": 0.02,
+  "topology_set": [
+    "All_Pass",
+    "Loaded_Line",
+    "Reflection_Type",
+    "Switched_Filter",
+    "Switched_Line",
+    "Vector_Modulator"
+  ],
+  "anchor_topologies": [
+    "All_Pass",
+    "Loaded_Line",
+    "Reflection_Type",
+    "Switched_Filter",
+    "Switched_Line"
+  ],
+  "excluded_active": [
+    "Vector_Modulator"
+  ],
+  "anchors": {
+    "0": {
+      "fc_ref_ghz": 1.2592986838463873,
+      "by_phase": {
+        "1": {
+          "il_db": 0.139236208620355,
+          "rl_db": 39.12703819677766,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Reflection_Type",
+            "rl_db": "Switched_Filter",
+            "gain_err_db": "All_Pass"
+          }
+        },
+        "2": {
+          "il_db": 0.139236208620355,
+          "rl_db": 39.12703819677766,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Reflection_Type",
+            "rl_db": "Switched_Filter",
+            "gain_err_db": "All_Pass"
+          }
+        },
+        "3": {
+          "il_db": 0.139236208620355,
+          "rl_db": 39.12703819677766,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Reflection_Type",
+            "rl_db": "Switched_Filter",
+            "gain_err_db": "All_Pass"
+          }
+        },
+        "5": {
+          "il_db": 0.07365629291882049,
+          "rl_db": 39.12703819677766,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Reflection_Type",
+            "rl_db": "Switched_Filter",
+            "gain_err_db": "All_Pass"
+          }
+        },
+        "8": {
+          "il_db": 0.051120552502125424,
+          "rl_db": 39.12703819677766,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Reflection_Type",
+            "rl_db": "Switched_Filter",
+            "gain_err_db": "All_Pass"
+          }
+        },
+        "12": {
+          "il_db": 0.018306652960055247,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Reflection_Type",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Switched_Line"
+          }
+        },
+        "20": {
+          "il_db": 0.002939310433393189,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Loaded_Line",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Reflection_Type"
+          }
+        },
+        "40": {
+          "il_db": 0.002939310433393189,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Loaded_Line",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Switched_Line"
+          }
+        }
+      }
+    },
+    "1": {
+      "fc_ref_ghz": 1.997037630250268,
+      "by_phase": {
+        "1": {
+          "il_db": 0.18159332500227243,
+          "rl_db": 34.28308575932302,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Reflection_Type",
+            "rl_db": "All_Pass",
+            "gain_err_db": "Switched_Line"
+          }
+        },
+        "2": {
+          "il_db": 0.13660233625851567,
+          "rl_db": 34.28308575932302,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Loaded_Line",
+            "rl_db": "All_Pass",
+            "gain_err_db": "Switched_Line"
+          }
+        },
+        "3": {
+          "il_db": 0.05661977307469723,
+          "rl_db": 39.499470677459776,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Reflection_Type",
+            "rl_db": "Reflection_Type",
+            "gain_err_db": "Switched_Line"
+          }
+        },
+        "5": {
+          "il_db": 0.051077021302316436,
+          "rl_db": 39.499470677459776,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Loaded_Line",
+            "rl_db": "Reflection_Type",
+            "gain_err_db": "Switched_Line"
+          }
+        },
+        "8": {
+          "il_db": 0.03433379489445071,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Loaded_Line",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Switched_Line"
+          }
+        },
+        "12": {
+          "il_db": 0.023945641978919973,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Reflection_Type",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Switched_Line"
+          }
+        },
+        "20": {
+          "il_db": 0.002800015682279901,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Reflection_Type",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Switched_Line"
+          }
+        },
+        "40": {
+          "il_db": 0.002800015682279901,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Reflection_Type",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Switched_Line"
+          }
+        }
+      }
+    },
+    "2": {
+      "fc_ref_ghz": 3.1669685260483385,
+      "by_phase": {
+        "1": {
+          "il_db": 0.05945844813989905,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Loaded_Line",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "All_Pass"
+          }
+        },
+        "2": {
+          "il_db": 0.057195255990254476,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Loaded_Line",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Switched_Line"
+          }
+        },
+        "3": {
+          "il_db": 0.057195255990254476,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Loaded_Line",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Switched_Line"
+          }
+        },
+        "5": {
+          "il_db": 0.05475711871734378,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Loaded_Line",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Switched_Line"
+          }
+        },
+        "8": {
+          "il_db": 0.03582461082819351,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Loaded_Line",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Switched_Line"
+          }
+        },
+        "12": {
+          "il_db": 0.027167895033714643,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Loaded_Line",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Switched_Line"
+          }
+        },
+        "20": {
+          "il_db": 0.004513634329571375,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Reflection_Type",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Switched_Line"
+          }
+        },
+        "40": {
+          "il_db": 0.004513634329571375,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Reflection_Type",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Switched_Line"
+          }
+        }
+      }
+    },
+    "3": {
+      "fc_ref_ghz": 5.022283753222952,
+      "by_phase": {
+        "1": {
+          "il_db": 0.07931224146248726,
+          "rl_db": 33.42407507849789,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Loaded_Line",
+            "rl_db": "Switched_Filter",
+            "gain_err_db": "Switched_Filter"
+          }
+        },
+        "2": {
+          "il_db": 0.06279602422498899,
+          "rl_db": 36.1590743846011,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Reflection_Type",
+            "rl_db": "Reflection_Type",
+            "gain_err_db": "Switched_Line"
+          }
+        },
+        "3": {
+          "il_db": 0.05193347326749701,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Loaded_Line",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Switched_Line"
+          }
+        },
+        "5": {
+          "il_db": 0.046311897013239955,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Loaded_Line",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Switched_Line"
+          }
+        },
+        "8": {
+          "il_db": 0.03999031356736715,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Loaded_Line",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Switched_Line"
+          }
+        },
+        "12": {
+          "il_db": 0.026976342766605706,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Loaded_Line",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Switched_Line"
+          }
+        },
+        "20": {
+          "il_db": 0.004067129185011355,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Reflection_Type",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Switched_Line"
+          }
+        },
+        "40": {
+          "il_db": 0.004067129185011355,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Reflection_Type",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Switched_Line"
+          }
+        }
+      }
+    },
+    "4": {
+      "fc_ref_ghz": 7.964504190813746,
+      "by_phase": {
+        "1": {
+          "il_db": 0.061521850795062644,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Loaded_Line",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Loaded_Line"
+          }
+        },
+        "2": {
+          "il_db": 0.061521850795062644,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Loaded_Line",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Switched_Line"
+          }
+        },
+        "3": {
+          "il_db": 0.061521850795062644,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Loaded_Line",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Switched_Line"
+          }
+        },
+        "5": {
+          "il_db": 0.05093979585585588,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Reflection_Type",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Switched_Line"
+          }
+        },
+        "8": {
+          "il_db": 0.03566613048739877,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Loaded_Line",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Switched_Line"
+          }
+        },
+        "12": {
+          "il_db": 0.02345732645319281,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Reflection_Type",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Switched_Line"
+          }
+        },
+        "20": {
+          "il_db": 0.002214285269212497,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Reflection_Type",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Switched_Line"
+          }
+        },
+        "40": {
+          "il_db": 0.002214285269212497,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Reflection_Type",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Switched_Line"
+          }
+        }
+      }
+    },
+    "5": {
+      "fc_ref_ghz": 12.630374969312042,
+      "by_phase": {
+        "1": {
+          "il_db": 0.06436316637297743,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Loaded_Line",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Switched_Line"
+          }
+        },
+        "2": {
+          "il_db": 0.06176363621902475,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Loaded_Line",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Switched_Line"
+          }
+        },
+        "3": {
+          "il_db": 0.05599624474299389,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Loaded_Line",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Switched_Line"
+          }
+        },
+        "5": {
+          "il_db": 0.05599624474299389,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Loaded_Line",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Switched_Line"
+          }
+        },
+        "8": {
+          "il_db": 0.03655172475913192,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Loaded_Line",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Switched_Line"
+          }
+        },
+        "12": {
+          "il_db": 0.02572146643485901,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Reflection_Type",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Switched_Line"
+          }
+        },
+        "20": {
+          "il_db": 0.0042793182521395625,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Reflection_Type",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Switched_Line"
+          }
+        },
+        "40": {
+          "il_db": 0.0042793182521395625,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Reflection_Type",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Switched_Line"
+          }
+        }
+      }
+    },
+    "6": {
+      "fc_ref_ghz": 20.029667640758078,
+      "by_phase": {
+        "1": {
+          "il_db": 0.06120008304882561,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Loaded_Line",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Loaded_Line"
+          }
+        },
+        "2": {
+          "il_db": 0.05576472481955383,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Loaded_Line",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Loaded_Line"
+          }
+        },
+        "3": {
+          "il_db": 0.05576472481955383,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Loaded_Line",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Loaded_Line"
+          }
+        },
+        "5": {
+          "il_db": 0.04722907176732881,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Loaded_Line",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Loaded_Line"
+          }
+        },
+        "8": {
+          "il_db": 0.03358263805182718,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Loaded_Line",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Loaded_Line"
+          }
+        },
+        "12": {
+          "il_db": 0.017843464539641488,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Reflection_Type",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Loaded_Line"
+          }
+        },
+        "20": {
+          "il_db": 0.0026718776942630494,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Reflection_Type",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Switched_Line"
+          }
+        },
+        "40": {
+          "il_db": 0.0026718776942630494,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Reflection_Type",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Switched_Line"
+          }
+        }
+      }
+    },
+    "7": {
+      "fc_ref_ghz": 31.763711431687085,
+      "by_phase": {
+        "1": {
+          "il_db": 0.11059053009799509,
+          "rl_db": 35.129227313305535,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Reflection_Type",
+            "rl_db": "Reflection_Type",
+            "gain_err_db": "Switched_Line"
+          }
+        },
+        "2": {
+          "il_db": 0.05569679031544393,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Loaded_Line",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Switched_Line"
+          }
+        },
+        "3": {
+          "il_db": 0.05569679031544393,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Loaded_Line",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Switched_Line"
+          }
+        },
+        "5": {
+          "il_db": 0.04904264217013163,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Loaded_Line",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Switched_Line"
+          }
+        },
+        "8": {
+          "il_db": 0.03591269929635636,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Loaded_Line",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Switched_Line"
+          }
+        },
+        "12": {
+          "il_db": 0.027780553876217966,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Loaded_Line",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Switched_Line"
+          }
+        },
+        "20": {
+          "il_db": 0.0033728153073870823,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Reflection_Type",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Switched_Line"
+          }
+        },
+        "40": {
+          "il_db": 0.0033728153073870823,
+          "rl_db": 40.0,
+          "gain_err_db": 0.02,
+          "best_topology": {
+            "il_db": "Reflection_Type",
+            "rl_db": "Loaded_Line",
+            "gain_err_db": "Switched_Line"
+          }
+        }
+      }
+    }
+  },
+  "note": "Anchors are the best IL/RL/gain-error any topology in `topology_set` attains in each fc bin *subject to* holding RMS phase error at or below the grid value -- an unconstrained extremum is attained by a through-line with no phase shift and is not a usable floor. Spec generation therefore depends on the topology set: adding a topology that pushes a frontier shifts the anchors and changes spec difficulty. This coupling is intended and must be declared when the set changes -- regenerate the pools and re-report."
+}

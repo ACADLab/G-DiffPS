@@ -1,0 +1,28 @@
+{
+  "decision": "S3 REQUIRED",
+  "supersedes": "an earlier 'skip S3' decision that was based on Switched_Filter's share alone",
+  "why_the_earlier_decision_was_wrong": [
+    "Only Switched_Filter's share was reported (35.3% -> 20.6% -> 9.1%) and read as flattening.",
+    "Uniform over six classes is 16.7%, so 9.1% is BELOW chance: the mass did not spread, it moved.",
+    "Under the normalized +-1 scorer Switched_Line absorbs it and reaches 49.7%.",
+    "Total variation from uniform gets WORSE under normalization: 0.349 -> 0.461."
+  ],
+  "gate": {"hi_frac": 0.30, "lo_frac": 0.05, "uniform_frac": 0.16666666666666666},
+  "violations": {
+    "train_original": {"above_hi": ["Reflection_Type (41.96%)"],
+                       "below_lo": ["All_Pass (4.55%)", "Loaded_Line (4.31%)"]},
+    "train_normalized_pm1": {"above_hi": ["Switched_Line (49.74%)"],
+                             "below_lo": ["All_Pass (1.40%)", "Vector_Modulator (0.32%)"]},
+    "eval_original": {"above_hi": ["Reflection_Type (41.70%)"],
+                      "below_lo": ["All_Pass (4.50%)", "Loaded_Line (3.80%)"]},
+    "eval_normalized_pm1": {"above_hi": ["Switched_Line (50.55%)"],
+                            "below_lo": ["All_Pass (1.30%)", "Vector_Modulator (0.25%)"]}
+  },
+  "correction_to_s0_finding": "The +8 bonus WAS the driver of Switched_Filter's specific dominance -- that part of the +8 experiment stands. But removing it did not balance the pool; it relocated the peak. The heuristic scorer is degenerate under both magnitude schemes, which strengthens the case for retiring it as a label source (S0) and removes any basis for skipping S3.",
+  "what_s3_requires": "Margin stratification m(s) = r*_(1) - r*_(2) over the eval pool, binned easy/medium/boundary, computed per switch_model, with selector accuracy reported per stratum alongside the existing area_rank and frequency-band axes. A pool where one class holds ~50% lets a constant predictor score ~50%, so aggregate accuracy is not interpretable without it.",
+  "blocked_on": "r_star (tools/compute_envelope.py). m(s) is defined in terms of the top-two envelope values.",
+  "artifacts": {
+    "all_six_shares": "results/joint/class_balance.json",
+    "tool": "tools/class_balance_report.py"
+  }
+}

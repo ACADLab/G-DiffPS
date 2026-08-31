@@ -103,11 +103,22 @@ meas ac il_db_at_fc  FIND s21_mag_db AT=28e9
 meas ac phase_at_fc  FIND s21_phase  AT=28e9
 meas ac rl_db_at_fc  FIND s11_mag_db AT=28e9
 
+* Active drive proxy (mW): AC power delivered by the I/Q VCVS pair into
+* R_drv_out+Rload. Ideal VCVS control pins draw no current, so RF source
+* power alone cannot distinguish this active topology from a passive one;
+* branch currents i(E_*) capture the controlled-source drive instead.
+* Peak-phasor convention: P = 0.5*Re(V*conj(I)).
+let p_ei = 0.5 * real(v(sum,inter) * conj(i(e_i)))
+let p_eq = 0.5 * real(v(inter) * conj(i(e_q)))
+let pwr_w = p_ei + p_eq
+meas ac pwr_w_at_fc FIND pwr_w AT=28e9
+
 let phase_deg = phase_at_fc
 let il_db     = -1 * il_db_at_fc
 let rl_db     = -1 * rl_db_at_fc
 let gain_err_db = 0.0
-print phase_deg il_db rl_db gain_err_db
+let pwr_mw = 1e3 * abs(pwr_w_at_fc)
+print phase_deg il_db rl_db gain_err_db pwr_mw
 
 quit
 .endc
