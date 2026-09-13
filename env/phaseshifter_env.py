@@ -345,6 +345,7 @@ class PhaseShifterEnv(gym.Env):
                     getattr(self, "_last_topology", "Loaded_Line"),
                     params if params else None,
                     fc_ghz=float(self.current_spec.get("fc_ghz", 28.0)),
+                    tech=int(self.current_spec.get("tech", 0)),
                 )
             except Exception:
                 agg["area_mm2"] = None

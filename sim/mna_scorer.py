@@ -466,7 +466,9 @@ def mna_evaluate(
         return -5.0, None
     agg = aggregate_mna_metrics(per, _IDEAL_STEP.get(name, -22.5))
     try:
-        agg["area_mm2"] = estimate_area_mm2(name, params, fc_ghz=fc)
+        agg["area_mm2"] = estimate_area_mm2(
+            name, params, fc_ghz=fc, tech=int(spec.get("tech", 0)),
+        )
     except Exception:
         agg["area_mm2"] = None
     return score_from_metrics(agg, spec), agg

@@ -48,20 +48,23 @@ class ReplayBuffer:
         self.buffer = []
         self.position = 0
 
-    def push(self, spec, topo_name, action, reward):
+    def push(self, spec, topo_name, action, reward, fc_ghz=28.0):
         if len(self.buffer) < self.capacity:
             self.buffer.append(None)
-        self.buffer[self.position] = (spec, topo_name, action, reward)
+        self.buffer[self.position] = (
+            spec, topo_name, action, reward, float(fc_ghz),
+        )
         self.position = (self.position + 1) % self.capacity
 
     def sample(self, batch_size):
         batch = random.sample(self.buffer, batch_size)
-        specs, topos, actions, rewards = zip(*batch)
+        specs, topos, actions, rewards, fcs = zip(*batch)
         return (
             torch.tensor(np.array(specs), dtype=torch.float),
             topos,
             torch.tensor(np.array(actions), dtype=torch.float),
-            torch.tensor(np.array(rewards), dtype=torch.float)
+            torch.tensor(np.array(rewards), dtype=torch.float),
+            list(fcs),
         )
 
     def __len__(self):
@@ -753,8 +756,11 @@ def train(rank, world_size, args):
                  args.restrict_to, phase_warmup_deg(step), params_dict)
             )
             
-        # 6. Push transition to Replay Buffer
-        replay_buffer.push(obs_vec, topology_name, action, total_reward)
+        # 6. Push transition to Replay Buffer (keep fc for circuit-encoder re-encode)
+        replay_buffer.push(
+            obs_vec, topology_name, action, total_reward,
+            fc_ghz=float(spec_dict.get("fc_ghz", 28.0)),
+        )
         
         # Log to file on rank 0 (annealed reward + raw for ablation)
         if rank == 0:
@@ -787,7 +793,7 @@ def train(rank, world_size, args):
             
         # 7. Update networks via Q-value reweighted score matching
         if len(replay_buffer) >= args.batch_size:
-            specs_b, topos_b, actions_b, rewards_b = replay_buffer.sample(args.batch_size)
+            specs_b, topos_b, actions_b, rewards_b, fcs_b = replay_buffer.sample(args.batch_size)
             
             specs_b = specs_b.to(device)
             actions_b = actions_b.to(device)
@@ -797,10 +803,11 @@ def train(rank, world_size, args):
             z_topo_list = []
             h_dev_list = []
             mask_list = []
-            for topo_name in topos_b:
+            for bi, topo_name in enumerate(topos_b):
+                fc_spec = {"fc_ghz": float(fcs_b[bi])}
                 if use_circuit:
                     if use_device:
-                        z, h = enc(topo_name, {"fc_ghz": 28.0}, return_device=True)
+                        z, h = enc(topo_name, fc_spec, return_device=True)
                         sized = sized_devices(topo_name)
                         from env.netlist_graph import device_names
                         dnames = device_names(topo_name)
@@ -815,7 +822,7 @@ def train(rank, world_size, args):
                         h_dev_list.append(pad)
                         mask_list.append(m)
                     else:
-                        z = enc(topo_name, {"fc_ghz": 28.0}, return_device=False)
+                        z = enc(topo_name, fc_spec, return_device=False)
                         z_topo_list.append(z)
                 else:
                     g = topo_graphs[topo_name]
@@ -887,9 +894,13 @@ def train(rank, world_size, args):
                 critic_opt.step()
                 
                 z_topo_list = []
-                for topo_name in topos_b:
+                for bi, topo_name in enumerate(topos_b):
                     if use_circuit:
-                        z = enc(topo_name, {"fc_ghz": 28.0}, return_device=False)
+                        z = enc(
+                            topo_name,
+                            {"fc_ghz": float(fcs_b[bi])},
+                            return_device=False,
+                        )
                     else:
                         g = topo_graphs[topo_name]
                         z = gnn_encoder(g.x, g.edge_index)
