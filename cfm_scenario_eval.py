@@ -30,6 +30,9 @@ def main():
     ap.add_argument("--seed", type=int, default=42)
     ap.add_argument("--out", default="results/cfm_eval/cfm_scenarios.json")
     ap.add_argument("--device", default="cpu")
+    ap.add_argument("--bounds", default="electrical", choices=["legacy", "electrical"],
+                    help="Must match training --bounds (default electrical)")
+    ap.add_argument("--sizing", default="log", choices=["log", "linear"])
     args = ap.parse_args()
 
     device = torch.device(args.device if torch.cuda.is_available() else "cpu")
@@ -54,7 +57,7 @@ def main():
         for _ in range(args.n_samples):
             with torch.no_grad():
                 a = actor.sample(spec_norm, z).squeeze(0).cpu().numpy()
-            params = action_to_params(a, topo, spec)
+            params = action_to_params(a, topo, spec, sizing=args.sizing, bounds=args.bounds)
             if not check_physics_priors(topo, params, spec["fc_ghz"]):
                 continue
             eb = env.compute_expert_bonus(topo, spec)

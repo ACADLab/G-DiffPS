@@ -231,6 +231,8 @@ class PhaseShifterEnv(gym.Env):
         if specset_path is None:
             specset_path = TRAIN_SPECSET_PATH
 
+        self._specset_path = specset_path
+        self._specset_load_error = None
         try:
             self.dataset = load_specset(specset_path)
         except SchemaVersionError as e:
@@ -238,8 +240,15 @@ class PhaseShifterEnv(gym.Env):
                 f"Train specset schema mismatch ({specset_path}): {e}"
             ) from e
         except Exception as e:
-            print(f"[Warning] Could not load specset, will use dummy spec on reset: {e}")
+            # Keep construction working for eval scripts that only need
+            # normalize/expert_bonus. reset() must not invent a dummy spec.
             self.dataset = []
+            self._specset_load_error = (
+                f"Could not load specset {specset_path}: {e}. "
+                "Generate it with `python specset/generate_specset.py` "
+                "or pass specset_path to a tracked file."
+            )
+            print(f"[Warning] {self._specset_load_error}")
 
         self.eval_dataset: list = []
         if eval_specset_path is not None:
@@ -273,21 +282,18 @@ class PhaseShifterEnv(gym.Env):
         super().reset(seed=seed)
 
         active = self.dataset if self.pool == "train" else self.eval_dataset
-        if active:
-            idx = self.np_random.integers(0, len(active))
-            entry = active[idx]
-            self.current_entry = entry
-            self.current_spec_id = entry.get("id")
-            self.current_spec = entry["spec"]
-        else:
-            self.current_entry = None
-            self.current_spec_id = None
-            self.current_spec = {
-                "fc_ghz": 28.0, "bw_pct": 30.0, "phase_coverage_deg": 360.0,
-                "phase_bits": 5, "rms_phase_err_deg": 5.0, "rms_gain_err_db": 1.0,
-                "max_il_db": 5.0, "min_rl_db": 10.0, "vdd": 1.8, "pmax_mw": 15.0,
-                "tech": 0, "app": 2, "max_area_mm2": 50.0,
-            }
+        if not active:
+            which = "dataset" if self.pool == "train" else "eval_dataset"
+            extra = f" {self._specset_load_error}" if self._specset_load_error else ""
+            raise RuntimeError(
+                f"PhaseShifterEnv.reset() has an empty {which} "
+                f"(pool={self.pool!r}). Refusing to serve a dummy spec.{extra}"
+            )
+        idx = self.np_random.integers(0, len(active))
+        entry = active[idx]
+        self.current_entry = entry
+        self.current_spec_id = entry.get("id")
+        self.current_spec = entry["spec"]
 
         return self._normalize(self.current_spec), {}
 

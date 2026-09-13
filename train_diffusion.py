@@ -22,7 +22,9 @@ if REPO_ROOT not in sys.path:
     sys.path.insert(0, REPO_ROOT)
 
 from env.phaseshifter_env import PhaseShifterEnv
-from env.graph_utils import get_topology_graph, TOPOLOGY_PARAMS, SLOT_ACTION_DIM
+from env.graph_utils import (
+    get_topology_graph, TOPOLOGY_PARAMS, SLOT_ACTION_DIM, gin_device_rows,
+)
 from env.netlist_graph import sized_devices, _normalize_name
 from models.gnn_encoder import TopologyEncoder
 from models.circuit_encoder import CircuitEncoder
@@ -193,7 +195,7 @@ def _allpass_section(action, keys, kind: str, centre: float, is_section_b: bool,
     return mid * s if is_section_b else mid / s
 
 
-def action_to_params(action, topology_name, spec_dict, sizing="log", bounds="legacy",
+def action_to_params(action, topology_name, spec_dict, sizing="log", bounds="electrical",
                      switch_model="ideal"):
     """
     Scale continuous [0, 1] action vector to physical SPICE values.
@@ -201,8 +203,8 @@ def action_to_params(action, topology_name, spec_dict, sizing="log", bounds="leg
     spec_dict must contain 'fc_ghz' for frequency-adaptive transmission-line bounds.
     sizing='log'    → physics-informed log scaling (default, used for training).
     sizing='linear' → flat linear scaling across same bounds (ablation baseline).
+    bounds='electrical' → ranges centered on resonant (C0, L0, lam4) at fc (train default).
     bounds='legacy'     → original per-topology hard-coded ranges (paper numbers).
-    bounds='electrical' → ranges centered on resonant (C0, L0, lam4) at fc.
     switch_model='ideal'|'realistic' → R_on/R_off from tech constants (not actions).
     """
     keys = TOPOLOGY_PARAMS[topology_name]
@@ -398,7 +400,7 @@ def action_to_params(action, topology_name, spec_dict, sizing="log", bounds="leg
 
 
 def device_action_to_params(action_by_param, topology_name, spec_dict,
-                            sizing="log", bounds="legacy", switch_model="ideal"):
+                            sizing="log", bounds="electrical", switch_model="ideal"):
     """Map {param_key: a_01} (or ordered array over sized_devices) to params_dict.
 
     Re-indexes the EXISTING action_to_params bounds by device/param rather
@@ -582,6 +584,12 @@ def train(rank, world_size, args):
 
     # Initialize environment and dataset specs
     env = PhaseShifterEnv(restrict_to=args.restrict_to)
+    if not env.dataset:
+        extra = getattr(env, "_specset_load_error", None) or ""
+        raise RuntimeError(
+            "Training specset is empty; refusing to run against a dummy spec. "
+            + extra
+        )
     
     # Neural Networks initialization
     use_circuit = getattr(args, "encoder", "gin") == "circuit"
@@ -710,9 +718,7 @@ def train(rank, world_size, args):
                     name_to_idx = {n: i for i, n in enumerate(dnames)}
                     h_rows = [h_dev_full[name_to_idx[d]] for d, _ in sized]
                 else:
-                    # Align GIN nodes to sized params by cycling node embeddings
-                    n_nodes = h_dev_full.size(0)
-                    h_rows = [h_dev_full[i % n_nodes] for i in range(n_act)]
+                    h_rows = gin_device_rows(h_dev_full, topology_name, sized)
                 h_act = torch.stack(h_rows, dim=0)
                 mask = torch.ones(n_act, dtype=torch.bool, device=device)
                 action_tensor = actor.sample(spec_tensor, h_act, mask=mask)
@@ -828,9 +834,9 @@ def train(rank, world_size, args):
                     g = topo_graphs[topo_name]
                     if use_device:
                         z, h = gnn_encoder(g.x, g.edge_index, return_nodes=True)
-                        n_act = len(sized_devices(topo_name))
-                        n_nodes = h.size(0)
-                        h_rows = [h[i % n_nodes] for i in range(n_act)]
+                        sized = sized_devices(topo_name)
+                        n_act = len(sized)
+                        h_rows = gin_device_rows(h, topo_name, sized)
                         h_act = torch.stack(h_rows, dim=0)
                         pad = torch.zeros(max_sized, h_act.size(-1), device=device)
                         pad[: h_act.size(0)] = h_act

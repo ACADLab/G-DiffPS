@@ -51,13 +51,13 @@ def load_models(run_dir, device):
     return gnn, actor, value_net
 
 
-def best_spice_reward(actor, z, spec_norm, topo, spec, env, k):
+def best_spice_reward(actor, z, spec_norm, topo, spec, env, k, bounds="electrical"):
     """Best SPICE reward over k CFM samples for one topology."""
     best = -999.0
     for _ in range(k):
         with torch.no_grad():
             a = actor.sample(spec_norm, z).squeeze(0).cpu().numpy()
-        params = action_to_params(a, topo, spec)
+        params = action_to_params(a, topo, spec, bounds=bounds)
         if not check_physics_priors(topo, params, spec["fc_ghz"]):
             continue
         eb = env.compute_expert_bonus(topo, spec)
@@ -81,6 +81,9 @@ def main():
     ap.add_argument("--switch-model", default="ideal",
                     choices=("ideal", "realistic"),
                     help="Which r_star envelope to stratify against.")
+    ap.add_argument("--bounds", default="electrical",
+                    choices=["legacy", "electrical"],
+                    help="Must match training --bounds (default electrical)")
     args = ap.parse_args()
 
     device = torch.device(args.device if torch.cuda.is_available() else "cpu")
@@ -131,8 +134,12 @@ def main():
         ranked = sorted(TOPOS, key=lambda t: vscores[t], reverse=True)
 
         # SPICE ground truth: best reward per topology
-        rewards = {t: best_spice_reward(actor, z_cache[t], spec_norm, t, spec, env, args.k)
-                   for t in TOPOS}
+        rewards = {
+            t: best_spice_reward(
+                actor, z_cache[t], spec_norm, t, spec, env, args.k, bounds=args.bounds,
+            )
+            for t in TOPOS
+        }
         emp_best = max(TOPOS, key=lambda t: rewards[t])
         emp_best_r = rewards[emp_best]
 

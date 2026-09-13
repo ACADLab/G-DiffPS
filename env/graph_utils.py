@@ -21,6 +21,67 @@ TOPOLOGY_PARAMS = {
 # Slot action dim = largest parameter list (All_Pass = 6 after R_on/R_off removal).
 SLOT_ACTION_DIM = max(len(v) for v in TOPOLOGY_PARAMS.values())
 
+# Names of GIN component-graph nodes, in the order `get_topology_graph` builds
+# them. Used to align `--action-space device` rows with sized netlist devices.
+# Aliases map netlist device names that the GIN graph collapses (e.g. two
+# series All_Pass inductors become one Ind node).
+GIN_NODE_NAMES = {
+    "Loaded_Line": ["T_main", "C_in_load", "R_in_path", "C_out_load", "R_out_path"],
+    "Switched_Line": ["R_in_short", "R_in_long", "T_short", "T_long",
+                      "R_out_short", "R_out_long"],
+    "Reflection_Type": ["T_top", "T_bottom", "T_left", "T_right",
+                        "C_baseA", "C_tuneA", "R_pathA",
+                        "C_baseB", "C_tuneB", "R_pathB"],
+    "Switched_Filter": ["R_in_hpf", "Lp_hpf_in", "C_hpf_ser", "Lp_hpf_out",
+                        "R_out_hpf", "R_in_lpf", "Cp_lpf_in", "L_lpf_ser",
+                        "Cp_lpf_out", "R_out_lpf"],
+    "Vector_Modulator": ["T_quad", "R_q_term", "E_I", "E_Q", "R_drv_out"],
+    "All_Pass": ["R_in_apA", "L_apA", "C_brA", "C_cA", "R_out_apA",
+                 "R_in_apB", "L_apB", "C_brB", "C_cB", "R_out_apB"],
+}
+GIN_DEVICE_ALIASES = {
+    "L_apA_ser1": "L_apA", "L_apA_ser2": "L_apA",
+    "C_brA_brg": "C_brA", "C_cA_shnt": "C_cA",
+    "L_apB_ser1": "L_apB", "L_apB_ser2": "L_apB",
+    "C_brB_brg": "C_brB", "C_cB_shnt": "C_cB",
+}
+
+
+def _normalize_topo(topology_name: str) -> str:
+    key = topology_name.lower().replace("_", "")
+    for name in GIN_NODE_NAMES:
+        if name.lower().replace("_", "") == key:
+            return name
+    raise ValueError(f"Unknown topology name: {topology_name}")
+
+
+def gin_node_index(topology_name: str, device_name: str) -> int:
+    """Index of the GIN node that represents a netlist device."""
+    name = _normalize_topo(topology_name)
+    alias = GIN_DEVICE_ALIASES.get(device_name, device_name)
+    nodes = GIN_NODE_NAMES[name]
+    try:
+        return nodes.index(alias)
+    except ValueError as exc:
+        raise KeyError(
+            f"GIN graph for {name} has no node for device {device_name!r} "
+            f"(alias {alias!r}); nodes={nodes}"
+        ) from exc
+
+
+def gin_device_rows(h_nodes, topology_name: str, sized):
+    """Gather GIN node embeddings for ``sized_devices`` (name-aligned)."""
+    rows = []
+    for dname, _key in sized:
+        idx = gin_node_index(topology_name, dname)
+        if idx >= h_nodes.size(0):
+            raise IndexError(
+                f"GIN node {idx} for {topology_name}/{dname} exceeds "
+                f"embedding rows {h_nodes.size(0)}"
+            )
+        rows.append(h_nodes[idx])
+    return rows
+
 
 def get_topology_graph(topology_name: str) -> Data:
     """Build PyG Data object for the requested topology."""

@@ -17,7 +17,7 @@ REPO_ROOT = os.path.dirname(os.path.abspath(__file__))
 if REPO_ROOT not in sys.path:
     sys.path.insert(0, REPO_ROOT)
 
-from env.graph_utils import get_topology_graph, TOPOLOGY_PARAMS, SLOT_ACTION_DIM
+from env.graph_utils import get_topology_graph, TOPOLOGY_PARAMS, SLOT_ACTION_DIM, gin_device_rows
 from env.netlist_graph import sized_devices, device_names
 from models.gnn_encoder import TopologyEncoder
 from models.circuit_encoder import CircuitEncoder
@@ -92,8 +92,8 @@ def _sample_one(actor, gnn, topo, spec, spec_norm, encoder, action_space, device
             g = topo_graphs[topo]
             if action_space == "device":
                 z, h = gnn(g.x.to(device), g.edge_index.to(device), return_nodes=True)
-                n_act = len(sized_devices(topo))
-                h_rows = [h[i % h.size(0)] for i in range(n_act)]
+                sized = sized_devices(topo)
+                h_rows = gin_device_rows(h, topo, sized)
                 h_act = torch.stack(h_rows, dim=0)
                 a = actor.sample(spec_norm, h_act).cpu().numpy()
             else:
