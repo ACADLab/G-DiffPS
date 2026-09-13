@@ -23,6 +23,27 @@ from baselines.eval_sac import SCENARIOS
 from specset.schema import SPEC_DIM
 
 
+def _run_config(run_dir):
+    path = os.path.join(run_dir, "run_config.json")
+    if not os.path.isfile(path):
+        return {}
+    with open(path) as fh:
+        return json.load(fh)
+
+
+def _resolve_flag(cli_value, run_cfg, key, default):
+    """Prefer an explicit CLI flag; otherwise use the training run_config."""
+    from_run = run_cfg.get(key)
+    if cli_value is not None:
+        if from_run is not None and cli_value != from_run:
+            print(f"[warn] --{key.replace('_', '-')}={cli_value} differs from "
+                  f"run_config {key}={from_run}", flush=True)
+        return cli_value
+    if from_run is not None:
+        return from_run
+    return default
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--run", required=True)
@@ -30,10 +51,17 @@ def main():
     ap.add_argument("--seed", type=int, default=42)
     ap.add_argument("--out", default="results/cfm_eval/cfm_scenarios.json")
     ap.add_argument("--device", default="cpu")
-    ap.add_argument("--bounds", default="electrical", choices=["legacy", "electrical"],
-                    help="Must match training --bounds (default electrical)")
+    ap.add_argument("--bounds", default=None, choices=["legacy", "electrical"],
+                    help="Must match training --bounds (default: run_config or electrical)")
     ap.add_argument("--sizing", default="log", choices=["log", "linear"])
+    ap.add_argument("--switch-model", default=None, choices=["ideal", "realistic"],
+                    help="Must match training --switch-model (default: run_config or ideal)")
     args = ap.parse_args()
+    run_cfg = _run_config(args.run)
+    args.bounds = _resolve_flag(args.bounds, run_cfg, "bounds", "electrical")
+    args.switch_model = _resolve_flag(
+        args.switch_model, run_cfg, "switch_model", "ideal",
+    )
 
     device = torch.device(args.device if torch.cuda.is_available() else "cpu")
     torch.manual_seed(args.seed); np.random.seed(args.seed)
@@ -44,6 +72,7 @@ def main():
     actor.load_state_dict(torch.load(os.path.join(args.run, "actor.pt"), map_location=device))
     gnn.eval(); actor.eval()
     env = PhaseShifterEnv()
+    print(f"decode bounds={args.bounds} switch_model={args.switch_model}", flush=True)
 
     results = []
     for sc in SCENARIOS:
@@ -57,7 +86,10 @@ def main():
         for _ in range(args.n_samples):
             with torch.no_grad():
                 a = actor.sample(spec_norm, z).squeeze(0).cpu().numpy()
-            params = action_to_params(a, topo, spec, sizing=args.sizing, bounds=args.bounds)
+            params = action_to_params(
+                a, topo, spec, sizing=args.sizing, bounds=args.bounds,
+                switch_model=args.switch_model,
+            )
             if not check_physics_priors(topo, params, spec["fc_ghz"]):
                 continue
             eb = env.compute_expert_bonus(topo, spec)
@@ -66,7 +98,8 @@ def main():
             if r > best_r:
                 best_r, best_m = float(r), m
         rec = {"scenario": sc["name"], "topology": topo, "fc_ghz": spec["fc_ghz"],
-               "spice_calls": 0, "best_reward": best_r, "best_metrics": best_m}
+               "spice_calls": 0, "best_reward": best_r, "best_metrics": best_m,
+               "switch_model": args.switch_model, "bounds": args.bounds}
         results.append(rec)
         pm = best_m or {}
         print(f"  {sc['name']:<11} {topo:<17} r={best_r:>6.3f}  "
