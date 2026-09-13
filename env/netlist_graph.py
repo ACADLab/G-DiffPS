@@ -380,6 +380,7 @@ def build_circuit_graph(
     params: dict | None = None,
     bounds: str = "electrical",
     include_ports: bool = True,
+    switch_model: str = "ideal",
 ) -> HeteroData:
     """Build a HeteroData bipartite device/net incidence graph.
 
@@ -407,7 +408,9 @@ def build_circuit_graph(
     log_fc = math.log10(max(fc_ghz, 1e-3))
 
     if params is None:
-        params = nominal_params(name, {"fc_ghz": fc_ghz}, bounds=bounds)
+        params = nominal_params(
+            name, spec_dict, bounds=bounds, switch_model=switch_model,
+        )
     r_on = _as_float(params, "R_on", 3.0)
     r_off = _as_float(params, "R_off", 1e4)
 

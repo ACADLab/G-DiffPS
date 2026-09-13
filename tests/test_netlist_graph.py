@@ -107,6 +107,28 @@ def test_sizing_changes_electrical_feature():
     assert not torch_allclose(g0["device"].x[:, IDX_ELEC], g1["device"].x[:, IDX_ELEC])
 
 
+def test_switch_model_and_tech_reach_graph_features():
+    """Encoder graphs must see configured switch parasitics, not always ideal/tech=0."""
+    spec0 = {"fc_ghz": 28.0, "tech": 0}
+    spec2 = {"fc_ghz": 28.0, "tech": 2}
+    names = graph_device_names("Switched_Line")
+    i_short = names.index("R_in_short")
+    g_ideal = build_circuit_graph(
+        "Switched_Line", spec0, state=1, switch_model="ideal",
+    )
+    g_real = build_circuit_graph(
+        "Switched_Line", spec0, state=1, switch_model="realistic",
+    )
+    # State 1 opens R_in_short, so elec size tracks R_off (10k vs ~284 Ω).
+    assert not torch_allclose(
+        g_ideal["device"].x[i_short:i_short + 1, IDX_ELEC],
+        g_real["device"].x[i_short:i_short + 1, IDX_ELEC],
+    )
+    p0 = nominal_params("Switched_Line", spec0, switch_model="realistic")
+    p2 = nominal_params("Switched_Line", spec2, switch_model="realistic")
+    assert float(p0["R_off"]) != float(p2["R_off"])
+
+
 def test_switch_electrical_size_tracks_impedance():
     """Off-state switches must read as a large impedance, not just a flipped bit."""
     import torch
@@ -166,6 +188,8 @@ if __name__ == "__main__":
     print("OK port devices")
     test_sizing_changes_electrical_feature()
     print("OK sizing drives elec")
+    test_switch_model_and_tech_reach_graph_features()
+    print("OK switch_model/tech features")
     test_switch_electrical_size_tracks_impedance()
     print("OK switch impedance")
     test_pin_distances_are_order_invariant()

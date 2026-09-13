@@ -63,11 +63,14 @@ def load_models(run_dir, encoder, action_space, device):
 
 
 def sample_action(actor, gnn, topo, spec, spec_norm, encoder, action_space, device,
-                  topo_graphs=None):
+                  topo_graphs=None, bounds="electrical", switch_model="ideal"):
     with torch.no_grad():
         if encoder == "circuit":
             if action_space == "device":
-                z, h = gnn(topo, spec, return_device=True)
+                z, h = gnn(
+                    topo, spec, return_device=True,
+                    bounds=bounds, switch_model=switch_model,
+                )
                 sized = sized_devices(topo)
                 dnames = device_names(topo)
                 name_to_idx = {n: i for i, n in enumerate(dnames)}
@@ -75,7 +78,10 @@ def sample_action(actor, gnn, topo, spec, spec_norm, encoder, action_space, devi
                 h_act = torch.stack(h_rows, dim=0)
                 a = actor.sample(spec_norm, h_act).cpu().numpy()
             else:
-                z = gnn(topo, spec, return_device=False)
+                z = gnn(
+                    topo, spec, return_device=False,
+                    bounds=bounds, switch_model=switch_model,
+                )
                 a = actor.sample(spec_norm, z).squeeze(0).cpu().numpy()
         else:
             g = topo_graphs[topo]
@@ -161,6 +167,7 @@ def main():
         a = sample_action(
             actor, gnn, args.held_out, spec, spec_norm,
             args.encoder, args.action_space, device, topo_graphs,
+            bounds=args.bounds, switch_model=args.switch_model,
         )
         if args.action_space == "device":
             params = device_action_to_params(

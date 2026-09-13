@@ -78,7 +78,10 @@ def _sample_one(actor, gnn, topo, spec, spec_norm, encoder, action_space, device
     with torch.no_grad():
         if encoder == "circuit":
             if action_space == "device":
-                z, h = gnn(topo, spec, return_device=True)
+                z, h = gnn(
+                    topo, spec, return_device=True,
+                    bounds=bounds, switch_model=switch_model,
+                )
                 sized = sized_devices(topo)
                 dnames = device_names(topo)
                 name_to_idx = {n: i for i, n in enumerate(dnames)}
@@ -86,7 +89,10 @@ def _sample_one(actor, gnn, topo, spec, spec_norm, encoder, action_space, device
                 h_act = torch.stack(h_rows, dim=0)
                 a = actor.sample(spec_norm, h_act).cpu().numpy()
             else:
-                z = gnn(topo, spec, return_device=False)
+                z = gnn(
+                    topo, spec, return_device=False,
+                    bounds=bounds, switch_model=switch_model,
+                )
                 a = actor.sample(spec_norm, z).squeeze(0).cpu().numpy()
         else:
             g = topo_graphs[topo]

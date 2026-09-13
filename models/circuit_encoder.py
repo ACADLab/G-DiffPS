@@ -18,8 +18,8 @@ a state change that permutes the device set -- a switched-line swapping its
 short and long branch, say -- leaves any permutation-invariant readout
 unchanged, so the contrast would vanish for the very device it describes.
 
-Encodings are cached per (topology, fc_bucket, state, sizing) to bound cost
-on Vector Modulator's 16-state table.
+Encodings are cached per (topology, fc_bucket, state, sizing,
+switch_model, tech) to bound cost on Vector Modulator's 16-state table.
 """
 from __future__ import annotations
 
@@ -116,7 +116,7 @@ class CircuitEncoder(nn.Module):
         self.proj = nn.Linear(2 * hidden, out_dim)
         self.dev_proj = nn.Linear(2 * hidden, out_dim)
 
-        # Cache: (topo, fc_bucket, state, sizing_fp) -> (z_state, h_dev)
+        # Cache: (topo, fc_bucket, state, sizing_fp, switch_model, tech) -> h_dev
         self._cache: dict = {}
         self._cache_enabled = True
 
@@ -199,6 +199,7 @@ class CircuitEncoder(nn.Module):
         data_override: Optional[HeteroData] = None,
         params: Optional[dict] = None,
         bounds: str = "electrical",
+        switch_model: str = "ideal",
         return_parts: bool = False,
     ):
         """
@@ -210,22 +211,27 @@ class CircuitEncoder(nn.Module):
         """
         name = _normalize_name(topology_name)
         fc = float(spec_dict.get("fc_ghz", 28.0))
+        tech = int(spec_dict.get("tech", 0))
         bucket = self.fc_bucket(fc)
         states = self._states_to_encode(name)
 
         if params is None:
-            params = nominal_params(name, {"fc_ghz": fc}, bounds=bounds)
+            params = nominal_params(
+                name, spec_dict, bounds=bounds, switch_model=switch_model,
+            )
         fp = self._params_fingerprint(params)
 
         h_list = []
         for s in states:
-            key = (name, bucket, s, fp)
+            key = (name, bucket, s, fp, switch_model, tech)
             if self._cache_enabled and key in self._cache and data_override is None:
                 h_d = self._cache[key]
             else:
                 data = data_override if (data_override is not None and s == states[0]) \
-                    else build_circuit_graph(name, spec_dict, state=s, params=params,
-                                             bounds=bounds)
+                    else build_circuit_graph(
+                        name, spec_dict, state=s, params=params,
+                        bounds=bounds, switch_model=switch_model,
+                    )
                 # Move to same device as module parameters
                 device = next(self.parameters()).device
                 data = data.to(device)

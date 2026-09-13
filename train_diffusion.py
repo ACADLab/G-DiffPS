@@ -50,27 +50,38 @@ class ReplayBuffer:
         self.buffer = []
         self.position = 0
 
-    def push(self, spec, topo_name, action, reward, fc_ghz=28.0):
+    def push(self, spec, topo_name, action, reward, fc_ghz=28.0, spec_dict=None):
         if len(self.buffer) < self.capacity:
             self.buffer.append(None)
+        stored_spec = dict(spec_dict) if spec_dict else None
         self.buffer[self.position] = (
-            spec, topo_name, action, reward, float(fc_ghz),
+            spec, topo_name, action, reward, float(fc_ghz), stored_spec,
         )
         self.position = (self.position + 1) % self.capacity
 
     def sample(self, batch_size):
         batch = random.sample(self.buffer, batch_size)
-        specs, topos, actions, rewards, fcs = zip(*batch)
+        specs, topos, actions, rewards, fcs, spec_dicts = zip(*batch)
         return (
             torch.tensor(np.array(specs), dtype=torch.float),
             topos,
             torch.tensor(np.array(actions), dtype=torch.float),
             torch.tensor(np.array(rewards), dtype=torch.float),
             list(fcs),
+            list(spec_dicts),
         )
 
     def __len__(self):
         return len(self.buffer)
+
+
+def _replay_spec(spec_dict, fc_ghz):
+    """Full spec for circuit-encoder replay; never drop tech/switch fields."""
+    if spec_dict:
+        out = dict(spec_dict)
+        out.setdefault("fc_ghz", float(fc_ghz))
+        return out
+    return {"fc_ghz": float(fc_ghz)}
 
 
 # =============================================================================
@@ -690,9 +701,15 @@ def train(rank, world_size, args):
         enc = gnn_encoder.module if is_ddp else gnn_encoder
         if use_circuit:
             if use_device:
-                z_topo, h_dev_full = enc(topology_name, spec_dict, return_device=True)
+                z_topo, h_dev_full = enc(
+                    topology_name, spec_dict, return_device=True,
+                    bounds=bounds, switch_model=switch_model,
+                )
             else:
-                z_topo = enc(topology_name, spec_dict, return_device=False)
+                z_topo = enc(
+                    topology_name, spec_dict, return_device=False,
+                    bounds=bounds, switch_model=switch_model,
+                )
                 h_dev_full = None
         else:
             graph_data = topo_graphs[topology_name]
@@ -766,6 +783,7 @@ def train(rank, world_size, args):
         replay_buffer.push(
             obs_vec, topology_name, action, total_reward,
             fc_ghz=float(spec_dict.get("fc_ghz", 28.0)),
+            spec_dict=spec_dict,
         )
         
         # Log to file on rank 0 (annealed reward + raw for ablation)
@@ -799,7 +817,7 @@ def train(rank, world_size, args):
             
         # 7. Update networks via Q-value reweighted score matching
         if len(replay_buffer) >= args.batch_size:
-            specs_b, topos_b, actions_b, rewards_b, fcs_b = replay_buffer.sample(args.batch_size)
+            specs_b, topos_b, actions_b, rewards_b, fcs_b, spec_dicts_b = replay_buffer.sample(args.batch_size)
             
             specs_b = specs_b.to(device)
             actions_b = actions_b.to(device)
@@ -810,10 +828,13 @@ def train(rank, world_size, args):
             h_dev_list = []
             mask_list = []
             for bi, topo_name in enumerate(topos_b):
-                fc_spec = {"fc_ghz": float(fcs_b[bi])}
+                replay_spec = _replay_spec(spec_dicts_b[bi], fcs_b[bi])
                 if use_circuit:
                     if use_device:
-                        z, h = enc(topo_name, fc_spec, return_device=True)
+                        z, h = enc(
+                            topo_name, replay_spec, return_device=True,
+                            bounds=bounds, switch_model=switch_model,
+                        )
                         sized = sized_devices(topo_name)
                         from env.netlist_graph import device_names
                         dnames = device_names(topo_name)
@@ -828,7 +849,10 @@ def train(rank, world_size, args):
                         h_dev_list.append(pad)
                         mask_list.append(m)
                     else:
-                        z = enc(topo_name, fc_spec, return_device=False)
+                        z = enc(
+                            topo_name, replay_spec, return_device=False,
+                            bounds=bounds, switch_model=switch_model,
+                        )
                         z_topo_list.append(z)
                 else:
                     g = topo_graphs[topo_name]
@@ -904,8 +928,10 @@ def train(rank, world_size, args):
                     if use_circuit:
                         z = enc(
                             topo_name,
-                            {"fc_ghz": float(fcs_b[bi])},
+                            _replay_spec(spec_dicts_b[bi], fcs_b[bi]),
                             return_device=False,
+                            bounds=bounds,
+                            switch_model=switch_model,
                         )
                     else:
                         g = topo_graphs[topo_name]
