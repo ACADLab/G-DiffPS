@@ -16,8 +16,8 @@ Branch: `dev/nuerips_workshop`
 
 | ID | Milestone | Status |
 |----|-----------|--------|
-| A | Working SKY130 device and circuit simulations | **In progress — harness green** |
-| B | Characterized device vocabulary and initial frequency range | Not started |
+| A | Working SKY130 device and circuit simulations | **Done — harness green** |
+| B | Characterized device vocabulary and initial frequency range | **In progress — switch + passive maps** |
 | C | PDK-aware graph object and realizable sizing decoder | Not started |
 | D | Joint topology–sizing on a small circuit grammar | Not started |
 | E | Robustness across operating conditions | Not started |
@@ -34,7 +34,9 @@ Branch: `dev/nuerips_workshop`
   [opensrc_analog](https://github.com/eescottie/opensrc_analog) miller OTA
   examples (vendored under `third_party/opensrc_analog/` as xschem schematics;
   SPICE decks are project-local)
-- Results: `results/sky130/harness_results.json`, `results/sky130/environment.json`
+- Results: `results/sky130/harness_results.json`, `results/sky130/environment.json`,
+  `results/sky130/switch_char.json`, `results/sky130/passive_char.json`
+- Bugbot area-fix validation: `results/area_fix/validate_area_stash_fix.json`
 
 ```bash
 export PDK_ROOT="$(pwd)/pdk"

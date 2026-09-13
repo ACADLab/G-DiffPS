@@ -1,0 +1,175 @@
+{
+  "resistor": {
+    "model": "sky130_fd_pr__res_xhigh_po_0p35",
+    "rows": [
+      {
+        "L_um": 1.0,
+        "ok": true,
+        "metrics": {
+          "i_force": 1.58699e-05,
+          "r_meas": 6301.23
+        }
+      },
+      {
+        "L_um": 2.0,
+        "ok": true,
+        "metrics": {
+          "i_force": 8.32297e-06,
+          "r_meas": 12014.9
+        }
+      },
+      {
+        "L_um": 5.0,
+        "ok": true,
+        "metrics": {
+          "i_force": 3.42981e-06,
+          "r_meas": 29156.1
+        }
+      },
+      {
+        "L_um": 10.0,
+        "ok": true,
+        "metrics": {
+          "i_force": 1.73236e-06,
+          "r_meas": 57724.7
+        }
+      },
+      {
+        "L_um": 20.0,
+        "ok": true,
+        "metrics": {
+          "i_force": 8.70611e-07,
+          "r_meas": 114862.0
+        }
+      },
+      {
+        "L_um": 50.0,
+        "ok": true,
+        "metrics": {
+          "i_force": 3.49317e-07,
+          "r_meas": 286273.0
+        }
+      }
+    ]
+  },
+  "capacitor": {
+    "model": "sky130_fd_pr__cap_mim_m3_1",
+    "rows": [
+      {
+        "W_um": 2,
+        "L_um": 2,
+        "ok": true,
+        "metrics": {
+          "iac": 5.84478e-10,
+          "c_est": 9.30225e-15
+        },
+        "c_fF": 9.302249999999999
+      },
+      {
+        "W_um": 5,
+        "L_um": 5,
+        "ok": true,
+        "metrics": {
+          "iac": 3.34782e-09,
+          "c_est": 5.32822e-14
+        },
+        "c_fF": 53.2822
+      },
+      {
+        "W_um": 10,
+        "L_um": 10,
+        "ok": true,
+        "metrics": {
+          "iac": 1.29799e-08,
+          "c_est": 2.06582e-13
+        },
+        "c_fF": 206.582
+      },
+      {
+        "W_um": 20,
+        "L_um": 20,
+        "ok": true,
+        "metrics": {
+          "iac": 5.10937e-08,
+          "c_est": 8.13182e-13
+        },
+        "c_fF": 813.182
+      },
+      {
+        "W_um": 5,
+        "L_um": 10,
+        "ok": true,
+        "metrics": {
+          "iac": 6.59309e-09,
+          "c_est": 1.04932e-13
+        },
+        "c_fF": 104.93199999999999
+      },
+      {
+        "W_um": 10,
+        "L_um": 5,
+        "ok": true,
+        "metrics": {
+          "iac": 6.59309e-09,
+          "c_est": 1.04932e-13
+        },
+        "c_fF": 104.93199999999999
+      }
+    ]
+  },
+  "switch_ron_corners": {
+    "model": "sky130_fd_pr__nfet_01v8",
+    "rows": [
+      {
+        "corner": "tt",
+        "W_um": 5.0,
+        "ok": true,
+        "metrics": {
+          "id": 0.000378124,
+          "r_ds": 132.232
+        }
+      },
+      {
+        "corner": "ss",
+        "W_um": 5.0,
+        "ok": true,
+        "metrics": {
+          "id": 0.000323968,
+          "r_ds": 154.336
+        }
+      },
+      {
+        "corner": "ff",
+        "W_um": 5.0,
+        "ok": true,
+        "metrics": {
+          "id": 0.000435293,
+          "r_ds": 114.865
+        }
+      },
+      {
+        "corner": "sf",
+        "W_um": 5.0,
+        "ok": true,
+        "metrics": {
+          "id": 0.000440091,
+          "r_ds": 113.613
+        }
+      },
+      {
+        "corner": "fs",
+        "W_um": 5.0,
+        "ok": true,
+        "metrics": {
+          "id": 0.000319363,
+          "r_ds": 156.562
+        }
+      }
+    ]
+  },
+  "notes": [
+    "Resistor: DC small-signal R vs drawn length.",
+    "Capacitor: AC |I|/(2\u03c0fVac) estimate at 1 MHz.",
+    "Ron corners: Vgs=1.8 V, Vds=50 mV, W=5 um, L=0.15 um."
+  ]
+}
