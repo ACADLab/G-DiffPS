@@ -59,7 +59,7 @@ def main():
                 continue
             eb = env.compute_expert_bonus(topo, spec)
             nl = make_spice_netlist(topo, params)
-            r, m, _ = parallel_eval_worker((nl, spec, topo, eb, None))
+            r, m, _ = parallel_eval_worker((nl, spec, topo, eb, None, 0.0, params))
             if r > best_r:
                 best_r, best_m = float(r), m
         rec = {"scenario": sc["name"], "topology": topo, "fc_ghz": spec["fc_ghz"],

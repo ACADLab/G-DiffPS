@@ -62,7 +62,7 @@ def best_spice_reward(actor, z, spec_norm, topo, spec, env, k):
             continue
         eb = env.compute_expert_bonus(topo, spec)
         nl = make_spice_netlist(topo, params)
-        r, _, _ = parallel_eval_worker((nl, spec, topo, eb, None))
+        r, _, _ = parallel_eval_worker((nl, spec, topo, eb, None, 0.0, params))
         best = max(best, float(r))
     return best
 

@@ -177,7 +177,7 @@ def run_pareto_matching():
                 
             netlist_path = make_spice_netlist(sc["topo"], params)
             reward, agg_metrics, _ = parallel_eval_worker(
-                (netlist_path, sc["spec"], sc["topo"], expert_bonus, None)
+                (netlist_path, sc["spec"], sc["topo"], expert_bonus, None, 0.0, params)
             )
             
             if reward > best_reward:

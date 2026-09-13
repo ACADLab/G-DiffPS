@@ -66,7 +66,7 @@ def run_random_search(topo: str, spec: dict, budget: int, seed: int, out_dir: st
         expert_bonus = env.compute_expert_bonus(topo, spec)
         netlist_path = make_spice_netlist(topo, params)
         reward, agg_metrics, _ = parallel_eval_worker(
-            (netlist_path, spec, topo, expert_bonus, None)
+            (netlist_path, spec, topo, expert_bonus, None, 0.0, params)
         )
         spice_calls += 1
 

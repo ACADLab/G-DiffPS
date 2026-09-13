@@ -65,7 +65,7 @@ def run_simulated_annealing(topo: str, spec: dict, maxfun: int, seed: int, out_d
         expert_bonus = env.compute_expert_bonus(topo, spec)
         netlist_path = make_spice_netlist(topo, params)
         reward, agg_metrics, _ = parallel_eval_worker(
-            (netlist_path, spec, topo, expert_bonus, None)
+            (netlist_path, spec, topo, expert_bonus, None, 0.0, params)
         )
         spice_calls[0] += 1
 

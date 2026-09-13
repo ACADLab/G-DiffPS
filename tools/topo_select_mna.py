@@ -98,7 +98,7 @@ def spice_oracle(
             if not check_physics_priors(topo, params, spec["fc_ghz"]):
                 continue
             nl = make_spice_netlist(topo, params, spec_dict=spec, fc_mode=fc_mode)
-            r, _, _ = parallel_eval_worker((nl, spec, topo, 0.0, [topo]))
+            r, _, _ = parallel_eval_worker((nl, spec, topo, 0.0, [topo], 0.0, params))
             if r > best_r:
                 best_r = float(r)
         best[topo] = best_r

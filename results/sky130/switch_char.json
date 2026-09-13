@@ -1,0 +1,319 @@
+{
+  "corner": "tt",
+  "device": "sky130_fd_pr__nfet_01v8",
+  "probe": {
+    "vds_v": 0.05,
+    "load_ohm": 50
+  },
+  "rows": [
+    {
+      "W_um": 0.42,
+      "L_um": 0.15,
+      "vdd_v": 1.8,
+      "on": {
+        "ok": true,
+        "metrics": {
+          "id": 2.55126e-05,
+          "r_ds": 1959.82
+        },
+        "error": null
+      },
+      "off": {
+        "ok": true,
+        "metrics": {
+          "id": 5.2716e-14,
+          "r_ds": 948479000000.0
+        },
+        "error": null
+      },
+      "feedthrough_off": [
+        {
+          "freq_hz": 1000000.0,
+          "ok": true,
+          "metrics": {
+            "vout_mag": 7.99993e-10,
+            "att_db": -181.938
+          },
+          "error": null
+        },
+        {
+          "freq_hz": 10000000.0,
+          "ok": true,
+          "metrics": {
+            "vout_mag": 7.99983e-09,
+            "att_db": -161.938
+          },
+          "error": null
+        },
+        {
+          "freq_hz": 100000000.0,
+          "ok": true,
+          "metrics": {
+            "vout_mag": 7.99983e-08,
+            "att_db": -141.938
+          },
+          "error": null
+        },
+        {
+          "freq_hz": 1000000000.0,
+          "ok": true,
+          "metrics": {
+            "vout_mag": 7.99983e-07,
+            "att_db": -121.938
+          },
+          "error": null
+        }
+      ]
+    },
+    {
+      "W_um": 1.0,
+      "L_um": 0.15,
+      "vdd_v": 1.8,
+      "on": {
+        "ok": true,
+        "metrics": {
+          "id": 7.14962e-05,
+          "r_ds": 699.338
+        },
+        "error": null
+      },
+      "off": {
+        "ok": true,
+        "metrics": {
+          "id": 6.73499e-14,
+          "r_ds": 742392000000.0
+        },
+        "error": null
+      },
+      "feedthrough_off": [
+        {
+          "freq_hz": 1000000.0,
+          "ok": true,
+          "metrics": {
+            "vout_mag": 2.69492e-09,
+            "att_db": -171.389
+          },
+          "error": null
+        },
+        {
+          "freq_hz": 10000000.0,
+          "ok": true,
+          "metrics": {
+            "vout_mag": 2.69474e-08,
+            "att_db": -151.39
+          },
+          "error": null
+        },
+        {
+          "freq_hz": 100000000.0,
+          "ok": true,
+          "metrics": {
+            "vout_mag": 2.69474e-07,
+            "att_db": -131.39
+          },
+          "error": null
+        },
+        {
+          "freq_hz": 1000000000.0,
+          "ok": true,
+          "metrics": {
+            "vout_mag": 2.69475e-06,
+            "att_db": -111.39
+          },
+          "error": null
+        }
+      ]
+    },
+    {
+      "W_um": 2.0,
+      "L_um": 0.15,
+      "vdd_v": 1.8,
+      "on": {
+        "ok": true,
+        "metrics": {
+          "id": 0.000149908,
+          "r_ds": 333.538
+        },
+        "error": null
+      },
+      "off": {
+        "ok": true,
+        "metrics": {
+          "id": 8.44573e-14,
+          "r_ds": 592015000000.0
+        },
+        "error": null
+      },
+      "feedthrough_off": [
+        {
+          "freq_hz": 1000000.0,
+          "ok": true,
+          "metrics": {
+            "vout_mag": 7.19407e-09,
+            "att_db": -162.861
+          },
+          "error": null
+        },
+        {
+          "freq_hz": 10000000.0,
+          "ok": true,
+          "metrics": {
+            "vout_mag": 7.19382e-08,
+            "att_db": -142.861
+          },
+          "error": null
+        },
+        {
+          "freq_hz": 100000000.0,
+          "ok": true,
+          "metrics": {
+            "vout_mag": 7.19382e-07,
+            "att_db": -122.861
+          },
+          "error": null
+        },
+        {
+          "freq_hz": 1000000000.0,
+          "ok": true,
+          "metrics": {
+            "vout_mag": 7.19386e-06,
+            "att_db": -102.861
+          },
+          "error": null
+        }
+      ]
+    },
+    {
+      "W_um": 5.0,
+      "L_um": 0.15,
+      "vdd_v": 1.8,
+      "on": {
+        "ok": true,
+        "metrics": {
+          "id": 0.000378124,
+          "r_ds": 132.232
+        },
+        "error": null
+      },
+      "off": {
+        "ok": true,
+        "metrics": {
+          "id": 3.2469e-13,
+          "r_ds": 153993000000.0
+        },
+        "error": null
+      },
+      "feedthrough_off": [
+        {
+          "freq_hz": 1000000.0,
+          "ok": true,
+          "metrics": {
+            "vout_mag": 3.66597e-08,
+            "att_db": -148.716
+          },
+          "error": null
+        },
+        {
+          "freq_hz": 10000000.0,
+          "ok": true,
+          "metrics": {
+            "vout_mag": 3.66564e-07,
+            "att_db": -128.717
+          },
+          "error": null
+        },
+        {
+          "freq_hz": 100000000.0,
+          "ok": true,
+          "metrics": {
+            "vout_mag": 3.66564e-06,
+            "att_db": -108.717
+          },
+          "error": null
+        },
+        {
+          "freq_hz": 1000000000.0,
+          "ok": true,
+          "metrics": {
+            "vout_mag": 3.66567e-05,
+            "att_db": -88.7169
+          },
+          "error": null
+        }
+      ]
+    },
+    {
+      "W_um": 10.0,
+      "L_um": 0.15,
+      "vdd_v": 1.8,
+      "on": {
+        "ok": true,
+        "metrics": {
+          "id": 0.00076126,
+          "r_ds": 65.6806
+        },
+        "error": null
+      },
+      "off": {
+        "ok": true,
+        "metrics": {
+          "id": 1.03407e-13,
+          "r_ds": 483527000000.0
+        },
+        "error": null
+      },
+      "feedthrough_off": [
+        {
+          "freq_hz": 1000000.0,
+          "ok": true,
+          "metrics": {
+            "vout_mag": 2.08238e-08,
+            "att_db": -153.629
+          },
+          "error": null
+        },
+        {
+          "freq_hz": 10000000.0,
+          "ok": true,
+          "metrics": {
+            "vout_mag": 2.08237e-07,
+            "att_db": -133.629
+          },
+          "error": null
+        },
+        {
+          "freq_hz": 100000000.0,
+          "ok": true,
+          "metrics": {
+            "vout_mag": 2.08237e-06,
+            "att_db": -113.629
+          },
+          "error": null
+        },
+        {
+          "freq_hz": 1000000000.0,
+          "ok": true,
+          "metrics": {
+            "vout_mag": 2.08294e-05,
+            "att_db": -93.6265
+          },
+          "error": null
+        }
+      ]
+    }
+  ],
+  "frequency_suggestion": {
+    "criterion": "prefer frequencies where |att_db| >= 20 for W>=5 um off switch into 50 Ohm",
+    "candidates_hz": [
+      1000000.0,
+      10000000.0,
+      100000000.0,
+      1000000000.0
+    ]
+  },
+  "notes": [
+    "Ron/Roff use DC small-Vds probes; not RF s-parameter characterization.",
+    "Feedthrough is |Vout/Vin| with gate off and 50 Ohm load \u2014 first-pass isolation map.",
+    "Model validity for RF above ~few hundred MHz needs foundry/docs cross-check (plan \u00a72)."
+  ]
+}

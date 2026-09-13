@@ -229,7 +229,9 @@ def eval_llm_design(scenario, provider, api_key, env):
         }
 
     netlist = make_spice_netlist(topo, params)
-    reward, metrics, _ = parallel_eval_worker((netlist, spec, topo, 0.0, None))
+    reward, metrics, _ = parallel_eval_worker(
+        (netlist, spec, topo, 0.0, None, 0.0, params)
+    )
     return {
         "reward": float(reward), "metrics": metrics, "params": params,
         "passed_prior": True, "parse_ok": parse_ok, "error": err,

@@ -64,7 +64,7 @@ def run_de(topo: str, spec: dict, popsize: int, maxiter: int, seed: int, out_dir
         expert_bonus = env.compute_expert_bonus(topo, spec)
         netlist_path = make_spice_netlist(topo, params)
         reward, agg_metrics, _ = parallel_eval_worker(
-            (netlist_path, spec, topo, expert_bonus, None)
+            (netlist_path, spec, topo, expert_bonus, None, 0.0, params)
         )
         spice_calls[0] += 1
 

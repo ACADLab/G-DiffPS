@@ -405,6 +405,10 @@ class PhaseShifterEnv(gym.Env):
             )
             netlists_to_clean.append(netlist_path)
 
+            # Area term (WEIGHTS_AREA) reads these; must match the netlist under test.
+            self._last_topology = topology_name
+            self._last_params = params_dict or {}
+
             agg, sim_reward, state_indices, bits, ideal_step_deg = (
                 self._evaluate_netlist(netlist_path)
             )

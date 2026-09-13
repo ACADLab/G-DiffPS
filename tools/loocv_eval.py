@@ -181,7 +181,9 @@ def main():
             args.held_out, params, spec_dict=spec, fc_mode=args.fc_mode,
         )
         eb = env.compute_expert_bonus(args.held_out, spec)
-        r, _, _ = parallel_eval_worker((nl, spec, args.held_out, eb, [args.held_out]))
+        r, _, _ = parallel_eval_worker(
+            (nl, spec, args.held_out, eb, [args.held_out], 0.0, params)
+        )
         rewards.append(float(r))
         if r > COMPLIANCE_THRESHOLD:
             compliant += 1

@@ -165,7 +165,7 @@ def train(args):
         else:
             netlist_path = make_spice_netlist(topo, params)
             reward, _, _ = parallel_eval_worker(
-                (netlist_path, spec_dict, topo, expert_bonus, None)
+                (netlist_path, spec_dict, topo, expert_bonus, None, 0.0, params)
             )
 
         spec_norm = env._normalize(spec_dict)

@@ -88,7 +88,9 @@ def eval_scenario(scenario, gnn, actor, device, env, n_samples=10):
                 metrics = None
             else:
                 netlist = make_spice_netlist(topo, params)
-                reward, metrics, _ = parallel_eval_worker((netlist, spec, topo, 0.0, None))
+                reward, metrics, _ = parallel_eval_worker(
+                    (netlist, spec, topo, 0.0, None, 0.0, params)
+                )
             if reward > best["reward"]:
                 best = {"reward": float(reward), "metrics": metrics, "params": {k: str(v) for k, v in params.items()}, "passed_prior": bool(passed), "sample_idx": k}
     return best

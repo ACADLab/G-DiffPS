@@ -122,6 +122,8 @@ def main():
         t0 = time.perf_counter()
         nl = make_spice_netlist(topo, params)
         try:
+            env._last_topology = topo
+            env._last_params = params or {}
             agg, sim_reward, state_indices, bits, ideal_step = env._evaluate_netlist(nl)
         finally:
             try:
