@@ -101,8 +101,8 @@ class DiffusionPolicy(nn.Module):
             else:
                 a = (1.0 / torch.sqrt(alpha)) * (a - (beta / torch.sqrt(1.0 - alpha_bar)) * eps_pred)
                 
-        # Sigmoid restricts output parameters to [0, 1] bounds which we map to physical ranges
-        return torch.sigmoid(a)
+        # Actions are trained in [0, 1]; clamp keeps reverse sampling consistent.
+        return torch.clamp(a, 0.0, 1.0)
 
 
 class CriticNet(nn.Module):
@@ -175,8 +175,13 @@ class VectorFieldNet(nn.Module):
 
 
 class FlowMatchingPolicy(nn.Module):
-    """Conditional Flow Matching actor. Straight-line ODE from N(0,I) to action manifold."""
-    def __init__(self, action_dim=SLOT_ACTION_DIM, spec_dim=SPEC_DIM, graph_dim=64, num_steps=50):
+    """Conditional Flow Matching actor. Straight-line ODE from N(0,I) to action manifold.
+
+    Training interpolates toward actions in [0, 1]. Sampling therefore returns a
+    clamped unit-interval vector — not sigmoid(x). A trailing sigmoid would map
+    a learned endpoint a=0.1 to ~0.525 and break train/sample consistency.
+    """
+    def __init__(self, action_dim=SLOT_ACTION_DIM, spec_dim=SPEC_DIM, graph_dim=64, num_steps=10):
         super().__init__()
         self.action_dim = action_dim
         self.num_steps = num_steps
@@ -186,7 +191,7 @@ class FlowMatchingPolicy(nn.Module):
         return self.model(x_t, t, spec, z_topo)
 
     def sample(self, spec, z_topo):
-        """Euler ODE integration from t=0 (noise) to t=1 (action)."""
+        """Euler ODE integration from t=0 (noise) to t=1 (action in [0, 1])."""
         device = spec.device
         batch_size = spec.shape[0]
         x = torch.randn((batch_size, self.action_dim), device=device)
@@ -196,7 +201,7 @@ class FlowMatchingPolicy(nn.Module):
             t_tensor = torch.full((batch_size,), t_val, device=device, dtype=torch.float)
             v = self.model(x, t_tensor, spec, z_topo)
             x = x + dt * v
-        return torch.sigmoid(x)
+        return torch.clamp(x, 0.0, 1.0)
 
 
 class NodeVectorFieldNet(nn.Module):
@@ -284,7 +289,7 @@ class NodeFlowMatchingPolicy(nn.Module):
             t_tensor = torch.full((B,), t_val, device=device, dtype=torch.float)
             v = self.model(x, t_tensor, spec, h_dev)
             x = x + dt * v
-        a = torch.sigmoid(x)
+        a = torch.clamp(x, 0.0, 1.0)
         if mask is not None:
             a = a * mask.float()
         return a.squeeze(0) if squeeze else a

@@ -1,0 +1,119 @@
+{
+  "repo_root": "/Users/deepak/Desktop/work/G-DiffPS",
+  "pdk_root": "/Users/deepak/Desktop/work/G-DiffPS/pdk",
+  "volare_hash": "c6d73a35f524070e85faff4a6a9eef49553ebc2b",
+  "variant": "sky130A",
+  "corner_default": "tt",
+  "ngspice_lib_ok": true,
+  "ngspice_lib": "/Users/deepak/Desktop/work/G-DiffPS/pdk/volare/sky130/versions/c6d73a35f524070e85faff4a6a9eef49553ebc2b/sky130A/libs.tech/ngspice/sky130.lib.spice",
+  "ngspice_version": "ngspice-47",
+  "ngspice_on_path": true,
+  "devices": {
+    "nmos": {
+      "model": "sky130_fd_pr__nfet_01v8",
+      "terminals": [
+        "d",
+        "g",
+        "s",
+        "b"
+      ],
+      "geometry": {
+        "L_um": [
+          0.15,
+          10.0
+        ],
+        "W_um": [
+          0.42,
+          100.0
+        ],
+        "nf": [
+          1,
+          32
+        ]
+      },
+      "vds_abs_max_v": 1.95,
+      "vgs_abs_max_v": 1.95
+    },
+    "pmos": {
+      "model": "sky130_fd_pr__pfet_01v8",
+      "terminals": [
+        "d",
+        "g",
+        "s",
+        "b"
+      ],
+      "geometry": {
+        "L_um": [
+          0.15,
+          10.0
+        ],
+        "W_um": [
+          0.42,
+          100.0
+        ],
+        "nf": [
+          1,
+          32
+        ]
+      },
+      "vds_abs_max_v": 1.95,
+      "vgs_abs_max_v": 1.95
+    },
+    "resistor": {
+      "model": "sky130_fd_pr__res_xhigh_po_0p35",
+      "terminals": [
+        "r0",
+        "r1",
+        "b"
+      ],
+      "geometry": {
+        "L_um": [
+          0.35,
+          100.0
+        ],
+        "mult": [
+          1,
+          64
+        ]
+      },
+      "notes": "Fixed drawn width 0.35 um poly resistor; length and multiplicity are free."
+    },
+    "capacitor": {
+      "model": "sky130_fd_pr__cap_mim_m3_1",
+      "terminals": [
+        "c0",
+        "c1"
+      ],
+      "geometry": {
+        "W_um": [
+          2.0,
+          30.0
+        ],
+        "L_um": [
+          2.0,
+          30.0
+        ],
+        "mf": [
+          1,
+          64
+        ]
+      }
+    }
+  },
+  "operating_limits": {
+    "vdd_v": {
+      "min": 1.6,
+      "nom": 1.8,
+      "max": 1.95
+    },
+    "temp_c": {
+      "min": -40,
+      "nom": 27,
+      "max": 125
+    },
+    "frequency_hz": {
+      "explore_min": "1.0e6",
+      "explore_max": "3.0e9"
+    }
+  }
+}

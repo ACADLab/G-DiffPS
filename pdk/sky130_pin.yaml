@@ -1,0 +1,66 @@
+# Pinned SKY130 simulation reference for G-DiffPS joint topology+sizing work.
+#
+# Install (project-local):
+#   export PDK_ROOT="$(pwd)/pdk"
+#   pip install volare
+#   volare fetch --pdk sky130 <volare_hash>
+#   volare enable --pdk sky130 <volare_hash>
+#
+# Do not commit the PDK tarballs; only this pin file and the harness code.
+
+schema_version: 1
+pdk:
+  name: sky130
+  variant: sky130A
+  volare_hash: c6d73a35f524070e85faff4a6a9eef49553ebc2b
+  # Resolved relative to PDK_ROOT (default: <repo>/pdk)
+  sky130A_symlink: sky130A
+  ngspice_lib: sky130A/libs.tech/ngspice/sky130.lib.spice
+  default_corner: tt
+  corners: [tt, ss, ff, sf, fs]
+  notes:
+    - "all.spice sets .option scale=1.0u — device L/W parameters are in microns."
+    - "opensrc_analog supplies xschem OTA schematics as an integration reference, not ready-made SPICE decks."
+
+simulator:
+  name: ngspice
+  required_major: 40
+  # Measured on the development machine when this pin was written.
+  verified_version: "ngspice-47"
+  timeout_s: 60
+
+devices:
+  nmos:
+    model: sky130_fd_pr__nfet_01v8
+    terminals: [d, g, s, b]
+    geometry: {L_um: [0.15, 10.0], W_um: [0.42, 100.0], nf: [1, 32]}
+    vds_abs_max_v: 1.95
+    vgs_abs_max_v: 1.95
+  pmos:
+    model: sky130_fd_pr__pfet_01v8
+    terminals: [d, g, s, b]
+    geometry: {L_um: [0.15, 10.0], W_um: [0.42, 100.0], nf: [1, 32]}
+    vds_abs_max_v: 1.95
+    vgs_abs_max_v: 1.95
+  resistor:
+    model: sky130_fd_pr__res_xhigh_po_0p35
+    terminals: [r0, r1, b]
+    geometry: {L_um: [0.35, 100.0], mult: [1, 64]}
+    notes: "Fixed drawn width 0.35 um poly resistor; length and multiplicity are free."
+  capacitor:
+    model: sky130_fd_pr__cap_mim_m3_1
+    terminals: [c0, c1]
+    geometry: {W_um: [2.0, 30.0], L_um: [2.0, 30.0], mf: [1, 64]}
+
+operating_limits:
+  vdd_v: {min: 1.6, nom: 1.8, max: 1.95}
+  temp_c: {min: -40, nom: 27, max: 125}
+  # Phase-shifter RF band is TBD after device characterization (plan §2).
+  frequency_hz: {explore_min: 1.0e6, explore_max: 3.0e9}
+
+references:
+  opensrc_analog:
+    repo: https://github.com/eescottie/opensrc_analog
+    local_path: third_party/opensrc_analog
+    schematics: [opamp_dc.sch, opamp_ac.sch, opamp_tran.sch]
+  ota_spice_deck: sim/sky130/testbenches/ota_miller_dc_ac_tran.spice

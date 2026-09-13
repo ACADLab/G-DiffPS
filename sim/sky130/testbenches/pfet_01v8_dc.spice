@@ -1,0 +1,26 @@
+* SKY130 pfet_01v8 — DC operating point
+* Source at VDD, drain loaded toward mid-rail
+
+.param VDD=1.8
+.param L=0.15
+.param W=2.0
+
+Vdd s 0 {VDD}
+Vg  g 0 0.9
+Vd  d 0 0.9
+Vb  b 0 {VDD}
+
+XMp d g s b sky130_fd_pr__pfet_01v8 L={L} W={W} nf=1 ad='W*0.29' as='W*0.29' pd='2*(W+0.29)' ps='2*(W+0.29)'
+
+.control
+  op
+  let id_op = abs(i(Vdd))
+  let vsg_op = v(s)-v(g)
+  let vsd_op = v(s)-v(d)
+  echo id_op = $&id_op
+  echo vsg_op = $&vsg_op
+  echo vsd_op = $&vsd_op
+  quit
+.endc
+
+.end

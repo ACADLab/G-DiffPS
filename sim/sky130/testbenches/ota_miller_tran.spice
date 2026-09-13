@@ -1,0 +1,35 @@
+* Minimal two-stage Miller OTA — transient step response (separate from AC).
+
+.param VDD=1.8
+.param IBIAS=20u
+.param CL=2p
+.param CM=500f
+
+Vdd vdd 0 {VDD}
+Ibias vdd nbias {IBIAS}
+
+* 10 mV step on vip after 20 ns
+Vinp vip 0 PULSE(0.9 0.91 20n 1n 1n 200n 400n)
+Vinn vin 0 0.9
+
+XMnb nbias nbias 0 0 sky130_fd_pr__nfet_01v8 L=0.5 W=2 nf=1 ad='2*0.29' as='2*0.29' pd='2*(2+0.29)' ps='2*(2+0.29)'
+XMtail ntail nbias 0 0 sky130_fd_pr__nfet_01v8 L=0.5 W=4 nf=1 ad='4*0.29' as='4*0.29' pd='2*(4+0.29)' ps='2*(4+0.29)'
+XMn1 out1 vip ntail 0 sky130_fd_pr__nfet_01v8 L=0.5 W=4 nf=1 ad='4*0.29' as='4*0.29' pd='2*(4+0.29)' ps='2*(4+0.29)'
+XMn2 out2 vin ntail 0 sky130_fd_pr__nfet_01v8 L=0.5 W=4 nf=1 ad='4*0.29' as='4*0.29' pd='2*(4+0.29)' ps='2*(4+0.29)'
+XMp1 out1 out1 vdd vdd sky130_fd_pr__pfet_01v8 L=0.5 W=8 nf=1 ad='8*0.29' as='8*0.29' pd='2*(8+0.29)' ps='2*(8+0.29)'
+XMp2 out2 out1 vdd vdd sky130_fd_pr__pfet_01v8 L=0.5 W=8 nf=1 ad='8*0.29' as='8*0.29' pd='2*(8+0.29)' ps='2*(8+0.29)'
+XMn3 vout nbias 0 0 sky130_fd_pr__nfet_01v8 L=0.5 W=8 nf=1 ad='8*0.29' as='8*0.29' pd='2*(8+0.29)' ps='2*(8+0.29)'
+XMp3 vout out2 vdd vdd sky130_fd_pr__pfet_01v8 L=0.5 W=16 nf=1 ad='16*0.29' as='16*0.29' pd='2*(16+0.29)' ps='2*(16+0.29)'
+Cmill out2 vout {CM}
+Cload vout 0 {CL}
+
+.control
+  tran 0.5n 200n
+  let vout_end = v(vout)[length(v(vout))-1]
+  let vout_mid = v(vout)[length(v(vout))/2]
+  echo vout_tran_end = $&vout_end
+  echo vout_tran_mid = $&vout_mid
+  quit
+.endc
+
+.end

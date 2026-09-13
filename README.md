@@ -81,6 +81,21 @@ python topo_selection_accuracy.py --help
 python paper_tables.py --help
 ```
 
+### SKY130 joint-design harness (NeurIPS workshop track)
+
+Pinned PDK + device/OTA integration decks live under `sim/sky130/`. See
+`SKY130_JOINT_DESIGN_WORKORDER.md` for the research plan and milestone A setup.
+
+```bash
+export PDK_ROOT="$(pwd)/pdk"
+# once: volare fetch/enable hash from pdk/sky130_pin.yaml
+python3 tools/run_sky130_harness.py
+```
+
+CFM actors on this branch sample with **clamp** into `[0,1]` (not a trailing
+sigmoid) and default to **10** Euler steps — required before PDK-backed data
+collection.
+
 ## Training arguments
 
 | Flag | Default | Description |

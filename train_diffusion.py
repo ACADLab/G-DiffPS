@@ -596,7 +596,9 @@ def train(rank, world_size, args):
         actor = NodeFlowMatchingPolicy(spec_dim=SPEC_DIM, graph_dim=64, num_steps=10).to(device)
         critic = NodeCriticNet(spec_dim=SPEC_DIM, graph_dim=64).to(device)
     elif args.actor == "cfm":
-        actor = FlowMatchingPolicy(action_dim=SLOT_ACTION_DIM, spec_dim=SPEC_DIM, graph_dim=64).to(device)
+        actor = FlowMatchingPolicy(
+            action_dim=SLOT_ACTION_DIM, spec_dim=SPEC_DIM, graph_dim=64, num_steps=10
+        ).to(device)
         critic = CriticNet(action_dim=SLOT_ACTION_DIM, spec_dim=SPEC_DIM, graph_dim=64).to(device)
     else:
         actor = DiffusionPolicy(action_dim=SLOT_ACTION_DIM, spec_dim=SPEC_DIM, graph_dim=64).to(device)

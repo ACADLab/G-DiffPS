@@ -1,0 +1,31 @@
+* SKY130 nfet_01v8 — DC operating point + Id-Vg sweep
+* Units: L/W in microns (PDK sets scale=1u)
+
+.param VDD=1.8
+.param L=0.15
+.param W=1.0
+
+Vdd d 0 {VDD}
+Vg  g 0 0.9
+Vs  s 0 0
+Vb  b 0 0
+
+XMn d g s b sky130_fd_pr__nfet_01v8 L={L} W={W} nf=1 ad='W*0.29' as='W*0.29' pd='2*(W+0.29)' ps='2*(W+0.29)'
+
+.control
+  op
+  let id_op = abs(i(Vdd))
+  let vgs_op = v(g)-v(s)
+  let vds_op = v(d)-v(s)
+  print id_op vgs_op vds_op
+  echo id_op = $&id_op
+  echo vgs_op = $&vgs_op
+  echo vds_op = $&vds_op
+
+  dc Vg 0 {VDD} 0.05
+  let id_max = maximum(abs(i(Vdd)))
+  echo id_max = $&id_max
+  quit
+.endc
+
+.end

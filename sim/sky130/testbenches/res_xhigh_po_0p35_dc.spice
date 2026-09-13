@@ -1,0 +1,15 @@
+* SKY130 poly resistor res_xhigh_po_0p35 — DC resistance check
+
+Vforce a 0 0.1
+Xb a 0 0 sky130_fd_pr__res_xhigh_po_0p35 L=10 mult=1
+
+.control
+  op
+  let i_force = abs(i(Vforce))
+  let r_meas = 0.1 / i_force
+  echo i_force = $&i_force
+  echo r_meas = $&r_meas
+  quit
+.endc
+
+.end

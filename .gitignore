@@ -54,3 +54,12 @@ mykeys.txt
 # OS
 .DS_Store
 Thumbs.db
+
+# SKY130 / volare PDK store (fetch locally; pin is tracked in pdk/sky130_pin.yaml)
+pdk/volare/
+pdk/sky130A
+pdk/sky130B
+third_party/
+
+# SKY130 harness run artifacts
+results/sky130/runs/
