@@ -30,6 +30,27 @@ from specset.schema import SPEC_DIM
 TOPOLOGY_NAMES = list(TOPOLOGY_PARAMS.keys())
 
 
+def _run_config(run_dir):
+    path = os.path.join(run_dir, "run_config.json")
+    if not os.path.isfile(path):
+        return {}
+    with open(path) as fh:
+        return json.load(fh)
+
+
+def _resolve_flag(cli_value, run_cfg, key, default):
+    """Prefer an explicit CLI flag; otherwise use the training run_config."""
+    from_run = run_cfg.get(key)
+    if cli_value is not None:
+        if from_run is not None and cli_value != from_run:
+            print(f"[warn] --{key.replace('_', '-')}={cli_value} differs from "
+                  f"run_config {key}={from_run}", flush=True)
+        return cli_value
+    if from_run is not None:
+        return from_run
+    return default
+
+
 def _load_state(module, path, device):
     state = torch.load(path, map_location=device, weights_only=True)
     if any(k.startswith("module.") for k in state):
@@ -152,6 +173,7 @@ def evaluate_all(
                     if k != "per_state"
                 },
                 "switch_model": switch_model,
+                "bounds": bounds,
             }
             if best is None or cand["score"] > best["score"]:
                 best = cand
@@ -166,17 +188,25 @@ def main():
     ap.add_argument("--encoder", default="circuit", choices=["gin", "circuit"])
     ap.add_argument("--action-space", default="device", choices=["slot", "device"])
     ap.add_argument(
-        "--switch-model", required=True, choices=["ideal", "realistic"],
-        help="Required: ideal or realistic (no default — avoid silent cross-contam)",
+        "--switch-model", default=None, choices=["ideal", "realistic"],
+        help="Must match training --switch-model (default: run_config)",
     )
+    ap.add_argument("--bounds", default=None, choices=["legacy", "electrical"],
+                    help="Must match training --bounds (default: run_config or electrical)")
     ap.add_argument("--spec", type=str, default=None, help="JSON spec string")
     ap.add_argument("--spec-idx", type=int, default=0)
     ap.add_argument("--n-samples", type=int, default=1)
     ap.add_argument("--device", default="cpu")
     args = ap.parse_args()
+    run_cfg = _run_config(args.run)
+    args.bounds = _resolve_flag(args.bounds, run_cfg, "bounds", "electrical")
+    args.switch_model = _resolve_flag(args.switch_model, run_cfg, "switch_model", None)
+    if args.switch_model not in ("ideal", "realistic"):
+        ap.error("--switch-model is required when run_config.json has no switch_model")
 
     device = torch.device(args.device)
     gnn, actor, _ = load_policy(args.run, args.encoder, args.action_space, device)
+    print(f"decode bounds={args.bounds} switch_model={args.switch_model}", flush=True)
 
     if args.spec:
         spec = json.loads(args.spec)
@@ -190,13 +220,19 @@ def main():
         spec, gnn, actor,
         encoder=args.encoder, action_space=args.action_space,
         device=device, n_samples=args.n_samples,
-        switch_model=args.switch_model,
+        bounds=args.bounds, switch_model=args.switch_model,
     )
     print("\nSpec:", json.dumps(spec, indent=2))
-    print(f"\nEvaluate-all ranking (MNA, switch_model={args.switch_model}):")
+    print(f"\nEvaluate-all ranking (MNA, bounds={args.bounds}, "
+          f"switch_model={args.switch_model}):")
     for i, r in enumerate(ranked):
         print(f"  {i+1}. {r['topology']:20s}  score={r['score']:+.4f}")
-    out = {"switch_model": args.switch_model, "ranked": ranked, "spec": spec}
+    out = {
+        "switch_model": args.switch_model,
+        "bounds": args.bounds,
+        "ranked": ranked,
+        "spec": spec,
+    }
     print(json.dumps(out, indent=2))
 
 

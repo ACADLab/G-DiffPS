@@ -32,7 +32,7 @@ if REPO_ROOT not in sys.path:
 
 from env.phaseshifter_env import PhaseShifterEnv
 from env.graph_utils import TOPOLOGY_PARAMS
-from inference_joint import load_policy, evaluate_all
+from inference_joint import load_policy, evaluate_all, _run_config, _resolve_flag
 from sim.physics_priors import check_physics_priors
 from train_diffusion import (
     action_to_params, device_action_to_params, make_spice_netlist,
@@ -71,7 +71,7 @@ def spearman(x: list[float], y: list[float]) -> float:
 
 def spice_oracle(
     spec, gnn, actor, encoder, action_space, device, topo_graphs,
-    k_per_topo=8, bounds="electrical", fc_mode="spec",
+    k_per_topo=8, bounds="electrical", fc_mode="spec", switch_model="ideal",
 ):
     """Empirical best topology by SPICE reward (expert_bonus=0).
 
@@ -90,11 +90,16 @@ def spice_oracle(
             a = sample_action(
                 actor, gnn, topo, spec, spec_norm,
                 encoder, action_space, device, topo_graphs,
+                bounds=bounds, switch_model=switch_model,
             )
             if action_space == "device":
-                params = device_action_to_params(a, topo, spec, bounds=bounds)
+                params = device_action_to_params(
+                    a, topo, spec, bounds=bounds, switch_model=switch_model,
+                )
             else:
-                params = action_to_params(a, topo, spec, bounds=bounds)
+                params = action_to_params(
+                    a, topo, spec, bounds=bounds, switch_model=switch_model,
+                )
             if not check_physics_priors(topo, params, spec["fc_ghz"]):
                 continue
             nl = make_spice_netlist(topo, params, spec_dict=spec, fc_mode=fc_mode)
@@ -122,12 +127,14 @@ def evaluate_spec(spec, gnn, actor, args, device, topo_graphs):
         spec, gnn, actor,
         encoder=args.encoder, action_space=args.action_space,
         device=device, n_samples=args.n_samples,
+        bounds=args.bounds, switch_model=args.switch_model,
     )
     pred = ranked[0]["topology"]
     top2 = {ranked[0]["topology"], ranked[1]["topology"]}
     oracle, spice_scores, margin = spice_oracle(
         spec, gnn, actor, args.encoder, args.action_space, device,
         topo_graphs, k_per_topo=args.k,
+        bounds=args.bounds, switch_model=args.switch_model,
     )
     mna_by_topo = {r["topology"]: r["score"] for r in ranked}
     common = [t for t in TOPOS if t in mna_by_topo and t in spice_scores]
@@ -302,7 +309,16 @@ def main():
     ap.add_argument("--seed", type=int, default=42)
     ap.add_argument("--device", default="cpu")
     ap.add_argument("--out", default=os.path.join(REPO_ROOT, "results", "joint", "topo_select_mna.json"))
+    ap.add_argument("--bounds", default=None, choices=["legacy", "electrical"],
+                    help="Must match training --bounds (default: run_config or electrical)")
+    ap.add_argument("--switch-model", default=None, choices=["ideal", "realistic"],
+                    help="Must match training --switch-model (default: run_config or ideal)")
     args = ap.parse_args()
+    run_cfg = _run_config(args.run)
+    args.bounds = _resolve_flag(args.bounds, run_cfg, "bounds", "electrical")
+    args.switch_model = _resolve_flag(
+        args.switch_model, run_cfg, "switch_model", "ideal",
+    )
 
     if args.topo_aware and not args.balance:
         ap.error("--topo-aware requires --balance")
