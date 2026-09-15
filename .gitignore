@@ -47,6 +47,7 @@ events.out.tfevents.*
 # IDE / secrets
 .vscode/
 .idea/
+.cursor/
 mykeys.txt
 *.pem
 .env
