@@ -3,6 +3,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 from env.graph_utils import SLOT_ACTION_DIM
+from env.param_semantics import PARAM_CONTEXT_DIM
 from specset.schema import SPEC_DIM
 
 
@@ -288,6 +289,95 @@ class NodeFlowMatchingPolicy(nn.Module):
             t_val = i / self.num_steps
             t_tensor = torch.full((B,), t_val, device=device, dtype=torch.float)
             v = self.model(x, t_tensor, spec, h_dev)
+            x = x + dt * v
+        a = torch.clamp(x, 0.0, 1.0)
+        if mask is not None:
+            a = a * mask.float()
+        return a.squeeze(0) if squeeze else a
+
+
+class CoupledNodeVectorFieldNet(nn.Module):
+    """Device CFM velocity with attention over parameter tokens.
+
+    Each action coordinate is conditioned on the other coordinates via a
+    single multi-head attention block, so length/impedance (or centre/ratio)
+    can be coupled. Graph/device embeddings still come from the encoder.
+    """
+
+    def __init__(self, spec_dim=SPEC_DIM, graph_dim=64, role_dim=PARAM_CONTEXT_DIM, n_heads=4):
+        super().__init__()
+        self.role_dim = role_dim
+        self.token_in = nn.Linear(1 + graph_dim + role_dim, graph_dim)
+        self.attn = nn.MultiheadAttention(graph_dim, n_heads, batch_first=True)
+        self.cond_layer = nn.Sequential(
+            nn.Linear(spec_dim + graph_dim + 1, 128),
+            nn.ReLU(),
+            nn.Linear(128, 128),
+        )
+        self.net = nn.Sequential(
+            nn.Linear(graph_dim + 128, 256),
+            nn.ReLU(),
+            nn.Linear(256, 256),
+            nn.ReLU(),
+            nn.Linear(256, 1),
+        )
+
+    def forward(self, x_t, t, spec, h_dev, role=None):
+        squeeze = False
+        if x_t.dim() == 1:
+            x_t = x_t.unsqueeze(0)
+            h_dev = h_dev.unsqueeze(0)
+            spec = spec.unsqueeze(0) if spec.dim() == 1 else spec
+            t = t.unsqueeze(0) if t.dim() == 0 else t
+            if role is not None and role.dim() == 2:
+                role = role.unsqueeze(0)
+            squeeze = True
+        B, N = x_t.shape
+        if role is None:
+            role = torch.zeros(B, N, self.role_dim, device=x_t.device, dtype=x_t.dtype)
+        tok = self.token_in(torch.cat([x_t.unsqueeze(-1), h_dev, role], dim=-1))
+        attn_out, _ = self.attn(tok, tok, tok, need_weights=False)
+        tok = tok + attn_out
+        spec_exp = spec.unsqueeze(1).expand(B, N, -1)
+        t_exp = t.view(B, 1, 1).expand(B, N, 1)
+        cond = self.cond_layer(torch.cat([spec_exp, h_dev, t_exp], dim=-1))
+        v = self.net(torch.cat([tok, cond], dim=-1)).squeeze(-1)
+        return v.squeeze(0) if squeeze else v
+
+
+class CoupledNodeFlowMatchingPolicy(nn.Module):
+    """CFM actor with cross-coordinate attention (coupled actions)."""
+
+    def __init__(self, spec_dim=SPEC_DIM, graph_dim=64, num_steps=10,
+                 max_devices=16, role_dim=PARAM_CONTEXT_DIM):
+        super().__init__()
+        self.num_steps = num_steps
+        self.max_devices = max_devices
+        self.role_dim = role_dim
+        self.model = CoupledNodeVectorFieldNet(
+            spec_dim=spec_dim, graph_dim=graph_dim, role_dim=role_dim,
+        )
+
+    def forward(self, x_t, t, spec, h_dev, role=None):
+        return self.model(x_t, t, spec, h_dev, role=role)
+
+    def sample(self, spec, h_dev, mask=None, role=None):
+        squeeze = h_dev.dim() == 2
+        if squeeze:
+            h_dev = h_dev.unsqueeze(0)
+            spec = spec.unsqueeze(0) if spec.dim() == 1 else spec
+            if mask is not None and mask.dim() == 1:
+                mask = mask.unsqueeze(0)
+            if role is not None and role.dim() == 2:
+                role = role.unsqueeze(0)
+        device = spec.device
+        B, N, _ = h_dev.shape
+        x = torch.randn((B, N), device=device)
+        dt = 1.0 / self.num_steps
+        for i in range(self.num_steps):
+            t_val = i / self.num_steps
+            t_tensor = torch.full((B,), t_val, device=device, dtype=torch.float)
+            v = self.model(x, t_tensor, spec, h_dev, role=role)
             x = x + dt * v
         a = torch.clamp(x, 0.0, 1.0)
         if mask is not None:

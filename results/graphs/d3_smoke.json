@@ -1,0 +1,252 @@
+{
+  "n": 120,
+  "epochs": 120,
+  "seed": 0,
+  "spec_fc_ghz": 28.0,
+  "topologies": {
+    "Loaded_Line": {
+      "variants": {
+        "d1a": {
+          "n_train": 96,
+          "n_test": 24,
+          "train_r2": {
+            "il_db": 0.9113526227050176,
+            "rl_db": 0.3065315269551475,
+            "rms_phase_err_deg": 0.9082889132982169,
+            "gain_err_db": 0.9195488745867885,
+            "raw_dphi": 0.9362382375926902
+          },
+          "test_r2": {
+            "il_db": 0.8744673654873458,
+            "rl_db": 0.12000680027440236,
+            "rms_phase_err_deg": 0.9416542005883022,
+            "gain_err_db": 0.8851806969807011,
+            "raw_dphi": 0.96397114955924
+          },
+          "gate_metrics": [
+            "il_db",
+            "rl_db",
+            "rms_phase_err_deg",
+            "gain_err_db"
+          ],
+          "gate_ok": false,
+          "bottleneck_probes_test": {
+            "raw": {
+              "il_db": 0.6985194273166878,
+              "rl_db": 0.10817202108080859,
+              "rms_phase_err_deg": 0.9040217331491238,
+              "gain_err_db": 0.7483518723551511,
+              "raw_dphi": 0.9552649443492859
+            },
+            "z": {
+              "il_db": 0.77975916023929,
+              "rl_db": 0.19726655467463527,
+              "rms_phase_err_deg": 0.9315056909583415,
+              "gain_err_db": 0.7776520812199115,
+              "raw_dphi": 0.9539346925469672
+            },
+            "param": {
+              "il_db": 0.6744881796618787,
+              "rl_db": 0.13926958970643644,
+              "rms_phase_err_deg": 0.9018418576708863,
+              "gain_err_db": 0.7223755574601072,
+              "raw_dphi": 0.9444352076202499
+            },
+            "head": {
+              "il_db": 0.8744673654873458,
+              "rl_db": 0.12000680027440236,
+              "rms_phase_err_deg": 0.9416542005883022,
+              "gain_err_db": 0.8851806969807011,
+              "raw_dphi": 0.96397114955924
+            }
+          }
+        },
+        "r3": {
+          "n_train": 96,
+          "n_test": 24,
+          "train_r2": {
+            "il_db": 0.9270885214241522,
+            "rl_db": 0.6047694050521213,
+            "rms_phase_err_deg": 0.9182720213976387,
+            "gain_err_db": 0.9252501596836039,
+            "raw_dphi": 0.9216371461717339
+          },
+          "test_r2": {
+            "il_db": 0.8669480831029912,
+            "rl_db": 0.5735122911908119,
+            "rms_phase_err_deg": 0.9091893323189274,
+            "gain_err_db": 0.829187680666025,
+            "raw_dphi": 0.8962534449274695
+          },
+          "gate_metrics": [
+            "il_db",
+            "rl_db",
+            "rms_phase_err_deg",
+            "gain_err_db"
+          ],
+          "gate_ok": true,
+          "bottleneck_probes_test": {
+            "raw": {
+              "il_db": 0.7326397082112863,
+              "rl_db": 0.1192823555673087,
+              "rms_phase_err_deg": 0.9143109545877841,
+              "gain_err_db": 0.7870306768511782,
+              "raw_dphi": 0.9556853649369005
+            },
+            "z": {
+              "il_db": 0.8490478594914581,
+              "rl_db": 0.21225223861587472,
+              "rms_phase_err_deg": 0.9243652849106527,
+              "gain_err_db": 0.8477994477551893,
+              "raw_dphi": 0.9591660969695388
+            },
+            "param": {
+              "il_db": 0.9134306822329804,
+              "rl_db": 0.4600657482353162,
+              "rms_phase_err_deg": 0.8695023800124856,
+              "gain_err_db": 0.8807089185429989,
+              "raw_dphi": 0.8839517775826807
+            },
+            "head": {
+              "il_db": 0.8669480831029912,
+              "rl_db": 0.5735122911908119,
+              "rms_phase_err_deg": 0.9091893323189274,
+              "gain_err_db": 0.829187680666025,
+              "raw_dphi": 0.8962534449274695
+            }
+          }
+        }
+      }
+    },
+    "All_Pass": {
+      "variants": {
+        "d1a": {
+          "n_train": 96,
+          "n_test": 24,
+          "train_r2": {
+            "il_db": 0.9758149735741448,
+            "rl_db": 0.899211521204998,
+            "rms_phase_err_deg": 0.9566544984672897,
+            "gain_err_db": 0.9614641659636709,
+            "raw_dphi": 0.7905241505973972
+          },
+          "test_r2": {
+            "il_db": 0.9143359930779762,
+            "rl_db": 0.8089892480521083,
+            "rms_phase_err_deg": 0.7729228558728453,
+            "gain_err_db": 0.8759315811346376,
+            "raw_dphi": 0.8791521430215381
+          },
+          "gate_metrics": [
+            "il_db",
+            "rl_db",
+            "rms_phase_err_deg",
+            "gain_err_db"
+          ],
+          "gate_ok": true,
+          "bottleneck_probes_test": {
+            "raw": {
+              "il_db": 0.6986852921323873,
+              "rl_db": 0.7550145052062595,
+              "rms_phase_err_deg": 0.8587031368146469,
+              "gain_err_db": 0.6055325112507561,
+              "raw_dphi": 0.5433945058659692
+            },
+            "z": {
+              "il_db": 0.7159942244066899,
+              "rl_db": 0.7617676370341717,
+              "rms_phase_err_deg": 0.5997356292827296,
+              "gain_err_db": 0.42819252558463705,
+              "raw_dphi": 0.6238877915758159
+            },
+            "param": {
+              "il_db": 0.8959581053564607,
+              "rl_db": 0.8062018356180167,
+              "rms_phase_err_deg": 0.47438836235044113,
+              "gain_err_db": 0.7436502801330093,
+              "raw_dphi": 0.7190173578970059
+            },
+            "head": {
+              "il_db": 0.9143359930779762,
+              "rl_db": 0.8089892480521083,
+              "rms_phase_err_deg": 0.7729228558728453,
+              "gain_err_db": 0.8759315811346376,
+              "raw_dphi": 0.8791521430215381
+            }
+          }
+        },
+        "r3": {
+          "n_train": 96,
+          "n_test": 24,
+          "train_r2": {
+            "il_db": 0.9815290353788599,
+            "rl_db": 0.9104550007022149,
+            "rms_phase_err_deg": 0.9417495327713096,
+            "gain_err_db": 0.9684565826632602,
+            "raw_dphi": 0.8720744728019615
+          },
+          "test_r2": {
+            "il_db": 0.8873516492308706,
+            "rl_db": 0.7735120143356411,
+            "rms_phase_err_deg": 0.8361816616735032,
+            "gain_err_db": 0.8875833454896446,
+            "raw_dphi": 0.7971898255701632
+          },
+          "gate_metrics": [
+            "il_db",
+            "rl_db",
+            "rms_phase_err_deg",
+            "gain_err_db"
+          ],
+          "gate_ok": true,
+          "bottleneck_probes_test": {
+            "raw": {
+              "il_db": 0.6957063927623677,
+              "rl_db": 0.7558870947022778,
+              "rms_phase_err_deg": 0.905869904161892,
+              "gain_err_db": 0.565453952780618,
+              "raw_dphi": 0.5479927766266829
+            },
+            "z": {
+              "il_db": 0.7844061876437894,
+              "rl_db": 0.8163743955692162,
+              "rms_phase_err_deg": 0.7005875767766501,
+              "gain_err_db": 0.6201640066107759,
+              "raw_dphi": 0.747510723533871
+            },
+            "param": {
+              "il_db": 0.916180679995388,
+              "rl_db": 0.820163942863744,
+              "rms_phase_err_deg": 0.6895202157921589,
+              "gain_err_db": 0.8242995603832266,
+              "raw_dphi": 0.6039633756169374
+            },
+            "head": {
+              "il_db": 0.8873516492308706,
+              "rl_db": 0.7735120143356411,
+              "rms_phase_err_deg": 0.8361816616735032,
+              "gain_err_db": 0.8875833454896446,
+              "raw_dphi": 0.7971898255701632
+            }
+          }
+        }
+      }
+    }
+  },
+  "notes": {
+    "Reflection_Type": "rms_phase_err_deg excluded from gate: discontinuous under ideal \u221222.5\u00b0; gate uses IL/RL/gain/raw_dphi instead.",
+    "All_Pass": "D1 semantic centre/ratio/coupling encoding is active in d1a/r3."
+  },
+  "macro_gate": {
+    "d1a": {
+      "n_pass": 1,
+      "n": 2,
+      "all_pass": false
+    },
+    "r3": {
+      "n_pass": 2,
+      "n": 2,
+      "all_pass": true
+    }
+  }
+}

@@ -25,12 +25,19 @@ from env.phaseshifter_env import PhaseShifterEnv
 from env.graph_utils import (
     get_topology_graph, TOPOLOGY_PARAMS, SLOT_ACTION_DIM, gin_device_rows,
 )
+from env.action_tokens import encode_action_tokens
 from env.netlist_graph import sized_devices, _normalize_name
+from env.param_semantics import (
+    PARAM_CONTEXT_DIM,
+    PARAM_ROLES,
+    N_PARAM_ROLES,
+    param_role_name,
+)
 from models.gnn_encoder import TopologyEncoder
-from models.circuit_encoder import CircuitEncoder
+from models.circuit_encoder import is_circuit_encoder, make_encoder, uses_param_nodes
 from models.diffusion_policy import (
     DiffusionPolicy, FlowMatchingPolicy, CriticNet, ValueNet,
-    NodeFlowMatchingPolicy, NodeCriticNet,
+    NodeFlowMatchingPolicy, NodeCriticNet, CoupledNodeFlowMatchingPolicy,
 )
 from sim.physics_priors import check_physics_priors
 from sim.switch_model import switch_params, format_switch_params
@@ -271,8 +278,48 @@ def action_to_params(action, topology_name, spec_dict, sizing="log", bounds="ele
         val_01 = float(action[i]) if i < len(action) else 0.5
         _cur_key[0] = key
 
+        # ── SKY130 PDK geometry windows (Milestone C action coordinates) ──
+        if bounds == "sky130":
+            # Switches / transistors: map onto pin-file W/L/nf ranges.
+            # Passives that remain ideal keep electrical-style windows until
+            # the topology is fully PDK-mapped; geometry keys use PDK limits.
+            try:
+                from sim.sky130 import load_pin
+                pin = load_pin()
+                nmos_g = pin["devices"]["nmos"]["geometry"]
+                res_g = pin["devices"]["resistor"]["geometry"]
+                cap_g = pin["devices"]["capacitor"]["geometry"]
+            except Exception:
+                nmos_g = {"L_um": [0.15, 10.0], "W_um": [0.42, 100.0], "nf": [1, 32]}
+                res_g = {"L_um": [0.35, 100.0], "mult": [1, 64]}
+                cap_g = {"W_um": [2.0, 30.0], "L_um": [2.0, 30.0], "mf": [1, 64]}
+
+            if key in ("W_um",) or key.endswith("_W_um"):
+                physical_val = log_scale(val_01, nmos_g["W_um"][0], nmos_g["W_um"][1])
+            elif key in ("L_um",) or key.endswith("_L_um"):
+                physical_val = log_scale(val_01, nmos_g["L_um"][0], nmos_g["L_um"][1])
+            elif key == "nf":
+                physical_val = round(lin(val_01, nmos_g["nf"][0], nmos_g["nf"][1]))
+            elif key == "mult":
+                physical_val = round(lin(val_01, res_g["mult"][0], res_g["mult"][1]))
+            elif key == "mf":
+                physical_val = round(lin(val_01, cap_g["mf"][0], cap_g["mf"][1]))
+            elif key.endswith("_pf"):
+                # Keep electrical resonant window for still-ideal caps.
+                physical_val = log_scale(val_01, max(C0_pf / 10.0, 0.005), C0_pf * 10.0)
+            elif key.endswith("_nh"):
+                physical_val = log_scale(val_01, max(L0_nh / 10.0, 0.005), L0_nh * 10.0)
+            elif key.endswith("_mm"):
+                physical_val = log_scale(val_01, 0.4 * lam4, 2.5 * lam4)
+            elif key.startswith("Z0"):
+                physical_val = lin(val_01, 25.0, 75.0)
+            elif key in ("G_I_scale", "G_Q_scale"):
+                physical_val = lin(val_01, 0.7, 1.0)
+            else:
+                physical_val = lin(val_01, 0.1, 10.0)
+
         # ── Electrical / per-topology branches (R_on/R_off are NOT actions) ──
-        if bounds == "electrical":
+        elif bounds == "electrical":
             # Frequency-centered ranges — makes 2.4 GHz All Pass reachable.
             # All-Pass coupling caps stay ratio-encoded against their bridge caps.
             # Perturbative / shunt-loading / tuning caps use a sub-resonant window
@@ -310,6 +357,13 @@ def action_to_params(action, topology_name, spec_dict, sizing="log", bounds="ele
             elif key.endswith("_mm"):
                 # L_quarter_mm etc.: log-symmetric about λ/4 so a=0.5 → 90°.
                 physical_val = log_scale(val_01, 0.4 * lam4, 2.5 * lam4)
+            elif key == "Z0_main":
+                # Hybrid main arm. A shared 25–75 Ω window with Z0_branch made
+                # the electrical midpoint Z0_branch/Z0_main = 1, which the prior
+                # rejects ([0.60, 0.85], ideal 1/√2).
+                physical_val = lin(val_01, 40.0, 60.0)
+            elif key == "Z0_branch":
+                physical_val = lin(val_01, 25.0, 45.0)
             elif key.startswith("Z0"):
                 physical_val = lin(val_01, 25.0, 75.0)
             elif key in ("G_I_scale", "G_Q_scale"):
@@ -594,7 +648,10 @@ def train(rank, world_size, args):
     print(f"[Rank {rank}] Running on {device} (Seed: {seed})")
 
     # Initialize environment and dataset specs
-    env = PhaseShifterEnv(restrict_to=args.restrict_to)
+    env = PhaseShifterEnv(
+        restrict_to=args.restrict_to,
+        expert_bonus_scale=float(getattr(args, "expert_bonus_scale", 0.0)),
+    )
     if not env.dataset:
         extra = getattr(env, "_specset_load_error", None) or ""
         raise RuntimeError(
@@ -603,19 +660,29 @@ def train(rank, world_size, args):
         )
     
     # Neural Networks initialization
-    use_circuit = getattr(args, "encoder", "gin") == "circuit"
+    use_circuit = is_circuit_encoder(getattr(args, "encoder", "gin"))
+    use_param = uses_param_nodes(getattr(args, "encoder", "gin"))
     use_device = getattr(args, "action_space", "slot") == "device"
+    use_coupled = bool(getattr(args, "coupled_actions", False)) or use_param
     fc_mode = getattr(args, "fc_mode", "spec")
     bounds = getattr(args, "bounds", "electrical")
     switch_model = getattr(args, "switch_model", "ideal")
 
     if use_circuit:
-        gnn_encoder = CircuitEncoder(hidden=64, out_dim=64).to(device)
+        gnn_encoder = make_encoder(
+            getattr(args, "encoder", "circuit"), hidden=64, out_dim=64,
+        ).to(device)
     else:
         gnn_encoder = TopologyEncoder().to(device)
 
     if use_device:
-        actor = NodeFlowMatchingPolicy(spec_dim=SPEC_DIM, graph_dim=64, num_steps=10).to(device)
+        if use_coupled:
+            actor = CoupledNodeFlowMatchingPolicy(
+                spec_dim=SPEC_DIM, graph_dim=64, num_steps=10,
+                role_dim=PARAM_CONTEXT_DIM,
+            ).to(device)
+        else:
+            actor = NodeFlowMatchingPolicy(spec_dim=SPEC_DIM, graph_dim=64, num_steps=10).to(device)
         critic = NodeCriticNet(spec_dim=SPEC_DIM, graph_dim=64).to(device)
     elif args.actor == "cfm":
         actor = FlowMatchingPolicy(
@@ -662,6 +729,10 @@ def train(rank, world_size, args):
             "bounds": bounds,
             "encoder": getattr(args, "encoder", "gin"),
             "action_space": getattr(args, "action_space", "slot"),
+            "coupled_actions": bool(use_coupled),
+            "expert_bonus_scale": float(getattr(args, "expert_bonus_scale", 0.0)),
+            "sim": getattr(args, "sim", "spice"),
+            "skip_prior": bool(getattr(args, "skip_prior", False)),
             "slot_action_dim": SLOT_ACTION_DIM,
         }
         log_fh.write(json.dumps(meta) + "\n")
@@ -697,53 +768,41 @@ def train(rank, world_size, args):
         # Sample random active topology to evaluate continuous action on
         topology_name = random.choice(env._active_topologies)
         
-        # 2. Extract topology embedding
+        # 2. Extract topology / parameter embeddings
         enc = gnn_encoder.module if is_ddp else gnn_encoder
-        if use_circuit:
-            if use_device:
-                z_topo, h_dev_full = enc(
-                    topology_name, spec_dict, return_device=True,
-                    bounds=bounds, switch_model=switch_model,
-                )
-            else:
-                z_topo = enc(
-                    topology_name, spec_dict, return_device=False,
-                    bounds=bounds, switch_model=switch_model,
-                )
-                h_dev_full = None
-        else:
-            graph_data = topo_graphs[topology_name]
-            if use_device:
-                z_topo, h_dev_full = gnn_encoder(
-                    graph_data.x, graph_data.edge_index, return_nodes=True
-                )
-            else:
-                z_topo = gnn_encoder(graph_data.x, graph_data.edge_index)
-                h_dev_full = None
-        
-        # Normalize spec vector
         spec_tensor = torch.tensor(obs_vec, dtype=torch.float, device=device).unsqueeze(0)
-        
-        # 3. Sample continuous parameters
-        with torch.no_grad():
-            if use_device:
-                sized = sized_devices(topology_name)
-                n_act = len(sized)
-                if use_circuit:
-                    from env.netlist_graph import device_names
-                    dnames = device_names(topology_name)
-                    name_to_idx = {n: i for i, n in enumerate(dnames)}
-                    h_rows = [h_dev_full[name_to_idx[d]] for d, _ in sized]
+        encoder_name = getattr(args, "encoder", "gin")
+        if use_device:
+            z_topo, h_act, ctx = encode_action_tokens(
+                enc, topology_name, spec_dict,
+                encoder_name=encoder_name,
+                bounds=bounds, switch_model=switch_model,
+                gin_graph=topo_graphs.get(topology_name),
+                device=device,
+            )
+            n_act = h_act.size(0)
+            mask = torch.ones(n_act, dtype=torch.bool, device=device)
+            with torch.no_grad():
+                if use_coupled:
+                    action_tensor = actor.sample(
+                        spec_tensor, h_act, mask=mask, role=ctx,
+                    )
                 else:
-                    h_rows = gin_device_rows(h_dev_full, topology_name, sized)
-                h_act = torch.stack(h_rows, dim=0)
-                mask = torch.ones(n_act, dtype=torch.bool, device=device)
-                action_tensor = actor.sample(spec_tensor, h_act, mask=mask)
+                    action_tensor = actor.sample(spec_tensor, h_act, mask=mask)
                 action = action_tensor.detach().cpu().numpy()
                 action_pad = np.zeros(max_sized, dtype=np.float32)
                 action_pad[: len(action)] = action
                 action = action_pad
+        else:
+            if use_circuit:
+                z_topo = enc(
+                    topology_name, spec_dict, return_device=False,
+                    bounds=bounds, switch_model=switch_model,
+                )
             else:
+                graph_data = topo_graphs[topology_name]
+                z_topo = gnn_encoder(graph_data.x, graph_data.edge_index)
+            with torch.no_grad():
                 action_tensor = actor.sample(spec_tensor, z_topo)
                 action = action_tensor.squeeze(0).cpu().numpy()
         
@@ -758,7 +817,7 @@ def train(rank, world_size, args):
                 action, topology_name, spec_dict,
                 sizing=args.sizing, bounds=bounds, switch_model=switch_model,
             )        
-        passed_prior = check_physics_priors(
+        passed_prior = True if getattr(args, "skip_prior", False) else check_physics_priors(
             topology_name, params_dict, spec_dict["fc_ghz"],
             pmax_mw=float(spec_dict.get("pmax_mw", 1e9)),
         )
@@ -771,13 +830,29 @@ def train(rank, world_size, args):
             if rank == 0:
                 print(f"[Step {step:04d}] [{topology_name}] Rejected by physics prior. RL penalty assigned.")
         else:
-            netlist_path = make_spice_netlist(
-                topology_name, params_dict, spec_dict=spec_dict, fc_mode=fc_mode,
-            )
-            total_reward, agg_metrics, success = parallel_eval_worker(
-                (netlist_path, spec_dict, topology_name, expert_bonus,
-                 args.restrict_to, phase_warmup_deg(step), params_dict)
-            )
+            if getattr(args, "sim", "spice") == "mna":
+                from sim.mna_scorer import mna_evaluate
+                from env.reward import compute_sim_reward, WEIGHTS_AREA
+                _score, agg_metrics = mna_evaluate(
+                    topology_name, params_dict, spec_dict,
+                )
+                if agg_metrics is None:
+                    total_reward = -5.0 + expert_bonus
+                    success = False
+                else:
+                    total_reward = float(compute_sim_reward(
+                        agg_metrics, spec_dict, weights=WEIGHTS_AREA,
+                        warmup_deg=phase_warmup_deg(step),
+                    )) + expert_bonus
+                    success = True
+            else:
+                netlist_path = make_spice_netlist(
+                    topology_name, params_dict, spec_dict=spec_dict, fc_mode=fc_mode,
+                )
+                total_reward, agg_metrics, success = parallel_eval_worker(
+                    (netlist_path, spec_dict, topology_name, expert_bonus,
+                     args.restrict_to, phase_warmup_deg(step), params_dict)
+                )
             
         # 6. Push transition to Replay Buffer (keep fc for circuit-encoder re-encode)
         replay_buffer.push(
@@ -795,6 +870,13 @@ def train(rank, world_size, args):
                 reward_raw = float(compute_sim_reward(
                     agg_metrics, spec_dict, weights=WEIGHTS_AREA, warmup_deg=0.0,
                 )) + float(expert_bonus)
+            metrics_log = None
+            if isinstance(agg_metrics, dict):
+                metrics_log = {
+                    k: (float(v) if isinstance(v, (int, float, np.floating)) else v)
+                    for k, v in agg_metrics.items()
+                    if k != "per_state" and not isinstance(v, complex)
+                }
             log_entry = {
                 "step": step,
                 "topology": topology_name,
@@ -802,7 +884,7 @@ def train(rank, world_size, args):
                 "reward": float(total_reward),
                 "reward_raw": reward_raw,
                 "success": success,
-                "metrics": agg_metrics,
+                "metrics": metrics_log,
                 "params": params_dict,
                 "fc_ghz": spec_dict.get("fc_ghz"),
                 "encoder": getattr(args, "encoder", "gin"),
@@ -827,51 +909,38 @@ def train(rank, world_size, args):
             z_topo_list = []
             h_dev_list = []
             mask_list = []
+            role_list = []
+            encoder_name = getattr(args, "encoder", "gin")
             for bi, topo_name in enumerate(topos_b):
                 replay_spec = _replay_spec(spec_dicts_b[bi], fcs_b[bi])
-                if use_circuit:
-                    if use_device:
-                        z, h = enc(
-                            topo_name, replay_spec, return_device=True,
-                            bounds=bounds, switch_model=switch_model,
-                        )
-                        sized = sized_devices(topo_name)
-                        from env.netlist_graph import device_names
-                        dnames = device_names(topo_name)
-                        name_to_idx = {n: i for i, n in enumerate(dnames)}
-                        h_rows = [h[name_to_idx[d]] for d, _ in sized]
-                        h_act = torch.stack(h_rows, dim=0)
-                        pad = torch.zeros(max_sized, h_act.size(-1), device=device)
-                        pad[: h_act.size(0)] = h_act
-                        m = torch.zeros(max_sized, dtype=torch.bool, device=device)
-                        m[: h_act.size(0)] = True
-                        z_topo_list.append(z)
-                        h_dev_list.append(pad)
-                        mask_list.append(m)
-                    else:
-                        z = enc(
-                            topo_name, replay_spec, return_device=False,
-                            bounds=bounds, switch_model=switch_model,
-                        )
-                        z_topo_list.append(z)
+                if use_device:
+                    z, h_act, ctx = encode_action_tokens(
+                        enc, topo_name, replay_spec,
+                        encoder_name=encoder_name,
+                        bounds=bounds, switch_model=switch_model,
+                        gin_graph=topo_graphs.get(topo_name),
+                        device=device,
+                    )
+                    pad = torch.zeros(max_sized, h_act.size(-1), device=device)
+                    pad[: h_act.size(0)] = h_act
+                    m = torch.zeros(max_sized, dtype=torch.bool, device=device)
+                    m[: h_act.size(0)] = True
+                    pad_r = torch.zeros(max_sized, ctx.size(-1), device=device)
+                    pad_r[: ctx.size(0)] = ctx
+                    z_topo_list.append(z)
+                    h_dev_list.append(pad)
+                    mask_list.append(m)
+                    role_list.append(pad_r)
+                elif use_circuit:
+                    z = enc(
+                        topo_name, replay_spec, return_device=False,
+                        bounds=bounds, switch_model=switch_model,
+                    )
+                    z_topo_list.append(z)
                 else:
                     g = topo_graphs[topo_name]
-                    if use_device:
-                        z, h = gnn_encoder(g.x, g.edge_index, return_nodes=True)
-                        sized = sized_devices(topo_name)
-                        n_act = len(sized)
-                        h_rows = gin_device_rows(h, topo_name, sized)
-                        h_act = torch.stack(h_rows, dim=0)
-                        pad = torch.zeros(max_sized, h_act.size(-1), device=device)
-                        pad[: h_act.size(0)] = h_act
-                        m = torch.zeros(max_sized, dtype=torch.bool, device=device)
-                        m[: h_act.size(0)] = True
-                        z_topo_list.append(z)
-                        h_dev_list.append(pad)
-                        mask_list.append(m)
-                    else:
-                        z = gnn_encoder(g.x, g.edge_index)
-                        z_topo_list.append(z)
+                    z = gnn_encoder(g.x, g.edge_index)
+                    z_topo_list.append(z)
             z_topo_b = torch.cat(z_topo_list, dim=0)
 
             if use_device:
@@ -904,7 +973,11 @@ def train(rank, world_size, args):
                 t_cfm = torch.rand(args.batch_size, device=device)
                 x_t = (1 - t_cfm.unsqueeze(-1)) * x_0 + t_cfm.unsqueeze(-1) * actions_b
                 u_target = actions_b - x_0
-                u_pred = actor(x_t, t_cfm, specs_b, h_dev_b)
+                if use_coupled:
+                    roles_b = torch.stack(role_list, dim=0)
+                    u_pred = actor(x_t, t_cfm, specs_b, h_dev_b, role=roles_b)
+                else:
+                    u_pred = actor(x_t, t_cfm, specs_b, h_dev_b)
                 # Mask unused slots
                 m = mask_b.float()
                 actor_loss = (weights.unsqueeze(-1) * m * (u_target - u_pred) ** 2).sum() / m.sum().clamp(min=1.0)
@@ -1011,19 +1084,33 @@ if __name__ == "__main__":
     parser.add_argument("--seed", type=int, default=42, help="Random seed for reproducibility")
     parser.add_argument("--sizing", type=str, default="log", choices=["log", "linear"], help="Scaling mode for action parameters")
     parser.add_argument("--actor", type=str, default="cfm", choices=["ddpm", "cfm"], help="Actor type: ddpm (original) or cfm (Conditional Flow Matching)")
-    parser.add_argument("--encoder", type=str, default="gin", choices=["gin", "circuit"],
-                        help="Topology encoder: gin (paper) or circuit (KCL/KVL bipartite)")
+    parser.add_argument("--encoder", type=str, default="gin",
+                        choices=["gin", "circuit", "circuit-typed", "circuit-typed-param"],
+                        help="Topology encoder: gin (paper), circuit (KCL/KVL), "
+                             "circuit-typed (terminal-role R-GCN + RWSE), "
+                             "or circuit-typed-param (typed + R3 parameter nodes)")
     parser.add_argument("--action-space", type=str, default="slot", choices=["slot", "device"],
                         help=f"Action parameterization: slot ({SLOT_ACTION_DIM}-dim) or device (per-device CFM)")
     parser.add_argument("--fc-mode", type=str, default="spec", choices=["fixed28", "spec"],
                         help="SPICE measurement frequency: spec-tracking (default) or fixed28 (paper ablation)")
-    parser.add_argument("--bounds", type=str, default="electrical", choices=["legacy", "electrical"],
-                        help="Action-to-params bounds: electrical fc-centered (default) or legacy (paper)")
+    parser.add_argument("--bounds", type=str, default="electrical",
+                        choices=["legacy", "electrical", "sky130"],
+                        help="Action-to-params bounds: electrical fc-centered (default), "
+                             "legacy (paper), or sky130 (PDK geometry)")
     parser.add_argument("--switch-model", type=str, default="ideal",
                         choices=["ideal", "realistic"],
                         help="Switch parasitics: ideal (R_off=10k) or realistic (R_off_eff from C_off)")
+    parser.add_argument("--expert-bonus-scale", type=float, default=0.0,
+                        help="Scale for heuristic topology bonus (0=off/default, 1=legacy ablation)")
+    parser.add_argument("--coupled-actions", action="store_true",
+                        help="D1a: role+bounds-conditioned coupled action head "
+                             "(always on for --encoder circuit-typed-param)")
     parser.add_argument("--run-dir", type=str, default=None,
                         help="Optional explicit checkpoint/log directory")
+    parser.add_argument("--sim", type=str, default="spice", choices=["spice", "mna"],
+                        help="Rollout scorer: spice (ngspice) or mna (matched fast ablation)")
+    parser.add_argument("--skip-prior", action="store_true",
+                        help="Disable ABCD/physics prior gate (Phase 6 on/off ablation)")
     args = parser.parse_args()
     # If running with multiple GPUs, spawn distributed processes
     if args.gpus > 1:

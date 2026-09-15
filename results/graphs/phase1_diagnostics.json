@@ -1,0 +1,409 @@
+{
+  "g1": [
+    {
+      "topology": "Loaded_Line",
+      "template_ok": true,
+      "template_error": null,
+      "graph_ok": true,
+      "emit_ok": true,
+      "params_ok": true,
+      "param_missing": {},
+      "n_devices": 5,
+      "pass": true
+    },
+    {
+      "topology": "Switched_Line",
+      "template_ok": true,
+      "template_error": null,
+      "graph_ok": true,
+      "emit_ok": true,
+      "params_ok": true,
+      "param_missing": {},
+      "n_devices": 6,
+      "pass": true
+    },
+    {
+      "topology": "Reflection_Type",
+      "template_ok": true,
+      "template_error": null,
+      "graph_ok": true,
+      "emit_ok": true,
+      "params_ok": true,
+      "param_missing": {},
+      "n_devices": 10,
+      "pass": true
+    },
+    {
+      "topology": "Switched_Filter",
+      "template_ok": true,
+      "template_error": null,
+      "graph_ok": true,
+      "emit_ok": true,
+      "params_ok": true,
+      "param_missing": {},
+      "n_devices": 10,
+      "pass": true
+    },
+    {
+      "topology": "Vector_Modulator",
+      "template_ok": true,
+      "template_error": null,
+      "graph_ok": true,
+      "emit_ok": true,
+      "params_ok": true,
+      "param_missing": {},
+      "n_devices": 5,
+      "pass": true
+    },
+    {
+      "topology": "All_Pass",
+      "template_ok": true,
+      "template_error": null,
+      "graph_ok": true,
+      "emit_ok": true,
+      "params_ok": true,
+      "param_missing": {},
+      "n_devices": 12,
+      "pass": true
+    }
+  ],
+  "encoders": {
+    "circuit": {
+      "default": {
+        "g2": [
+          {
+            "topology": "Loaded_Line",
+            "min_cosine": 0.9999998807907104,
+            "mean_cosine": 1.0,
+            "max_rel_l2": 2.7725297438966026e-07,
+            "mean_rel_l2": 2.1528650950286316e-07,
+            "pass": true
+          },
+          {
+            "topology": "Switched_Line",
+            "min_cosine": 0.9999998211860657,
+            "mean_cosine": 0.9999999329447746,
+            "max_rel_l2": 1.8799159418477152e-07,
+            "mean_rel_l2": 1.471302889895672e-07,
+            "pass": true
+          },
+          {
+            "topology": "Reflection_Type",
+            "min_cosine": 0.9999999403953552,
+            "mean_cosine": 0.9999999776482582,
+            "max_rel_l2": 2.1282496044113112e-07,
+            "mean_rel_l2": 1.742570750607145e-07,
+            "pass": true
+          },
+          {
+            "topology": "Switched_Filter",
+            "min_cosine": 1.0,
+            "mean_cosine": 1.0000001043081284,
+            "max_rel_l2": 2.276986048944163e-07,
+            "mean_rel_l2": 1.8402524711590585e-07,
+            "pass": true
+          },
+          {
+            "topology": "Vector_Modulator",
+            "min_cosine": 0.9999998807907104,
+            "mean_cosine": 1.0,
+            "max_rel_l2": 1.972209658382009e-07,
+            "mean_rel_l2": 1.5542102859399426e-07,
+            "pass": true
+          },
+          {
+            "topology": "All_Pass",
+            "min_cosine": 1.0,
+            "mean_cosine": 1.0000000596046448,
+            "max_rel_l2": 1.865087007947789e-07,
+            "mean_rel_l2": 1.3518027035939864e-07,
+            "pass": true
+          }
+        ],
+        "g2_all_pass": true,
+        "g3": {
+          "cases": [
+            {
+              "name": "vcvs_out_ctrl",
+              "expect": "move",
+              "cosine": 0.9994991421699524,
+              "rel_l2": 0.03185046789328917,
+              "l2": 1.0464876890182495
+            },
+            {
+              "name": "passive_cap_pins",
+              "expect": "stay",
+              "cosine": 0.9916741847991943,
+              "rel_l2": 0.13127950761746393,
+              "l2": 4.341866493225098
+            }
+          ],
+          "polar_vs_passive_ratio": 0.24261568672131073,
+          "pass_polar_moves": false,
+          "mos_present": false
+        },
+        "g7": {
+          "rows": [
+            {
+              "name": "small_param",
+              "severity": 1,
+              "rel_l2": 0.0009737852226121036
+            },
+            {
+              "name": "wrong_param_group",
+              "severity": 2,
+              "rel_l2": 0.06833835476876517
+            },
+            {
+              "name": "wrong_connection",
+              "severity": 3,
+              "rel_l2": 0.15034523094248692
+            },
+            {
+              "name": "wrong_terminal",
+              "severity": 4,
+              "rel_l2": 0.0315303296151481
+            },
+            {
+              "name": "broken_topology",
+              "severity": 5,
+              "rel_l2": 0.1589697494797106
+            }
+          ],
+          "spearman": 0.7,
+          "monotonic": false,
+          "pass": true
+        }
+      }
+    },
+    "circuit-typed": {
+      "with_pe": {
+        "g2": [
+          {
+            "topology": "Loaded_Line",
+            "min_cosine": 1.0,
+            "mean_cosine": 1.0000000596046448,
+            "max_rel_l2": 1.2155074662278482e-07,
+            "mean_rel_l2": 9.852692004300329e-08,
+            "pass": true
+          },
+          {
+            "topology": "Switched_Line",
+            "min_cosine": 1.0,
+            "mean_cosine": 1.0000001043081284,
+            "max_rel_l2": 9.712408750981925e-08,
+            "mean_rel_l2": 9.073306282082528e-08,
+            "pass": true
+          },
+          {
+            "topology": "Reflection_Type",
+            "min_cosine": 1.0000001192092896,
+            "mean_cosine": 1.0000001192092896,
+            "max_rel_l2": 1.2669660812943182e-07,
+            "mean_rel_l2": 1.1170924476626871e-07,
+            "pass": true
+          },
+          {
+            "topology": "Switched_Filter",
+            "min_cosine": 0.9999998807907104,
+            "mean_cosine": 0.9999999850988388,
+            "max_rel_l2": 1.1338950959763812e-07,
+            "mean_rel_l2": 1.0049539264804553e-07,
+            "pass": true
+          },
+          {
+            "topology": "Vector_Modulator",
+            "min_cosine": 1.0,
+            "mean_cosine": 1.0000000149011612,
+            "max_rel_l2": 1.3688245695888244e-07,
+            "mean_rel_l2": 1.1289374999029844e-07,
+            "pass": true
+          },
+          {
+            "topology": "All_Pass",
+            "min_cosine": 0.9999999403953552,
+            "mean_cosine": 0.999999962747097,
+            "max_rel_l2": 1.183826894469263e-07,
+            "mean_rel_l2": 9.226251035308975e-08,
+            "pass": true
+          }
+        ],
+        "g2_all_pass": true,
+        "g3": {
+          "cases": [
+            {
+              "name": "vcvs_out_ctrl",
+              "expect": "move",
+              "cosine": 0.9928272366523743,
+              "rel_l2": 0.12274620626907659,
+              "l2": 4.588555335998535
+            },
+            {
+              "name": "passive_cap_pins",
+              "expect": "stay",
+              "cosine": 0.9986320734024048,
+              "rel_l2": 0.05238137295764864,
+              "l2": 1.9818763732910156
+            },
+            {
+              "name": "mos_gd",
+              "expect": "move",
+              "cosine": 0.9950791597366333,
+              "rel_l2": 0.1022023805989176,
+              "l2": 3.676706314086914
+            }
+          ],
+          "polar_vs_passive_ratio": 2.3433178501444774,
+          "pass_polar_moves": true,
+          "mos_present": true
+        },
+        "g7": {
+          "rows": [
+            {
+              "name": "small_param",
+              "severity": 1,
+              "rel_l2": 0.0004205820450531838
+            },
+            {
+              "name": "wrong_param_group",
+              "severity": 2,
+              "rel_l2": 0.03060797683535185
+            },
+            {
+              "name": "wrong_connection",
+              "severity": 3,
+              "rel_l2": 0.10629348652208359
+            },
+            {
+              "name": "wrong_terminal",
+              "severity": 4,
+              "rel_l2": 0.05356746885685255
+            },
+            {
+              "name": "broken_topology",
+              "severity": 5,
+              "rel_l2": 0.1561824971621214
+            }
+          ],
+          "spearman": 0.8999999999999998,
+          "monotonic": false,
+          "pass": true
+        }
+      },
+      "no_pe": {
+        "g2": [
+          {
+            "topology": "Loaded_Line",
+            "min_cosine": 0.9999999403953552,
+            "mean_cosine": 0.9999999701976776,
+            "max_rel_l2": 1.1119073045885677e-07,
+            "mean_rel_l2": 9.70177410879597e-08,
+            "pass": true
+          },
+          {
+            "topology": "Switched_Line",
+            "min_cosine": 0.9999999403953552,
+            "mean_cosine": 1.0000000521540642,
+            "max_rel_l2": 8.157000260238682e-08,
+            "mean_rel_l2": 7.2310696919346e-08,
+            "pass": true
+          },
+          {
+            "topology": "Reflection_Type",
+            "min_cosine": 0.9999998807907104,
+            "mean_cosine": 0.9999999329447746,
+            "max_rel_l2": 9.42728887699124e-08,
+            "mean_rel_l2": 7.240800258896069e-08,
+            "pass": true
+          },
+          {
+            "topology": "Switched_Filter",
+            "min_cosine": 1.0000001192092896,
+            "mean_cosine": 1.0000001192092896,
+            "max_rel_l2": 9.595983156689148e-08,
+            "mean_rel_l2": 7.751665179339842e-08,
+            "pass": true
+          },
+          {
+            "topology": "Vector_Modulator",
+            "min_cosine": 1.0,
+            "mean_cosine": 1.0000001043081284,
+            "max_rel_l2": 1.1425700226993571e-07,
+            "mean_rel_l2": 8.537175301110112e-08,
+            "pass": true
+          },
+          {
+            "topology": "All_Pass",
+            "min_cosine": 1.0000001192092896,
+            "mean_cosine": 1.0000001341104507,
+            "max_rel_l2": 8.879272911942617e-08,
+            "mean_rel_l2": 6.955204104647315e-08,
+            "pass": true
+          }
+        ],
+        "g2_all_pass": true,
+        "g3": {
+          "cases": [
+            {
+              "name": "vcvs_out_ctrl",
+              "expect": "move",
+              "cosine": 0.9949714541435242,
+              "rel_l2": 0.10068264370536972,
+              "l2": 3.651885509490967
+            },
+            {
+              "name": "passive_cap_pins",
+              "expect": "stay",
+              "cosine": 0.9980510473251343,
+              "rel_l2": 0.06284799204042373,
+              "l2": 2.4039742946624756
+            },
+            {
+              "name": "mos_gd",
+              "expect": "move",
+              "cosine": 0.9950478672981262,
+              "rel_l2": 0.10047351529396717,
+              "l2": 3.711111307144165
+            }
+          ],
+          "polar_vs_passive_ratio": 1.6020025530650017,
+          "pass_polar_moves": true,
+          "mos_present": true
+        },
+        "g7": {
+          "rows": [
+            {
+              "name": "small_param",
+              "severity": 1,
+              "rel_l2": 0.0007816764575844697
+            },
+            {
+              "name": "wrong_param_group",
+              "severity": 2,
+              "rel_l2": 0.04952798234193579
+            },
+            {
+              "name": "wrong_connection",
+              "severity": 3,
+              "rel_l2": 0.1305879126964
+            },
+            {
+              "name": "wrong_terminal",
+              "severity": 4,
+              "rel_l2": 0.04423401705416761
+            },
+            {
+              "name": "broken_topology",
+              "severity": 5,
+              "rel_l2": 0.15872143847931855
+            }
+          ],
+          "spearman": 0.7,
+          "monotonic": false,
+          "pass": true
+        }
+      }
+    }
+  },
+  "g1_all_pass": true
+}

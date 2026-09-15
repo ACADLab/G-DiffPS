@@ -29,34 +29,47 @@ from env.graph_utils import TOPOLOGY_PARAMS
 
 TOPOS = list(TOPOLOGY_PARAMS.keys())
 
-# PRIMARY: corrected frequency + electrical bounds, 2x2 encoder x action-space.
+# PRIMARY: corrected frequency + electrical bounds.
+# Circuit encoder is the main candidate; GIN is the ablation.
 TRACK_CORRECTED = [
-    {"encoder": "gin", "action_space": "slot", "fc_mode": "spec", "bounds": "electrical",
-     "tag": "gin_slot"},
-    {"encoder": "gin", "action_space": "device", "fc_mode": "spec", "bounds": "electrical",
-     "tag": "gin_device"},
-    {"encoder": "circuit", "action_space": "slot", "fc_mode": "spec", "bounds": "electrical",
-     "tag": "circuit_slot"},
     {"encoder": "circuit", "action_space": "device", "fc_mode": "spec", "bounds": "electrical",
-     "tag": "circuit_device"},
+     "tag": "circuit_device", "switch_model": "ideal", "coupled_actions": False},
+    {"encoder": "circuit", "action_space": "device", "fc_mode": "spec", "bounds": "electrical",
+     "tag": "circuit_device_coupled", "switch_model": "ideal", "coupled_actions": True},
+    {"encoder": "circuit", "action_space": "slot", "fc_mode": "spec", "bounds": "electrical",
+     "tag": "circuit_slot", "switch_model": "ideal", "coupled_actions": False},
+    {"encoder": "gin", "action_space": "device", "fc_mode": "spec", "bounds": "electrical",
+     "tag": "gin_device", "switch_model": "ideal", "coupled_actions": False},
+    {"encoder": "gin", "action_space": "slot", "fc_mode": "spec", "bounds": "electrical",
+     "tag": "gin_slot", "switch_model": "ideal", "coupled_actions": False},
 ]
 
 # CONTROL only: paper-faithful fixed28 meter (gin_slot).
 TRACK_FIXED28_CONTROL = [
     {"encoder": "gin", "action_space": "slot", "fc_mode": "fixed28", "bounds": "legacy",
-     "tag": "gin_slot_fixed28"},
+     "tag": "gin_slot_fixed28", "switch_model": "ideal", "coupled_actions": False},
 ]
 
 # Legacy aliases (kept for older scripts / smoke dirs).
 TRACK_A = [
     {"encoder": "gin", "action_space": "slot", "fc_mode": "fixed28", "bounds": "legacy",
-     "tag": "gin_slot"},
+     "tag": "gin_slot", "switch_model": "ideal", "coupled_actions": False},
     {"encoder": "gin", "action_space": "device", "fc_mode": "fixed28", "bounds": "legacy",
-     "tag": "gin_device"},
+     "tag": "gin_device", "switch_model": "ideal", "coupled_actions": False},
     {"encoder": "circuit", "action_space": "slot", "fc_mode": "fixed28", "bounds": "legacy",
-     "tag": "circuit_slot"},
+     "tag": "circuit_slot", "switch_model": "ideal", "coupled_actions": False},
     {"encoder": "circuit", "action_space": "device", "fc_mode": "fixed28", "bounds": "legacy",
-     "tag": "circuit_device"},
+     "tag": "circuit_device", "switch_model": "ideal", "coupled_actions": False},
+]
+
+# Matched encoder ablation (Phase 6): same policy, MNA scorer, device actions.
+TRACK_TYPED = [
+    {"encoder": "gin", "action_space": "device", "fc_mode": "spec", "bounds": "electrical",
+     "tag": "gin_device", "switch_model": "ideal", "coupled_actions": False, "sim": "mna"},
+    {"encoder": "circuit", "action_space": "device", "fc_mode": "spec", "bounds": "electrical",
+     "tag": "circuit_device", "switch_model": "ideal", "coupled_actions": False, "sim": "mna"},
+    {"encoder": "circuit-typed", "action_space": "device", "fc_mode": "spec", "bounds": "electrical",
+     "tag": "circuit_typed_device", "switch_model": "ideal", "coupled_actions": False, "sim": "mna"},
 ]
 
 TRACK_B = TRACK_CORRECTED
@@ -80,9 +93,17 @@ def _one_run(job: dict) -> dict:
         "--action-space", job["action_space"],
         "--fc-mode", job["fc_mode"],
         "--bounds", job["bounds"],
+        "--switch-model", job.get("switch_model", "ideal"),
+        "--expert-bonus-scale", str(job.get("expert_bonus_scale", 0.0)),
         "--run-dir", run_dir,
         "--restrict-to", *train_topos,
     ]
+    if job.get("sim"):
+        cmd.extend(["--sim", job["sim"]])
+    if job.get("skip_prior"):
+        cmd.append("--skip-prior")
+    if job.get("coupled_actions"):
+        cmd.append("--coupled-actions")
     log_path = os.path.join(run_dir, "train_stdout.log")
     t0 = time.time()
     env = os.environ.copy()
@@ -94,6 +115,25 @@ def _one_run(job: dict) -> dict:
     wall = time.time() - t0
     ckpt_dir = run_dir
 
+    if proc.returncode != 0:
+        result = {
+            **{k: job[k] for k in ("tag", "held_out", "seed", "encoder",
+                                   "action_space", "fc_mode", "bounds")},
+            "train_returncode": proc.returncode,
+            "eval_returncode": None,
+            "wall_s": wall,
+            "ckpt_dir": ckpt_dir,
+            "run_dir": run_dir,
+            "error": "training_failed",
+        }
+        with open(os.path.join(run_dir, "job_result.json"), "w") as fh:
+            json.dump(result, fh, indent=2)
+        return result
+
+    eval_spec = job.get(
+        "eval_specset",
+        os.path.join(REPO_ROOT, "specset", "specset_eval.json"),
+    )
     # Zero-shot eval on held-out topology
     eval_cmd = [
         py, os.path.join(REPO_ROOT, "tools", "loocv_eval.py"),
@@ -103,10 +143,16 @@ def _one_run(job: dict) -> dict:
         "--action-space", job["action_space"],
         "--fc-mode", job["fc_mode"],
         "--bounds", job["bounds"],
+        "--switch-model", job.get("switch_model", "ideal"),
+        "--eval-specset", eval_spec,
         "--n", str(job.get("n_eval", 200)),
         "--seed", str(job["seed"]),
         "--out", os.path.join(run_dir, "loocv.json"),
     ]
+    if job.get("sim"):
+        eval_cmd.extend(["--sim", job["sim"]])
+    if job.get("coupled_actions"):
+        eval_cmd.append("--coupled-actions")
     eval_log = os.path.join(run_dir, "eval_stdout.log")
     with open(eval_log, "w") as fh:
         eval_proc = subprocess.run(
@@ -135,9 +181,9 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument(
         "--track",
-        choices=["corrected", "fixed28_control", "A", "B", "both"],
+        choices=["corrected", "fixed28_control", "A", "B", "both", "typed"],
         default="corrected",
-        help="corrected=primary spec+electrical; fixed28_control=paper meter ablation",
+        help="corrected=primary; typed=gin vs circuit vs circuit-typed MNA ablation",
     )
     ap.add_argument("--steps", type=int, default=5000)
     ap.add_argument("--seeds", default="42,1337,2026")
@@ -156,12 +202,19 @@ def main():
     configs = []
     if args.track == "corrected":
         configs += TRACK_CORRECTED
+    elif args.track == "typed":
+        configs += TRACK_TYPED
     elif args.track == "fixed28_control":
         configs += TRACK_FIXED28_CONTROL
     elif args.track in ("A", "both"):
         configs += TRACK_A
     if args.track in ("B", "both"):
         configs += TRACK_B
+
+    tag_filter = os.environ.get("G_DIFFPS_MATRIX_TAGS", "").strip()
+    if tag_filter:
+        allowed = {t.strip() for t in tag_filter.split(",") if t.strip()}
+        configs = [c for c in configs if c["tag"] in allowed]
 
     jobs = []
     for cfg in configs:
@@ -206,7 +259,7 @@ def main():
     with open(csv_path, "w", newline="") as fh:
         w = csv.writer(fh)
         w.writerow([
-            "topology", "config", "success_rate_mean", "best_reward_mean",
+            "topology", "config", "strict_compliance_mean", "best_physical_reward_mean",
             "n_seeds", "encoder", "action_space", "fc_mode", "bounds",
         ])
         # Aggregate by (held_out, tag)
@@ -217,8 +270,10 @@ def main():
                 continue
             buckets[(r["held_out"], r["tag"])].append(r)
         for (topo, tag), rs in sorted(buckets.items()):
-            rates = [r["loocv"]["compliance"] * 100 for r in rs]
-            bests = [r["loocv"]["best_reward"] for r in rs]
+            rates = [r["loocv"].get("strict_compliance", r["loocv"].get("compliance", 0)) * 100
+                     for r in rs]
+            bests = [r["loocv"].get("best_physical_reward",
+                                    r["loocv"].get("best_reward", -5.0)) for r in rs]
             cfg0 = rs[0]
             w.writerow([
                 topo, tag,

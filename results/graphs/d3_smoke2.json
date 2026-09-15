@@ -1,0 +1,208 @@
+{
+  "n": 40,
+  "epochs": 40,
+  "seed": 0,
+  "gate_thresh": 0.5,
+  "topologies": {
+    "Loaded_Line": {
+      "variants": {
+        "action": {
+          "n_train": 32,
+          "n_test": 8,
+          "train_seconds": 0.06404876708984375,
+          "train_r2": {
+            "il_db": 0.6050262416683769,
+            "rl_db": 0.2716011559855461,
+            "rms_phase_err_deg": 0.7141104279867778,
+            "gain_err_db": 0.6269591704144732,
+            "raw_dphi": 0.8818258194547868
+          },
+          "test_r2": {
+            "il_db": 0.6894543153022532,
+            "rl_db": 0.09850169112732599,
+            "rms_phase_err_deg": 0.16195366756292806,
+            "gain_err_db": 0.8756439107477679,
+            "raw_dphi": 0.8603851643531892
+          },
+          "gate_metrics": [
+            "il_db",
+            "rl_db",
+            "rms_phase_err_deg",
+            "gain_err_db"
+          ],
+          "gate_ok": false,
+          "bottleneck_probes_test": {
+            "head": {
+              "il_db": 0.6894543153022532,
+              "rl_db": 0.09850169112732599,
+              "rms_phase_err_deg": 0.16195366756292806,
+              "gain_err_db": 0.8756439107477679,
+              "raw_dphi": 0.8603851643531892
+            },
+            "raw_device_x": {
+              "il_db": 0.5826791771389286,
+              "rl_db": 0.121157540900374,
+              "rms_phase_err_deg": -0.1227614897769509,
+              "gain_err_db": 0.6999703881962631,
+              "raw_dphi": 0.7913258964655328
+            },
+            "param_context": {
+              "il_db": 0.626189484780958,
+              "rl_db": 0.05453677771032561,
+              "rms_phase_err_deg": 0.06339263935973583,
+              "gain_err_db": 0.8430733174030148,
+              "raw_dphi": 0.7803660281465554
+            }
+          }
+        },
+        "d1a": {
+          "n_train": 32,
+          "n_test": 8,
+          "train_seconds": 4.046494960784912,
+          "train_r2": {
+            "il_db": 0.8001593172866388,
+            "rl_db": 0.25695307853113325,
+            "rms_phase_err_deg": 0.8511248697861535,
+            "gain_err_db": 0.8039015560598645,
+            "raw_dphi": 0.9095572279998081
+          },
+          "test_r2": {
+            "il_db": 0.6141518980595646,
+            "rl_db": 0.048968385228886246,
+            "rms_phase_err_deg": 0.7549278985330214,
+            "gain_err_db": 0.8327059359310088,
+            "raw_dphi": 0.9429906162273486
+          },
+          "gate_metrics": [
+            "il_db",
+            "rl_db",
+            "rms_phase_err_deg",
+            "gain_err_db"
+          ],
+          "gate_ok": false,
+          "bottleneck_probes_test": {
+            "head": {
+              "il_db": 0.6141518980595646,
+              "rl_db": 0.048968385228886246,
+              "rms_phase_err_deg": 0.7549278985330214,
+              "gain_err_db": 0.8327059359310088,
+              "raw_dphi": 0.9429906162273486
+            },
+            "raw_device_x": {
+              "il_db": 0.5843693522614168,
+              "rl_db": 0.12637512853981014,
+              "rms_phase_err_deg": -0.03742403319658827,
+              "gain_err_db": 0.697807735135298,
+              "raw_dphi": 0.833755310911621
+            },
+            "param_context": {
+              "il_db": 0.6354648622020849,
+              "rl_db": 0.08649188266108598,
+              "rms_phase_err_deg": 0.4269915756588428,
+              "gain_err_db": 0.8549370235700876,
+              "raw_dphi": 0.9064047473144288
+            },
+            "z_pooled": {
+              "il_db": 0.5684949970021631,
+              "rl_db": 0.13375444636915612,
+              "rms_phase_err_deg": 0.6659653009701143,
+              "gain_err_db": 0.7181501087891724,
+              "raw_dphi": 0.8791924477676697
+            },
+            "param_token": {
+              "il_db": 0.13889350146019763,
+              "rl_db": 0.0922933616959487,
+              "rms_phase_err_deg": 0.5996296498982407,
+              "gain_err_db": 0.48218767676490326,
+              "raw_dphi": 0.7577876906963703
+            }
+          }
+        },
+        "r3": {
+          "n_train": 32,
+          "n_test": 8,
+          "train_seconds": 4.403902053833008,
+          "train_r2": {
+            "il_db": 0.7222676661903977,
+            "rl_db": 0.24745987609051523,
+            "rms_phase_err_deg": 0.7970789152860913,
+            "gain_err_db": 0.7165206792736369,
+            "raw_dphi": 0.8991932747558916
+          },
+          "test_r2": {
+            "il_db": 0.7859587183489898,
+            "rl_db": 0.06501723844026708,
+            "rms_phase_err_deg": 0.5819488247777305,
+            "gain_err_db": 0.9259861973967597,
+            "raw_dphi": 0.9270873072766119
+          },
+          "gate_metrics": [
+            "il_db",
+            "rl_db",
+            "rms_phase_err_deg",
+            "gain_err_db"
+          ],
+          "gate_ok": false,
+          "bottleneck_probes_test": {
+            "head": {
+              "il_db": 0.7859587183489898,
+              "rl_db": 0.06501723844026708,
+              "rms_phase_err_deg": 0.5819488247777305,
+              "gain_err_db": 0.9259861973967597,
+              "raw_dphi": 0.9270873072766119
+            },
+            "raw_device_x": {
+              "il_db": 0.5779020846174057,
+              "rl_db": 0.11387269325965754,
+              "rms_phase_err_deg": 0.2345675912655928,
+              "gain_err_db": 0.7370117815515458,
+              "raw_dphi": 0.9133986456603846
+            },
+            "param_context": {
+              "il_db": 0.666009703287674,
+              "rl_db": 0.07056586916911212,
+              "rms_phase_err_deg": 0.40857620693156704,
+              "gain_err_db": 0.8797453810309348,
+              "raw_dphi": 0.868826820586926
+            },
+            "z_pooled": {
+              "il_db": 0.7549427845438359,
+              "rl_db": 0.11067432531642518,
+              "rms_phase_err_deg": 0.01353044418311733,
+              "gain_err_db": 0.7916876240574953,
+              "raw_dphi": 0.27731145764834664
+            },
+            "param_token": {
+              "il_db": 0.76529708982132,
+              "rl_db": 0.0713575195746633,
+              "rms_phase_err_deg": 0.532236734032319,
+              "gain_err_db": 0.8305394544387739,
+              "raw_dphi": 0.8732440776713662
+            }
+          }
+        }
+      }
+    }
+  },
+  "notes": {
+    "Reflection_Type": "rms_phase_err excluded from gate (discontinuous vs ideal \u221222.5\u00b0); gate uses IL/RL/gain/raw_dphi.",
+    "All_Pass": "D1 centre/ratio/coupling semantics active in d1a/r3."
+  },
+  "macro_gate": {
+    "action": {
+      "n_pass": 0,
+      "n": 1,
+      "all_pass": false
+    },
+    "d1a": {
+      "n_pass": 0,
+      "n": 1,
+      "all_pass": false
+    },
+    "r3": {
+      "n_pass": 0,
+      "n": 1,
+      "all_pass": false
+    }
+  }
+}

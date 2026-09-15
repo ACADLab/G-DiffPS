@@ -1,0 +1,556 @@
+{
+  "spec": {
+    "fc_ghz": 28.0,
+    "bw_pct": 20.0,
+    "rms_phase_err_deg": 5.0,
+    "rms_gain_err_db": 1.0,
+    "max_il_db": 3.0,
+    "min_rl_db": 12.0,
+    "pmax_mw": 50.0,
+    "max_area_mm2": 100.0,
+    "tech": 0
+  },
+  "gate": true,
+  "topologies": {
+    "Loaded_Line": {
+      "good": {
+        "decoder_ok": true,
+        "params": {
+          "Z0_line": 50.0,
+          "L_quarter_mm": 1.694,
+          "C_load_pf": 0.05
+        },
+        "prior_pass": true,
+        "prior_explain": {
+          "A_structural": true,
+          "B_physics": true,
+          "C_operating": null,
+          "D_sim_sanity": true,
+          "failed": [],
+          "notes": {
+            "s11_mag": [
+              1.2437116873846707e-05,
+              0.09497352230782179
+            ],
+            "s21_mag": [
+              0.995013142724056,
+              0.9829256441212838
+            ]
+          },
+          "pass": true,
+          "check_physics_priors": true
+        },
+        "sim_ok": true,
+        "reward": 1.8146565393978464,
+        "strict": true,
+        "metrics": {
+          "rms_phase_err_deg": 2.411524560598426,
+          "il_db": 0.09650517019145743,
+          "rl_db": 40.22397454904612,
+          "gain_err_db": 0.05308151424845023,
+          "area_mm2": 9.755033999999998
+        }
+      },
+      "bad": {
+        "decoder_ok": true,
+        "params": {
+          "Z0_line": 25.0,
+          "L_quarter_mm": 0.678,
+          "C_load_pf": 0.5
+        },
+        "prior_pass": false,
+        "prior_explain": {
+          "A_structural": true,
+          "B_physics": true,
+          "C_operating": null,
+          "D_sim_sanity": false,
+          "failed": [
+            "|S11|=(0.402,0.681) > 0.56"
+          ],
+          "notes": {
+            "s11_mag": [
+              0.40209837884618554,
+              0.6807664812193325
+            ],
+            "s21_mag": [
+              0.9116360383861631,
+              0.4485560553252644
+            ]
+          },
+          "pass": false,
+          "check_physics_priors": false
+        },
+        "sim_ok": true,
+        "reward": 0.23716775646740884,
+        "strict": false,
+        "metrics": {
+          "rms_phase_err_deg": 33.446599647378484,
+          "il_db": 3.883617909669423,
+          "rl_db": 5.62669513532334,
+          "gain_err_db": 3.08004761330884,
+          "area_mm2": 9.919358520501302
+        }
+      },
+      "reward_good_gt_bad": true,
+      "nominal_consistent": true
+    },
+    "Switched_Line": {
+      "good": {
+        "decoder_ok": true,
+        "params": {
+          "Z0_line": 50.0,
+          "L_short_mm": 0.932,
+          "L_long_mm": 2.795
+        },
+        "prior_pass": true,
+        "prior_explain": {
+          "A_structural": true,
+          "B_physics": true,
+          "C_operating": null,
+          "D_sim_sanity": true,
+          "failed": [],
+          "notes": {
+            "s11_mag": [
+              0.03349548948716229,
+              0.0439885002356986
+            ],
+            "s21_mag": [
+              0.9376620299965297,
+              0.9380707454390615
+            ]
+          },
+          "pass": true,
+          "check_physics_priors": true
+        },
+        "sim_ok": true,
+        "reward": 0.6060140067844075,
+        "strict": false,
+        "metrics": {
+          "rms_phase_err_deg": 6.29121470254461,
+          "il_db": 0.5571807778505729,
+          "rl_db": 28.31674516061334,
+          "gain_err_db": 0.001892624221253636,
+          "area_mm2": 18.277197
+        }
+      },
+      "bad": {
+        "decoder_ok": true,
+        "params": {
+          "Z0_line": 25.0,
+          "L_short_mm": 0.508,
+          "L_long_mm": 4.235
+        },
+        "prior_pass": true,
+        "prior_explain": {
+          "A_structural": true,
+          "B_physics": true,
+          "C_operating": null,
+          "D_sim_sanity": true,
+          "failed": [],
+          "notes": {
+            "s11_mag": [
+              0.3013344691994069,
+              0.43017924205395636
+            ],
+            "s21_mag": [
+              0.879769104015617,
+              0.8123574838826498
+            ]
+          },
+          "pass": true,
+          "check_physics_priors": true
+        },
+        "sim_ok": true,
+        "reward": 0.445877029616189,
+        "strict": false,
+        "metrics": {
+          "rms_phase_err_deg": 77.00883442606701,
+          "il_db": 1.4588410798629492,
+          "rl_db": 8.873017371551576,
+          "gain_err_db": 0.34621520446578713,
+          "area_mm2": 24.390202747400693
+        }
+      },
+      "reward_good_gt_bad": true,
+      "nominal_consistent": true
+    },
+    "Reflection_Type": {
+      "good": {
+        "decoder_ok": true,
+        "params": {
+          "Z0_main": 50.0,
+          "Z0_branch": 35.0,
+          "L_quarter_mm": 1.694,
+          "C_base_pf": 0.1,
+          "C_tune_pf": 0.1
+        },
+        "prior_pass": true,
+        "prior_explain": {
+          "A_structural": true,
+          "B_physics": true,
+          "C_operating": null,
+          "D_sim_sanity": null,
+          "failed": [],
+          "notes": {
+            "z0_branch_over_main": 0.7,
+            "delta_phi_deg": 38.09860443747575
+          },
+          "pass": true,
+          "check_physics_priors": true
+        },
+        "sim_ok": true,
+        "reward": 0.5535382589812061,
+        "strict": false,
+        "metrics": {
+          "rms_phase_err_deg": 6.13637990160232,
+          "il_db": 0.675492982746994,
+          "rl_db": 8.812177062995675,
+          "gain_err_db": 0.10219948603297196,
+          "area_mm2": 12.309636
+        }
+      },
+      "bad": {
+        "decoder_ok": true,
+        "params": {
+          "Z0_main": 40.0,
+          "Z0_branch": 45.0,
+          "L_quarter_mm": 0.678,
+          "C_base_pf": 0.01,
+          "C_tune_pf": 1.0
+        },
+        "prior_pass": false,
+        "prior_explain": {
+          "A_structural": true,
+          "B_physics": false,
+          "C_operating": null,
+          "D_sim_sanity": null,
+          "failed": [
+            "Z0_branch/Z0_main=1.125 not in [0.60, 0.85]"
+          ],
+          "notes": {
+            "z0_branch_over_main": 1.125,
+            "delta_phi_deg": 155.9318731258766
+          },
+          "pass": false,
+          "check_physics_priors": false
+        },
+        "sim_ok": true,
+        "reward": 0.18694506735279945,
+        "strict": false,
+        "metrics": {
+          "rms_phase_err_deg": 5.870053142353882,
+          "il_db": 9.902760650200758,
+          "rl_db": 1.8573373914599578,
+          "gain_err_db": 6.956719969737879,
+          "area_mm2": 9.899684
+        }
+      },
+      "reward_good_gt_bad": true,
+      "nominal_consistent": true
+    },
+    "Switched_Filter": {
+      "good": {
+        "decoder_ok": true,
+        "params": {
+          "C_hpf_pf": 0.1137,
+          "L_hpf_nh": 0.2842,
+          "L_lpf_nh": 0.2842,
+          "C_lpf_pf": 0.1137
+        },
+        "prior_pass": true,
+        "prior_explain": {
+          "A_structural": true,
+          "B_physics": true,
+          "C_operating": null,
+          "D_sim_sanity": null,
+          "failed": [],
+          "notes": {
+            "z0_hpf": 49.995602269220576,
+            "z0_lpf": 49.995602269220576,
+            "res_hpf_over_wfc": 0.9999305360916401,
+            "res_lpf_over_wfc": 0.9999305360916401
+          },
+          "pass": true,
+          "check_physics_priors": true
+        },
+        "sim_ok": true,
+        "reward": 1.9259183464082157,
+        "strict": true,
+        "metrics": {
+          "rms_phase_err_deg": 8.227721798215314e-07,
+          "il_db": 0.5644052939098936,
+          "rl_db": 57.50023967357126,
+          "gain_err_db": 3.232817477144545e-05,
+          "area_mm2": 18.16
+        }
+      },
+      "bad": {
+        "decoder_ok": true,
+        "params": {
+          "C_hpf_pf": 0.0114,
+          "L_hpf_nh": 0.0284,
+          "L_lpf_nh": 0.0284,
+          "C_lpf_pf": 0.0114
+        },
+        "prior_pass": true,
+        "prior_explain": {
+          "A_structural": true,
+          "B_physics": true,
+          "C_operating": null,
+          "D_sim_sanity": null,
+          "failed": [],
+          "notes": {
+            "z0_hpf": 49.91220361971047,
+            "z0_lpf": 49.91220361971047,
+            "res_hpf_over_wfc": 9.98965534040004,
+            "res_lpf_over_wfc": 9.98965534040004
+          },
+          "pass": true,
+          "check_physics_priors": true
+        },
+        "sim_ok": true,
+        "reward": 0.30731200000000003,
+        "strict": false,
+        "metrics": {
+          "rms_phase_err_deg": 62.1650189058418,
+          "il_db": 27.731020966451883,
+          "rl_db": 12.131609684452176,
+          "gain_err_db": 27.16458598291823,
+          "area_mm2": 18.16
+        }
+      },
+      "reward_good_gt_bad": true,
+      "nominal_consistent": true
+    },
+    "Vector_Modulator": {
+      "good": {
+        "decoder_ok": true,
+        "params": {
+          "Z0_line": 50.0,
+          "L_quarter_mm": 1.694,
+          "G_I_scale": 0.85,
+          "G_Q_scale": 0.85
+        },
+        "prior_pass": true,
+        "prior_explain": {
+          "A_structural": true,
+          "B_physics": true,
+          "C_operating": true,
+          "D_sim_sanity": null,
+          "failed": [],
+          "notes": {
+            "vm_drive_pwr_mw": 3.6125000000000007,
+            "l_over_lam4": 1.0000421674045963,
+            "g_i": 0.85,
+            "g_q": 0.85
+          },
+          "pass": true,
+          "check_physics_priors": true
+        },
+        "sim_ok": true,
+        "reward": 1.8800827293308324,
+        "strict": true,
+        "metrics": {
+          "rms_phase_err_deg": 0.0016513079107276544,
+          "il_db": 1.411676531023497,
+          "rl_db": 60.0,
+          "gain_err_db": 0.00021316795409289808,
+          "area_mm2": 9.035034
+        }
+      },
+      "bad": {
+        "decoder_ok": true,
+        "params": {
+          "Z0_line": 25.0,
+          "L_quarter_mm": 0.678,
+          "G_I_scale": 0.7,
+          "G_Q_scale": 1.0
+        },
+        "prior_pass": true,
+        "prior_explain": {
+          "A_structural": true,
+          "B_physics": true,
+          "C_operating": true,
+          "D_sim_sanity": null,
+          "failed": [],
+          "notes": {
+            "vm_drive_pwr_mw": 5.0,
+            "l_over_lam4": 0.4002530044275775,
+            "g_i": 0.7,
+            "g_q": 1.0
+          },
+          "pass": true,
+          "check_physics_priors": true
+        },
+        "sim_ok": true,
+        "reward": 0.26853786199463064,
+        "strict": false,
+        "metrics": {
+          "rms_phase_err_deg": 46.05643908644938,
+          "il_db": 6.510688338469311,
+          "rl_db": 7.882253049864972,
+          "gain_err_db": 4.83923371395949,
+          "area_mm2": 9.1993585205013
+        }
+      },
+      "reward_good_gt_bad": true,
+      "nominal_consistent": true
+    },
+    "All_Pass": {
+      "good": {
+        "decoder_ok": true,
+        "params": {
+          "L_apA_nh": 0.0318,
+          "C_brA_pf": 0.0127,
+          "C_cA_pf": 0.033,
+          "L_apB_nh": 0.1589,
+          "C_brB_pf": 0.0635,
+          "C_cB_pf": 0.1652
+        },
+        "prior_pass": true,
+        "prior_explain": {
+          "A_structural": true,
+          "B_physics": true,
+          "C_operating": null,
+          "D_sim_sanity": null,
+          "failed": [],
+          "notes": {
+            "section_A_wres_over_wfc": 8.944306640015908,
+            "section_A_cbr_over_ideal": 0.9984276729559747,
+            "section_B_wres_over_wfc": 1.789424128497837,
+            "section_B_cbr_over_ideal": 0.9990560100692257
+          },
+          "pass": true,
+          "check_physics_priors": true
+        },
+        "sim_ok": true,
+        "reward": 1.8400287612998905,
+        "strict": true,
+        "metrics": {
+          "rms_phase_err_deg": 1.3250847597118773,
+          "il_db": 0.5604048000114227,
+          "rl_db": 22.786055642225982,
+          "gain_err_db": 0.0007121839809315356,
+          "area_mm2": 18.88
+        }
+      },
+      "bad": {
+        "decoder_ok": true,
+        "params": {
+          "L_apA_nh": 0.0055,
+          "C_brA_pf": 0.005,
+          "C_cA_pf": 0.006,
+          "L_apB_nh": 0.0092,
+          "C_brB_pf": 0.0083,
+          "C_cB_pf": 0.01
+        },
+        "prior_pass": true,
+        "prior_explain": {
+          "A_structural": true,
+          "B_physics": true,
+          "C_operating": null,
+          "D_sim_sanity": null,
+          "failed": [],
+          "notes": {
+            "section_A_wres_over_wfc": 34.27644349131059,
+            "section_A_cbr_over_ideal": 2.2727272727272725,
+            "section_B_wres_over_wfc": 20.56975601646047,
+            "section_B_cbr_over_ideal": 2.2554347826086953
+          },
+          "pass": true,
+          "check_physics_priors": true
+        },
+        "sim_ok": true,
+        "reward": 0.6055488200461846,
+        "strict": false,
+        "metrics": {
+          "rms_phase_err_deg": 62.36720527690313,
+          "il_db": 0.5516001074846025,
+          "rl_db": 25.59712391760305,
+          "gain_err_db": 0.00013754504120455646,
+          "area_mm2": 18.88
+        }
+      },
+      "reward_good_gt_bad": true,
+      "nominal_consistent": true
+    },
+    "All_Pass_2p4": {
+      "good": {
+        "decoder_ok": true,
+        "params": {
+          "L_apA_nh": 0.3707,
+          "C_brA_pf": 0.1483,
+          "C_cA_pf": 0.3855,
+          "L_apB_nh": 1.8535,
+          "C_brB_pf": 0.7414,
+          "C_cB_pf": 1.9277
+        },
+        "prior_pass": true,
+        "prior_explain": {
+          "A_structural": true,
+          "B_physics": true,
+          "C_operating": null,
+          "D_sim_sanity": null,
+          "failed": [],
+          "notes": {
+            "section_A_wres_over_wfc": 8.943901783317424,
+            "section_A_cbr_over_ideal": 1.0001348799568384,
+            "section_B_wres_over_wfc": 1.7889009879045876,
+            "section_B_cbr_over_ideal": 0.9999999999999999
+          },
+          "pass": true,
+          "check_physics_priors": true
+        },
+        "sim_ok": true,
+        "reward": 1.8390919408750643,
+        "strict": true,
+        "metrics": {
+          "rms_phase_err_deg": 1.339587329402945,
+          "il_db": 0.5605140823966569,
+          "rl_db": 22.76388325615705,
+          "gain_err_db": 0.000717533339379961,
+          "area_mm2": 18.88
+        }
+      },
+      "bad": {
+        "decoder_ok": true,
+        "params": {
+          "L_apA_nh": 0.0687,
+          "C_brA_pf": 0.044,
+          "C_cA_pf": 0.0528,
+          "L_apB_nh": 0.1145,
+          "C_brB_pf": 0.0733,
+          "C_cB_pf": 0.088
+        },
+        "prior_pass": true,
+        "prior_explain": {
+          "A_structural": true,
+          "B_physics": true,
+          "C_operating": null,
+          "D_sim_sanity": null,
+          "failed": [],
+          "notes": {
+            "section_A_wres_over_wfc": 38.14206335217347,
+            "section_A_cbr_over_ideal": 1.6011644832605527,
+            "section_B_wres_over_wfc": 22.890440975566214,
+            "section_B_cbr_over_ideal": 1.6004366812227073
+          },
+          "pass": true,
+          "check_physics_priors": true
+        },
+        "sim_ok": true,
+        "reward": 0.6055782433812009,
+        "strict": false,
+        "metrics": {
+          "rms_phase_err_deg": 62.518573760185824,
+          "il_db": 0.55003697451064,
+          "rl_db": 25.72443506652408,
+          "gain_err_db": 0.000847598511268699,
+          "area_mm2": 18.88
+        }
+      },
+      "reward_good_gt_bad": true,
+      "nominal_consistent": true
+    }
+  }
+}

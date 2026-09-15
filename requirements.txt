@@ -28,3 +28,4 @@ openai>=1.0          # used as OpenAI-compatible client against OpenRouter
 
 # scikit-learn supplies cosine_similarity used by llm_netlist_gen.spec_to_vec
 scikit-learn>=1.3
+pyyaml

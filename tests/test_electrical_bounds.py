@@ -189,6 +189,21 @@ def test_c_load_mid_can_pass_physics_priors():
     assert "R_on" in params and "R_off" in params
 
 
+def test_reflection_type_mid_passes_physics_priors():
+    """Electrical midpoint must keep Z0_branch/Z0_main in the hybrid window."""
+    keys = TOPOLOGY_PARAMS["Reflection_Type"]
+    params = action_to_params(
+        np.full(len(keys), 0.5), "Reflection_Type",
+        {"fc_ghz": 28.0, "tech": 0},
+        bounds="electrical", switch_model="ideal",
+    )
+    z0m = _parse_param_float(params["Z0_main"])
+    z0b = _parse_param_float(params["Z0_branch"])
+    ratio = z0b / z0m
+    assert 0.60 <= ratio <= 0.85, (z0m, z0b, ratio)
+    assert check_physics_priors("Reflection_Type", params, 28.0), params
+
+
 def test_perturbative_caps_not_c0_centered():
     """Mid of shunt/tune windows must stay well below series-resonant C0 at 28 GHz."""
     omega = 2.0 * math.pi * 28e9

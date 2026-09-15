@@ -1,0 +1,905 @@
+{
+  "n": 200,
+  "epochs": 250,
+  "seed": 0,
+  "delta_action": 0.08,
+  "sign_acc_gate": 0.6,
+  "topologies": {
+    "Loaded_Line": {
+      "variants": {
+        "action": {
+          "n_train": 160,
+          "n_test": 40,
+          "train_seconds": 0.7602989673614502,
+          "delta_action": 0.08,
+          "test_r2_dm": {
+            "il_db": 0.9161105790791625,
+            "rl_db": -0.08475452637719516,
+            "rms_phase_err_deg": 0.596087171299222,
+            "gain_err_db": 0.9101111017674347,
+            "raw_dphi": 0.6322669722216446
+          },
+          "test_sign_acc": {
+            "il_db": 0.825,
+            "rl_db": 0.8,
+            "rms_phase_err_deg": 0.725,
+            "gain_err_db": 0.575,
+            "raw_dphi": 0.625
+          },
+          "gate_metrics": [
+            "il_db",
+            "rl_db",
+            "rms_phase_err_deg",
+            "gain_err_db"
+          ],
+          "mean_sign_acc_gate": 0.73125,
+          "gate_ok": false
+        },
+        "gin": {
+          "n_train": 160,
+          "n_test": 40,
+          "train_seconds": 1.1812140941619873,
+          "delta_action": 0.08,
+          "test_r2_dm": {
+            "il_db": 0.25640569700801175,
+            "rl_db": -0.061297882316865726,
+            "rms_phase_err_deg": 0.18837713010004653,
+            "gain_err_db": 0.25299169488661877,
+            "raw_dphi": 0.3873315154164847
+          },
+          "test_sign_acc": {
+            "il_db": 0.675,
+            "rl_db": 0.675,
+            "rms_phase_err_deg": 0.425,
+            "gain_err_db": 0.725,
+            "raw_dphi": 0.75
+          },
+          "gate_metrics": [
+            "il_db",
+            "rl_db",
+            "rms_phase_err_deg",
+            "gain_err_db"
+          ],
+          "mean_sign_acc_gate": 0.625,
+          "gate_ok": false
+        },
+        "circuit-typed": {
+          "n_train": 160,
+          "n_test": 40,
+          "train_seconds": 133.3671658039093,
+          "delta_action": 0.08,
+          "test_r2_dm": {
+            "il_db": 0.8146649564669526,
+            "rl_db": -0.17378507965445378,
+            "rms_phase_err_deg": 0.666926522633637,
+            "gain_err_db": 0.8241488936801191,
+            "raw_dphi": 0.5998176520066603
+          },
+          "test_sign_acc": {
+            "il_db": 0.85,
+            "rl_db": 0.725,
+            "rms_phase_err_deg": 0.75,
+            "gain_err_db": 0.6,
+            "raw_dphi": 0.7
+          },
+          "gate_metrics": [
+            "il_db",
+            "rl_db",
+            "rms_phase_err_deg",
+            "gain_err_db"
+          ],
+          "mean_sign_acc_gate": 0.7312500000000001,
+          "gate_ok": true
+        },
+        "d1a": {
+          "n_train": 160,
+          "n_test": 40,
+          "train_seconds": 136.03144598007202,
+          "delta_action": 0.08,
+          "test_r2_dm": {
+            "il_db": 0.9716060639761032,
+            "rl_db": 0.12433879346794674,
+            "rms_phase_err_deg": 0.7720455123546817,
+            "gain_err_db": 0.9665172524909555,
+            "raw_dphi": 0.7403452256420457
+          },
+          "test_sign_acc": {
+            "il_db": 0.875,
+            "rl_db": 0.775,
+            "rms_phase_err_deg": 0.85,
+            "gain_err_db": 0.725,
+            "raw_dphi": 0.75
+          },
+          "gate_metrics": [
+            "il_db",
+            "rl_db",
+            "rms_phase_err_deg",
+            "gain_err_db"
+          ],
+          "mean_sign_acc_gate": 0.80625,
+          "gate_ok": true
+        },
+        "r3": {
+          "n_train": 160,
+          "n_test": 40,
+          "train_seconds": 142.68061518669128,
+          "delta_action": 0.08,
+          "test_r2_dm": {
+            "il_db": 0.8971458488069258,
+            "rl_db": 0.43638774177999395,
+            "rms_phase_err_deg": 0.8523843687855325,
+            "gain_err_db": 0.9070871625037054,
+            "raw_dphi": 0.8519326135232027
+          },
+          "test_sign_acc": {
+            "il_db": 0.825,
+            "rl_db": 0.75,
+            "rms_phase_err_deg": 0.85,
+            "gain_err_db": 0.65,
+            "raw_dphi": 0.825
+          },
+          "gate_metrics": [
+            "il_db",
+            "rl_db",
+            "rms_phase_err_deg",
+            "gain_err_db"
+          ],
+          "mean_sign_acc_gate": 0.7687499999999999,
+          "gate_ok": true
+        }
+      }
+    },
+    "Switched_Line": {
+      "variants": {
+        "action": {
+          "n_train": 160,
+          "n_test": 40,
+          "train_seconds": 0.848952054977417,
+          "delta_action": 0.08,
+          "test_r2_dm": {
+            "il_db": 0.9045757884777411,
+            "rl_db": 0.45116240256810913,
+            "rms_phase_err_deg": 0.9541894770588724,
+            "gain_err_db": 0.7278155357352689,
+            "raw_dphi": 0.15742635922481474
+          },
+          "test_sign_acc": {
+            "il_db": 0.675,
+            "rl_db": 0.8,
+            "rms_phase_err_deg": 0.9,
+            "gain_err_db": 0.825,
+            "raw_dphi": 0.775
+          },
+          "gate_metrics": [
+            "il_db",
+            "rl_db",
+            "rms_phase_err_deg",
+            "gain_err_db"
+          ],
+          "mean_sign_acc_gate": 0.8,
+          "gate_ok": true
+        },
+        "gin": {
+          "n_train": 160,
+          "n_test": 40,
+          "train_seconds": 1.4768149852752686,
+          "delta_action": 0.08,
+          "test_r2_dm": {
+            "il_db": 0.15776458137127503,
+            "rl_db": -0.09293066515679116,
+            "rms_phase_err_deg": 0.1085272001000942,
+            "gain_err_db": 0.05857150628596852,
+            "raw_dphi": 0.8163958926018753
+          },
+          "test_sign_acc": {
+            "il_db": 0.75,
+            "rl_db": 0.5,
+            "rms_phase_err_deg": 0.55,
+            "gain_err_db": 0.625,
+            "raw_dphi": 0.925
+          },
+          "gate_metrics": [
+            "il_db",
+            "rl_db",
+            "rms_phase_err_deg",
+            "gain_err_db"
+          ],
+          "mean_sign_acc_gate": 0.60625,
+          "gate_ok": false
+        },
+        "circuit-typed": {
+          "n_train": 160,
+          "n_test": 40,
+          "train_seconds": 145.50748586654663,
+          "delta_action": 0.08,
+          "test_r2_dm": {
+            "il_db": 0.6466502942455579,
+            "rl_db": 0.6631207741594112,
+            "rms_phase_err_deg": 0.42876129661830253,
+            "gain_err_db": 0.36265129115681716,
+            "raw_dphi": 0.5551740750326424
+          },
+          "test_sign_acc": {
+            "il_db": 0.7,
+            "rl_db": 0.775,
+            "rms_phase_err_deg": 0.6,
+            "gain_err_db": 0.725,
+            "raw_dphi": 0.8
+          },
+          "gate_metrics": [
+            "il_db",
+            "rl_db",
+            "rms_phase_err_deg",
+            "gain_err_db"
+          ],
+          "mean_sign_acc_gate": 0.7000000000000001,
+          "gate_ok": true
+        },
+        "d1a": {
+          "n_train": 160,
+          "n_test": 40,
+          "train_seconds": 152.93097114562988,
+          "delta_action": 0.08,
+          "test_r2_dm": {
+            "il_db": 0.8624788768545623,
+            "rl_db": 0.5393492968165905,
+            "rms_phase_err_deg": 0.9520085267797975,
+            "gain_err_db": 0.7331072391681307,
+            "raw_dphi": -1.107636111952747
+          },
+          "test_sign_acc": {
+            "il_db": 0.725,
+            "rl_db": 0.8,
+            "rms_phase_err_deg": 0.9,
+            "gain_err_db": 0.775,
+            "raw_dphi": 0.875
+          },
+          "gate_metrics": [
+            "il_db",
+            "rl_db",
+            "rms_phase_err_deg",
+            "gain_err_db"
+          ],
+          "mean_sign_acc_gate": 0.7999999999999999,
+          "gate_ok": true
+        },
+        "r3": {
+          "n_train": 160,
+          "n_test": 40,
+          "train_seconds": 151.5910291671753,
+          "delta_action": 0.08,
+          "test_r2_dm": {
+            "il_db": 0.8854285438710955,
+            "rl_db": 0.832090582626764,
+            "rms_phase_err_deg": 0.9765432239064736,
+            "gain_err_db": 0.5898959592472215,
+            "raw_dphi": -3.0657907551991315
+          },
+          "test_sign_acc": {
+            "il_db": 0.75,
+            "rl_db": 0.75,
+            "rms_phase_err_deg": 0.925,
+            "gain_err_db": 0.925,
+            "raw_dphi": 0.75
+          },
+          "gate_metrics": [
+            "il_db",
+            "rl_db",
+            "rms_phase_err_deg",
+            "gain_err_db"
+          ],
+          "mean_sign_acc_gate": 0.8374999999999999,
+          "gate_ok": true
+        }
+      }
+    },
+    "Reflection_Type": {
+      "variants": {
+        "action": {
+          "n_train": 160,
+          "n_test": 40,
+          "train_seconds": 0.9490439891815186,
+          "delta_action": 0.08,
+          "test_r2_dm": {
+            "il_db": 0.09949019191678021,
+            "rl_db": -0.15270499907474178,
+            "rms_phase_err_deg": -2.379948888578328,
+            "gain_err_db": -0.20156550046537292,
+            "raw_dphi": -2.384828997282856
+          },
+          "test_sign_acc": {
+            "il_db": 0.875,
+            "rl_db": 0.575,
+            "rms_phase_err_deg": 0.525,
+            "gain_err_db": 0.675,
+            "raw_dphi": 0.55
+          },
+          "gate_metrics": [
+            "il_db",
+            "rl_db",
+            "gain_err_db",
+            "raw_dphi"
+          ],
+          "mean_sign_acc_gate": 0.66875,
+          "gate_ok": false
+        },
+        "gin": {
+          "n_train": 160,
+          "n_test": 40,
+          "train_seconds": 1.4644391536712646,
+          "delta_action": 0.08,
+          "test_r2_dm": {
+            "il_db": -0.0011817379603775713,
+            "rl_db": -0.04960749628719241,
+            "rms_phase_err_deg": -0.14997062010760498,
+            "gain_err_db": -0.07683839294589045,
+            "raw_dphi": -0.06019010249461698
+          },
+          "test_sign_acc": {
+            "il_db": 0.7,
+            "rl_db": 0.55,
+            "rms_phase_err_deg": 0.625,
+            "gain_err_db": 0.65,
+            "raw_dphi": 0.5
+          },
+          "gate_metrics": [
+            "il_db",
+            "rl_db",
+            "gain_err_db",
+            "raw_dphi"
+          ],
+          "mean_sign_acc_gate": 0.6,
+          "gate_ok": false
+        },
+        "circuit-typed": {
+          "n_train": 160,
+          "n_test": 40,
+          "train_seconds": 179.52577781677246,
+          "delta_action": 0.08,
+          "test_r2_dm": {
+            "il_db": -0.06796848688591584,
+            "rl_db": -0.12237077857955159,
+            "rms_phase_err_deg": -2.0407317673432672,
+            "gain_err_db": -0.8575670364112642,
+            "raw_dphi": -2.622744849010473
+          },
+          "test_sign_acc": {
+            "il_db": 0.725,
+            "rl_db": 0.55,
+            "rms_phase_err_deg": 0.5,
+            "gain_err_db": 0.525,
+            "raw_dphi": 0.575
+          },
+          "gate_metrics": [
+            "il_db",
+            "rl_db",
+            "gain_err_db",
+            "raw_dphi"
+          ],
+          "mean_sign_acc_gate": 0.59375,
+          "gate_ok": false
+        },
+        "d1a": {
+          "n_train": 160,
+          "n_test": 40,
+          "train_seconds": 185.29738998413086,
+          "delta_action": 0.08,
+          "test_r2_dm": {
+            "il_db": -0.017067176319665256,
+            "rl_db": -0.007593526893027391,
+            "rms_phase_err_deg": -1.7573649891463812,
+            "gain_err_db": -0.3335595289137421,
+            "raw_dphi": -2.1661727607196752
+          },
+          "test_sign_acc": {
+            "il_db": 0.775,
+            "rl_db": 0.4,
+            "rms_phase_err_deg": 0.45,
+            "gain_err_db": 0.6,
+            "raw_dphi": 0.5
+          },
+          "gate_metrics": [
+            "il_db",
+            "rl_db",
+            "gain_err_db",
+            "raw_dphi"
+          ],
+          "mean_sign_acc_gate": 0.56875,
+          "gate_ok": false
+        },
+        "r3": {
+          "n_train": 160,
+          "n_test": 40,
+          "train_seconds": 188.1088001728058,
+          "delta_action": 0.08,
+          "test_r2_dm": {
+            "il_db": -0.10531352001569139,
+            "rl_db": -0.3355819340073094,
+            "rms_phase_err_deg": -0.921550845714443,
+            "gain_err_db": -0.8106465366406925,
+            "raw_dphi": -0.784201325158971
+          },
+          "test_sign_acc": {
+            "il_db": 0.8,
+            "rl_db": 0.575,
+            "rms_phase_err_deg": 0.55,
+            "gain_err_db": 0.65,
+            "raw_dphi": 0.575
+          },
+          "gate_metrics": [
+            "il_db",
+            "rl_db",
+            "gain_err_db",
+            "raw_dphi"
+          ],
+          "mean_sign_acc_gate": 0.6499999999999999,
+          "gate_ok": false
+        }
+      }
+    },
+    "Switched_Filter": {
+      "variants": {
+        "action": {
+          "n_train": 160,
+          "n_test": 40,
+          "train_seconds": 1.0419399738311768,
+          "delta_action": 0.08,
+          "test_r2_dm": {
+            "il_db": 0.5979672837499281,
+            "rl_db": -0.11233340581252071,
+            "rms_phase_err_deg": 0.13138243041866315,
+            "gain_err_db": 0.23095034739428977,
+            "raw_dphi": -0.48471674909989915
+          },
+          "test_sign_acc": {
+            "il_db": 0.825,
+            "rl_db": 0.6,
+            "rms_phase_err_deg": 0.725,
+            "gain_err_db": 0.775,
+            "raw_dphi": 0.5
+          },
+          "gate_metrics": [
+            "il_db",
+            "rl_db",
+            "rms_phase_err_deg",
+            "gain_err_db"
+          ],
+          "mean_sign_acc_gate": 0.73125,
+          "gate_ok": true
+        },
+        "gin": {
+          "n_train": 160,
+          "n_test": 40,
+          "train_seconds": 1.5770001411437988,
+          "delta_action": 0.08,
+          "test_r2_dm": {
+            "il_db": 0.18770078673246127,
+            "rl_db": -0.18322237993366586,
+            "rms_phase_err_deg": -0.043543678273415765,
+            "gain_err_db": 0.030690955915266716,
+            "raw_dphi": -0.005205324420606283
+          },
+          "test_sign_acc": {
+            "il_db": 0.7,
+            "rl_db": 0.425,
+            "rms_phase_err_deg": 0.475,
+            "gain_err_db": 0.725,
+            "raw_dphi": 0.225
+          },
+          "gate_metrics": [
+            "il_db",
+            "rl_db",
+            "rms_phase_err_deg",
+            "gain_err_db"
+          ],
+          "mean_sign_acc_gate": 0.58125,
+          "gate_ok": false
+        },
+        "circuit-typed": {
+          "n_train": 160,
+          "n_test": 40,
+          "train_seconds": 182.51122498512268,
+          "delta_action": 0.08,
+          "test_r2_dm": {
+            "il_db": 0.4495450072993118,
+            "rl_db": -0.1667826931969536,
+            "rms_phase_err_deg": -0.8505836079685649,
+            "gain_err_db": -0.1238686795152586,
+            "raw_dphi": -0.9772705561559216
+          },
+          "test_sign_acc": {
+            "il_db": 0.775,
+            "rl_db": 0.6,
+            "rms_phase_err_deg": 0.7,
+            "gain_err_db": 0.55,
+            "raw_dphi": 0.65
+          },
+          "gate_metrics": [
+            "il_db",
+            "rl_db",
+            "rms_phase_err_deg",
+            "gain_err_db"
+          ],
+          "mean_sign_acc_gate": 0.65625,
+          "gate_ok": false
+        },
+        "d1a": {
+          "n_train": 160,
+          "n_test": 40,
+          "train_seconds": 186.53734397888184,
+          "delta_action": 0.08,
+          "test_r2_dm": {
+            "il_db": 0.5113631904114861,
+            "rl_db": -0.3072212194208681,
+            "rms_phase_err_deg": -0.5774951959046408,
+            "gain_err_db": 0.2922607589495416,
+            "raw_dphi": -1.385968162201162
+          },
+          "test_sign_acc": {
+            "il_db": 0.675,
+            "rl_db": 0.45,
+            "rms_phase_err_deg": 0.675,
+            "gain_err_db": 0.75,
+            "raw_dphi": 0.575
+          },
+          "gate_metrics": [
+            "il_db",
+            "rl_db",
+            "rms_phase_err_deg",
+            "gain_err_db"
+          ],
+          "mean_sign_acc_gate": 0.6375,
+          "gate_ok": false
+        },
+        "r3": {
+          "n_train": 160,
+          "n_test": 40,
+          "train_seconds": 183.62317514419556,
+          "delta_action": 0.08,
+          "test_r2_dm": {
+            "il_db": 0.37236411247281487,
+            "rl_db": -0.29251659132709373,
+            "rms_phase_err_deg": -0.2782929308264628,
+            "gain_err_db": 0.1772629203748396,
+            "raw_dphi": -1.3932198936143387
+          },
+          "test_sign_acc": {
+            "il_db": 0.75,
+            "rl_db": 0.45,
+            "rms_phase_err_deg": 0.8,
+            "gain_err_db": 0.675,
+            "raw_dphi": 0.5
+          },
+          "gate_metrics": [
+            "il_db",
+            "rl_db",
+            "rms_phase_err_deg",
+            "gain_err_db"
+          ],
+          "mean_sign_acc_gate": 0.66875,
+          "gate_ok": false
+        }
+      }
+    },
+    "Vector_Modulator": {
+      "variants": {
+        "action": {
+          "n_train": 160,
+          "n_test": 40,
+          "train_seconds": 0.959589958190918,
+          "delta_action": 0.08,
+          "test_r2_dm": {
+            "il_db": -0.246594684884893,
+            "rl_db": 0.45769611029491464,
+            "rms_phase_err_deg": -0.30748316798939057,
+            "gain_err_db": 0.3675095866978323,
+            "raw_dphi": 0.96723050644524
+          },
+          "test_sign_acc": {
+            "il_db": 0.9,
+            "rl_db": 0.875,
+            "rms_phase_err_deg": 0.925,
+            "gain_err_db": 0.775,
+            "raw_dphi": 0.9
+          },
+          "gate_metrics": [
+            "il_db",
+            "rl_db",
+            "rms_phase_err_deg",
+            "gain_err_db"
+          ],
+          "mean_sign_acc_gate": 0.86875,
+          "gate_ok": true
+        },
+        "gin": {
+          "n_train": 160,
+          "n_test": 40,
+          "train_seconds": 1.6069738864898682,
+          "delta_action": 0.08,
+          "test_r2_dm": {
+            "il_db": -0.045131133693038006,
+            "rl_db": -0.006551474521024669,
+            "rms_phase_err_deg": 0.07997956600737288,
+            "gain_err_db": -0.02198875619107299,
+            "raw_dphi": 0.03785047755757698
+          },
+          "test_sign_acc": {
+            "il_db": 0.95,
+            "rl_db": 0.6875,
+            "rms_phase_err_deg": 0.775,
+            "gain_err_db": 0.625,
+            "raw_dphi": 0.65
+          },
+          "gate_metrics": [
+            "il_db",
+            "rl_db",
+            "rms_phase_err_deg",
+            "gain_err_db"
+          ],
+          "mean_sign_acc_gate": 0.759375,
+          "gate_ok": true
+        },
+        "circuit-typed": {
+          "n_train": 160,
+          "n_test": 40,
+          "train_seconds": 237.96404504776,
+          "delta_action": 0.08,
+          "test_r2_dm": {
+            "il_db": 0.014534479291818725,
+            "rl_db": 0.6465139089849528,
+            "rms_phase_err_deg": 0.49416608039796717,
+            "gain_err_db": 0.9019903505479925,
+            "raw_dphi": 0.9693131763203182
+          },
+          "test_sign_acc": {
+            "il_db": 0.925,
+            "rl_db": 0.875,
+            "rms_phase_err_deg": 0.825,
+            "gain_err_db": 0.7,
+            "raw_dphi": 0.825
+          },
+          "gate_metrics": [
+            "il_db",
+            "rl_db",
+            "rms_phase_err_deg",
+            "gain_err_db"
+          ],
+          "mean_sign_acc_gate": 0.83125,
+          "gate_ok": true
+        },
+        "d1a": {
+          "n_train": 160,
+          "n_test": 40,
+          "train_seconds": 238.6082890033722,
+          "delta_action": 0.08,
+          "test_r2_dm": {
+            "il_db": 0.3607862400298757,
+            "rl_db": 0.6471158451852859,
+            "rms_phase_err_deg": -0.2353067788231462,
+            "gain_err_db": 0.7238041413041942,
+            "raw_dphi": 0.9740333207594141
+          },
+          "test_sign_acc": {
+            "il_db": 0.925,
+            "rl_db": 0.875,
+            "rms_phase_err_deg": 0.875,
+            "gain_err_db": 0.65,
+            "raw_dphi": 0.925
+          },
+          "gate_metrics": [
+            "il_db",
+            "rl_db",
+            "rms_phase_err_deg",
+            "gain_err_db"
+          ],
+          "mean_sign_acc_gate": 0.8312499999999999,
+          "gate_ok": true
+        },
+        "r3": {
+          "n_train": 160,
+          "n_test": 40,
+          "train_seconds": 248.51628184318542,
+          "delta_action": 0.08,
+          "test_r2_dm": {
+            "il_db": -0.5986060102671305,
+            "rl_db": -0.11937209024576956,
+            "rms_phase_err_deg": -0.26339137775713417,
+            "gain_err_db": 0.10346955273698943,
+            "raw_dphi": 0.9098132951889399
+          },
+          "test_sign_acc": {
+            "il_db": 0.825,
+            "rl_db": 0.9375,
+            "rms_phase_err_deg": 0.9,
+            "gain_err_db": 0.675,
+            "raw_dphi": 0.85
+          },
+          "gate_metrics": [
+            "il_db",
+            "rl_db",
+            "rms_phase_err_deg",
+            "gain_err_db"
+          ],
+          "mean_sign_acc_gate": 0.8343750000000001,
+          "gate_ok": true
+        }
+      }
+    },
+    "All_Pass": {
+      "variants": {
+        "action": {
+          "n_train": 160,
+          "n_test": 40,
+          "train_seconds": 0.9954969882965088,
+          "delta_action": 0.08,
+          "test_r2_dm": {
+            "il_db": 0.18535734740324572,
+            "rl_db": -0.2670547196706792,
+            "rms_phase_err_deg": 0.1442089602768064,
+            "gain_err_db": 0.24766550098650508,
+            "raw_dphi": -0.47007325248201126
+          },
+          "test_sign_acc": {
+            "il_db": 0.8,
+            "rl_db": 0.55,
+            "rms_phase_err_deg": 0.775,
+            "gain_err_db": 0.8,
+            "raw_dphi": 0.5
+          },
+          "gate_metrics": [
+            "il_db",
+            "rl_db",
+            "rms_phase_err_deg",
+            "gain_err_db"
+          ],
+          "mean_sign_acc_gate": 0.73125,
+          "gate_ok": false
+        },
+        "gin": {
+          "n_train": 160,
+          "n_test": 40,
+          "train_seconds": 1.7407701015472412,
+          "delta_action": 0.08,
+          "test_r2_dm": {
+            "il_db": 0.009411232783184231,
+            "rl_db": 0.027798088241313024,
+            "rms_phase_err_deg": 0.11720989258806147,
+            "gain_err_db": -0.02981500698363093,
+            "raw_dphi": 0.008005165923990254
+          },
+          "test_sign_acc": {
+            "il_db": 0.675,
+            "rl_db": 0.675,
+            "rms_phase_err_deg": 0.55,
+            "gain_err_db": 0.625,
+            "raw_dphi": 0.425
+          },
+          "gate_metrics": [
+            "il_db",
+            "rl_db",
+            "rms_phase_err_deg",
+            "gain_err_db"
+          ],
+          "mean_sign_acc_gate": 0.6312500000000001,
+          "gate_ok": false
+        },
+        "circuit-typed": {
+          "n_train": 160,
+          "n_test": 40,
+          "train_seconds": 192.7285521030426,
+          "delta_action": 0.08,
+          "test_r2_dm": {
+            "il_db": 0.013032797811091235,
+            "rl_db": -0.755723598620887,
+            "rms_phase_err_deg": 0.43643652556287205,
+            "gain_err_db": -0.19280334721907688,
+            "raw_dphi": -0.1416753423057613
+          },
+          "test_sign_acc": {
+            "il_db": 0.675,
+            "rl_db": 0.575,
+            "rms_phase_err_deg": 0.775,
+            "gain_err_db": 0.75,
+            "raw_dphi": 0.675
+          },
+          "gate_metrics": [
+            "il_db",
+            "rl_db",
+            "rms_phase_err_deg",
+            "gain_err_db"
+          ],
+          "mean_sign_acc_gate": 0.69375,
+          "gate_ok": false
+        },
+        "d1a": {
+          "n_train": 160,
+          "n_test": 40,
+          "train_seconds": 198.69995403289795,
+          "delta_action": 0.08,
+          "test_r2_dm": {
+            "il_db": 0.23170285491602882,
+            "rl_db": -1.0566862082359991,
+            "rms_phase_err_deg": 0.47151532361651927,
+            "gain_err_db": 0.01782217741162384,
+            "raw_dphi": -0.06060711275879149
+          },
+          "test_sign_acc": {
+            "il_db": 0.675,
+            "rl_db": 0.675,
+            "rms_phase_err_deg": 0.8,
+            "gain_err_db": 0.65,
+            "raw_dphi": 0.825
+          },
+          "gate_metrics": [
+            "il_db",
+            "rl_db",
+            "rms_phase_err_deg",
+            "gain_err_db"
+          ],
+          "mean_sign_acc_gate": 0.7000000000000001,
+          "gate_ok": true
+        },
+        "r3": {
+          "n_train": 160,
+          "n_test": 40,
+          "train_seconds": 202.5907199382782,
+          "delta_action": 0.08,
+          "test_r2_dm": {
+            "il_db": -0.37264197711400726,
+            "rl_db": -1.2765008960049689,
+            "rms_phase_err_deg": 0.07071827895344351,
+            "gain_err_db": -0.434038854830767,
+            "raw_dphi": -0.6380125427212551
+          },
+          "test_sign_acc": {
+            "il_db": 0.625,
+            "rl_db": 0.5,
+            "rms_phase_err_deg": 0.725,
+            "gain_err_db": 0.525,
+            "raw_dphi": 0.575
+          },
+          "gate_metrics": [
+            "il_db",
+            "rl_db",
+            "rms_phase_err_deg",
+            "gain_err_db"
+          ],
+          "mean_sign_acc_gate": 0.59375,
+          "gate_ok": false
+        }
+      }
+    }
+  },
+  "macro_gate": {
+    "action": {
+      "n_pass": 3,
+      "n": 6,
+      "all_pass": false,
+      "mean_sign_acc": 0.7552083333333334
+    },
+    "gin": {
+      "n_pass": 1,
+      "n": 6,
+      "all_pass": false,
+      "mean_sign_acc": 0.6338541666666666
+    },
+    "circuit-typed": {
+      "n_pass": 3,
+      "n": 6,
+      "all_pass": false,
+      "mean_sign_acc": 0.7010416666666667
+    },
+    "d1a": {
+      "n_pass": 4,
+      "n": 6,
+      "all_pass": false,
+      "mean_sign_acc": 0.7239583333333334
+    },
+    "r3": {
+      "n_pass": 3,
+      "n": 6,
+      "all_pass": false,
+      "mean_sign_acc": 0.7255208333333334
+    }
+  }
+}

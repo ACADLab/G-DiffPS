@@ -162,3 +162,63 @@ def compute_sim_reward(
     if return_parts:
         return reward, parts
     return reward
+
+
+def strict_compliance(metrics: Optional[dict], targets: dict) -> bool:
+    """Every hard RF (+ area if present) threshold met — no tolerance margin."""
+    if metrics is None:
+        return False
+    required = ["rms_phase_err_deg", "il_db", "rl_db", "gain_err_db"]
+    if any(metrics.get(k) is None for k in required):
+        return False
+    if abs(float(metrics["rms_phase_err_deg"])) > float(targets.get("rms_phase_err_deg", 5.0)):
+        return False
+    if float(metrics["il_db"]) > float(targets.get("max_il_db", 5.0)):
+        return False
+    if abs(float(metrics["rl_db"])) < float(targets.get("min_rl_db", 10.0)):
+        return False
+    if abs(float(metrics["gain_err_db"])) > float(targets.get("rms_gain_err_db", 1.0)):
+        return False
+    if "max_area_mm2" in targets and metrics.get("area_mm2") is not None:
+        if float(metrics["area_mm2"]) > float(targets["max_area_mm2"]):
+            return False
+    return True
+
+
+def tolerant_all_close(metrics: Optional[dict], targets: dict,
+                       weights: RewardWeights = WEIGHTS_AREA) -> bool:
+    """Existing reward all_close condition (1.2× / 0.8× margins)."""
+    if metrics is None:
+        return False
+    _, parts = compute_sim_reward(
+        metrics, targets, weights=weights, warmup_deg=0.0, return_parts=True,
+    )
+    return bool(parts.get("all_close", False))
+
+
+def classify_attempt(
+    *,
+    topology: str,
+    spec: dict,
+    prior_pass: bool,
+    metrics: Optional[dict],
+    physical_reward: float,
+    expert_bonus: float = 0.0,
+) -> dict:
+    """Separate eligibility / prior / sim validity / compliance outcomes."""
+    from sim.mna_scorer import topology_admits_spec
+
+    eligible = bool(topology_admits_spec(topology, spec))
+    sim_success = metrics is not None
+    strict = strict_compliance(metrics, spec) if sim_success else False
+    tolerant = tolerant_all_close(metrics, spec) if sim_success else False
+    return {
+        "eligible": eligible,
+        "prior_pass": bool(prior_pass),
+        "sim_success": sim_success,
+        "strict_compliance": strict,
+        "tolerant_all_close": tolerant,
+        "physical_reward": float(physical_reward),
+        "expert_bonus": float(expert_bonus),
+        "total_reward": float(physical_reward) + float(expert_bonus),
+    }

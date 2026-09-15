@@ -1,0 +1,637 @@
+{
+  "sizing_provenance": {
+    "encoder_default": "CircuitEncoder.forward params=None \u2192 nominal_params() (bounds midpoint, not the chosen design)",
+    "rl_rollout": {
+      "file": "train_diffusion.py train()",
+      "passes_chosen_params": false,
+      "meaning": "Encoder runs BEFORE the actor samples. Graph is the midpoint stand-in. Reward is computed on the sampled action. State and target are different circuits."
+    },
+    "rl_replay_reencode": {
+      "passes_chosen_params": false,
+      "meaning": "Replay re-encode uses replay_spec only; still nominal_params. Critic/actor updates never see the design that produced the reward."
+    },
+    "phase5_supervised": {
+      "file": "tools/supervised_loocv.py",
+      "calls_params_kw": true,
+      "action_to_params_values_are_strings": true,
+      "legacy_isinstance_filter_kept": {},
+      "legacy_filter_kept_sized_keys": [],
+      "params_numeric_recovers": {
+        "Z0_line": 40.0,
+        "L_quarter_mm": 2.444,
+        "C_load_pf": 0.0126
+      },
+      "meaning": "Phase 5 called gnn(..., params=row['params']) but stored only isinstance(v, (int, float)). action_to_params writes SPICE strings, so the stored dict was empty and the encoder saw resonant type+fc defaults \u2014 not the simulated design. Train R\u00b2 ~0.2 was measured under that defect. Fixed by params_numeric."
+    },
+    "loocv_eval": {
+      "passes_chosen_params": false,
+      "meaning": "Eval encoder also runs before sampling; midpoint graph."
+    }
+  },
+  "action_alignment": {
+    "n_action_rows": 25,
+    "bijective_index_to_param": true,
+    "shared_device_rows": [
+      {
+        "topology": "Loaded_Line",
+        "device": "T_main",
+        "params": [
+          "L_quarter_mm",
+          "Z0_line"
+        ],
+        "issue": "NodeFlowMatchingPolicy (default) emits one scalar per row with a SHARED device embedding and NO role unless --coupled-actions. These parameters are not distinguished."
+      },
+      {
+        "topology": "Switched_Line",
+        "device": "T_short",
+        "params": [
+          "L_short_mm",
+          "Z0_line"
+        ],
+        "issue": "NodeFlowMatchingPolicy (default) emits one scalar per row with a SHARED device embedding and NO role unless --coupled-actions. These parameters are not distinguished."
+      },
+      {
+        "topology": "Reflection_Type",
+        "device": "T_top",
+        "params": [
+          "L_quarter_mm",
+          "Z0_branch"
+        ],
+        "issue": "NodeFlowMatchingPolicy (default) emits one scalar per row with a SHARED device embedding and NO role unless --coupled-actions. These parameters are not distinguished."
+      },
+      {
+        "topology": "Vector_Modulator",
+        "device": "T_quad",
+        "params": [
+          "L_quarter_mm",
+          "Z0_line"
+        ],
+        "issue": "NodeFlowMatchingPolicy (default) emits one scalar per row with a SHARED device embedding and NO role unless --coupled-actions. These parameters are not distinguished."
+      }
+    ],
+    "default_actor_sees_role": false,
+    "role_path": "--coupled-actions / CoupledNodeFlowMatchingPolicy",
+    "roles_vocab": [
+      "length",
+      "impedance",
+      "capacitance",
+      "inductance",
+      "centre",
+      "ratio",
+      "gain",
+      "switch_width",
+      "other"
+    ],
+    "rows": [
+      {
+        "topology": "Loaded_Line",
+        "action_index": 0,
+        "device": "T_main",
+        "param_key": "L_quarter_mm",
+        "role": "length",
+        "in_TOPOLOGY_PARAMS": true
+      },
+      {
+        "topology": "Loaded_Line",
+        "action_index": 1,
+        "device": "T_main",
+        "param_key": "Z0_line",
+        "role": "impedance",
+        "in_TOPOLOGY_PARAMS": true
+      },
+      {
+        "topology": "Loaded_Line",
+        "action_index": 2,
+        "device": "C_in_load",
+        "param_key": "C_load_pf",
+        "role": "capacitance",
+        "in_TOPOLOGY_PARAMS": true
+      },
+      {
+        "topology": "Switched_Line",
+        "action_index": 0,
+        "device": "T_short",
+        "param_key": "L_short_mm",
+        "role": "length",
+        "in_TOPOLOGY_PARAMS": true
+      },
+      {
+        "topology": "Switched_Line",
+        "action_index": 1,
+        "device": "T_short",
+        "param_key": "Z0_line",
+        "role": "impedance",
+        "in_TOPOLOGY_PARAMS": true
+      },
+      {
+        "topology": "Switched_Line",
+        "action_index": 2,
+        "device": "T_long",
+        "param_key": "L_long_mm",
+        "role": "length",
+        "in_TOPOLOGY_PARAMS": true
+      },
+      {
+        "topology": "Reflection_Type",
+        "action_index": 0,
+        "device": "T_top",
+        "param_key": "L_quarter_mm",
+        "role": "length",
+        "in_TOPOLOGY_PARAMS": true
+      },
+      {
+        "topology": "Reflection_Type",
+        "action_index": 1,
+        "device": "T_top",
+        "param_key": "Z0_branch",
+        "role": "impedance",
+        "in_TOPOLOGY_PARAMS": true
+      },
+      {
+        "topology": "Reflection_Type",
+        "action_index": 2,
+        "device": "T_left",
+        "param_key": "Z0_main",
+        "role": "impedance",
+        "in_TOPOLOGY_PARAMS": true
+      },
+      {
+        "topology": "Reflection_Type",
+        "action_index": 3,
+        "device": "C_baseA",
+        "param_key": "C_base_pf",
+        "role": "capacitance",
+        "in_TOPOLOGY_PARAMS": true
+      },
+      {
+        "topology": "Reflection_Type",
+        "action_index": 4,
+        "device": "C_tuneA",
+        "param_key": "C_tune_pf",
+        "role": "capacitance",
+        "in_TOPOLOGY_PARAMS": true
+      },
+      {
+        "topology": "Switched_Filter",
+        "action_index": 0,
+        "device": "Lp_hpf_in",
+        "param_key": "L_hpf_nh",
+        "role": "inductance",
+        "in_TOPOLOGY_PARAMS": true
+      },
+      {
+        "topology": "Switched_Filter",
+        "action_index": 1,
+        "device": "C_hpf_ser",
+        "param_key": "C_hpf_pf",
+        "role": "capacitance",
+        "in_TOPOLOGY_PARAMS": true
+      },
+      {
+        "topology": "Switched_Filter",
+        "action_index": 2,
+        "device": "Cp_lpf_in",
+        "param_key": "C_lpf_pf",
+        "role": "capacitance",
+        "in_TOPOLOGY_PARAMS": true
+      },
+      {
+        "topology": "Switched_Filter",
+        "action_index": 3,
+        "device": "L_lpf_ser",
+        "param_key": "L_lpf_nh",
+        "role": "inductance",
+        "in_TOPOLOGY_PARAMS": true
+      },
+      {
+        "topology": "Vector_Modulator",
+        "action_index": 0,
+        "device": "T_quad",
+        "param_key": "L_quarter_mm",
+        "role": "length",
+        "in_TOPOLOGY_PARAMS": true
+      },
+      {
+        "topology": "Vector_Modulator",
+        "action_index": 1,
+        "device": "T_quad",
+        "param_key": "Z0_line",
+        "role": "impedance",
+        "in_TOPOLOGY_PARAMS": true
+      },
+      {
+        "topology": "Vector_Modulator",
+        "action_index": 2,
+        "device": "E_I",
+        "param_key": "G_I_scale",
+        "role": "gain",
+        "in_TOPOLOGY_PARAMS": true
+      },
+      {
+        "topology": "Vector_Modulator",
+        "action_index": 3,
+        "device": "E_Q",
+        "param_key": "G_Q_scale",
+        "role": "gain",
+        "in_TOPOLOGY_PARAMS": true
+      },
+      {
+        "topology": "All_Pass",
+        "action_index": 0,
+        "device": "L_apA_ser1",
+        "param_key": "L_apA_nh",
+        "role": "centre",
+        "in_TOPOLOGY_PARAMS": true
+      },
+      {
+        "topology": "All_Pass",
+        "action_index": 1,
+        "device": "C_brA_brg",
+        "param_key": "C_brA_pf",
+        "role": "centre",
+        "in_TOPOLOGY_PARAMS": true
+      },
+      {
+        "topology": "All_Pass",
+        "action_index": 2,
+        "device": "C_cA_shnt",
+        "param_key": "C_cA_pf",
+        "role": "ratio",
+        "in_TOPOLOGY_PARAMS": true
+      },
+      {
+        "topology": "All_Pass",
+        "action_index": 3,
+        "device": "L_apB_ser1",
+        "param_key": "L_apB_nh",
+        "role": "ratio",
+        "in_TOPOLOGY_PARAMS": true
+      },
+      {
+        "topology": "All_Pass",
+        "action_index": 4,
+        "device": "C_brB_brg",
+        "param_key": "C_brB_pf",
+        "role": "ratio",
+        "in_TOPOLOGY_PARAMS": true
+      },
+      {
+        "topology": "All_Pass",
+        "action_index": 5,
+        "device": "C_cB_shnt",
+        "param_key": "C_cB_pf",
+        "role": "ratio",
+        "in_TOPOLOGY_PARAMS": true
+      }
+    ]
+  },
+  "test_A": {
+    "n": 31,
+    "n_pass": 31,
+    "all_pass": true,
+    "failures": [],
+    "rows": [
+      {
+        "topology": "Loaded_Line",
+        "param": "Z0_line",
+        "role": "impedance",
+        "in_nominal": true,
+        "graph_changed": true,
+        "z_changed": true,
+        "rel_l2_x": 0.007505619739642099,
+        "rel_l2_z": 0.0006006575062922198,
+        "pass": true
+      },
+      {
+        "topology": "Loaded_Line",
+        "param": "L_quarter_mm",
+        "role": "length",
+        "in_nominal": true,
+        "graph_changed": true,
+        "z_changed": true,
+        "rel_l2_x": 0.007505619739642099,
+        "rel_l2_z": 0.0005052874633127512,
+        "pass": true
+      },
+      {
+        "topology": "Loaded_Line",
+        "param": "C_load_pf",
+        "role": "capacitance",
+        "in_nominal": true,
+        "graph_changed": true,
+        "z_changed": true,
+        "rel_l2_x": 0.01061454609909585,
+        "rel_l2_z": 0.0010380295735016012,
+        "pass": true
+      },
+      {
+        "topology": "Loaded_Line",
+        "param": "switch_state_0_to_1",
+        "role": "state",
+        "in_nominal": true,
+        "graph_changed": true,
+        "z_changed": true,
+        "rel_l2_x": 0.6146133773609886,
+        "rel_l2_z": 0.0,
+        "pass": true
+      },
+      {
+        "topology": "Switched_Line",
+        "param": "Z0_line",
+        "role": "impedance",
+        "in_nominal": true,
+        "graph_changed": true,
+        "z_changed": true,
+        "rel_l2_x": 0.008657787831351975,
+        "rel_l2_z": 0.0008878318864134564,
+        "pass": true
+      },
+      {
+        "topology": "Switched_Line",
+        "param": "L_short_mm",
+        "role": "length",
+        "in_nominal": true,
+        "graph_changed": true,
+        "z_changed": true,
+        "rel_l2_x": 0.006121981072912712,
+        "rel_l2_z": 0.0003156899225624746,
+        "pass": true
+      },
+      {
+        "topology": "Switched_Line",
+        "param": "L_long_mm",
+        "role": "length",
+        "in_nominal": true,
+        "graph_changed": true,
+        "z_changed": true,
+        "rel_l2_x": 0.00612197919424983,
+        "rel_l2_z": 0.00031997700403295256,
+        "pass": true
+      },
+      {
+        "topology": "Switched_Line",
+        "param": "switch_state_0_to_1",
+        "role": "state",
+        "in_nominal": true,
+        "graph_changed": true,
+        "z_changed": true,
+        "rel_l2_x": 0.7387101077809491,
+        "rel_l2_z": 0.0,
+        "pass": true
+      },
+      {
+        "topology": "Reflection_Type",
+        "param": "Z0_main",
+        "role": "impedance",
+        "in_nominal": true,
+        "graph_changed": true,
+        "z_changed": true,
+        "rel_l2_x": 0.008160273155946246,
+        "rel_l2_z": 0.0004489052892284825,
+        "pass": true
+      },
+      {
+        "topology": "Reflection_Type",
+        "param": "Z0_branch",
+        "role": "impedance",
+        "in_nominal": true,
+        "graph_changed": true,
+        "z_changed": true,
+        "rel_l2_x": 0.008160274572511547,
+        "rel_l2_z": 0.000455572046254448,
+        "pass": true
+      },
+      {
+        "topology": "Reflection_Type",
+        "param": "L_quarter_mm",
+        "role": "length",
+        "in_nominal": true,
+        "graph_changed": true,
+        "z_changed": true,
+        "rel_l2_x": 0.01154036936860787,
+        "rel_l2_z": 0.0007747127761493561,
+        "pass": true
+      },
+      {
+        "topology": "Reflection_Type",
+        "param": "C_base_pf",
+        "role": "capacitance",
+        "in_nominal": true,
+        "graph_changed": true,
+        "z_changed": true,
+        "rel_l2_x": 0.008160273155946246,
+        "rel_l2_z": 0.00041041713013223187,
+        "pass": true
+      },
+      {
+        "topology": "Reflection_Type",
+        "param": "C_tune_pf",
+        "role": "capacitance",
+        "in_nominal": true,
+        "graph_changed": true,
+        "z_changed": true,
+        "rel_l2_x": 0.008160273155946246,
+        "rel_l2_z": 0.0006260844130584429,
+        "pass": true
+      },
+      {
+        "topology": "Reflection_Type",
+        "param": "switch_state_0_to_1",
+        "role": "state",
+        "in_nominal": true,
+        "graph_changed": true,
+        "z_changed": true,
+        "rel_l2_x": 0.48031879942429867,
+        "rel_l2_z": 0.0,
+        "pass": true
+      },
+      {
+        "topology": "Switched_Filter",
+        "param": "C_hpf_pf",
+        "role": "capacitance",
+        "in_nominal": true,
+        "graph_changed": true,
+        "z_changed": true,
+        "rel_l2_x": 0.005526216443972297,
+        "rel_l2_z": 0.00020209485893368236,
+        "pass": true
+      },
+      {
+        "topology": "Switched_Filter",
+        "param": "L_hpf_nh",
+        "role": "inductance",
+        "in_nominal": true,
+        "graph_changed": true,
+        "z_changed": true,
+        "rel_l2_x": 0.00781525065193975,
+        "rel_l2_z": 0.0003995239124193054,
+        "pass": true
+      },
+      {
+        "topology": "Switched_Filter",
+        "param": "L_lpf_nh",
+        "role": "inductance",
+        "in_nominal": true,
+        "graph_changed": true,
+        "z_changed": true,
+        "rel_l2_x": 0.00552621678314023,
+        "rel_l2_z": 0.0002151606389415757,
+        "pass": true
+      },
+      {
+        "topology": "Switched_Filter",
+        "param": "C_lpf_pf",
+        "role": "capacitance",
+        "in_nominal": true,
+        "graph_changed": true,
+        "z_changed": true,
+        "rel_l2_x": 0.007815249973603883,
+        "rel_l2_z": 0.0004183999066076519,
+        "pass": true
+      },
+      {
+        "topology": "Switched_Filter",
+        "param": "switch_state_0_to_1",
+        "role": "state",
+        "in_nominal": true,
+        "graph_changed": true,
+        "z_changed": true,
+        "rel_l2_x": 0.6668220869804403,
+        "rel_l2_z": 0.0,
+        "pass": true
+      },
+      {
+        "topology": "Vector_Modulator",
+        "param": "Z0_line",
+        "role": "impedance",
+        "in_nominal": true,
+        "graph_changed": true,
+        "z_changed": true,
+        "rel_l2_x": 0.006464206916524228,
+        "rel_l2_z": 0.00036631710085488207,
+        "pass": true
+      },
+      {
+        "topology": "Vector_Modulator",
+        "param": "L_quarter_mm",
+        "role": "length",
+        "in_nominal": true,
+        "graph_changed": true,
+        "z_changed": true,
+        "rel_l2_x": 0.006464206916524228,
+        "rel_l2_z": 0.00030475047679826434,
+        "pass": true
+      },
+      {
+        "topology": "Vector_Modulator",
+        "param": "G_I_scale",
+        "role": "gain",
+        "in_nominal": true,
+        "graph_changed": true,
+        "z_changed": true,
+        "rel_l2_x": 0.02715702517865929,
+        "rel_l2_z": 0.0032352990408904686,
+        "pass": true
+      },
+      {
+        "topology": "Vector_Modulator",
+        "param": "G_Q_scale",
+        "role": "gain",
+        "in_nominal": true,
+        "graph_changed": true,
+        "z_changed": true,
+        "rel_l2_x": 0.010392547204150527,
+        "rel_l2_z": 0.0005508480398610874,
+        "pass": true
+      },
+      {
+        "topology": "Vector_Modulator",
+        "param": "switch_state_0_to_1",
+        "role": "state",
+        "in_nominal": true,
+        "graph_changed": true,
+        "z_changed": true,
+        "rel_l2_x": 0.07064096924665578,
+        "rel_l2_z": 0.0,
+        "pass": true
+      },
+      {
+        "topology": "All_Pass",
+        "param": "L_apA_nh",
+        "role": "centre",
+        "in_nominal": true,
+        "graph_changed": true,
+        "z_changed": true,
+        "rel_l2_x": 0.007167292607955238,
+        "rel_l2_z": 0.000439068079435739,
+        "pass": true
+      },
+      {
+        "topology": "All_Pass",
+        "param": "C_brA_pf",
+        "role": "centre",
+        "in_nominal": true,
+        "graph_changed": true,
+        "z_changed": true,
+        "rel_l2_x": 0.0050680461442670615,
+        "rel_l2_z": 0.0002190331386071552,
+        "pass": true
+      },
+      {
+        "topology": "All_Pass",
+        "param": "C_cA_pf",
+        "role": "ratio",
+        "in_nominal": true,
+        "graph_changed": true,
+        "z_changed": true,
+        "rel_l2_x": 0.005068043655883434,
+        "rel_l2_z": 0.00012651122066656618,
+        "pass": true
+      },
+      {
+        "topology": "All_Pass",
+        "param": "L_apB_nh",
+        "role": "ratio",
+        "in_nominal": true,
+        "graph_changed": true,
+        "z_changed": true,
+        "rel_l2_x": 0.007167299451010215,
+        "rel_l2_z": 0.00040200188199412273,
+        "pass": true
+      },
+      {
+        "topology": "All_Pass",
+        "param": "C_brB_pf",
+        "role": "ratio",
+        "in_nominal": true,
+        "graph_changed": true,
+        "z_changed": true,
+        "rel_l2_x": 0.005068044900075248,
+        "rel_l2_z": 0.0002051106492569056,
+        "pass": true
+      },
+      {
+        "topology": "All_Pass",
+        "param": "C_cB_pf",
+        "role": "ratio",
+        "in_nominal": true,
+        "graph_changed": true,
+        "z_changed": true,
+        "rel_l2_x": 0.0050680461442670615,
+        "rel_l2_z": 0.0001512112608852023,
+        "pass": true
+      },
+      {
+        "topology": "All_Pass",
+        "param": "switch_state_0_to_1",
+        "role": "state",
+        "in_nominal": true,
+        "graph_changed": true,
+        "z_changed": true,
+        "rel_l2_x": 0.6115367198230022,
+        "rel_l2_z": 0.0,
+        "pass": true
+      }
+    ]
+  }
+}

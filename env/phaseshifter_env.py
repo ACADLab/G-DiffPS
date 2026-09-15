@@ -170,7 +170,8 @@ class PhaseShifterEnv(gym.Env):
                  memory: MemoryConfig | None = None,
                  eval_specset_path=None,
                  pool: str = "train",
-                 spec_ids=None):
+                 spec_ids=None,
+                 expert_bonus_scale: float = 0.0):
         """
         Args:
             specset_path: path to the train specset JSON. None uses default.
@@ -196,11 +197,15 @@ class PhaseShifterEnv(gym.Env):
             pool: which pool reset() samples from ("train" or "eval").
             spec_ids: optional allowlist of entry ids; filters the active
                 pool after load.
+            expert_bonus_scale: scale for heuristic topology-ranking bonus.
+                Default 0.0 — physical reward only. Set 1.0 for the labeled
+                ablation that restores the old expert bonus.
         """
         super().__init__()
         if pool not in ("train", "eval"):
             raise ValueError(f"pool must be 'train' or 'eval', got {pool!r}")
         self.pool = pool
+        self.expert_bonus_scale = float(expert_bonus_scale)
         self.exploration = exploration if exploration is not None else ExplorationConfig()
         # Visit-count bookkeeping for the "on_revisit" trigger mode.
         # Keyed by (topology_name, sorted-tuple of bucketed spec). Survives
@@ -547,13 +552,20 @@ class PhaseShifterEnv(gym.Env):
         return self._normalize(self.current_spec), reward, done, truncated, info
 
     def compute_expert_bonus(self, topology_name, spec):
-        """Reward shaping: bonus if chosen topology ranks high under heuristic scorer."""
+        """Heuristic topology-ranking bonus (ablation only; default disabled).
+
+        Physical training reward must not include this term. Callers pass
+        ``expert_bonus_scale`` (0.0 default) to gate it.
+        """
+        scale = float(getattr(self, "expert_bonus_scale", 0.0))
+        if scale == 0.0:
+            return 0.0
         scores = {t: score_topology(t, spec) for t in TOPOLOGY_LABELS}
         sorted_topos = sorted(scores.items(), key=lambda x: -x[1])
         rank = [t for t, s in sorted_topos].index(topology_name)
-        # Best topology: +0.3, worst: -0.1
+        # Best topology: +0.3, worst: -0.1  (then scaled)
         bonus = 0.3 - (rank / (len(TOPOLOGY_LABELS) - 1)) * 0.4
-        return bonus
+        return float(scale) * bonus
 
     def compute_reward(self, metrics, targets, warmup_deg: float = 0.0):
         """Delegate to env.reward.compute_sim_reward (single implementation)."""

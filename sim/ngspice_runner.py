@@ -16,6 +16,7 @@ Multi-state support (added Step 3 of multi-state arc):
     single sim, returns a single dict (or None on failure). This keeps
     existing callers (PhaseShifterEnv.step, smoke tests) working unchanged.
 """
+from __future__ import annotations
 
 import subprocess
 import re

@@ -19,10 +19,32 @@ import numpy as np
 import torch
 from torch_geometric.data import HeteroData
 
+from env.rf_motifs import MOTIF_TYPE_IDX, N_MOTIF_TYPES, motif_instances
+
 # Device type vocabulary (order is the one-hot index).
 DEVICE_TYPES = ["TLine", "R_switch", "R_fixed", "C", "L", "VCVS", "Port"]
 DEVICE_TYPE_IDX = {t: i for i, t in enumerate(DEVICE_TYPES)}
 N_DEVICE_TYPES = len(DEVICE_TYPES)
+
+# Incidence-edge terminal roles. Untyped graphs store only pin ordinal + KVL
+# sign; typed graphs use these as R-GCN relation ids. Symmetric passives share
+# one "passive" relation so a pin swap is a sign flip, not a new relation.
+TERMINAL_ROLES = (
+    "passive",
+    "tline_a", "tline_b",
+    "out_p", "out_n", "ctrl_p", "ctrl_n",
+    "drain", "gate", "source", "body",
+)
+TERMINAL_ROLE_IDX = {r: i for i, r in enumerate(TERMINAL_ROLES)}
+N_TERMINAL_ROLES = len(TERMINAL_ROLES)
+
+# Net-side role vocabulary. Untyped graphs only flag ground / RF ports /
+# internal; typed graphs add supply / bias / rf-path.
+NET_ROLES = (
+    "ground", "port_in", "port_out", "signal", "supply", "bias", "rf_path",
+)
+NET_ROLE_IDX = {r: i for i, r in enumerate(NET_ROLES)}
+N_NET_ROLES = len(NET_ROLES)
 
 # Velocity of propagation matching the SPICE templates (eps_eff=2.5).
 VP = 3e8 / math.sqrt(2.5)  # 1.897e8 m/s
@@ -31,7 +53,13 @@ Z0_REF = 50.0
 
 @dataclass
 class Dev:
-    """One device in a topology netlist."""
+    """One device in a topology netlist.
+
+    Ideal-switch templates use ``dtype`` in
+    {TLine, R_switch, R_fixed, C, L, VCVS, Port}. SKY130-realizable graphs
+    additionally set ``pdk_model`` / ``geometry`` / ``control`` so a MOS node
+    decodes to a valid PDK device rather than an abstract R_on/R_off resistor.
+    """
 
     dtype: str
     nets: tuple  # ordered pin -> net name; "0" / "GND" are ground
@@ -44,6 +72,16 @@ class Dev:
     aux_sizes: tuple = field(default_factory=tuple)
     # For VCVS: pin roles — (out+, out-, ctrl+, ctrl-).
     is_control_pins: tuple = field(default_factory=tuple)
+    # --- PDK / realizability payload (Milestone C) ---
+    pdk_model: Optional[str] = None  # e.g. sky130_fd_pr__nfet_01v8
+    # Geometry keys map continuous/decoded values: L_um, W_um, nf, mult, mf, …
+    geometry: dict = field(default_factory=dict)
+    # Control nets / bias for MOS: gate, body, vgate_on, vgate_off, …
+    control: dict = field(default_factory=dict)
+    is_switch: bool = False
+    # Parameter role for action tokens (length, impedance, centre, ratio, …).
+    param_role: Optional[str] = None
+    pdk: Optional[str] = None  # e.g. "sky130"
 
 
 # ---------------------------------------------------------------------------
@@ -184,6 +222,89 @@ def _normalize_name(topology_name: str) -> str:
 
 def _is_gnd(net: str) -> bool:
     return net in ("0", "GND", "gnd", "ground")
+
+
+def _norm_net(net: str) -> str:
+    return "0" if _is_gnd(net) else net
+
+
+def _is_mos(dev: Dev) -> bool:
+    model = (dev.pdk_model or "").lower()
+    return "nfet" in model or "pfet" in model
+
+
+def _is_supply_net(net: str) -> bool:
+    key = net.lower().replace("_", "")
+    return key in ("vdd", "vss", "vcc", "avdd", "dvdd", "avss", "dvss")
+
+
+def device_terminals(dev: Dev, typed: bool = True) -> list[tuple[str, str]]:
+    """Ordered (net, role) incidence pins.
+
+    ``typed=False`` walks ``dev.nets`` only (historical two-terminal switches,
+    MOS gate/body omitted). ``typed=True`` expands MOS to D/G/S/B and assigns
+    VCVS / TLine roles.
+    """
+    pins = [_norm_net(n) for n in dev.nets]
+    if not typed:
+        return [(p, "passive") for p in pins]
+    if _is_mos(dev):
+        drain = pins[0]
+        source = pins[1] if len(pins) > 1 else pins[0]
+        gate = _norm_net(str(dev.control.get("gate", f"{id(dev)}_g")))
+        body = _norm_net(str(dev.control.get("body", "0")))
+        return [(drain, "drain"), (gate, "gate"), (source, "source"), (body, "body")]
+    if dev.dtype == "VCVS":
+        roles = ("out_p", "out_n", "ctrl_p", "ctrl_n")
+        return [(pins[i], roles[i]) for i in range(len(pins))]
+    if dev.dtype == "TLine":
+        a = pins[0] if pins else "0"
+        b = pins[1] if len(pins) > 1 else a
+        return [(a, "tline_a"), (b, "tline_b")]
+    if len(pins) == 1:
+        return [(pins[0], "passive")]
+    return [(pins[0], "passive"), (pins[1], "passive")]
+
+
+def _terminal_sign(role: str, pin_i: int, typed: bool) -> float:
+    if not typed:
+        if pin_i == 0:
+            return 1.0
+        if pin_i == 1:
+            return -1.0
+        return 0.0
+    if role in ("passive",) and pin_i == 0:
+        return 1.0
+    if role in ("passive",) and pin_i == 1:
+        return -1.0
+    if role in ("tline_a", "out_p", "drain"):
+        return 1.0
+    if role in ("tline_b", "out_n", "source"):
+        return -1.0
+    return 0.0
+
+
+def infer_net_role(
+    net: str,
+    port_in: str,
+    port_out: str,
+    bias_nets: set[str],
+    rf_nets: set[str],
+    supply_nets: set[str],
+) -> str:
+    if net == "0":
+        return "ground"
+    if net == port_in:
+        return "port_in"
+    if net == port_out:
+        return "port_out"
+    if net in supply_nets:
+        return "supply"
+    if net in bias_nets:
+        return "bias"
+    if net in rf_nets:
+        return "rf_path"
+    return "signal"
 
 
 def device_names(topology_name: str) -> list[str]:
@@ -328,6 +449,22 @@ def _as_float(params: dict, key: str | None, default: float | None) -> float | N
         return default
 
 
+def params_numeric(params: dict) -> dict[str, float]:
+    """Convert a params dict (SPICE strings or numbers) to plain floats.
+
+    ``action_to_params`` writes clamped strings. Supervised probes that keep
+    only ``isinstance(v, (int, float))`` silently drop every sized key, and
+    the encoder then sees an empty dict (resonant type+fc defaults), not the
+    design that was simulated.
+    """
+    out: dict[str, float] = {}
+    for k in params:
+        v = _as_float(params, k, None)
+        if v is not None:
+            out[k] = v
+    return out
+
+
 def _vcvs_gain(
     topology: str, dname: str, dev: Dev, params: dict, state: int
 ) -> float:
@@ -381,12 +518,16 @@ def build_circuit_graph(
     bounds: str = "electrical",
     include_ports: bool = True,
     switch_model: str = "ideal",
+    typed: bool = False,
+    devices_override: dict | None = None,
+    param_nodes: bool = False,
 ) -> HeteroData:
     """Build a HeteroData bipartite device/net incidence graph.
 
     Node features
     -------------
     net.x   : [is_ground, is_port_in, is_port_out, is_internal, log_degree]
+              and, if ``typed``, a 7-dim net-role one-hot.
     device.x: [type one-hot (7), is_sized, is_shunt, n_terminals,
                switch_is_on, log10(fc_ghz), elec_size, z0_norm,
                d_in_min, d_in_max, d_out_min, d_out_max, d_gnd_min, d_gnd_max]
@@ -395,6 +536,7 @@ def build_circuit_graph(
     ------------------------------
     edge_attr: [pin_index / 3, is_control_pin, sign,
                 d_in_pin, d_out_pin, d_gnd_pin]
+    edge_type (typed only): integer terminal-role id for R-GCN weights.
 
     `params` supplies physical device values; when omitted the midpoint of the
     actor's sampling bounds is used (`nominal_params`). Distances are per-pin,
@@ -402,7 +544,7 @@ def build_circuit_graph(
     order the pin tuple was written in.
     """
     name = _normalize_name(topology_name)
-    real_devices = TOPOLOGY_NETLIST[name]
+    real_devices = devices_override if devices_override is not None else TOPOLOGY_NETLIST[name]
     port_in, port_out = PORT_NETS[name]
     fc_ghz = float((spec_dict or {}).get("fc_ghz", 28.0))
     log_fc = math.log10(max(fc_ghz, 1e-3))
@@ -422,8 +564,8 @@ def build_circuit_graph(
     net_names: list[str] = ["0"]
     net_index = {"0": 0}
     for dev in devices.values():
-        for n in dev.nets:
-            key = "0" if _is_gnd(n) else n
+        for n, _role in device_terminals(dev, typed=typed):
+            key = _norm_net(n)
             if key not in net_index:
                 net_index[key] = len(net_names)
                 net_names.append(key)
@@ -434,7 +576,7 @@ def build_circuit_graph(
     G = nx.Graph()
     G.add_nodes_from(net_names)
     for dname, dev in real_devices.items():
-        pins = ["0" if _is_gnd(n) else n for n in dev.nets]
+        pins = [_norm_net(n) for n, _ in device_terminals(dev, typed=typed)]
         for i in range(len(pins)):
             for j in range(i + 1, len(pins)):
                 if pins[i] != pins[j]:
@@ -451,22 +593,46 @@ def build_circuit_graph(
     # Net features (degree from the full graph, so ports register as connected)
     G_full = G.copy()
     for dev in devices.values():
-        pins = ["0" if _is_gnd(n) else n for n in dev.nets]
+        pins = [_norm_net(n) for n, _ in device_terminals(dev, typed=typed)]
         for i in range(len(pins)):
             for j in range(i + 1, len(pins)):
                 if pins[i] != pins[j]:
                     G_full.add_edge(pins[i], pins[j])
 
+    bias_nets: set[str] = set()
+    supply_nets: set[str] = set()
+    for dev in devices.values():
+        for n, role in device_terminals(dev, typed=typed):
+            if role == "gate":
+                bias_nets.add(_norm_net(n))
+            if _is_supply_net(n):
+                supply_nets.add(_norm_net(n))
+    rf_nets: set[str] = set()
+    if port_in in G and port_out in G:
+        try:
+            for path in nx.all_shortest_paths(G, port_in, port_out):
+                rf_nets.update(path)
+        except (nx.NetworkXNoPath, nx.NodeNotFound):
+            rf_nets.update((port_in, port_out))
+
     net_feats = []
+    net_roles = []
     for n in net_names:
         is_gnd = 1.0 if n == "0" else 0.0
         is_in = 1.0 if n == port_in else 0.0
         is_out = 1.0 if n == port_out else 0.0
         is_internal = 1.0 - max(is_gnd, is_in, is_out)
         deg = float(G_full.degree(n)) if n in G_full else 0.0
-        net_feats.append([
+        row = [
             is_gnd, is_in, is_out, is_internal, math.log1p(deg),
-        ])
+        ]
+        if typed:
+            role = infer_net_role(n, port_in, port_out, bias_nets, rf_nets, supply_nets)
+            oh = [0.0] * N_NET_ROLES
+            oh[NET_ROLE_IDX[role]] = 1.0
+            row.extend(oh)
+            net_roles.append(role)
+        net_feats.append(row)
     net_x = torch.tensor(net_feats, dtype=torch.float)
 
     # Device features + incidence edges
@@ -474,12 +640,14 @@ def build_circuit_graph(
     dev_feats = []
     edge_src, edge_dst, edge_attr = [], [], []  # device -> net
     edge_src_r, edge_dst_r, edge_attr_r = [], [], []  # net -> device
+    edge_type, edge_type_r = [], []
 
     for di, dname in enumerate(dev_names):
         dev = devices[dname]
         type_oh = [0.0] * N_DEVICE_TYPES
         type_oh[DEVICE_TYPE_IDX[dev.dtype]] = 1.0
-        pins = ["0" if _is_gnd(n) else n for n in dev.nets]
+        terminals = device_terminals(dev, typed=typed)
+        pins = [n for n, _ in terminals]
         is_shunt = 1.0 if "0" in pins else 0.0
         is_sized = 1.0 if (dev.sizes or dev.aux_sizes) else 0.0
 
@@ -514,26 +682,24 @@ def build_circuit_graph(
         feat = type_oh + [
             is_sized, is_shunt, float(len(pins)), switch_on,
             log_fc, elec, z0_norm,
-            min(d_in_pins), max(d_in_pins),
-            min(d_out_pins), max(d_out_pins),
-            min(d_gnd_pins), max(d_gnd_pins),
+            min(d_in_pins) if d_in_pins else 0.0,
+            max(d_in_pins) if d_in_pins else 0.0,
+            min(d_out_pins) if d_out_pins else 0.0,
+            max(d_out_pins) if d_out_pins else 0.0,
+            min(d_gnd_pins) if d_gnd_pins else 0.0,
+            max(d_gnd_pins) if d_gnd_pins else 0.0,
         ]
         dev_feats.append(feat)
 
         ctrl = list(dev.is_control_pins) if dev.is_control_pins else [False] * len(pins)
         while len(ctrl) < len(pins):
             ctrl.append(False)
-        for pin_i, net in enumerate(pins):
+        for pin_i, (net, role) in enumerate(terminals):
             ni = net_index[net]
-            # sign: +1 for pin 0, -1 for pin 1, 0 for extras (KVL convention)
-            if pin_i == 0:
-                sign = 1.0
-            elif pin_i == 1:
-                sign = -1.0
-            else:
-                sign = 0.0
+            sign = _terminal_sign(role, pin_i, typed)
+            is_ctrl = 1.0 if (ctrl[pin_i] or role.startswith("ctrl")) else 0.0
             attr = [
-                pin_i / 3.0, 1.0 if ctrl[pin_i] else 0.0, sign,
+                pin_i / 3.0, is_ctrl, sign,
                 d_in_pins[pin_i], d_out_pins[pin_i], d_gnd_pins[pin_i],
             ]
             edge_src.append(di)
@@ -542,6 +708,9 @@ def build_circuit_graph(
             edge_src_r.append(ni)
             edge_dst_r.append(di)
             edge_attr_r.append(attr)
+            if typed:
+                edge_type.append(TERMINAL_ROLE_IDX[role])
+                edge_type_r.append(TERMINAL_ROLE_IDX[role])
 
     data = HeteroData()
     data["net"].x = net_x
@@ -560,10 +729,102 @@ def build_circuit_graph(
     data["net", "rev_connects", "device"].edge_attr = torch.tensor(
         edge_attr_r, dtype=torch.float
     )
+    if typed:
+        data["net"].role = net_roles
+        data["device", "connects", "net"].edge_type = torch.tensor(
+            edge_type, dtype=torch.long
+        )
+        data["net", "rev_connects", "device"].edge_type = torch.tensor(
+            edge_type_r, dtype=torch.long
+        )
     data.topology = name
     data.state = int(state)
     data.fc_ghz = fc_ghz
+    data.typed = bool(typed)
+    if typed:
+        _attach_motifs(data, name, dev_names)
+        if param_nodes:
+            _attach_param_nodes(
+                data, name, spec_dict, params, bounds, switch_model, dev_names,
+            )
     return data
+
+
+def _attach_param_nodes(
+    data: HeteroData,
+    topology: str,
+    spec_dict: dict | None,
+    params: dict | None,
+    bounds: str,
+    switch_model: str,
+    dev_names: list[str],
+) -> None:
+    """R3: one parameter node per sized (device, role) with owner edges."""
+    from env.param_semantics import param_node_features
+
+    x, keys, owners = param_node_features(
+        topology, spec_dict, params=params,
+        bounds=bounds, switch_model=switch_model,
+    )
+    name_to_idx = {n: i for i, n in enumerate(dev_names)}
+    src, dst = [], []
+    owner_idx = []
+    for pi, dname in enumerate(owners):
+        di = name_to_idx[dname]
+        src.append(pi)
+        dst.append(di)
+        owner_idx.append(di)
+    data["param"].x = torch.tensor(x, dtype=torch.float)
+    data["param"].names = keys
+    data["param"].owners = owners
+    data["param"].owner_index = torch.tensor(owner_idx, dtype=torch.long)
+    data["param", "of", "device"].edge_index = torch.tensor(
+        [src, dst], dtype=torch.long,
+    )
+    data["device", "has", "param"].edge_index = torch.tensor(
+        [dst, src], dtype=torch.long,
+    )
+
+
+def _attach_motifs(data: HeteroData, topology: str, dev_names: list[str]) -> None:
+    """Add Level-3 motif nodes and device-membership edges."""
+    instances = motif_instances(topology, dev_names)
+    if not instances:
+        return
+    name_to_idx = {n: i for i, n in enumerate(dev_names)}
+    x, src, dst, names = [], [], [], []
+    for mi, inst in enumerate(instances):
+        oh = [0.0] * N_MOTIF_TYPES
+        oh[MOTIF_TYPE_IDX[inst["mtype"]]] = 1.0
+        x.append(oh)
+        names.append(inst["name"])
+        for dname in inst["members"]:
+            src.append(mi)
+            dst.append(name_to_idx[dname])
+    data["motif"].x = torch.tensor(x, dtype=torch.float)
+    data["motif"].names = names
+    data["motif", "contains", "device"].edge_index = torch.tensor(
+        [src, dst], dtype=torch.long
+    )
+
+
+def incidence_from_graph(data: HeteroData) -> dict[str, tuple]:
+    """Recover {device_name: (net, ...)} in pin-index order from a HeteroData."""
+    dev_names = list(data["device"].names)
+    net_names = list(data["net"].names)
+    ei = data["device", "connects", "net"].edge_index
+    ea = data["device", "connects", "net"].edge_attr
+    pins: dict[int, list[tuple[int, str]]] = {i: [] for i in range(len(dev_names))}
+    for e in range(ei.size(1)):
+        di = int(ei[0, e])
+        ni = int(ei[1, e])
+        pin_i = int(round(float(ea[e, 0]) * 3.0))
+        pins[di].append((pin_i, net_names[ni]))
+    out = {}
+    for di, dname in enumerate(dev_names):
+        ordered = [n for _, n in sorted(pins[di], key=lambda t: t[0])]
+        out[dname] = tuple(ordered)
+    return out
 
 
 def connected_component_count(topology_name: str) -> int:

@@ -274,17 +274,18 @@ def check_physics_priors(
             Z0_sq = 50.0 ** 2   # 50-Ω reference system
             omega = 2 * np.pi * freq_hz
 
-            # Bridged-T balance: C_br ≈ L_ap/Z0² (factor-10 tolerance)
-            # C_c/C_br ratio is now guaranteed ≥ 1.2 by action_to_params
-            # reparameterization (C_c = k×C_br, k ∈ [1.2, 4.0]), so no
-            # ratio check needed here. Resonance check retained.
-            # Resonance: LC resonant frequency must be within [0.2, 5]×ωfc
+            # Resonance window: electrical decoder places sections below
+            # resonance (offset 0.25, ratio≈5 → ω_res/ω_fc ≈ 8.94 at nominal).
+            # Old [0.2, 5]× rejected that good design. Upper bound covers the
+            # designed (centre, ratio) envelope including the log centre window.
+            res_lo, res_hi = 0.05, 100.0
+
             for l_ap, c_br, c_c in [(l_apA, c_brA, c_cA), (l_apB, c_brB, c_cB)]:
                 ideal_cbr = l_ap / Z0_sq
                 if not (0.1 * ideal_cbr <= c_br <= 10.0 * ideal_cbr):
                     return False
                 omega_res = 1.0 / np.sqrt(l_ap * c_br)
-                if not (0.2 * omega <= omega_res <= 5.0 * omega):
+                if not (res_lo * omega <= omega_res <= res_hi * omega):
                     return False
 
             return True
@@ -319,3 +320,210 @@ def check_physics_priors(
         # Fail closed: a parse / numeric failure must not silently disable the shield.
         print(f"[Physics Priors Filter Warning] rejecting on exception: {e}")
         return False
+
+
+def _spice_float(params_dict, k, default):
+    v = params_dict.get(k)
+    if v is None:
+        return default
+    v = str(v).strip().lower()
+    if v.endswith("meg"):
+        return float(v[:-3]) * 1e6
+    if v.endswith("u"):
+        return float(v[:-1]) * 1e-6
+    if v.endswith("n"):
+        return float(v[:-1]) * 1e-9
+    if v.endswith("p"):
+        return float(v[:-1]) * 1e-12
+    if v.endswith("k"):
+        return float(v[:-1]) * 1e3
+    if v.endswith("m"):
+        return float(v[:-1]) * 1e-3
+    return float(v)
+
+
+def explain_physics_priors(
+    topology_name: str,
+    params_dict: dict,
+    fc_ghz: float,
+    pmax_mw: float | None = None,
+) -> dict:
+    """Named A/B/C/D prior bits. Never fold these into one 'eligible' flag.
+
+    A_structural   topology is known and params parse
+    B_physics      coarse circuit windows (resonance, Z0 ratio, TL length)
+    C_operating    operating feasibility (VM drive, active gain)
+    D_sim_sanity   analytic S11/S21 sanity (Loaded_Line / Switched_Line only)
+    """
+    name = topology_name.lower().replace("_", "")
+    out = {
+        "topology": topology_name,
+        "A_structural": True,
+        "B_physics": None,
+        "C_operating": None,
+        "D_sim_sanity": None,
+        "failed": [],
+        "notes": {},
+        "pass": False,
+    }
+
+    def fail(flag, reason):
+        out[flag] = False
+        out["failed"].append(reason)
+
+    def ok(flag):
+        if out[flag] is not False:
+            out[flag] = True
+
+    try:
+        freq_hz = fc_ghz * 1e9
+        omega = 2 * np.pi * freq_hz
+        get_val = lambda k, d: _spice_float(params_dict, k, d)
+
+        if name == "vectormodulator" and pmax_mw is not None:
+            from sim.mna_scorer import vm_drive_pwr_mw
+            from env.netlist_graph import VM_IQ
+            worst = max(vm_drive_pwr_mw(params_dict, state=s) for s in range(len(VM_IQ)))
+            out["notes"]["vm_drive_pwr_mw"] = float(worst)
+            if worst > float(pmax_mw):
+                fail("C_operating", f"VM drive {worst:.3g} mW > pmax {pmax_mw}")
+            else:
+                ok("C_operating")
+
+        if name == "loadedline":
+            z0 = get_val("Z0_line", 50.0)
+            l_quarter = get_val("L_quarter_mm", 1.69)
+            c_load = get_val("C_load_pf", 0.04)
+            r_on = get_val("R_on", 3.0)
+            r_off = get_val("R_off", 10000.0)
+            ok("B_physics")
+            s11_0, s21_0 = compute_loaded_line_s_params(
+                z0, l_quarter, c_load, r_on, r_off, freq_hz, state=0)
+            s11_1, s21_1 = compute_loaded_line_s_params(
+                z0, l_quarter, c_load, r_on, r_off, freq_hz, state=1)
+            _apply_sparam_sanity(out, fail, ok, s11_0, s21_0, s11_1, s21_1)
+
+        elif name == "switchedline":
+            z0 = get_val("Z0_line", 50.0)
+            l_short = get_val("L_short_mm", 2.68)
+            l_long = get_val("L_long_mm", 5.36)
+            r_on = get_val("R_on", 3.0)
+            r_off = get_val("R_off", 10000.0)
+            ok("B_physics")
+            s11_0, s21_0 = compute_switched_line_s_params(
+                z0, l_short, l_long, r_on, r_off, freq_hz, state=0)
+            s11_1, s21_1 = compute_switched_line_s_params(
+                z0, l_short, l_long, r_on, r_off, freq_hz, state=1)
+            _apply_sparam_sanity(out, fail, ok, s11_0, s21_0, s11_1, s21_1)
+
+        elif name == "reflectiontype":
+            z0_main = get_val("Z0_main", 50.0)
+            z0_branch = get_val("Z0_branch", 35.35)
+            c_base = get_val("C_base_pf", 0.10) * 1e-12
+            c_tune = get_val("C_tune_pf", 0.20) * 1e-12
+            ratio = z0_branch / z0_main
+            out["notes"]["z0_branch_over_main"] = float(ratio)
+            phi_base = -2.0 * np.arctan(omega * c_base * z0_main)
+            phi_both = -2.0 * np.arctan(omega * (c_base + c_tune) * z0_main)
+            delta_phi_deg = abs(np.degrees(phi_both - phi_base))
+            out["notes"]["delta_phi_deg"] = float(delta_phi_deg)
+            if not (0.60 <= ratio <= 0.85):
+                fail("B_physics", f"Z0_branch/Z0_main={ratio:.3f} not in [0.60, 0.85]")
+            elif not (5.0 < delta_phi_deg < 90.0):
+                fail("B_physics", f"switched-cap Δφ={delta_phi_deg:.2f}° not in (5, 90)")
+            else:
+                ok("B_physics")
+
+        elif name == "switchedfilter":
+            c_hpf = get_val("C_hpf_pf", 0.114) * 1e-12
+            l_hpf = get_val("L_hpf_nh", 0.284) * 1e-9
+            c_lpf = get_val("C_lpf_pf", 0.114) * 1e-12
+            l_lpf = get_val("L_lpf_nh", 0.284) * 1e-9
+            z0_hpf = np.sqrt(l_hpf / c_hpf)
+            z0_lpf = np.sqrt(l_lpf / c_lpf)
+            res_h = 1.0 / np.sqrt(l_hpf * c_hpf) / omega
+            res_l = 1.0 / np.sqrt(l_lpf * c_lpf) / omega
+            out["notes"]["z0_hpf"] = float(z0_hpf)
+            out["notes"]["z0_lpf"] = float(z0_lpf)
+            out["notes"]["res_hpf_over_wfc"] = float(res_h)
+            out["notes"]["res_lpf_over_wfc"] = float(res_l)
+            if not (10.0 <= z0_hpf <= 200.0 and 10.0 <= z0_lpf <= 200.0):
+                fail("B_physics", f"section Z0 HPF={z0_hpf:.1f} LPF={z0_lpf:.1f}")
+            elif not (0.1 <= res_h <= 10.0 and 0.1 <= res_l <= 10.0):
+                fail("B_physics", f"resonance/ωfc HPF={res_h:.3g} LPF={res_l:.3g}")
+            else:
+                ok("B_physics")
+
+        elif name == "vectormodulator":
+            l_quarter = get_val("L_quarter_mm", 1.69)
+            g_i = get_val("G_I_scale", 1.0)
+            g_q = get_val("G_Q_scale", 1.0)
+            lam4 = 47.43 / fc_ghz
+            out["notes"]["l_over_lam4"] = float(l_quarter / lam4)
+            out["notes"]["g_i"] = float(g_i)
+            out["notes"]["g_q"] = float(g_q)
+            if not (0.1 * lam4 <= l_quarter <= 3.0 * lam4):
+                fail("B_physics", f"L_quarter={l_quarter:.3g} mm not in [0.1, 3]×λ/4")
+            else:
+                ok("B_physics")
+            if g_i > 1.0 or g_q > 1.0:
+                fail("C_operating", f"active gain G_I={g_i:.3g} G_Q={g_q:.3g}")
+            elif abs(g_i - g_q) >= 0.4:
+                fail("C_operating", f"|G_I-G_Q|={abs(g_i-g_q):.3g} ≥ 0.4")
+            else:
+                ok("C_operating")
+
+        elif name == "allpass":
+            l_apA = get_val("L_apA_nh", 0.100) * 1e-9
+            c_brA = get_val("C_brA_pf", 0.025) * 1e-12
+            l_apB = get_val("L_apB_nh", 0.200) * 1e-9
+            c_brB = get_val("C_brB_pf", 0.060) * 1e-12
+            Z0_sq = 50.0 ** 2
+            res_lo, res_hi = 0.05, 100.0
+            ratios = []
+            for tag, l_ap, c_br in (("A", l_apA, c_brA), ("B", l_apB, c_brB)):
+                ideal_cbr = l_ap / Z0_sq
+                omega_res = 1.0 / np.sqrt(l_ap * c_br)
+                rel = omega_res / omega
+                ratios.append(rel)
+                out["notes"][f"section_{tag}_wres_over_wfc"] = float(rel)
+                out["notes"][f"section_{tag}_cbr_over_ideal"] = float(c_br / ideal_cbr)
+                if not (0.1 * ideal_cbr <= c_br <= 10.0 * ideal_cbr):
+                    fail("B_physics", f"section {tag} C_br/ideal={c_br/ideal_cbr:.3g}")
+                elif not (res_lo <= rel <= res_hi):
+                    fail("B_physics", f"section {tag} ω_res/ω_fc={rel:.3g} not in [{res_lo}, {res_hi}]")
+            if out["B_physics"] is not False:
+                ok("B_physics")
+
+        else:
+            fail("A_structural", f"unknown topology {topology_name}")
+
+    except Exception as e:
+        fail("A_structural", f"parse/numeric exception: {e}")
+
+    out["pass"] = not out["failed"]
+    # Keep the boolean API honest: the live filter is still check_physics_priors.
+    out["check_physics_priors"] = bool(
+        check_physics_priors(topology_name, params_dict, fc_ghz, pmax_mw=pmax_mw)
+    )
+    return out
+
+
+def _apply_sparam_sanity(out, fail, ok, s11_0, s21_0, s11_1, s21_1):
+    max_s11_mag = 0.56
+    min_s21_mag = 0.17
+    s11_0_mag = torch.abs(s11_0).item()
+    s11_1_mag = torch.abs(s11_1).item()
+    s21_0_mag = torch.abs(s21_0).item()
+    s21_1_mag = torch.abs(s21_1).item()
+    out["notes"]["s11_mag"] = [s11_0_mag, s11_1_mag]
+    out["notes"]["s21_mag"] = [s21_0_mag, s21_1_mag]
+    if any(np.isnan(x) for x in (s11_0_mag, s11_1_mag, s21_0_mag, s21_1_mag)):
+        fail("D_sim_sanity", "NaN S-params")
+    elif s11_0_mag > max_s11_mag or s11_1_mag > max_s11_mag:
+        fail("D_sim_sanity", f"|S11|=({s11_0_mag:.3f},{s11_1_mag:.3f}) > 0.56")
+    elif s21_0_mag < min_s21_mag or s21_1_mag < min_s21_mag:
+        fail("D_sim_sanity", f"|S21|=({s21_0_mag:.3f},{s21_1_mag:.3f}) < 0.17")
+    else:
+        ok("D_sim_sanity")
+

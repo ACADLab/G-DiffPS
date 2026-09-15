@@ -1,21 +1,21 @@
 {
   "schema_version": 5,
-  "seed": 20260825,
+  "seed": 42,
   "train": {
-    "path": "/Users/deepak/Desktop/mypages/G-DiffPS/specset/specset_train.json",
+    "path": "/Users/deepak/Desktop/work/G-DiffPS/specset/specset_train.json",
     "n": 10000,
     "attempts_to_fill": 10000,
     "probe_n": 5000,
-    "probe_reject_tech_fc": 0.1434,
+    "probe_reject_tech_fc": 0.1556,
     "probe_reject_floor": 0.0,
-    "probe_reject_rate": 0.1434,
+    "probe_reject_rate": 0.1556,
     "counterfactual_independent_box": {
       "box": [
         1.0,
         20.0
       ],
-      "reject_infeasible_frac": 0.17394349754844735,
-      "vacuous_frac": 0.5605883726360028,
+      "reject_infeasible_frac": 0.17148270961629558,
+      "vacuous_frac": 0.5696352439602085,
       "note": "share of independent-box draws that were below the quantization floor (infeasible) or above kappa_max*floor (satisfiable by anything)"
     },
     "phase_kappa": {
@@ -23,43 +23,43 @@
         1.2,
         3.0
       ],
-      "mean": 1.963677838669932,
-      "p10": 1.3165493189879673,
-      "p50": 1.896923174937816,
-      "p90": 2.73359443666869
+      "mean": 1.965943084534652,
+      "p10": 1.3218522603029603,
+      "p50": 1.8987769799218843,
+      "p90": 2.741343349432267
     },
     "rms_phase_err_deg_realized": {
-      "min": 0.4904674131021981,
-      "p50": 4.346335762210054,
-      "max": 38.16936547054339
+      "min": 0.5022708915741235,
+      "p50": 4.542525790791007,
+      "max": 38.18405727876039
     },
     "feasibility_margin": 1.2,
     "schema_version": 5,
     "spec_dim": 19,
     "heuristic_marginals": {
-      "Reflection_Type": 3737,
-      "Loaded_Line": 443,
-      "Switched_Line": 2549,
-      "Switched_Filter": 2362,
-      "Vector_Modulator": 455,
-      "All_Pass": 454
+      "Switched_Filter": 2366,
+      "Reflection_Type": 3677,
+      "Switched_Line": 2608,
+      "All_Pass": 460,
+      "Vector_Modulator": 433,
+      "Loaded_Line": 456
     }
   },
   "eval": {
-    "path": "/Users/deepak/Desktop/mypages/G-DiffPS/specset/specset_eval.json",
+    "path": "/Users/deepak/Desktop/work/G-DiffPS/specset/specset_eval.json",
     "n": 2000,
     "attempts_to_fill": 2000,
     "probe_n": 5000,
-    "probe_reject_tech_fc": 0.1432,
+    "probe_reject_tech_fc": 0.1368,
     "probe_reject_floor": 0.0,
-    "probe_reject_rate": 0.1432,
+    "probe_reject_rate": 0.1368,
     "counterfactual_independent_box": {
       "box": [
         1.0,
         20.0
       ],
-      "reject_infeasible_frac": 0.17366946778711484,
-      "vacuous_frac": 0.569094304388422,
+      "reject_infeasible_frac": 0.17747914735866543,
+      "vacuous_frac": 0.5658016682113067,
       "note": "share of independent-box draws that were below the quantization floor (infeasible) or above kappa_max*floor (satisfiable by anything)"
     },
     "phase_kappa": {
@@ -67,26 +67,26 @@
         1.2,
         3.0
       ],
-      "mean": 1.9661398134374946,
-      "p10": 1.3086070339443545,
-      "p50": 1.9105220990156302,
-      "p90": 2.7256525574257724
+      "mean": 1.972886429037478,
+      "p10": 1.3259883022396604,
+      "p50": 1.8874025639934375,
+      "p90": 2.74292313046574
     },
     "rms_phase_err_deg_realized": {
-      "min": 0.5591716746553271,
-      "p50": 4.814516333068969,
-      "max": 38.380582238555185
+      "min": 0.6023674860342443,
+      "p50": 4.593794785654798,
+      "max": 36.7885130797865
     },
     "feasibility_margin": 1.2,
     "schema_version": 5,
     "spec_dim": 19,
     "heuristic_marginals": {
-      "Reflection_Type": 730,
-      "Switched_Line": 531,
-      "Switched_Filter": 481,
-      "All_Pass": 94,
-      "Vector_Modulator": 87,
-      "Loaded_Line": 77
+      "Reflection_Type": 753,
+      "Switched_Filter": 487,
+      "All_Pass": 83,
+      "Loaded_Line": 85,
+      "Switched_Line": 502,
+      "Vector_Modulator": 90
     }
   },
   "app_fc_bands": {

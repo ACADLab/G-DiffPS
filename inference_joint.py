@@ -17,11 +17,14 @@ REPO_ROOT = os.path.dirname(os.path.abspath(__file__))
 if REPO_ROOT not in sys.path:
     sys.path.insert(0, REPO_ROOT)
 
-from env.graph_utils import get_topology_graph, TOPOLOGY_PARAMS, SLOT_ACTION_DIM, gin_device_rows
-from env.netlist_graph import sized_devices, device_names
+from env.graph_utils import get_topology_graph, TOPOLOGY_PARAMS, SLOT_ACTION_DIM
+from env.action_tokens import encode_action_tokens
 from models.gnn_encoder import TopologyEncoder
-from models.circuit_encoder import CircuitEncoder
-from models.diffusion_policy import FlowMatchingPolicy, NodeFlowMatchingPolicy
+from models.circuit_encoder import is_circuit_encoder, make_encoder, uses_param_nodes
+from models.diffusion_policy import (
+    FlowMatchingPolicy, NodeFlowMatchingPolicy, CoupledNodeFlowMatchingPolicy,
+)
+from env.param_semantics import PARAM_CONTEXT_DIM
 from sim.mna_scorer import mna_evaluate
 from train_diffusion import action_to_params, device_action_to_params
 from inference_topology_select import normalize_spec  # wraps specset.schema.normalize_spec → torch
@@ -64,13 +67,20 @@ def _load_state(module, path, device):
         )
 
 
-def load_policy(run_dir: str, encoder: str, action_space: str, device):
-    if encoder == "circuit":
-        gnn = CircuitEncoder().to(device)
+def load_policy(run_dir: str, encoder: str, action_space: str, device,
+                coupled_actions: bool = False):
+    if is_circuit_encoder(encoder):
+        gnn = make_encoder(encoder).to(device)
     else:
         gnn = TopologyEncoder().to(device)
+    coupled = bool(coupled_actions) or uses_param_nodes(encoder)
     if action_space == "device":
-        actor = NodeFlowMatchingPolicy(spec_dim=SPEC_DIM, num_steps=10).to(device)
+        if coupled:
+            actor = CoupledNodeFlowMatchingPolicy(
+                spec_dim=SPEC_DIM, num_steps=10, role_dim=PARAM_CONTEXT_DIM,
+            ).to(device)
+        else:
+            actor = NodeFlowMatchingPolicy(spec_dim=SPEC_DIM, num_steps=10).to(device)
     else:
         actor = FlowMatchingPolicy(
             action_dim=SLOT_ACTION_DIM, spec_dim=SPEC_DIM, graph_dim=64, num_steps=10
@@ -95,41 +105,34 @@ def load_policy(run_dir: str, encoder: str, action_space: str, device):
 
 
 def _sample_one(actor, gnn, topo, spec, spec_norm, encoder, action_space, device,
-                topo_graphs, bounds="electrical", switch_model="ideal"):
+                topo_graphs, bounds="electrical", switch_model="ideal",
+                coupled_actions=False):
     with torch.no_grad():
-        if encoder == "circuit":
-            if action_space == "device":
-                z, h = gnn(
-                    topo, spec, return_device=True,
-                    bounds=bounds, switch_model=switch_model,
-                )
-                sized = sized_devices(topo)
-                dnames = device_names(topo)
-                name_to_idx = {n: i for i, n in enumerate(dnames)}
-                h_rows = [h[name_to_idx[d]] for d, _ in sized]
-                h_act = torch.stack(h_rows, dim=0)
-                a = actor.sample(spec_norm, h_act).cpu().numpy()
+        if action_space == "device":
+            z, h_act, ctx = encode_action_tokens(
+                gnn, topo, spec, encoder_name=encoder,
+                bounds=bounds, switch_model=switch_model,
+                gin_graph=None if topo_graphs is None else topo_graphs.get(topo),
+                device=device,
+            )
+            coupled = bool(coupled_actions) or uses_param_nodes(encoder)
+            if coupled:
+                a = actor.sample(spec_norm, h_act, role=ctx).cpu().numpy()
             else:
-                z = gnn(
-                    topo, spec, return_device=False,
-                    bounds=bounds, switch_model=switch_model,
-                )
-                a = actor.sample(spec_norm, z).squeeze(0).cpu().numpy()
+                a = actor.sample(spec_norm, h_act).cpu().numpy()
+            return device_action_to_params(
+                a, topo, spec, bounds=bounds, switch_model=switch_model,
+            )
+        if is_circuit_encoder(encoder):
+            z = gnn(
+                topo, spec, return_device=False,
+                bounds=bounds, switch_model=switch_model,
+            )
+            a = actor.sample(spec_norm, z).squeeze(0).cpu().numpy()
         else:
             g = topo_graphs[topo]
-            if action_space == "device":
-                z, h = gnn(g.x.to(device), g.edge_index.to(device), return_nodes=True)
-                sized = sized_devices(topo)
-                h_rows = gin_device_rows(h, topo, sized)
-                h_act = torch.stack(h_rows, dim=0)
-                a = actor.sample(spec_norm, h_act).cpu().numpy()
-            else:
-                z = gnn(g.x.to(device), g.edge_index.to(device))
-                a = actor.sample(spec_norm, z).squeeze(0).cpu().numpy()
-    if action_space == "device":
-        return device_action_to_params(
-            a, topo, spec, bounds=bounds, switch_model=switch_model,
-        )
+            z = gnn(g.x.to(device), g.edge_index.to(device))
+            a = actor.sample(spec_norm, z).squeeze(0).cpu().numpy()
     return action_to_params(
         a, topo, spec, bounds=bounds, switch_model=switch_model,
     )
@@ -161,6 +164,7 @@ def evaluate_all(
                 actor, gnn, topo, spec, spec_norm,
                 encoder, action_space, device, topo_graphs,
                 bounds=bounds, switch_model=switch_model,
+                coupled_actions=uses_param_nodes(encoder),
             )
             score, metrics = mna_evaluate(topo, params, spec)
             cand = {
@@ -185,7 +189,8 @@ def evaluate_all(
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--run", required=True, help="Checkpoint directory")
-    ap.add_argument("--encoder", default="circuit", choices=["gin", "circuit"])
+    ap.add_argument("--encoder", default="circuit",
+                    choices=["gin", "circuit", "circuit-typed", "circuit-typed-param"])
     ap.add_argument("--action-space", default="device", choices=["slot", "device"])
     ap.add_argument(
         "--switch-model", default=None, choices=["ideal", "realistic"],
@@ -205,7 +210,11 @@ def main():
         ap.error("--switch-model is required when run_config.json has no switch_model")
 
     device = torch.device(args.device)
-    gnn, actor, _ = load_policy(args.run, args.encoder, args.action_space, device)
+    coupled = bool(run_cfg.get("coupled_actions", False)) or uses_param_nodes(args.encoder)
+    gnn, actor, _ = load_policy(
+        args.run, args.encoder, args.action_space, device,
+        coupled_actions=coupled,
+    )
     print(f"decode bounds={args.bounds} switch_model={args.switch_model}", flush=True)
 
     if args.spec:
