@@ -1,0 +1,16 @@
+{
+  "mode": "pilot",
+  "steps": 1000,
+  "seed": 42,
+  "n_eval": 40,
+  "tags": ["circuit_device", "gin_device"],
+  "folds": ["All_Pass", "Vector_Modulator", "Reflection_Type"],
+  "notes": [
+    "All-Pass prior_pass_rate recovered to ~0.88–0.93 after resonance-window fix (was ~0.02 in long runs).",
+    "Strict compliance remains 0 at this short budget for trained models; midpoint All_Pass hits 0.025.",
+    "Circuit encoder has higher mean physical reward than GIN on All_Pass and Reflection_Type holdouts.",
+    "Midpoint decoder prior still beats trained transfer on All_Pass — need longer training / coupled actions before claiming learned transfer."
+  ],
+  "comparison_csv": "results/transfer_pilot/comparison.csv",
+  "baselines_dir": "results/transfer_pilot/baselines"
+}

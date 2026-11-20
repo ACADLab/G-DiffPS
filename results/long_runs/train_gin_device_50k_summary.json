@@ -1,0 +1,14 @@
+{
+  "run_dir": "results/long_runs/train_gin_device_50k",
+  "steps_logged": 35298,
+  "steps_target": 50000,
+  "complete": false,
+  "success_rate": 0.583,
+  "mean_reward": -1.8406,
+  "first_half_mean_reward": -1.8018,
+  "second_half_mean_reward": -1.8795,
+  "best_reward": 2.1061,
+  "best_step": 9515,
+  "best_topology": "Loaded_Line",
+  "checkpoints": []
+}

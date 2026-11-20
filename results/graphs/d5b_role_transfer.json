@@ -1,0 +1,689 @@
+{
+  "protocol": "d5b_d4v2_role_transfer",
+  "role": "impedance",
+  "holdout": "Vector_Modulator",
+  "train_topologies": [
+    "Loaded_Line",
+    "Switched_Line",
+    "Reflection_Type"
+  ],
+  "n": 100,
+  "epochs": 80,
+  "seed": 0,
+  "delta_action": 0.08,
+  "notes": "Matches D4v2 selected-token + sign BCE for d1a/r3. Baselines are sizing-informed (action+role), not topo-local knob index. Seeds set before init. Train-only normalization. Incremental writes.",
+  "variants": {
+    "action": {
+      "variant": "action",
+      "n_train": 300,
+      "n_test": 100,
+      "train_seconds": 0.47076988220214844,
+      "seed": 0,
+      "protocol": "d4v2_token_indexed_sign_bce_role_transfer",
+      "test_sign_acc": {
+        "il_db": 0.42,
+        "rl_db": 0.81,
+        "rms_phase_err_deg": 0.56,
+        "gain_err_db": 0.39,
+        "raw_dphi": 0.59
+      },
+      "test_balanced_sign_acc": {
+        "il_db": 0.42,
+        "rl_db": 0.8079710144927537,
+        "rms_phase_err_deg": 0.6075373619233269,
+        "gain_err_db": 0.6325301204819277,
+        "raw_dphi": 0.6384615384615385
+      },
+      "majority_baseline": {
+        "il_db": {
+          "majority_sign": 1.0,
+          "sign_acc": 0.0,
+          "balanced_sign_acc": 0.0,
+          "train_pos_frac": 0.51
+        },
+        "rl_db": {
+          "majority_sign": 1.0,
+          "sign_acc": 0.46,
+          "balanced_sign_acc": 0.5,
+          "train_pos_frac": 0.5166666666666667
+        },
+        "rms_phase_err_deg": {
+          "majority_sign": -1.0,
+          "sign_acc": 0.81,
+          "balanced_sign_acc": 0.5,
+          "train_pos_frac": 0.4633333333333333
+        },
+        "gain_err_db": {
+          "majority_sign": 1.0,
+          "sign_acc": 0.17,
+          "balanced_sign_acc": 0.5,
+          "train_pos_frac": 0.58
+        },
+        "raw_dphi": {
+          "majority_sign": -1.0,
+          "sign_acc": 0.35,
+          "balanced_sign_acc": 0.5,
+          "train_pos_frac": 0.31666666666666665
+        }
+      },
+      "errors": {
+        "mae": {
+          "il_db": 0.5706464648246765,
+          "rl_db": 4.473294258117676,
+          "rms_phase_err_deg": 1.384108543395996,
+          "gain_err_db": 0.34509265422821045,
+          "raw_dphi": 2.7089345455169678
+        },
+        "rmse": {
+          "il_db": 0.6884739398956299,
+          "rl_db": 7.465335369110107,
+          "rms_phase_err_deg": 1.8297808170318604,
+          "gain_err_db": 0.44040337204933167,
+          "raw_dphi": 3.164567232131958
+        },
+        "y_std": {
+          "il_db": 0.19583769142627716,
+          "rl_db": 7.668041706085205,
+          "rms_phase_err_deg": 1.11626136302948,
+          "gain_err_db": 0.11275274306535721,
+          "raw_dphi": 0.8634422421455383
+        },
+        "y_var": {
+          "il_db": 0.038352400064468384,
+          "rl_db": 58.79886245727539,
+          "rms_phase_err_deg": 1.2460393905639648,
+          "gain_err_db": 0.012713180854916573,
+          "raw_dphi": 0.7455325126647949
+        }
+      },
+      "per_param_key": {
+        "Z0_line": {
+          "n": 100,
+          "sign_acc": {
+            "il_db": 0.42,
+            "rl_db": 0.81,
+            "rms_phase_err_deg": 0.56,
+            "gain_err_db": 0.39,
+            "raw_dphi": 0.59
+          },
+          "balanced_sign_acc": {
+            "il_db": 0.42,
+            "rl_db": 0.8079710144927537,
+            "rms_phase_err_deg": 0.6075373619233269,
+            "gain_err_db": 0.6325301204819277,
+            "raw_dphi": 0.6384615384615385
+          },
+          "mae": {
+            "il_db": 0.5706464648246765,
+            "rl_db": 4.473294258117676,
+            "rms_phase_err_deg": 1.384108543395996,
+            "gain_err_db": 0.34509265422821045,
+            "raw_dphi": 2.7089345455169678
+          },
+          "y_std": {
+            "il_db": 0.19583769142627716,
+            "rl_db": 7.668041706085205,
+            "rms_phase_err_deg": 1.11626136302948,
+            "gain_err_db": 0.11275274306535721,
+            "raw_dphi": 0.8634422421455383
+          }
+        }
+      },
+      "mean_balanced_sign_gate": 0.624740668359055,
+      "majority_balanced_sign_gate": 0.375,
+      "beats_majority": true,
+      "gate_metrics": [
+        "il_db",
+        "rl_db",
+        "gain_err_db",
+        "raw_dphi"
+      ]
+    },
+    "gin": {
+      "variant": "gin",
+      "n_train": 300,
+      "n_test": 100,
+      "train_seconds": 7.1514880657196045,
+      "seed": 0,
+      "protocol": "d4v2_token_indexed_sign_bce_role_transfer",
+      "test_sign_acc": {
+        "il_db": 0.27,
+        "rl_db": 0.91,
+        "rms_phase_err_deg": 0.51,
+        "gain_err_db": 0.35,
+        "raw_dphi": 0.37
+      },
+      "test_balanced_sign_acc": {
+        "il_db": 0.27,
+        "rl_db": 0.9053945249597424,
+        "rms_phase_err_deg": 0.6371020142949967,
+        "gain_err_db": 0.608433734939759,
+        "raw_dphi": 0.5153846153846153
+      },
+      "majority_baseline": {
+        "il_db": {
+          "majority_sign": 1.0,
+          "sign_acc": 0.0,
+          "balanced_sign_acc": 0.0,
+          "train_pos_frac": 0.51
+        },
+        "rl_db": {
+          "majority_sign": 1.0,
+          "sign_acc": 0.46,
+          "balanced_sign_acc": 0.5,
+          "train_pos_frac": 0.5166666666666667
+        },
+        "rms_phase_err_deg": {
+          "majority_sign": -1.0,
+          "sign_acc": 0.81,
+          "balanced_sign_acc": 0.5,
+          "train_pos_frac": 0.4633333333333333
+        },
+        "gain_err_db": {
+          "majority_sign": 1.0,
+          "sign_acc": 0.17,
+          "balanced_sign_acc": 0.5,
+          "train_pos_frac": 0.58
+        },
+        "raw_dphi": {
+          "majority_sign": -1.0,
+          "sign_acc": 0.35,
+          "balanced_sign_acc": 0.5,
+          "train_pos_frac": 0.31666666666666665
+        }
+      },
+      "errors": {
+        "mae": {
+          "il_db": 0.6093392372131348,
+          "rl_db": 4.345562934875488,
+          "rms_phase_err_deg": 2.048290967941284,
+          "gain_err_db": 0.3588244318962097,
+          "raw_dphi": 4.1023759841918945
+        },
+        "rmse": {
+          "il_db": 0.6612299680709839,
+          "rl_db": 7.330870628356934,
+          "rms_phase_err_deg": 2.6701231002807617,
+          "gain_err_db": 0.38795551657676697,
+          "raw_dphi": 4.430018901824951
+        },
+        "y_std": {
+          "il_db": 0.19583769142627716,
+          "rl_db": 7.668041706085205,
+          "rms_phase_err_deg": 1.11626136302948,
+          "gain_err_db": 0.11275274306535721,
+          "raw_dphi": 0.8634422421455383
+        },
+        "y_var": {
+          "il_db": 0.038352400064468384,
+          "rl_db": 58.79886245727539,
+          "rms_phase_err_deg": 1.2460393905639648,
+          "gain_err_db": 0.012713180854916573,
+          "raw_dphi": 0.7455325126647949
+        }
+      },
+      "per_param_key": {
+        "Z0_line": {
+          "n": 100,
+          "sign_acc": {
+            "il_db": 0.27,
+            "rl_db": 0.91,
+            "rms_phase_err_deg": 0.51,
+            "gain_err_db": 0.35,
+            "raw_dphi": 0.37
+          },
+          "balanced_sign_acc": {
+            "il_db": 0.27,
+            "rl_db": 0.9053945249597424,
+            "rms_phase_err_deg": 0.6371020142949967,
+            "gain_err_db": 0.608433734939759,
+            "raw_dphi": 0.5153846153846153
+          },
+          "mae": {
+            "il_db": 0.6093392372131348,
+            "rl_db": 4.345562934875488,
+            "rms_phase_err_deg": 2.048290967941284,
+            "gain_err_db": 0.3588244318962097,
+            "raw_dphi": 4.1023759841918945
+          },
+          "y_std": {
+            "il_db": 0.19583769142627716,
+            "rl_db": 7.668041706085205,
+            "rms_phase_err_deg": 1.11626136302948,
+            "gain_err_db": 0.11275274306535721,
+            "raw_dphi": 0.8634422421455383
+          }
+        }
+      },
+      "mean_balanced_sign_gate": 0.5748032188210292,
+      "majority_balanced_sign_gate": 0.375,
+      "beats_majority": true,
+      "gate_metrics": [
+        "il_db",
+        "rl_db",
+        "gain_err_db",
+        "raw_dphi"
+      ]
+    },
+    "circuit-typed": {
+      "variant": "circuit-typed",
+      "n_train": 300,
+      "n_test": 100,
+      "train_seconds": 94.67709112167358,
+      "seed": 0,
+      "protocol": "d4v2_token_indexed_sign_bce_role_transfer",
+      "test_sign_acc": {
+        "il_db": 0.46,
+        "rl_db": 0.86,
+        "rms_phase_err_deg": 0.18,
+        "gain_err_db": 0.6,
+        "raw_dphi": 0.35
+      },
+      "test_balanced_sign_acc": {
+        "il_db": 0.46,
+        "rl_db": 0.8478260869565217,
+        "rms_phase_err_deg": 0.47368421052631576,
+        "gain_err_db": 0.7590361445783133,
+        "raw_dphi": 0.5
+      },
+      "majority_baseline": {
+        "il_db": {
+          "majority_sign": 1.0,
+          "sign_acc": 0.0,
+          "balanced_sign_acc": 0.0,
+          "train_pos_frac": 0.51
+        },
+        "rl_db": {
+          "majority_sign": 1.0,
+          "sign_acc": 0.46,
+          "balanced_sign_acc": 0.5,
+          "train_pos_frac": 0.5166666666666667
+        },
+        "rms_phase_err_deg": {
+          "majority_sign": -1.0,
+          "sign_acc": 0.81,
+          "balanced_sign_acc": 0.5,
+          "train_pos_frac": 0.4633333333333333
+        },
+        "gain_err_db": {
+          "majority_sign": 1.0,
+          "sign_acc": 0.17,
+          "balanced_sign_acc": 0.5,
+          "train_pos_frac": 0.58
+        },
+        "raw_dphi": {
+          "majority_sign": -1.0,
+          "sign_acc": 0.35,
+          "balanced_sign_acc": 0.5,
+          "train_pos_frac": 0.31666666666666665
+        }
+      },
+      "errors": {
+        "mae": {
+          "il_db": 0.432356059551239,
+          "rl_db": 4.7231035232543945,
+          "rms_phase_err_deg": 1.801180124282837,
+          "gain_err_db": 0.18201564252376556,
+          "raw_dphi": 1.4963774681091309
+        },
+        "rmse": {
+          "il_db": 0.4664655923843384,
+          "rl_db": 7.615757942199707,
+          "rms_phase_err_deg": 2.202763557434082,
+          "gain_err_db": 0.19548793137073517,
+          "raw_dphi": 1.6959680318832397
+        },
+        "y_std": {
+          "il_db": 0.19583769142627716,
+          "rl_db": 7.668041706085205,
+          "rms_phase_err_deg": 1.11626136302948,
+          "gain_err_db": 0.11275274306535721,
+          "raw_dphi": 0.8634422421455383
+        },
+        "y_var": {
+          "il_db": 0.038352400064468384,
+          "rl_db": 58.79886245727539,
+          "rms_phase_err_deg": 1.2460393905639648,
+          "gain_err_db": 0.012713180854916573,
+          "raw_dphi": 0.7455325126647949
+        }
+      },
+      "per_param_key": {
+        "Z0_line": {
+          "n": 100,
+          "sign_acc": {
+            "il_db": 0.46,
+            "rl_db": 0.86,
+            "rms_phase_err_deg": 0.18,
+            "gain_err_db": 0.6,
+            "raw_dphi": 0.35
+          },
+          "balanced_sign_acc": {
+            "il_db": 0.46,
+            "rl_db": 0.8478260869565217,
+            "rms_phase_err_deg": 0.47368421052631576,
+            "gain_err_db": 0.7590361445783133,
+            "raw_dphi": 0.5
+          },
+          "mae": {
+            "il_db": 0.432356059551239,
+            "rl_db": 4.7231035232543945,
+            "rms_phase_err_deg": 1.801180124282837,
+            "gain_err_db": 0.18201564252376556,
+            "raw_dphi": 1.4963774681091309
+          },
+          "y_std": {
+            "il_db": 0.19583769142627716,
+            "rl_db": 7.668041706085205,
+            "rms_phase_err_deg": 1.11626136302948,
+            "gain_err_db": 0.11275274306535721,
+            "raw_dphi": 0.8634422421455383
+          }
+        }
+      },
+      "mean_balanced_sign_gate": 0.6417155578837087,
+      "majority_balanced_sign_gate": 0.375,
+      "beats_majority": true,
+      "gate_metrics": [
+        "il_db",
+        "rl_db",
+        "gain_err_db",
+        "raw_dphi"
+      ]
+    },
+    "d1a": {
+      "variant": "d1a",
+      "n_train": 300,
+      "n_test": 100,
+      "train_seconds": 95.77016401290894,
+      "seed": 0,
+      "protocol": "d4v2_token_indexed_sign_bce_role_transfer",
+      "test_sign_acc": {
+        "il_db": 1.0,
+        "rl_db": 0.46,
+        "rms_phase_err_deg": 0.81,
+        "gain_err_db": 0.67,
+        "raw_dphi": 0.35
+      },
+      "test_balanced_sign_acc": {
+        "il_db": 1.0,
+        "rl_db": 0.5,
+        "rms_phase_err_deg": 0.5,
+        "gain_err_db": 0.4036144578313253,
+        "raw_dphi": 0.5
+      },
+      "majority_baseline": {
+        "il_db": {
+          "majority_sign": 1.0,
+          "sign_acc": 0.0,
+          "balanced_sign_acc": 0.0,
+          "train_pos_frac": 0.51
+        },
+        "rl_db": {
+          "majority_sign": 1.0,
+          "sign_acc": 0.46,
+          "balanced_sign_acc": 0.5,
+          "train_pos_frac": 0.5166666666666667
+        },
+        "rms_phase_err_deg": {
+          "majority_sign": -1.0,
+          "sign_acc": 0.81,
+          "balanced_sign_acc": 0.5,
+          "train_pos_frac": 0.4633333333333333
+        },
+        "gain_err_db": {
+          "majority_sign": 1.0,
+          "sign_acc": 0.17,
+          "balanced_sign_acc": 0.5,
+          "train_pos_frac": 0.58
+        },
+        "raw_dphi": {
+          "majority_sign": -1.0,
+          "sign_acc": 0.35,
+          "balanced_sign_acc": 0.5,
+          "train_pos_frac": 0.31666666666666665
+        }
+      },
+      "errors": {
+        "mae": {
+          "il_db": 0.14329980313777924,
+          "rl_db": 5.014280796051025,
+          "rms_phase_err_deg": 0.8832577466964722,
+          "gain_err_db": 0.1289290338754654,
+          "raw_dphi": 2.676223039627075
+        },
+        "rmse": {
+          "il_db": 0.20902229845523834,
+          "rl_db": 7.631440162658691,
+          "rms_phase_err_deg": 1.0925099849700928,
+          "gain_err_db": 0.15445081889629364,
+          "raw_dphi": 2.8374853134155273
+        },
+        "y_std": {
+          "il_db": 0.19583769142627716,
+          "rl_db": 7.668041706085205,
+          "rms_phase_err_deg": 1.11626136302948,
+          "gain_err_db": 0.11275274306535721,
+          "raw_dphi": 0.8634422421455383
+        },
+        "y_var": {
+          "il_db": 0.038352400064468384,
+          "rl_db": 58.79886245727539,
+          "rms_phase_err_deg": 1.2460393905639648,
+          "gain_err_db": 0.012713180854916573,
+          "raw_dphi": 0.7455325126647949
+        }
+      },
+      "per_param_key": {
+        "Z0_line": {
+          "n": 100,
+          "sign_acc": {
+            "il_db": 1.0,
+            "rl_db": 0.46,
+            "rms_phase_err_deg": 0.81,
+            "gain_err_db": 0.67,
+            "raw_dphi": 0.35
+          },
+          "balanced_sign_acc": {
+            "il_db": 1.0,
+            "rl_db": 0.5,
+            "rms_phase_err_deg": 0.5,
+            "gain_err_db": 0.4036144578313253,
+            "raw_dphi": 0.5
+          },
+          "mae": {
+            "il_db": 0.14329980313777924,
+            "rl_db": 5.014280796051025,
+            "rms_phase_err_deg": 0.8832577466964722,
+            "gain_err_db": 0.1289290338754654,
+            "raw_dphi": 2.676223039627075
+          },
+          "y_std": {
+            "il_db": 0.19583769142627716,
+            "rl_db": 7.668041706085205,
+            "rms_phase_err_deg": 1.11626136302948,
+            "gain_err_db": 0.11275274306535721,
+            "raw_dphi": 0.8634422421455383
+          }
+        }
+      },
+      "mean_balanced_sign_gate": 0.6009036144578314,
+      "majority_balanced_sign_gate": 0.375,
+      "beats_majority": true,
+      "gate_metrics": [
+        "il_db",
+        "rl_db",
+        "gain_err_db",
+        "raw_dphi"
+      ]
+    },
+    "r3": {
+      "variant": "r3",
+      "n_train": 300,
+      "n_test": 100,
+      "train_seconds": 111.88104295730591,
+      "seed": 0,
+      "protocol": "d4v2_token_indexed_sign_bce_role_transfer",
+      "test_sign_acc": {
+        "il_db": 0.39,
+        "rl_db": 0.95,
+        "rms_phase_err_deg": 0.81,
+        "gain_err_db": 0.3,
+        "raw_dphi": 0.65
+      },
+      "test_balanced_sign_acc": {
+        "il_db": 0.39,
+        "rl_db": 0.9537037037037037,
+        "rms_phase_err_deg": 0.5,
+        "gain_err_db": 0.5783132530120482,
+        "raw_dphi": 0.5461538461538462
+      },
+      "majority_baseline": {
+        "il_db": {
+          "majority_sign": 1.0,
+          "sign_acc": 0.0,
+          "balanced_sign_acc": 0.0,
+          "train_pos_frac": 0.51
+        },
+        "rl_db": {
+          "majority_sign": 1.0,
+          "sign_acc": 0.46,
+          "balanced_sign_acc": 0.5,
+          "train_pos_frac": 0.5166666666666667
+        },
+        "rms_phase_err_deg": {
+          "majority_sign": -1.0,
+          "sign_acc": 0.81,
+          "balanced_sign_acc": 0.5,
+          "train_pos_frac": 0.4633333333333333
+        },
+        "gain_err_db": {
+          "majority_sign": 1.0,
+          "sign_acc": 0.17,
+          "balanced_sign_acc": 0.5,
+          "train_pos_frac": 0.58
+        },
+        "raw_dphi": {
+          "majority_sign": -1.0,
+          "sign_acc": 0.35,
+          "balanced_sign_acc": 0.5,
+          "train_pos_frac": 0.31666666666666665
+        }
+      },
+      "errors": {
+        "mae": {
+          "il_db": 0.3697279691696167,
+          "rl_db": 4.115965843200684,
+          "rms_phase_err_deg": 0.8618593811988831,
+          "gain_err_db": 0.21107570827007294,
+          "raw_dphi": 1.3967748880386353
+        },
+        "rmse": {
+          "il_db": 0.40540891885757446,
+          "rl_db": 7.477392196655273,
+          "rms_phase_err_deg": 1.0427170991897583,
+          "gain_err_db": 0.2601487338542938,
+          "raw_dphi": 1.6047108173370361
+        },
+        "y_std": {
+          "il_db": 0.19583769142627716,
+          "rl_db": 7.668041706085205,
+          "rms_phase_err_deg": 1.11626136302948,
+          "gain_err_db": 0.11275274306535721,
+          "raw_dphi": 0.8634422421455383
+        },
+        "y_var": {
+          "il_db": 0.038352400064468384,
+          "rl_db": 58.79886245727539,
+          "rms_phase_err_deg": 1.2460393905639648,
+          "gain_err_db": 0.012713180854916573,
+          "raw_dphi": 0.7455325126647949
+        }
+      },
+      "per_param_key": {
+        "Z0_line": {
+          "n": 100,
+          "sign_acc": {
+            "il_db": 0.39,
+            "rl_db": 0.95,
+            "rms_phase_err_deg": 0.81,
+            "gain_err_db": 0.3,
+            "raw_dphi": 0.65
+          },
+          "balanced_sign_acc": {
+            "il_db": 0.39,
+            "rl_db": 0.9537037037037037,
+            "rms_phase_err_deg": 0.5,
+            "gain_err_db": 0.5783132530120482,
+            "raw_dphi": 0.5461538461538462
+          },
+          "mae": {
+            "il_db": 0.3697279691696167,
+            "rl_db": 4.115965843200684,
+            "rms_phase_err_deg": 0.8618593811988831,
+            "gain_err_db": 0.21107570827007294,
+            "raw_dphi": 1.3967748880386353
+          },
+          "y_std": {
+            "il_db": 0.19583769142627716,
+            "rl_db": 7.668041706085205,
+            "rms_phase_err_deg": 1.11626136302948,
+            "gain_err_db": 0.11275274306535721,
+            "raw_dphi": 0.8634422421455383
+          }
+        }
+      },
+      "mean_balanced_sign_gate": 0.6170427007173995,
+      "majority_balanced_sign_gate": 0.375,
+      "beats_majority": true,
+      "gate_metrics": [
+        "il_db",
+        "rl_db",
+        "gain_err_db",
+        "raw_dphi"
+      ]
+    }
+  },
+  "status": "done",
+  "build": {
+    "Loaded_Line": {
+      "n": 100
+    },
+    "Switched_Line": {
+      "n": 100
+    },
+    "Reflection_Type": {
+      "n": 100
+    },
+    "Vector_Modulator": {
+      "n": 100
+    }
+  },
+  "ranking_balanced_sign": [
+    {
+      "variant": "circuit-typed",
+      "bal": 0.6417155578837087,
+      "beats_majority": true
+    },
+    {
+      "variant": "action",
+      "bal": 0.624740668359055,
+      "beats_majority": true
+    },
+    {
+      "variant": "r3",
+      "bal": 0.6170427007173995,
+      "beats_majority": true
+    },
+    {
+      "variant": "d1a",
+      "bal": 0.6009036144578314,
+      "beats_majority": true
+    },
+    {
+      "variant": "gin",
+      "bal": 0.5748032188210292,
+      "beats_majority": true
+    }
+  ]
+}

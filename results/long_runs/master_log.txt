@@ -1,0 +1,12 @@
+START 2026-09-14T06:08:26Z
+
+=== train_gin_device_20k  steps=20000  2026-09-14T06:08:26Z ===
+DONE train_gin_device_20k exit=0 2026-09-14T06:31:45Z
+
+=== train_gin_device_30k  steps=30000  2026-09-14T06:31:45Z ===
+DONE train_gin_device_30k exit=0 2026-09-14T07:09:07Z
+
+=== train_gin_device_50k  steps=50000  2026-09-14T07:09:07Z ===
+
+RESTART train_gin_device_50k after abort 2026-09-14T07:49:13Z
+STOPPED_50k 2026-09-14T07:49:26Z

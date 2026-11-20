@@ -1,0 +1,13 @@
+{
+  "held_out": "Reflection_Type",
+  "mode": "midpoint",
+  "n": 40,
+  "bounds": "electrical",
+  "switch_model": "ideal",
+  "eligible_rate": 1.0,
+  "prior_pass_rate": 0.0,
+  "sim_success_rate": 0.0,
+  "strict_compliance": 0.0,
+  "mean_physical_reward": -5.0,
+  "best_physical_reward": -5.0
+}

@@ -67,7 +67,41 @@ Token-indexed d1a/r3 + sign BCE. `n=200`, `epochs=250`.
 **D4 verdict:** parameter-role context (**D1a**) clears the sensitivity gate.
 R3 graph nodes are not clearly better than D1a — D1a is primary for D5; R3 is a paired control.
 
+## D5 — supervised LOOCV (invalid / confounded protocol)
+
+Stopped early. Protocol differed fundamentally from successful D4v2 (flattened tokens + topology-local knob index + standardized MSE-only loss, removing the parameter-role token conditioning and sign BCE). Furthermore, GIN received no sizing information.
+See `D5_PROTOCOL_DIAGNOSIS.md`. The 0 absolute-gate passes reflect protocol defects and positional confounds rather than clean negative evidence against parameter-role transfer.
+
+## D5b — bounded role-transfer pilot
+
+Artifact: `results/graphs/d5b_role_transfer.json` (impedance → holdout Vector_Modulator).
+
+All variants beat majority (0.375). Macro balanced-sign ranking: typed 0.64 >
+action 0.62 > r3 0.62 > d1a 0.60 > gin 0.57.
+
+**Crucial correction on IL metric:**
+Earlier reports claimed "D1a wins IL hard with 1.00 balanced accuracy". This was an artifact: the Vector_Modulator test set for impedance perturbation had 0 positive and 100 negative IL samples (single-class degenerate target). Balanced sign accuracy is statistically undefined on a single-class test set. IL cannot serve as the headline evidence for transfer. Valid cross-sign evaluation must rely on metrics with both positive and negative classes (e.g., RL, gain error, phase error) or holdouts with non-degenerate distributions.
+
+## D5b — BCE-fix replication (post-fix)
+
+Artifact: `results/graphs/d5b_replication_bce_fix/` (protocol SHA `8647278e…`).
+Sep 17 `d5b_replication/` remains pre-fix archive.
+
+IL balanced sign on impedance→VM is correctly `null` (single-class). Gate uses two-class metrics only.
+
+Mean gate (3 seeds):
+
+| Case | action | gin | typed | d1a | r3 |
+|------|--------|-----|-------|-----|-----|
+| impedance→VM | 0.70 | 0.66 | 0.64 | 0.67 | 0.59 |
+| impedance→Switched_Line | **0.79** | 0.75 | **0.80** | 0.71 | 0.70 |
+| length→VM | 0.50 | 0.48 | 0.56 | **0.62** | **0.60** |
+
+**Decision rule:** D1a/R3 beat *both* action and sizing-informed gin on mean gate only for length→VM. Impedance cases favor action/typed over D1a/R3. Transfer via parameter-role semantics is **not** established under this bounded protocol; keep claims narrowed to same-topo representations + MNA evaluate-all joint selection. D6 RL stays gated.
+
 ## Next
 
-- D5 supervised LOOCV running (`tools/d5_supervised_loocv.py`).
-- Then R3/D1a ablations + capacity/prior. **D6 RL only if D5 shows real holdout transfer.**
+- ~~Class-balance preflight~~ / ~~BCE alignment~~ / ~~D5b re-run~~ done.
+- Decision rule applied (see above): do not claim unseen-topology role transfer.
+- Joint inference ranks with physics prior + VM `pmax_mw`.
+- **D6 RL remains strictly gated.**

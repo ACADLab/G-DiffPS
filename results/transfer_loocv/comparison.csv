@@ -1,0 +1,13 @@
+topology,config,strict_compliance_mean,best_physical_reward_mean,n_seeds,encoder,action_space,fc_mode,bounds
+All_Pass,circuit_device,0.0,0.7845383439452208,3,circuit,device,spec,electrical
+All_Pass,gin_device,0.0,0.4119630982680671,3,gin,device,spec,electrical
+Loaded_Line,circuit_device,6.666666666666667,1.7185202213281636,3,circuit,device,spec,electrical
+Loaded_Line,gin_device,6.0,1.6638447616165515,3,gin,device,spec,electrical
+Reflection_Type,circuit_device,0.0,0.3199217913852895,3,circuit,device,spec,electrical
+Reflection_Type,gin_device,0.0,0.395071650281305,3,gin,device,spec,electrical
+Switched_Filter,circuit_device,0.0,0.403949622618429,3,circuit,device,spec,electrical
+Switched_Filter,gin_device,0.0,0.3301010979066477,3,gin,device,spec,electrical
+Switched_Line,circuit_device,0.0,0.7883987456959908,3,circuit,device,spec,electrical
+Switched_Line,gin_device,1.3333333333333333,1.1523452856992995,3,gin,device,spec,electrical
+Vector_Modulator,circuit_device,0.0,0.49561197593504014,3,circuit,device,spec,electrical
+Vector_Modulator,gin_device,0.0,0.49990275954082036,3,gin,device,spec,electrical

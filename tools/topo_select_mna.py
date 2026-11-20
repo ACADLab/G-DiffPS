@@ -33,6 +33,7 @@ if REPO_ROOT not in sys.path:
 from env.phaseshifter_env import PhaseShifterEnv
 from env.graph_utils import TOPOLOGY_PARAMS
 from inference_joint import load_policy, evaluate_all, _run_config, _resolve_flag
+from models.circuit_encoder import uses_param_nodes
 from sim.physics_priors import check_physics_priors
 from train_diffusion import (
     action_to_params, device_action_to_params, make_spice_netlist,
@@ -72,6 +73,7 @@ def spearman(x: list[float], y: list[float]) -> float:
 def spice_oracle(
     spec, gnn, actor, encoder, action_space, device, topo_graphs,
     k_per_topo=8, bounds="electrical", fc_mode="spec", switch_model="ideal",
+    coupled_actions=False,
 ):
     """Empirical best topology by SPICE reward (expert_bonus=0).
 
@@ -91,6 +93,7 @@ def spice_oracle(
                 actor, gnn, topo, spec, spec_norm,
                 encoder, action_space, device, topo_graphs,
                 bounds=bounds, switch_model=switch_model,
+                coupled_actions=coupled_actions,
             )
             if action_space == "device":
                 params = device_action_to_params(
@@ -100,7 +103,10 @@ def spice_oracle(
                 params = action_to_params(
                     a, topo, spec, bounds=bounds, switch_model=switch_model,
                 )
-            if not check_physics_priors(topo, params, spec["fc_ghz"]):
+            if not check_physics_priors(
+                topo, params, spec["fc_ghz"],
+                pmax_mw=float(spec.get("pmax_mw", 1e9)),
+            ):
                 continue
             nl = make_spice_netlist(topo, params, spec_dict=spec, fc_mode=fc_mode)
             r, _, _ = parallel_eval_worker((nl, spec, topo, 0.0, [topo], 0.0, params))
@@ -123,11 +129,13 @@ def heuristic_pick(spec):
 
 def evaluate_spec(spec, gnn, actor, args, device, topo_graphs):
     """One spec: MNA ranking, heuristic pick, SPICE oracle, agreement stats."""
+    coupled = bool(getattr(args, "coupled_actions", False))
     ranked = evaluate_all(
         spec, gnn, actor,
         encoder=args.encoder, action_space=args.action_space,
         device=device, n_samples=args.n_samples,
         bounds=args.bounds, switch_model=args.switch_model,
+        coupled_actions=coupled,
     )
     pred = ranked[0]["topology"]
     top2 = {ranked[0]["topology"], ranked[1]["topology"]}
@@ -135,6 +143,7 @@ def evaluate_spec(spec, gnn, actor, args, device, topo_graphs):
         spec, gnn, actor, args.encoder, args.action_space, device,
         topo_graphs, k_per_topo=args.k,
         bounds=args.bounds, switch_model=args.switch_model,
+        coupled_actions=coupled,
     )
     mna_by_topo = {r["topology"]: r["score"] for r in ranked}
     common = [t for t in TOPOS if t in mna_by_topo and t in spice_scores]
@@ -319,6 +328,10 @@ def main():
     args.switch_model = _resolve_flag(
         args.switch_model, run_cfg, "switch_model", "ideal",
     )
+    args.coupled_actions = (
+        bool(run_cfg.get("coupled_actions", False))
+        or uses_param_nodes(args.encoder)
+    )
 
     if args.topo_aware and not args.balance:
         ap.error("--topo-aware requires --balance")
@@ -327,7 +340,10 @@ def main():
     torch.manual_seed(args.seed)
     np.random.seed(args.seed)
 
-    gnn, actor, warned = load_policy(args.run, args.encoder, args.action_space, device)
+    gnn, actor, warned = load_policy(
+        args.run, args.encoder, args.action_space, device,
+        coupled_actions=args.coupled_actions,
+    )
     topo_graphs = {t: get_topology_graph(t) for t in TOPOS} if args.encoder == "gin" else None
 
     details = collect(gnn, actor, args, device, topo_graphs)

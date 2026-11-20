@@ -1,0 +1,20 @@
+{
+  "python": "3.14.6 anaconda base + requirements.txt",
+  "specset": {
+    "train": 64,
+    "eval": 16
+  },
+  "regressions": [
+    "gin_align",
+    "replay_spec",
+    "empty_reset",
+    "switch_tech_features"
+  ],
+  "dry_runs": {
+    "gin_device": "PASS",
+    "circuit_device_realistic": "PASS",
+    "circuit_slot": "PASS"
+  },
+  "sky130_harness": "PASS (earlier)",
+  "area_stash": "PASS (earlier)"
+}

@@ -1,0 +1,29 @@
+{
+  "cases": [
+    [
+      "impedance",
+      "Vector_Modulator"
+    ],
+    [
+      "impedance",
+      "Switched_Line"
+    ],
+    [
+      "length",
+      "Vector_Modulator"
+    ]
+  ],
+  "variants": [
+    "action",
+    "gin",
+    "circuit-typed",
+    "d1a",
+    "r3"
+  ],
+  "seeds": "0,1,2",
+  "n": 100,
+  "epochs": 80,
+  "prior": false,
+  "pilot_sha256": "8647278e9168b3ea4033900657f9c8e86c31f2a28949e1fab8828bcdfa0326b3",
+  "uncertainty": "Within-run sample bootstrap; seed range reported separately. Not pooled independent trials."
+}

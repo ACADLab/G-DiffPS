@@ -1,0 +1,19 @@
+{
+  "run_dir": "results/long_runs/train_gin_device_30k",
+  "steps_logged": 30000,
+  "steps_target": 30000,
+  "complete": true,
+  "success_rate": 0.5865,
+  "mean_reward": -1.7913,
+  "first_half_mean_reward": -1.7685,
+  "second_half_mean_reward": -1.8142,
+  "best_reward": 2.0417,
+  "best_step": 20045,
+  "best_topology": "Loaded_Line",
+  "checkpoints": [
+    "actor.pt",
+    "critic.pt",
+    "gnn_encoder.pt",
+    "value_net.pt"
+  ]
+}

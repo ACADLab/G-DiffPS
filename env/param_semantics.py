@@ -102,11 +102,17 @@ def _allpass_coupling_bounds() -> tuple[float, float]:
 
 
 def _allpass_centre_bounds(
-    kind: str, fc_ghz: float,
+    kind: str, fc_ghz: float, ratio: float | None = None,
 ) -> tuple[float, float]:
-    """Physical centre window for L or C at fc (mid of A/B geometric mean)."""
+    """Physical centre window for L or C at fc (mid of A/B geometric mean).
+
+    ``ratio`` must match the section ratio used by ``_allpass_section`` when
+    decoding; otherwise ``value_01`` disagrees with the action that produced
+    the circuit. Defaults to ``ALLPASS_SECTION_RATIO`` (nominal / unknown).
+    """
     from train_diffusion import (
-        ALLPASS_CC_MAX, PHYSICAL_LIMITS_BY_SUFFIX, _allpass_centre_offset,
+        ALLPASS_CC_MAX, ALLPASS_SECTION_RATIO, PHYSICAL_LIMITS_BY_SUFFIX,
+        _allpass_centre_offset,
     )
     omega = 2.0 * math.pi * fc_ghz * 1e9
     Z0 = 50.0
@@ -118,9 +124,8 @@ def _allpass_centre_bounds(
         centre = (1.0 / (omega * Z0)) * 1e12 * _allpass_centre_offset()
         clo, chi = PHYSICAL_LIMITS_BY_SUFFIX["_pf"]
         top = ALLPASS_CC_MAX
-    # Same half-width logic as _allpass_section at ratio = ALLPASS_SECTION_RATIO
-    from train_diffusion import ALLPASS_SECTION_RATIO
-    s = math.sqrt(max(ALLPASS_SECTION_RATIO, 1e-12))
+    rho = float(ALLPASS_SECTION_RATIO if ratio is None else ratio)
+    s = math.sqrt(max(rho, 1e-12))
     half = max(0.0, min(
         1.0,
         math.log10(max(centre / (clo * s), 1.0)),
@@ -166,14 +171,19 @@ def param_window(
     spec_dict: dict | None = None,
     bounds: str = "electrical",
     switch_model: str = "ideal",
+    section_ratio: float | None = None,
 ) -> tuple[float, float, bool]:
-    """Physical or semantic (lo, hi, is_log) for one action key."""
+    """Physical or semantic (lo, hi, is_log) for one action key.
+
+    For All_Pass centre keys, pass ``section_ratio`` (B/A) when known so the
+    value_01 window matches ``_allpass_section`` clipping.
+    """
     name = topology_name
     if name == "All_Pass" and bounds == "electrical":
         fc = float((spec_dict or {}).get("fc_ghz", 28.0))
         if key in _ALLPASS_CENTRE_KEYS:
             kind = "L" if key.startswith("L_") else "C"
-            lo, hi = _allpass_centre_bounds(kind, fc)
+            lo, hi = _allpass_centre_bounds(kind, fc, ratio=section_ratio)
             return lo, hi, True
         if key in _ALLPASS_RATIO_KEYS:
             lo, hi = _allpass_ratio_bounds()
@@ -239,9 +249,11 @@ def param_aux_features(
     spec_dict: dict | None = None,
     bounds: str = "electrical",
     switch_model: str = "ideal",
+    section_ratio: float | None = None,
 ) -> np.ndarray:
     lo, hi, is_log = param_window(
         topology_name, key, spec_dict, bounds=bounds, switch_model=switch_model,
+        section_ratio=section_ratio,
     )
     return np.array([
         value_01(value, lo, hi, is_log),
@@ -259,6 +271,7 @@ def param_context_row(
     spec_dict: dict | None = None,
     bounds: str = "electrical",
     switch_model: str = "ideal",
+    section_ratio: float | None = None,
 ) -> np.ndarray:
     """Role one-hot + bounds/value aux. Length PARAM_CONTEXT_DIM."""
     return np.concatenate([
@@ -266,6 +279,7 @@ def param_context_row(
         param_aux_features(
             topology_name, key, value, spec_dict,
             bounds=bounds, switch_model=switch_model,
+            section_ratio=section_ratio,
         ),
     ]).astype(np.float32)
 
@@ -295,9 +309,15 @@ def param_context_matrix(
             val = float(semantic[key])
         else:
             val = float(numeric.get(key, 0.0))
+        # Centre value_01 must use the same section ratio the decoder used.
+        section_ratio = None
+        if semantic is not None and key in _ALLPASS_CENTRE_KEYS:
+            ratio_key = "L_apB_nh" if key.startswith("L_") else "C_brB_pf"
+            section_ratio = float(semantic[ratio_key])
         rows.append(param_context_row(
             topology_name, key, val, spec_dict,
             bounds=bounds, switch_model=switch_model,
+            section_ratio=section_ratio,
         ))
     return np.stack(rows, axis=0)
 

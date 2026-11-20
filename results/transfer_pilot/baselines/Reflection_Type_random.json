@@ -1,0 +1,13 @@
+{
+  "held_out": "Reflection_Type",
+  "mode": "random",
+  "n": 40,
+  "bounds": "electrical",
+  "switch_model": "ideal",
+  "eligible_rate": 1.0,
+  "prior_pass_rate": 0.15,
+  "sim_success_rate": 0.15,
+  "strict_compliance": 0.0,
+  "mean_physical_reward": -4.224332922901711,
+  "best_physical_reward": 0.4011844770803924
+}

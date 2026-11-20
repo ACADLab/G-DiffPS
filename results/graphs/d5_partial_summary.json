@@ -1,0 +1,302 @@
+{
+  "n_completed": 33,
+  "rows": [
+    {
+      "holdout": "Loaded_Line",
+      "variant": "gin",
+      "seed": 0,
+      "abs_ok": false,
+      "sens_ok": false,
+      "il_r2": -1.937,
+      "sign_il": 0.575
+    },
+    {
+      "holdout": "Loaded_Line",
+      "variant": "gin",
+      "seed": 1,
+      "abs_ok": false,
+      "sens_ok": false,
+      "il_r2": -1.979,
+      "sign_il": 0.575
+    },
+    {
+      "holdout": "Loaded_Line",
+      "variant": "gin",
+      "seed": 2,
+      "abs_ok": false,
+      "sens_ok": false,
+      "il_r2": -2.197,
+      "sign_il": 0.575
+    },
+    {
+      "holdout": "Loaded_Line",
+      "variant": "circuit-typed",
+      "seed": 0,
+      "abs_ok": false,
+      "sens_ok": false,
+      "il_r2": -2.813,
+      "sign_il": 0.658
+    },
+    {
+      "holdout": "Loaded_Line",
+      "variant": "circuit-typed",
+      "seed": 1,
+      "abs_ok": false,
+      "sens_ok": true,
+      "il_r2": -7.548,
+      "sign_il": 0.717
+    },
+    {
+      "holdout": "Loaded_Line",
+      "variant": "circuit-typed",
+      "seed": 2,
+      "abs_ok": false,
+      "sens_ok": true,
+      "il_r2": -0.713,
+      "sign_il": 0.708
+    },
+    {
+      "holdout": "Loaded_Line",
+      "variant": "d1a",
+      "seed": 0,
+      "abs_ok": false,
+      "sens_ok": false,
+      "il_r2": 0.11,
+      "sign_il": 0.467
+    },
+    {
+      "holdout": "Loaded_Line",
+      "variant": "d1a",
+      "seed": 1,
+      "abs_ok": false,
+      "sens_ok": false,
+      "il_r2": 0.167,
+      "sign_il": 0.592
+    },
+    {
+      "holdout": "Loaded_Line",
+      "variant": "d1a",
+      "seed": 2,
+      "abs_ok": false,
+      "sens_ok": false,
+      "il_r2": 0.463,
+      "sign_il": 0.508
+    },
+    {
+      "holdout": "Loaded_Line",
+      "variant": "r3",
+      "seed": 0,
+      "abs_ok": false,
+      "sens_ok": false,
+      "il_r2": -0.765,
+      "sign_il": 0.492
+    },
+    {
+      "holdout": "Loaded_Line",
+      "variant": "r3",
+      "seed": 1,
+      "abs_ok": false,
+      "sens_ok": false,
+      "il_r2": -1.744,
+      "sign_il": 0.658
+    },
+    {
+      "holdout": "Loaded_Line",
+      "variant": "r3",
+      "seed": 2,
+      "abs_ok": false,
+      "sens_ok": true,
+      "il_r2": -0.3,
+      "sign_il": 0.567
+    },
+    {
+      "holdout": "Switched_Line",
+      "variant": "gin",
+      "seed": 0,
+      "abs_ok": false,
+      "sens_ok": false,
+      "il_r2": -463.935,
+      "sign_il": 0.261
+    },
+    {
+      "holdout": "Switched_Line",
+      "variant": "gin",
+      "seed": 1,
+      "abs_ok": false,
+      "sens_ok": false,
+      "il_r2": -671.262,
+      "sign_il": 0.261
+    },
+    {
+      "holdout": "Switched_Line",
+      "variant": "gin",
+      "seed": 2,
+      "abs_ok": false,
+      "sens_ok": false,
+      "il_r2": -60.287,
+      "sign_il": 0.261
+    },
+    {
+      "holdout": "Switched_Line",
+      "variant": "circuit-typed",
+      "seed": 0,
+      "abs_ok": false,
+      "sens_ok": false,
+      "il_r2": -101.325,
+      "sign_il": 0.429
+    },
+    {
+      "holdout": "Switched_Line",
+      "variant": "circuit-typed",
+      "seed": 1,
+      "abs_ok": false,
+      "sens_ok": false,
+      "il_r2": -26.678,
+      "sign_il": 0.311
+    },
+    {
+      "holdout": "Switched_Line",
+      "variant": "circuit-typed",
+      "seed": 2,
+      "abs_ok": false,
+      "sens_ok": false,
+      "il_r2": -47.102,
+      "sign_il": 0.261
+    },
+    {
+      "holdout": "Switched_Line",
+      "variant": "d1a",
+      "seed": 0,
+      "abs_ok": false,
+      "sens_ok": false,
+      "il_r2": -17.801,
+      "sign_il": 0.429
+    },
+    {
+      "holdout": "Switched_Line",
+      "variant": "d1a",
+      "seed": 1,
+      "abs_ok": false,
+      "sens_ok": false,
+      "il_r2": -34.37,
+      "sign_il": 0.538
+    },
+    {
+      "holdout": "Switched_Line",
+      "variant": "d1a",
+      "seed": 2,
+      "abs_ok": false,
+      "sens_ok": false,
+      "il_r2": -38.59,
+      "sign_il": 0.504
+    },
+    {
+      "holdout": "Switched_Line",
+      "variant": "r3",
+      "seed": 0,
+      "abs_ok": false,
+      "sens_ok": false,
+      "il_r2": -47.72,
+      "sign_il": 0.571
+    },
+    {
+      "holdout": "Switched_Line",
+      "variant": "r3",
+      "seed": 1,
+      "abs_ok": false,
+      "sens_ok": false,
+      "il_r2": -30.702,
+      "sign_il": 0.529
+    },
+    {
+      "holdout": "Switched_Line",
+      "variant": "r3",
+      "seed": 2,
+      "abs_ok": false,
+      "sens_ok": false,
+      "il_r2": -36.694,
+      "sign_il": 0.471
+    },
+    {
+      "holdout": "Reflection_Type",
+      "variant": "gin",
+      "seed": 0,
+      "abs_ok": false,
+      "sens_ok": false,
+      "il_r2": -1.007,
+      "sign_il": 0.717
+    },
+    {
+      "holdout": "Reflection_Type",
+      "variant": "gin",
+      "seed": 1,
+      "abs_ok": false,
+      "sens_ok": false,
+      "il_r2": -1.272,
+      "sign_il": 0.717
+    },
+    {
+      "holdout": "Reflection_Type",
+      "variant": "gin",
+      "seed": 2,
+      "abs_ok": false,
+      "sens_ok": false,
+      "il_r2": -1.063,
+      "sign_il": 0.717
+    },
+    {
+      "holdout": "Reflection_Type",
+      "variant": "circuit-typed",
+      "seed": 0,
+      "abs_ok": false,
+      "sens_ok": false,
+      "il_r2": -0.627,
+      "sign_il": 0.642
+    },
+    {
+      "holdout": "Reflection_Type",
+      "variant": "circuit-typed",
+      "seed": 1,
+      "abs_ok": false,
+      "sens_ok": false,
+      "il_r2": -0.088,
+      "sign_il": 0.45
+    },
+    {
+      "holdout": "Reflection_Type",
+      "variant": "circuit-typed",
+      "seed": 2,
+      "abs_ok": false,
+      "sens_ok": false,
+      "il_r2": -0.064,
+      "sign_il": 0.592
+    },
+    {
+      "holdout": "Reflection_Type",
+      "variant": "d1a",
+      "seed": 0,
+      "abs_ok": false,
+      "sens_ok": false,
+      "il_r2": -0.46,
+      "sign_il": 0.558
+    },
+    {
+      "holdout": "Reflection_Type",
+      "variant": "d1a",
+      "seed": 1,
+      "abs_ok": false,
+      "sens_ok": false,
+      "il_r2": -0.49,
+      "sign_il": 0.425
+    },
+    {
+      "holdout": "Reflection_Type",
+      "variant": "d1a",
+      "seed": 2,
+      "abs_ok": false,
+      "sens_ok": false,
+      "il_r2": -0.592,
+      "sign_il": 0.417
+    }
+  ]
+}

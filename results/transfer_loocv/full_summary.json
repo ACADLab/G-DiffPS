@@ -1,0 +1,14 @@
+{
+  "mode": "full",
+  "steps": 2000,
+  "seeds": [42, 1337, 2026],
+  "n_eval": 50,
+  "jobs_completed": 36,
+  "macro_strict_compliance": {
+    "circuit_device": 0.0111,
+    "gin_device": 0.0122
+  },
+  "headline": "At 2k steps, circuit and GIN are statistically tied on held-out strict compliance (~1%). Only Loaded_Line shows nonzero strict transfer (circuit 6.7% vs gin 6.0%). All-Pass prior pass is fixed (~96–99%) but strict compliance remains 0. Hard folds Reflection_Type and VM stay prior-limited. Circuit does not yet beat GIN on the acceptance criterion; longer training and/or coupled actions + SKY130-realizable grammar are the next levers.",
+  "comparison_csv": "results/transfer_loocv/comparison.csv",
+  "all_results": "results/transfer_loocv/all_results.json"
+}

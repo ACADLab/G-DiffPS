@@ -326,11 +326,13 @@ def train_variant(variant, topo, rows, epochs, seed, batch_size=64):
             pred = model.forward_batch(batch)
             target = (y - y_mean) / y_std
             mse = ((pred - target) ** 2).mean()
-            # Sign BCE on non-near-zero labels
+            # Sign BCE on non-near-zero labels (aligned with yhat zero-crossing)
+            from env.sign_alignment import sign_logits_from_normalized_pred
             sign_t = torch.sign(y)
             mask = (y.abs() > 1e-6).float()
+            sign_logits = sign_logits_from_normalized_pred(pred, y_mean, y_std)
             bce = F.binary_cross_entropy_with_logits(
-                pred, (sign_t > 0).float(), weight=mask, reduction="sum",
+                sign_logits, (sign_t > 0).float(), weight=mask, reduction="sum",
             ) / mask.sum().clamp_min(1.0)
             loss = bce + 0.25 * mse
             opt.zero_grad(); loss.backward(); opt.step()

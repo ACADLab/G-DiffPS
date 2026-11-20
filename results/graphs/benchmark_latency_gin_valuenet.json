@@ -1,0 +1,140 @@
+{
+  "hardware": {
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "processor": "arm",
+    "python_version": "3.14.6",
+    "torch_version": "2.15.0.dev20260913",
+    "device": "cpu",
+    "torch_num_threads": 1
+  },
+  "benchmark_config": {
+    "run_dir": "results/bugbot_fix_experiments/dry_gin_device",
+    "encoder": "gin",
+    "action_space": "device",
+    "bounds": "electrical",
+    "switch_model": "ideal",
+    "coupled_actions": false,
+    "num_diffusion_steps": 10,
+    "n_specs_benchmarked": 20,
+    "n_warmup": 10,
+    "fc_ghz_range": [
+      2.195400742033679,
+      34.07343728268509
+    ],
+    "determinism_pass": true,
+    "checkpoint_warned_missing_weights": false,
+    "official_path": "evaluate_all_size_six_mna_rank_prior_pmax"
+  },
+  "latency_ms": {
+    "cold_evaluate_all": 7.928375038318336,
+    "sizing_only_single_topo": {
+      "Loaded_Line": {
+        "mean": 0.7897395029431209,
+        "p50": 0.8127495239023119,
+        "p95": 0.872030935715884,
+        "max": 0.9280419908463955
+      },
+      "Switched_Line": {
+        "mean": 0.7622792501933873,
+        "p50": 0.7821879698894918,
+        "p95": 0.8796708949375898,
+        "max": 0.9209170239046216
+      },
+      "Reflection_Type": {
+        "mean": 0.8647750102682039,
+        "p50": 0.8948750037234277,
+        "p95": 0.9908520965836942,
+        "max": 1.01891701342538
+      },
+      "Switched_Filter": {
+        "mean": 0.8302772446768358,
+        "p50": 0.8347919792868197,
+        "p95": 1.0055401653517038,
+        "max": 1.009457977488637
+      },
+      "Vector_Modulator": {
+        "mean": 0.8040207409067079,
+        "p50": 0.8341664797626436,
+        "p95": 0.888241661596112,
+        "max": 0.9569579851813614
+      },
+      "All_Pass": {
+        "mean": 0.7802187523338944,
+        "p50": 0.8002080139704049,
+        "p95": 0.8561267342884094,
+        "max": 0.9092080290429294
+      }
+    },
+    "sizing_only_all_six_topologies": {
+      "mean": 4.8333230428397655,
+      "p50": 5.016812472604215,
+      "p95": 5.381519359070808,
+      "max": 5.392166960518807
+    },
+    "mna_simulator_all_six_topologies": {
+      "mean": 2.6756583974929526,
+      "p50": 2.6647710183169693,
+      "p95": 2.8203330177348107,
+      "max": 2.9010839643888175
+    },
+    "manual_size_plus_mna_pipeline": {
+      "mean": 7.537883394979872,
+      "p50": 7.605395978316665,
+      "p95": 8.173187161446549,
+      "max": 8.308166987262666
+    },
+    "evaluate_all_official": {
+      "mean": 7.908562454394996,
+      "p50": 8.091458003036678,
+      "p95": 8.438072600984015,
+      "max": 8.998374978546053
+    },
+    "valuenet_plus_one_size": {
+      "path": "valuenet_rank_all_six_then_size_winner_once",
+      "note": "Narrative / legacy baseline; not the deployment evaluate-all path.",
+      "valuenet_rank_all_six_ms": {
+        "mean": 0.95463129109703,
+        "p50": 0.9448335331398994,
+        "p95": 1.040895501500927,
+        "max": 1.0705830063670874
+      },
+      "sizing_winner_only_ms": {
+        "mean": 0.7884814025601372,
+        "p50": 0.7884790247771889,
+        "p95": 0.8377333753742279,
+        "max": 0.9252919699065387
+      },
+      "total_valuenet_plus_one_size_ms": {
+        "mean": 1.7431126936571673,
+        "p50": 1.7405000107828528,
+        "p95": 1.8683315574890003,
+        "max": 1.899958006106317
+      }
+    }
+  },
+  "compliance": {
+    "mean_prior_ok_count_of_six": 3.1,
+    "prior_ok_counts": [
+      4,
+      4,
+      2,
+      3,
+      4,
+      5,
+      4,
+      3,
+      4,
+      2,
+      2,
+      4,
+      3,
+      3,
+      2,
+      2,
+      4,
+      3,
+      1,
+      3
+    ]
+  }
+}

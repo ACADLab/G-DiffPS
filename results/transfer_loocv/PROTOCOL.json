@@ -1,0 +1,28 @@
+{
+  "mode": "full",
+  "steps": 2000,
+  "seeds": [
+    42,
+    1337,
+    2026
+  ],
+  "tags": [
+    "circuit_device",
+    "gin_device"
+  ],
+  "folds": [
+    "Loaded_Line",
+    "Switched_Line",
+    "Reflection_Type",
+    "Switched_Filter",
+    "Vector_Modulator",
+    "All_Pass"
+  ],
+  "n_eval": 50,
+  "primary_metric": "strict_compliance",
+  "eval_specset": "specset/specset_eval.json",
+  "expert_bonus_scale": 0.0,
+  "checkpoint_selection": "final_training_checkpoint",
+  "c0_passed": true,
+  "pilot_summary": "results/transfer_pilot/pilot_summary.json"
+}

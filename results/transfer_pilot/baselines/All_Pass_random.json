@@ -1,0 +1,13 @@
+{
+  "held_out": "All_Pass",
+  "mode": "random",
+  "n": 40,
+  "bounds": "electrical",
+  "switch_model": "ideal",
+  "eligible_rate": 1.0,
+  "prior_pass_rate": 0.825,
+  "sim_success_rate": 0.825,
+  "strict_compliance": 0.0,
+  "mean_physical_reward": -0.7529939454951462,
+  "best_physical_reward": 0.38176600479711637
+}

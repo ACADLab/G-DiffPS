@@ -1,0 +1,2642 @@
+[
+  {
+    "role": "impedance",
+    "holdout": "Vector_Modulator",
+    "variant": "action",
+    "metrics": {
+      "il_db": {
+        "balanced_sign_by_seed": [
+          null,
+          null,
+          null
+        ],
+        "mean_balanced_sign": null,
+        "seed_range": null,
+        "mae_by_seed": [
+          0.5833377838134766,
+          0.394164502620697,
+          0.3779076039791107
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 0,
+            "negative": 100,
+            "near_zero": 0
+          },
+          {
+            "positive": 0,
+            "negative": 100,
+            "near_zero": 0
+          },
+          {
+            "positive": 0,
+            "negative": 100,
+            "near_zero": 0
+          }
+        ]
+      },
+      "rl_db": {
+        "balanced_sign_by_seed": [
+          0.7971014492753623,
+          0.8501400560224089,
+          0.9020473705339221
+        ],
+        "mean_balanced_sign": 0.8497629586105645,
+        "seed_range": [
+          0.7971014492753623,
+          0.9020473705339221
+        ],
+        "mae_by_seed": [
+          4.559005260467529,
+          4.153232574462891,
+          3.384512424468994
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 46,
+            "negative": 54,
+            "near_zero": 0
+          },
+          {
+            "positive": 49,
+            "negative": 51,
+            "near_zero": 0
+          },
+          {
+            "positive": 47,
+            "negative": 53,
+            "near_zero": 0
+          }
+        ]
+      },
+      "rms_phase_err_deg": {
+        "balanced_sign_by_seed": [
+          0.5688758934372969,
+          0.5098814229249011,
+          0.49174356483729964
+        ],
+        "mean_balanced_sign": 0.523500293733166,
+        "seed_range": [
+          0.49174356483729964,
+          0.5688758934372969
+        ],
+        "mae_by_seed": [
+          1.4081828594207764,
+          1.317860722541809,
+          2.3042638301849365
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 19,
+            "negative": 81,
+            "near_zero": 0
+          },
+          {
+            "positive": 23,
+            "negative": 77,
+            "near_zero": 0
+          },
+          {
+            "positive": 29,
+            "negative": 71,
+            "near_zero": 0
+          }
+        ]
+      },
+      "gain_err_db": {
+        "balanced_sign_by_seed": [
+          0.6325301204819277,
+          0.7267441860465116,
+          0.6770833333333334
+        ],
+        "mean_balanced_sign": 0.6787858799539243,
+        "seed_range": [
+          0.6325301204819277,
+          0.7267441860465116
+        ],
+        "mae_by_seed": [
+          0.34981781244277954,
+          0.13818800449371338,
+          0.16680708527565002
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 17,
+            "negative": 83,
+            "near_zero": 0
+          },
+          {
+            "positive": 14,
+            "negative": 86,
+            "near_zero": 0
+          },
+          {
+            "positive": 16,
+            "negative": 84,
+            "near_zero": 0
+          }
+        ]
+      },
+      "raw_dphi": {
+        "balanced_sign_by_seed": [
+          0.6472527472527473,
+          0.5266666666666666,
+          0.5581140350877193
+        ],
+        "mean_balanced_sign": 0.5773444830023777,
+        "seed_range": [
+          0.5266666666666666,
+          0.6472527472527473
+        ],
+        "mae_by_seed": [
+          2.726783514022827,
+          1.8698407411575317,
+          3.521876811981201
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 65,
+            "negative": 35,
+            "near_zero": 0
+          },
+          {
+            "positive": 75,
+            "negative": 25,
+            "near_zero": 0
+          },
+          {
+            "positive": 76,
+            "negative": 24,
+            "near_zero": 0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "role": "impedance",
+    "holdout": "Vector_Modulator",
+    "variant": "gin",
+    "metrics": {
+      "il_db": {
+        "balanced_sign_by_seed": [
+          null,
+          null,
+          null
+        ],
+        "mean_balanced_sign": null,
+        "seed_range": null,
+        "mae_by_seed": [
+          0.5788930654525757,
+          0.45490142703056335,
+          0.3702167272567749
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 0,
+            "negative": 100,
+            "near_zero": 0
+          },
+          {
+            "positive": 0,
+            "negative": 100,
+            "near_zero": 0
+          },
+          {
+            "positive": 0,
+            "negative": 100,
+            "near_zero": 0
+          }
+        ]
+      },
+      "rl_db": {
+        "balanced_sign_by_seed": [
+          0.9162640901771336,
+          0.9093637454981993,
+          0.7547169811320755
+        ],
+        "mean_balanced_sign": 0.8601149389358028,
+        "seed_range": [
+          0.7547169811320755,
+          0.9162640901771336
+        ],
+        "mae_by_seed": [
+          4.336923599243164,
+          4.21240758895874,
+          4.011610507965088
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 46,
+            "negative": 54,
+            "near_zero": 0
+          },
+          {
+            "positive": 49,
+            "negative": 51,
+            "near_zero": 0
+          },
+          {
+            "positive": 47,
+            "negative": 53,
+            "near_zero": 0
+          }
+        ]
+      },
+      "rms_phase_err_deg": {
+        "balanced_sign_by_seed": [
+          0.6572449642625081,
+          0.5293619424054207,
+          0.5747935891209325
+        ],
+        "mean_balanced_sign": 0.587133498596287,
+        "seed_range": [
+          0.5293619424054207,
+          0.6572449642625081
+        ],
+        "mae_by_seed": [
+          2.2091896533966064,
+          1.4650611877441406,
+          1.6192783117294312
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 19,
+            "negative": 81,
+            "near_zero": 0
+          },
+          {
+            "positive": 23,
+            "negative": 77,
+            "near_zero": 0
+          },
+          {
+            "positive": 29,
+            "negative": 71,
+            "near_zero": 0
+          }
+        ]
+      },
+      "gain_err_db": {
+        "balanced_sign_by_seed": [
+          0.6445783132530121,
+          0.686046511627907,
+          0.5416666666666666
+        ],
+        "mean_balanced_sign": 0.6240971638491951,
+        "seed_range": [
+          0.5416666666666666,
+          0.686046511627907
+        ],
+        "mae_by_seed": [
+          0.32353684306144714,
+          0.19282665848731995,
+          0.18444348871707916
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 17,
+            "negative": 83,
+            "near_zero": 0
+          },
+          {
+            "positive": 14,
+            "negative": 86,
+            "near_zero": 0
+          },
+          {
+            "positive": 16,
+            "negative": 84,
+            "near_zero": 0
+          }
+        ]
+      },
+      "raw_dphi": {
+        "balanced_sign_by_seed": [
+          0.5241758241758242,
+          0.5,
+          0.5
+        ],
+        "mean_balanced_sign": 0.508058608058608,
+        "seed_range": [
+          0.5,
+          0.5241758241758242
+        ],
+        "mae_by_seed": [
+          3.5243237018585205,
+          3.392625331878662,
+          4.162930488586426
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 65,
+            "negative": 35,
+            "near_zero": 0
+          },
+          {
+            "positive": 75,
+            "negative": 25,
+            "near_zero": 0
+          },
+          {
+            "positive": 76,
+            "negative": 24,
+            "near_zero": 0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "role": "impedance",
+    "holdout": "Vector_Modulator",
+    "variant": "circuit-typed",
+    "metrics": {
+      "il_db": {
+        "balanced_sign_by_seed": [
+          null,
+          null,
+          null
+        ],
+        "mean_balanced_sign": null,
+        "seed_range": null,
+        "mae_by_seed": [
+          0.27931544184684753,
+          0.3928549587726593,
+          0.3332337439060211
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 0,
+            "negative": 100,
+            "near_zero": 0
+          },
+          {
+            "positive": 0,
+            "negative": 100,
+            "near_zero": 0
+          },
+          {
+            "positive": 0,
+            "negative": 100,
+            "near_zero": 0
+          }
+        ]
+      },
+      "rl_db": {
+        "balanced_sign_by_seed": [
+          0.9722222222222222,
+          0.5408163265306123,
+          0.7264150943396226
+        ],
+        "mean_balanced_sign": 0.7464845476974857,
+        "seed_range": [
+          0.5408163265306123,
+          0.9722222222222222
+        ],
+        "mae_by_seed": [
+          3.7724671363830566,
+          5.020689487457275,
+          3.9399044513702393
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 46,
+            "negative": 54,
+            "near_zero": 0
+          },
+          {
+            "positive": 49,
+            "negative": 51,
+            "near_zero": 0
+          },
+          {
+            "positive": 47,
+            "negative": 53,
+            "near_zero": 0
+          }
+        ]
+      },
+      "rms_phase_err_deg": {
+        "balanced_sign_by_seed": [
+          0.6033138401559454,
+          0.5,
+          0.5
+        ],
+        "mean_balanced_sign": 0.5344379467186484,
+        "seed_range": [
+          0.5,
+          0.6033138401559454
+        ],
+        "mae_by_seed": [
+          1.4008803367614746,
+          0.9216197729110718,
+          2.087820529937744
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 19,
+            "negative": 81,
+            "near_zero": 0
+          },
+          {
+            "positive": 23,
+            "negative": 77,
+            "near_zero": 0
+          },
+          {
+            "positive": 29,
+            "negative": 71,
+            "near_zero": 0
+          }
+        ]
+      },
+      "gain_err_db": {
+        "balanced_sign_by_seed": [
+          0.6155209071580439,
+          0.6910299003322259,
+          0.7247023809523809
+        ],
+        "mean_balanced_sign": 0.6770843961475502,
+        "seed_range": [
+          0.6155209071580439,
+          0.7247023809523809
+        ],
+        "mae_by_seed": [
+          0.07328720390796661,
+          0.1309860646724701,
+          0.12921594083309174
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 17,
+            "negative": 83,
+            "near_zero": 0
+          },
+          {
+            "positive": 14,
+            "negative": 86,
+            "near_zero": 0
+          },
+          {
+            "positive": 16,
+            "negative": 84,
+            "near_zero": 0
+          }
+        ]
+      },
+      "raw_dphi": {
+        "balanced_sign_by_seed": [
+          0.5,
+          0.52,
+          0.5
+        ],
+        "mean_balanced_sign": 0.5066666666666667,
+        "seed_range": [
+          0.5,
+          0.52
+        ],
+        "mae_by_seed": [
+          2.1589391231536865,
+          1.6663895845413208,
+          4.856812000274658
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 65,
+            "negative": 35,
+            "near_zero": 0
+          },
+          {
+            "positive": 75,
+            "negative": 25,
+            "near_zero": 0
+          },
+          {
+            "positive": 76,
+            "negative": 24,
+            "near_zero": 0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "role": "impedance",
+    "holdout": "Vector_Modulator",
+    "variant": "d1a",
+    "metrics": {
+      "il_db": {
+        "balanced_sign_by_seed": [
+          null,
+          null,
+          null
+        ],
+        "mean_balanced_sign": null,
+        "seed_range": null,
+        "mae_by_seed": [
+          0.5888270735740662,
+          0.39338138699531555,
+          0.3613804876804352
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 0,
+            "negative": 100,
+            "near_zero": 0
+          },
+          {
+            "positive": 0,
+            "negative": 100,
+            "near_zero": 0
+          },
+          {
+            "positive": 0,
+            "negative": 100,
+            "near_zero": 0
+          }
+        ]
+      },
+      "rl_db": {
+        "balanced_sign_by_seed": [
+          0.9814814814814814,
+          0.8571428571428572,
+          0.8679245283018868
+        ],
+        "mean_balanced_sign": 0.9021829556420752,
+        "seed_range": [
+          0.8571428571428572,
+          0.9814814814814814
+        ],
+        "mae_by_seed": [
+          4.218822956085205,
+          4.235857963562012,
+          3.873197317123413
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 46,
+            "negative": 54,
+            "near_zero": 0
+          },
+          {
+            "positive": 49,
+            "negative": 51,
+            "near_zero": 0
+          },
+          {
+            "positive": 47,
+            "negative": 53,
+            "near_zero": 0
+          }
+        ]
+      },
+      "rms_phase_err_deg": {
+        "balanced_sign_by_seed": [
+          0.5,
+          0.5064935064935064,
+          0.6398737251092763
+        ],
+        "mean_balanced_sign": 0.5487890772009276,
+        "seed_range": [
+          0.5,
+          0.6398737251092763
+        ],
+        "mae_by_seed": [
+          0.7674965858459473,
+          1.2330844402313232,
+          1.4353926181793213
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 19,
+            "negative": 81,
+            "near_zero": 0
+          },
+          {
+            "positive": 23,
+            "negative": 77,
+            "near_zero": 0
+          },
+          {
+            "positive": 29,
+            "negative": 71,
+            "near_zero": 0
+          }
+        ]
+      },
+      "gain_err_db": {
+        "balanced_sign_by_seed": [
+          0.5,
+          0.6976744186046512,
+          0.5
+        ],
+        "mean_balanced_sign": 0.5658914728682171,
+        "seed_range": [
+          0.5,
+          0.6976744186046512
+        ],
+        "mae_by_seed": [
+          0.39261603355407715,
+          0.149515300989151,
+          0.17522352933883667
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 17,
+            "negative": 83,
+            "near_zero": 0
+          },
+          {
+            "positive": 14,
+            "negative": 86,
+            "near_zero": 0
+          },
+          {
+            "positive": 16,
+            "negative": 84,
+            "near_zero": 0
+          }
+        ]
+      },
+      "raw_dphi": {
+        "balanced_sign_by_seed": [
+          0.5,
+          0.6466666666666666,
+          0.518640350877193
+        ],
+        "mean_balanced_sign": 0.5551023391812865,
+        "seed_range": [
+          0.5,
+          0.6466666666666666
+        ],
+        "mae_by_seed": [
+          0.8600425720214844,
+          0.8632073402404785,
+          3.0911426544189453
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 65,
+            "negative": 35,
+            "near_zero": 0
+          },
+          {
+            "positive": 75,
+            "negative": 25,
+            "near_zero": 0
+          },
+          {
+            "positive": 76,
+            "negative": 24,
+            "near_zero": 0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "role": "impedance",
+    "holdout": "Vector_Modulator",
+    "variant": "r3",
+    "metrics": {
+      "il_db": {
+        "balanced_sign_by_seed": [
+          null,
+          null,
+          null
+        ],
+        "mean_balanced_sign": null,
+        "seed_range": null,
+        "mae_by_seed": [
+          0.5734649896621704,
+          0.2493402659893036,
+          0.38536301255226135
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 0,
+            "negative": 100,
+            "near_zero": 0
+          },
+          {
+            "positive": 0,
+            "negative": 100,
+            "near_zero": 0
+          },
+          {
+            "positive": 0,
+            "negative": 100,
+            "near_zero": 0
+          }
+        ]
+      },
+      "rl_db": {
+        "balanced_sign_by_seed": [
+          0.7826086956521738,
+          1.0,
+          0.5411481332798073
+        ],
+        "mean_balanced_sign": 0.7745856096439937,
+        "seed_range": [
+          0.5411481332798073,
+          1.0
+        ],
+        "mae_by_seed": [
+          4.240095615386963,
+          3.850278615951538,
+          4.173328876495361
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 46,
+            "negative": 54,
+            "near_zero": 0
+          },
+          {
+            "positive": 49,
+            "negative": 51,
+            "near_zero": 0
+          },
+          {
+            "positive": 47,
+            "negative": 53,
+            "near_zero": 0
+          }
+        ]
+      },
+      "rms_phase_err_deg": {
+        "balanced_sign_by_seed": [
+          0.610461338531514,
+          0.4373235460191982,
+          0.5852355512384653
+        ],
+        "mean_balanced_sign": 0.5443401452630592,
+        "seed_range": [
+          0.4373235460191982,
+          0.610461338531514
+        ],
+        "mae_by_seed": [
+          0.8781726956367493,
+          1.1597234010696411,
+          1.8618370294570923
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 19,
+            "negative": 81,
+            "near_zero": 0
+          },
+          {
+            "positive": 23,
+            "negative": 77,
+            "near_zero": 0
+          },
+          {
+            "positive": 29,
+            "negative": 71,
+            "near_zero": 0
+          }
+        ]
+      },
+      "gain_err_db": {
+        "balanced_sign_by_seed": [
+          0.5,
+          0.45514950166112955,
+          0.5
+        ],
+        "mean_balanced_sign": 0.4850498338870432,
+        "seed_range": [
+          0.45514950166112955,
+          0.5
+        ],
+        "mae_by_seed": [
+          0.31354251503944397,
+          0.11938265711069107,
+          0.2532876133918762
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 17,
+            "negative": 83,
+            "near_zero": 0
+          },
+          {
+            "positive": 14,
+            "negative": 86,
+            "near_zero": 0
+          },
+          {
+            "positive": 16,
+            "negative": 84,
+            "near_zero": 0
+          }
+        ]
+      },
+      "raw_dphi": {
+        "balanced_sign_by_seed": [
+          0.5,
+          0.5066666666666666,
+          0.5
+        ],
+        "mean_balanced_sign": 0.5022222222222222,
+        "seed_range": [
+          0.5,
+          0.5066666666666666
+        ],
+        "mae_by_seed": [
+          2.423460006713867,
+          1.230364203453064,
+          4.663732528686523
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 65,
+            "negative": 35,
+            "near_zero": 0
+          },
+          {
+            "positive": 75,
+            "negative": 25,
+            "near_zero": 0
+          },
+          {
+            "positive": 76,
+            "negative": 24,
+            "near_zero": 0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "role": "impedance",
+    "holdout": "Switched_Line",
+    "variant": "action",
+    "metrics": {
+      "il_db": {
+        "balanced_sign_by_seed": [
+          0.8018867924528301,
+          0.8200000000000001,
+          0.6578947368421053
+        ],
+        "mean_balanced_sign": 0.7599271764316452,
+        "seed_range": [
+          0.6578947368421053,
+          0.8200000000000001
+        ],
+        "mae_by_seed": [
+          0.10408633947372437,
+          0.14239704608917236,
+          0.10843075811862946
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 53,
+            "negative": 47,
+            "near_zero": 0
+          },
+          {
+            "positive": 50,
+            "negative": 50,
+            "near_zero": 0
+          },
+          {
+            "positive": 38,
+            "negative": 62,
+            "near_zero": 0
+          }
+        ]
+      },
+      "rl_db": {
+        "balanced_sign_by_seed": [
+          0.9122807017543859,
+          0.9772727272727273,
+          0.948051948051948
+        ],
+        "mean_balanced_sign": 0.9458684590263537,
+        "seed_range": [
+          0.9122807017543859,
+          0.9772727272727273
+        ],
+        "mae_by_seed": [
+          2.9638216495513916,
+          2.8162219524383545,
+          2.1252946853637695
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 43,
+            "negative": 57,
+            "near_zero": 0
+          },
+          {
+            "positive": 44,
+            "negative": 56,
+            "near_zero": 0
+          },
+          {
+            "positive": 56,
+            "negative": 44,
+            "near_zero": 0
+          }
+        ]
+      },
+      "rms_phase_err_deg": {
+        "balanced_sign_by_seed": [
+          0.45491143317230276,
+          0.46798719487795115,
+          0.4919191919191919
+        ],
+        "mean_balanced_sign": 0.4716059399898153,
+        "seed_range": [
+          0.45491143317230276,
+          0.4919191919191919
+        ],
+        "mae_by_seed": [
+          1.3916735649108887,
+          0.9699190258979797,
+          2.1407947540283203
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 46,
+            "negative": 54,
+            "near_zero": 0
+          },
+          {
+            "positive": 49,
+            "negative": 51,
+            "near_zero": 0
+          },
+          {
+            "positive": 45,
+            "negative": 55,
+            "near_zero": 0
+          }
+        ]
+      },
+      "gain_err_db": {
+        "balanced_sign_by_seed": [
+          0.8641107988759534,
+          0.8,
+          0.8365874363327674
+        ],
+        "mean_balanced_sign": 0.833566078402907,
+        "seed_range": [
+          0.8,
+          0.8641107988759534
+        ],
+        "mae_by_seed": [
+          0.11161541938781738,
+          0.10147405415773392,
+          0.06603369116783142
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 53,
+            "negative": 47,
+            "near_zero": 0
+          },
+          {
+            "positive": 50,
+            "negative": 50,
+            "near_zero": 0
+          },
+          {
+            "positive": 38,
+            "negative": 62,
+            "near_zero": 0
+          }
+        ]
+      },
+      "raw_dphi": {
+        "balanced_sign_by_seed": [
+          0.6666666666666666,
+          0.5,
+          0.6342364532019704
+        ],
+        "mean_balanced_sign": 0.6003010399562123,
+        "seed_range": [
+          0.5,
+          0.6666666666666666
+        ],
+        "mae_by_seed": [
+          1.3990435600280762,
+          1.4049797058105469,
+          1.9472944736480713
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 51,
+            "negative": 49,
+            "near_zero": 0
+          },
+          {
+            "positive": 50,
+            "negative": 50,
+            "near_zero": 0
+          },
+          {
+            "positive": 42,
+            "negative": 58,
+            "near_zero": 0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "role": "impedance",
+    "holdout": "Switched_Line",
+    "variant": "gin",
+    "metrics": {
+      "il_db": {
+        "balanced_sign_by_seed": [
+          0.8191489361702128,
+          0.84,
+          0.8870967741935484
+        ],
+        "mean_balanced_sign": 0.8487485701212537,
+        "seed_range": [
+          0.8191489361702128,
+          0.8870967741935484
+        ],
+        "mae_by_seed": [
+          0.2998393774032593,
+          0.2272808849811554,
+          0.10271712392568588
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 53,
+            "negative": 47,
+            "near_zero": 0
+          },
+          {
+            "positive": 50,
+            "negative": 50,
+            "near_zero": 0
+          },
+          {
+            "positive": 38,
+            "negative": 62,
+            "near_zero": 0
+          }
+        ]
+      },
+      "rl_db": {
+        "balanced_sign_by_seed": [
+          0.956140350877193,
+          0.9107142857142857,
+          0.9318181818181819
+        ],
+        "mean_balanced_sign": 0.9328909394698869,
+        "seed_range": [
+          0.9107142857142857,
+          0.956140350877193
+        ],
+        "mae_by_seed": [
+          3.5941083431243896,
+          3.3405747413635254,
+          2.9142720699310303
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 43,
+            "negative": 57,
+            "near_zero": 0
+          },
+          {
+            "positive": 44,
+            "negative": 56,
+            "near_zero": 0
+          },
+          {
+            "positive": 56,
+            "negative": 44,
+            "near_zero": 0
+          }
+        ]
+      },
+      "rms_phase_err_deg": {
+        "balanced_sign_by_seed": [
+          0.4814814814814815,
+          0.5908363345338136,
+          0.5818181818181818
+        ],
+        "mean_balanced_sign": 0.5513786659444923,
+        "seed_range": [
+          0.4814814814814815,
+          0.5908363345338136
+        ],
+        "mae_by_seed": [
+          2.0781667232513428,
+          1.2900890111923218,
+          3.532546043395996
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 46,
+            "negative": 54,
+            "near_zero": 0
+          },
+          {
+            "positive": 49,
+            "negative": 51,
+            "near_zero": 0
+          },
+          {
+            "positive": 45,
+            "negative": 55,
+            "near_zero": 0
+          }
+        ]
+      },
+      "gain_err_db": {
+        "balanced_sign_by_seed": [
+          0.7765957446808511,
+          0.74,
+          0.6693548387096774
+        ],
+        "mean_balanced_sign": 0.7286501944635094,
+        "seed_range": [
+          0.6693548387096774,
+          0.7765957446808511
+        ],
+        "mae_by_seed": [
+          0.2564466595649719,
+          0.14231958985328674,
+          0.12675385177135468
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 53,
+            "negative": 47,
+            "near_zero": 0
+          },
+          {
+            "positive": 50,
+            "negative": 50,
+            "near_zero": 0
+          },
+          {
+            "positive": 38,
+            "negative": 62,
+            "near_zero": 0
+          }
+        ]
+      },
+      "raw_dphi": {
+        "balanced_sign_by_seed": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "mean_balanced_sign": 0.5,
+        "seed_range": [
+          0.5,
+          0.5
+        ],
+        "mae_by_seed": [
+          4.174813747406006,
+          3.4223575592041016,
+          9.713744163513184
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 51,
+            "negative": 49,
+            "near_zero": 0
+          },
+          {
+            "positive": 50,
+            "negative": 50,
+            "near_zero": 0
+          },
+          {
+            "positive": 42,
+            "negative": 58,
+            "near_zero": 0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "role": "impedance",
+    "holdout": "Switched_Line",
+    "variant": "circuit-typed",
+    "metrics": {
+      "il_db": {
+        "balanced_sign_by_seed": [
+          0.9704937775993576,
+          0.88,
+          0.9210526315789473
+        ],
+        "mean_balanced_sign": 0.923848803059435,
+        "seed_range": [
+          0.88,
+          0.9704937775993576
+        ],
+        "mae_by_seed": [
+          0.0901113972067833,
+          0.10945382714271545,
+          0.059877824038267136
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 53,
+            "negative": 47,
+            "near_zero": 0
+          },
+          {
+            "positive": 50,
+            "negative": 50,
+            "near_zero": 0
+          },
+          {
+            "positive": 38,
+            "negative": 62,
+            "near_zero": 0
+          }
+        ]
+      },
+      "rl_db": {
+        "balanced_sign_by_seed": [
+          0.9302325581395349,
+          0.9318181818181819,
+          0.9910714285714286
+        ],
+        "mean_balanced_sign": 0.9510407228430484,
+        "seed_range": [
+          0.9302325581395349,
+          0.9910714285714286
+        ],
+        "mae_by_seed": [
+          3.0270988941192627,
+          3.1736345291137695,
+          1.9329322576522827
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 43,
+            "negative": 57,
+            "near_zero": 0
+          },
+          {
+            "positive": 44,
+            "negative": 56,
+            "near_zero": 0
+          },
+          {
+            "positive": 56,
+            "negative": 44,
+            "near_zero": 0
+          }
+        ]
+      },
+      "rms_phase_err_deg": {
+        "balanced_sign_by_seed": [
+          0.5,
+          0.5634253701480593,
+          0.46060606060606063
+        ],
+        "mean_balanced_sign": 0.50801047691804,
+        "seed_range": [
+          0.46060606060606063,
+          0.5634253701480593
+        ],
+        "mae_by_seed": [
+          2.034855604171753,
+          1.0025330781936646,
+          1.3110812902450562
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 46,
+            "negative": 54,
+            "near_zero": 0
+          },
+          {
+            "positive": 49,
+            "negative": 51,
+            "near_zero": 0
+          },
+          {
+            "positive": 45,
+            "negative": 55,
+            "near_zero": 0
+          }
+        ]
+      },
+      "gain_err_db": {
+        "balanced_sign_by_seed": [
+          0.7446808510638298,
+          0.87,
+          0.8629032258064516
+        ],
+        "mean_balanced_sign": 0.8258613589567605,
+        "seed_range": [
+          0.7446808510638298,
+          0.87
+        ],
+        "mae_by_seed": [
+          0.1138872355222702,
+          0.08403195440769196,
+          0.04408973082900047
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 53,
+            "negative": 47,
+            "near_zero": 0
+          },
+          {
+            "positive": 50,
+            "negative": 50,
+            "near_zero": 0
+          },
+          {
+            "positive": 38,
+            "negative": 62,
+            "near_zero": 0
+          }
+        ]
+      },
+      "raw_dphi": {
+        "balanced_sign_by_seed": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "mean_balanced_sign": 0.5,
+        "seed_range": [
+          0.5,
+          0.5
+        ],
+        "mae_by_seed": [
+          3.1961352825164795,
+          1.8139331340789795,
+          3.579099655151367
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 51,
+            "negative": 49,
+            "near_zero": 0
+          },
+          {
+            "positive": 50,
+            "negative": 50,
+            "near_zero": 0
+          },
+          {
+            "positive": 42,
+            "negative": 58,
+            "near_zero": 0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "role": "impedance",
+    "holdout": "Switched_Line",
+    "variant": "d1a",
+    "metrics": {
+      "il_db": {
+        "balanced_sign_by_seed": [
+          0.5319148936170213,
+          0.8999999999999999,
+          0.9078947368421053
+        ],
+        "mean_balanced_sign": 0.7799365434863755,
+        "seed_range": [
+          0.5319148936170213,
+          0.9078947368421053
+        ],
+        "mae_by_seed": [
+          0.21019606292247772,
+          0.15607933700084686,
+          0.05846264958381653
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 53,
+            "negative": 47,
+            "near_zero": 0
+          },
+          {
+            "positive": 50,
+            "negative": 50,
+            "near_zero": 0
+          },
+          {
+            "positive": 38,
+            "negative": 62,
+            "near_zero": 0
+          }
+        ]
+      },
+      "rl_db": {
+        "balanced_sign_by_seed": [
+          0.9418604651162791,
+          0.9464285714285714,
+          0.8977272727272727
+        ],
+        "mean_balanced_sign": 0.9286721030907078,
+        "seed_range": [
+          0.8977272727272727,
+          0.9464285714285714
+        ],
+        "mae_by_seed": [
+          2.519956350326538,
+          2.816352128982544,
+          2.9236936569213867
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 43,
+            "negative": 57,
+            "near_zero": 0
+          },
+          {
+            "positive": 44,
+            "negative": 56,
+            "near_zero": 0
+          },
+          {
+            "positive": 56,
+            "negative": 44,
+            "near_zero": 0
+          }
+        ]
+      },
+      "rms_phase_err_deg": {
+        "balanced_sign_by_seed": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "mean_balanced_sign": 0.5,
+        "seed_range": [
+          0.5,
+          0.5
+        ],
+        "mae_by_seed": [
+          0.7311449646949768,
+          2.4287047386169434,
+          6.044210910797119
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 46,
+            "negative": 54,
+            "near_zero": 0
+          },
+          {
+            "positive": 49,
+            "negative": 51,
+            "near_zero": 0
+          },
+          {
+            "positive": 45,
+            "negative": 55,
+            "near_zero": 0
+          }
+        ]
+      },
+      "gain_err_db": {
+        "balanced_sign_by_seed": [
+          0.5,
+          0.72,
+          0.7236842105263158
+        ],
+        "mean_balanced_sign": 0.6478947368421052,
+        "seed_range": [
+          0.5,
+          0.7236842105263158
+        ],
+        "mae_by_seed": [
+          0.22923730313777924,
+          0.08454778790473938,
+          0.031008807942271233
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 53,
+            "negative": 47,
+            "near_zero": 0
+          },
+          {
+            "positive": 50,
+            "negative": 50,
+            "near_zero": 0
+          },
+          {
+            "positive": 38,
+            "negative": 62,
+            "near_zero": 0
+          }
+        ]
+      },
+      "raw_dphi": {
+        "balanced_sign_by_seed": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "mean_balanced_sign": 0.5,
+        "seed_range": [
+          0.5,
+          0.5
+        ],
+        "mae_by_seed": [
+          1.4697538614273071,
+          2.872988700866699,
+          7.260552883148193
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 51,
+            "negative": 49,
+            "near_zero": 0
+          },
+          {
+            "positive": 50,
+            "negative": 50,
+            "near_zero": 0
+          },
+          {
+            "positive": 42,
+            "negative": 58,
+            "near_zero": 0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "role": "impedance",
+    "holdout": "Switched_Line",
+    "variant": "r3",
+    "metrics": {
+      "il_db": {
+        "balanced_sign_by_seed": [
+          0.7021276595744681,
+          0.5,
+          0.9435483870967742
+        ],
+        "mean_balanced_sign": 0.7152253488904141,
+        "seed_range": [
+          0.5,
+          0.9435483870967742
+        ],
+        "mae_by_seed": [
+          0.2656238079071045,
+          0.3982688784599304,
+          0.14875806868076324
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 53,
+            "negative": 47,
+            "near_zero": 0
+          },
+          {
+            "positive": 50,
+            "negative": 50,
+            "near_zero": 0
+          },
+          {
+            "positive": 38,
+            "negative": 62,
+            "near_zero": 0
+          }
+        ]
+      },
+      "rl_db": {
+        "balanced_sign_by_seed": [
+          0.9651162790697674,
+          0.875,
+          0.9821428571428572
+        ],
+        "mean_balanced_sign": 0.9407530454042082,
+        "seed_range": [
+          0.875,
+          0.9821428571428572
+        ],
+        "mae_by_seed": [
+          2.60002064704895,
+          2.5307459831237793,
+          1.669959545135498
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 43,
+            "negative": 57,
+            "near_zero": 0
+          },
+          {
+            "positive": 44,
+            "negative": 56,
+            "near_zero": 0
+          },
+          {
+            "positive": 56,
+            "negative": 44,
+            "near_zero": 0
+          }
+        ]
+      },
+      "rms_phase_err_deg": {
+        "balanced_sign_by_seed": [
+          0.5,
+          0.5,
+          0.5565656565656565
+        ],
+        "mean_balanced_sign": 0.5188552188552188,
+        "seed_range": [
+          0.5,
+          0.5565656565656565
+        ],
+        "mae_by_seed": [
+          1.3890436887741089,
+          2.194882869720459,
+          1.0649713277816772
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 46,
+            "negative": 54,
+            "near_zero": 0
+          },
+          {
+            "positive": 49,
+            "negative": 51,
+            "near_zero": 0
+          },
+          {
+            "positive": 45,
+            "negative": 55,
+            "near_zero": 0
+          }
+        ]
+      },
+      "gain_err_db": {
+        "balanced_sign_by_seed": [
+          0.5531914893617021,
+          0.5,
+          0.8629032258064516
+        ],
+        "mean_balanced_sign": 0.6386982383893846,
+        "seed_range": [
+          0.5,
+          0.8629032258064516
+        ],
+        "mae_by_seed": [
+          0.20083346962928772,
+          0.350032240152359,
+          0.08072161674499512
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 53,
+            "negative": 47,
+            "near_zero": 0
+          },
+          {
+            "positive": 50,
+            "negative": 50,
+            "near_zero": 0
+          },
+          {
+            "positive": 38,
+            "negative": 62,
+            "near_zero": 0
+          }
+        ]
+      },
+      "raw_dphi": {
+        "balanced_sign_by_seed": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "mean_balanced_sign": 0.5,
+        "seed_range": [
+          0.5,
+          0.5
+        ],
+        "mae_by_seed": [
+          2.939229965209961,
+          3.7343976497650146,
+          6.221503734588623
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 51,
+            "negative": 49,
+            "near_zero": 0
+          },
+          {
+            "positive": 50,
+            "negative": 50,
+            "near_zero": 0
+          },
+          {
+            "positive": 42,
+            "negative": 58,
+            "near_zero": 0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "role": "length",
+    "holdout": "Vector_Modulator",
+    "variant": "action",
+    "metrics": {
+      "il_db": {
+        "balanced_sign_by_seed": [
+          0.4906498363721365,
+          0.4310661764705882,
+          0.5694444444444444
+        ],
+        "mean_balanced_sign": 0.49705348576238967,
+        "seed_range": [
+          0.4310661764705882,
+          0.5694444444444444
+        ],
+        "mae_by_seed": [
+          1.0150291919708252,
+          1.0832771062850952,
+          0.7937502861022949
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 31,
+            "negative": 69,
+            "near_zero": 0
+          },
+          {
+            "positive": 32,
+            "negative": 68,
+            "near_zero": 0
+          },
+          {
+            "positive": 28,
+            "negative": 72,
+            "near_zero": 0
+          }
+        ]
+      },
+      "rl_db": {
+        "balanced_sign_by_seed": [
+          0.5321750321750323,
+          0.5321194762684125,
+          0.45
+        ],
+        "mean_balanced_sign": 0.5047648361478149,
+        "seed_range": [
+          0.45,
+          0.5321750321750323
+        ],
+        "mae_by_seed": [
+          3.80092191696167,
+          5.178543567657471,
+          5.356137275695801
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 37,
+            "negative": 63,
+            "near_zero": 0
+          },
+          {
+            "positive": 47,
+            "negative": 52,
+            "near_zero": 1
+          },
+          {
+            "positive": 30,
+            "negative": 70,
+            "near_zero": 0
+          }
+        ]
+      },
+      "rms_phase_err_deg": {
+        "balanced_sign_by_seed": [
+          0.5458937198067633,
+          0.5299671592775042,
+          0.672275641025641
+        ],
+        "mean_balanced_sign": 0.5827121733699695,
+        "seed_range": [
+          0.5299671592775042,
+          0.672275641025641
+        ],
+        "mae_by_seed": [
+          7.337445259094238,
+          7.531932353973389,
+          6.322479248046875
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 46,
+            "negative": 54,
+            "near_zero": 0
+          },
+          {
+            "positive": 58,
+            "negative": 42,
+            "near_zero": 0
+          },
+          {
+            "positive": 48,
+            "negative": 52,
+            "near_zero": 0
+          }
+        ]
+      },
+      "gain_err_db": {
+        "balanced_sign_by_seed": [
+          0.4045138888888889,
+          0.46474358974358976,
+          0.5347255949490044
+        ],
+        "mean_balanced_sign": 0.46799435786049437,
+        "seed_range": [
+          0.4045138888888889,
+          0.5347255949490044
+        ],
+        "mae_by_seed": [
+          1.1293596029281616,
+          1.4245398044586182,
+          1.320062279701233
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 36,
+            "negative": 64,
+            "near_zero": 0
+          },
+          {
+            "positive": 48,
+            "negative": 52,
+            "near_zero": 0
+          },
+          {
+            "positive": 29,
+            "negative": 71,
+            "near_zero": 0
+          }
+        ]
+      },
+      "raw_dphi": {
+        "balanced_sign_by_seed": [
+          0.6274509803921569,
+          0.4747089522280209,
+          0.5320380322447292
+        ],
+        "mean_balanced_sign": 0.544732654954969,
+        "seed_range": [
+          0.4747089522280209,
+          0.6274509803921569
+        ],
+        "mae_by_seed": [
+          9.025189399719238,
+          10.202483177185059,
+          15.524886131286621
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 34,
+            "negative": 66,
+            "near_zero": 0
+          },
+          {
+            "positive": 47,
+            "negative": 53,
+            "near_zero": 0
+          },
+          {
+            "positive": 41,
+            "negative": 59,
+            "near_zero": 0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "role": "length",
+    "holdout": "Vector_Modulator",
+    "variant": "gin",
+    "metrics": {
+      "il_db": {
+        "balanced_sign_by_seed": [
+          0.4915848527349228,
+          0.39797794117647056,
+          0.46230158730158727
+        ],
+        "mean_balanced_sign": 0.4506214604043269,
+        "seed_range": [
+          0.39797794117647056,
+          0.4915848527349228
+        ],
+        "mae_by_seed": [
+          0.561708927154541,
+          0.6552565097808838,
+          0.6703097820281982
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 31,
+            "negative": 69,
+            "near_zero": 0
+          },
+          {
+            "positive": 32,
+            "negative": 68,
+            "near_zero": 0
+          },
+          {
+            "positive": 28,
+            "negative": 72,
+            "near_zero": 0
+          }
+        ]
+      },
+      "rl_db": {
+        "balanced_sign_by_seed": [
+          0.5677820677820677,
+          0.48588379705400986,
+          0.4928571428571429
+        ],
+        "mean_balanced_sign": 0.5155076692310735,
+        "seed_range": [
+          0.48588379705400986,
+          0.5677820677820677
+        ],
+        "mae_by_seed": [
+          3.3071036338806152,
+          4.723005294799805,
+          5.064208507537842
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 37,
+            "negative": 63,
+            "near_zero": 0
+          },
+          {
+            "positive": 47,
+            "negative": 52,
+            "near_zero": 1
+          },
+          {
+            "positive": 30,
+            "negative": 70,
+            "near_zero": 0
+          }
+        ]
+      },
+      "rms_phase_err_deg": {
+        "balanced_sign_by_seed": [
+          0.4303542673107891,
+          0.3308702791461412,
+          0.5769230769230769
+        ],
+        "mean_balanced_sign": 0.44604920779333573,
+        "seed_range": [
+          0.3308702791461412,
+          0.5769230769230769
+        ],
+        "mae_by_seed": [
+          5.938769340515137,
+          7.714605331420898,
+          6.211820602416992
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 46,
+            "negative": 54,
+            "near_zero": 0
+          },
+          {
+            "positive": 58,
+            "negative": 42,
+            "near_zero": 0
+          },
+          {
+            "positive": 48,
+            "negative": 52,
+            "near_zero": 0
+          }
+        ]
+      },
+      "gain_err_db": {
+        "balanced_sign_by_seed": [
+          0.453125,
+          0.3557692307692308,
+          0.5
+        ],
+        "mean_balanced_sign": 0.4362980769230769,
+        "seed_range": [
+          0.3557692307692308,
+          0.5
+        ],
+        "mae_by_seed": [
+          1.062337875366211,
+          1.3674811124801636,
+          1.2918647527694702
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 36,
+            "negative": 64,
+            "near_zero": 0
+          },
+          {
+            "positive": 48,
+            "negative": 52,
+            "near_zero": 0
+          },
+          {
+            "positive": 29,
+            "negative": 71,
+            "near_zero": 0
+          }
+        ]
+      },
+      "raw_dphi": {
+        "balanced_sign_by_seed": [
+          0.4692513368983957,
+          0.43637093536732235,
+          0.6116163704009921
+        ],
+        "mean_balanced_sign": 0.5057462142222368,
+        "seed_range": [
+          0.43637093536732235,
+          0.6116163704009921
+        ],
+        "mae_by_seed": [
+          5.191154956817627,
+          8.63622760772705,
+          7.4580254554748535
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 34,
+            "negative": 66,
+            "near_zero": 0
+          },
+          {
+            "positive": 47,
+            "negative": 53,
+            "near_zero": 0
+          },
+          {
+            "positive": 41,
+            "negative": 59,
+            "near_zero": 0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "role": "length",
+    "holdout": "Vector_Modulator",
+    "variant": "circuit-typed",
+    "metrics": {
+      "il_db": {
+        "balanced_sign_by_seed": [
+          0.4911173445535297,
+          0.6948529411764706,
+          0.5466269841269841
+        ],
+        "mean_balanced_sign": 0.5775324232856615,
+        "seed_range": [
+          0.4911173445535297,
+          0.6948529411764706
+        ],
+        "mae_by_seed": [
+          0.904822826385498,
+          0.5352959632873535,
+          0.580333411693573
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 31,
+            "negative": 69,
+            "near_zero": 0
+          },
+          {
+            "positive": 32,
+            "negative": 68,
+            "near_zero": 0
+          },
+          {
+            "positive": 28,
+            "negative": 72,
+            "near_zero": 0
+          }
+        ]
+      },
+      "rl_db": {
+        "balanced_sign_by_seed": [
+          0.5,
+          0.2403846153846154,
+          0.47857142857142854
+        ],
+        "mean_balanced_sign": 0.4063186813186814,
+        "seed_range": [
+          0.2403846153846154,
+          0.5
+        ],
+        "mae_by_seed": [
+          4.075061798095703,
+          4.818401336669922,
+          4.868222236633301
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 37,
+            "negative": 63,
+            "near_zero": 0
+          },
+          {
+            "positive": 47,
+            "negative": 52,
+            "near_zero": 1
+          },
+          {
+            "positive": 30,
+            "negative": 70,
+            "near_zero": 0
+          }
+        ]
+      },
+      "rms_phase_err_deg": {
+        "balanced_sign_by_seed": [
+          0.6759259259259259,
+          0.5,
+          0.640224358974359
+        ],
+        "mean_balanced_sign": 0.6053834283000951,
+        "seed_range": [
+          0.5,
+          0.6759259259259259
+        ],
+        "mae_by_seed": [
+          5.6441779136657715,
+          7.367656230926514,
+          6.615731716156006
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 46,
+            "negative": 54,
+            "near_zero": 0
+          },
+          {
+            "positive": 58,
+            "negative": 42,
+            "near_zero": 0
+          },
+          {
+            "positive": 48,
+            "negative": 52,
+            "near_zero": 0
+          }
+        ]
+      },
+      "gain_err_db": {
+        "balanced_sign_by_seed": [
+          0.6223958333333333,
+          0.5,
+          0.6124332200097135
+        ],
+        "mean_balanced_sign": 0.5782763511143489,
+        "seed_range": [
+          0.5,
+          0.6223958333333333
+        ],
+        "mae_by_seed": [
+          0.9776140451431274,
+          1.3934320211410522,
+          1.3510398864746094
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 36,
+            "negative": 64,
+            "near_zero": 0
+          },
+          {
+            "positive": 48,
+            "negative": 52,
+            "near_zero": 0
+          },
+          {
+            "positive": 29,
+            "negative": 71,
+            "near_zero": 0
+          }
+        ]
+      },
+      "raw_dphi": {
+        "balanced_sign_by_seed": [
+          0.8199643493761141,
+          0.5,
+          0.71537825547747
+        ],
+        "mean_balanced_sign": 0.6784475349511947,
+        "seed_range": [
+          0.5,
+          0.8199643493761141
+        ],
+        "mae_by_seed": [
+          3.4679617881774902,
+          11.871393203735352,
+          5.828650951385498
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 34,
+            "negative": 66,
+            "near_zero": 0
+          },
+          {
+            "positive": 47,
+            "negative": 53,
+            "near_zero": 0
+          },
+          {
+            "positive": 41,
+            "negative": 59,
+            "near_zero": 0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "role": "length",
+    "holdout": "Vector_Modulator",
+    "variant": "d1a",
+    "metrics": {
+      "il_db": {
+        "balanced_sign_by_seed": [
+          0.7928938756428238,
+          0.4586397058823529,
+          0.6557539682539683
+        ],
+        "mean_balanced_sign": 0.6357625165930484,
+        "seed_range": [
+          0.4586397058823529,
+          0.7928938756428238
+        ],
+        "mae_by_seed": [
+          1.77715265750885,
+          1.0454906225204468,
+          1.641136646270752
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 31,
+            "negative": 69,
+            "near_zero": 0
+          },
+          {
+            "positive": 32,
+            "negative": 68,
+            "near_zero": 0
+          },
+          {
+            "positive": 28,
+            "negative": 72,
+            "near_zero": 0
+          }
+        ]
+      },
+      "rl_db": {
+        "balanced_sign_by_seed": [
+          0.19305019305019305,
+          0.5591243862520459,
+          0.23095238095238096
+        ],
+        "mean_balanced_sign": 0.32770898675154,
+        "seed_range": [
+          0.19305019305019305,
+          0.5591243862520459
+        ],
+        "mae_by_seed": [
+          5.426892280578613,
+          4.945189952850342,
+          5.561146259307861
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 37,
+            "negative": 63,
+            "near_zero": 0
+          },
+          {
+            "positive": 47,
+            "negative": 52,
+            "near_zero": 1
+          },
+          {
+            "positive": 30,
+            "negative": 70,
+            "near_zero": 0
+          }
+        ]
+      },
+      "rms_phase_err_deg": {
+        "balanced_sign_by_seed": [
+          0.8711755233494365,
+          0.43103448275862066,
+          0.8806089743589745
+        ],
+        "mean_balanced_sign": 0.7276063268223439,
+        "seed_range": [
+          0.43103448275862066,
+          0.8806089743589745
+        ],
+        "mae_by_seed": [
+          8.79219913482666,
+          7.566981315612793,
+          5.871908187866211
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 46,
+            "negative": 54,
+            "near_zero": 0
+          },
+          {
+            "positive": 58,
+            "negative": 42,
+            "near_zero": 0
+          },
+          {
+            "positive": 48,
+            "negative": 52,
+            "near_zero": 0
+          }
+        ]
+      },
+      "gain_err_db": {
+        "balanced_sign_by_seed": [
+          0.8333333333333333,
+          0.7395833333333334,
+          0.9929577464788732
+        ],
+        "mean_balanced_sign": 0.8552914710485133,
+        "seed_range": [
+          0.7395833333333334,
+          0.9929577464788732
+        ],
+        "mae_by_seed": [
+          0.811302125453949,
+          1.225433349609375,
+          1.1223814487457275
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 36,
+            "negative": 64,
+            "near_zero": 0
+          },
+          {
+            "positive": 48,
+            "negative": 52,
+            "near_zero": 0
+          },
+          {
+            "positive": 29,
+            "negative": 71,
+            "near_zero": 0
+          }
+        ]
+      },
+      "raw_dphi": {
+        "balanced_sign_by_seed": [
+          0.9483065953654188,
+          0.05780810919309515,
+          0.9915254237288136
+        ],
+        "mean_balanced_sign": 0.6658800427624425,
+        "seed_range": [
+          0.05780810919309515,
+          0.9915254237288136
+        ],
+        "mae_by_seed": [
+          15.424388885498047,
+          22.327735900878906,
+          7.003192901611328
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 34,
+            "negative": 66,
+            "near_zero": 0
+          },
+          {
+            "positive": 47,
+            "negative": 53,
+            "near_zero": 0
+          },
+          {
+            "positive": 41,
+            "negative": 59,
+            "near_zero": 0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "role": "length",
+    "holdout": "Vector_Modulator",
+    "variant": "r3",
+    "metrics": {
+      "il_db": {
+        "balanced_sign_by_seed": [
+          0.8251519401589529,
+          0.6727941176470589,
+          0.6299603174603174
+        ],
+        "mean_balanced_sign": 0.7093021250887764,
+        "seed_range": [
+          0.6299603174603174,
+          0.8251519401589529
+        ],
+        "mae_by_seed": [
+          0.9248577952384949,
+          1.0794610977172852,
+          1.1728907823562622
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 31,
+            "negative": 69,
+            "near_zero": 0
+          },
+          {
+            "positive": 32,
+            "negative": 68,
+            "near_zero": 0
+          },
+          {
+            "positive": 28,
+            "negative": 72,
+            "near_zero": 0
+          }
+        ]
+      },
+      "rl_db": {
+        "balanced_sign_by_seed": [
+          0.1525096525096525,
+          0.5362111292962357,
+          0.3476190476190476
+        ],
+        "mean_balanced_sign": 0.34544660980831193,
+        "seed_range": [
+          0.1525096525096525,
+          0.5362111292962357
+        ],
+        "mae_by_seed": [
+          4.3452372550964355,
+          5.0014543533325195,
+          5.472034454345703
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 37,
+            "negative": 63,
+            "near_zero": 0
+          },
+          {
+            "positive": 47,
+            "negative": 52,
+            "near_zero": 1
+          },
+          {
+            "positive": 30,
+            "negative": 70,
+            "near_zero": 0
+          }
+        ]
+      },
+      "rms_phase_err_deg": {
+        "balanced_sign_by_seed": [
+          0.5579710144927537,
+          0.5,
+          0.6097756410256411
+        ],
+        "mean_balanced_sign": 0.555915551839465,
+        "seed_range": [
+          0.5,
+          0.6097756410256411
+        ],
+        "mae_by_seed": [
+          7.592790126800537,
+          6.9508056640625,
+          7.022887706756592
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 46,
+            "negative": 54,
+            "near_zero": 0
+          },
+          {
+            "positive": 58,
+            "negative": 42,
+            "near_zero": 0
+          },
+          {
+            "positive": 48,
+            "negative": 52,
+            "near_zero": 0
+          }
+        ]
+      },
+      "gain_err_db": {
+        "balanced_sign_by_seed": [
+          0.6666666666666666,
+          0.7916666666666667,
+          0.7413793103448276
+        ],
+        "mean_balanced_sign": 0.7332375478927204,
+        "seed_range": [
+          0.6666666666666666,
+          0.7916666666666667
+        ],
+        "mae_by_seed": [
+          0.9688776135444641,
+          1.0910886526107788,
+          0.9904308915138245
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 36,
+            "negative": 64,
+            "near_zero": 0
+          },
+          {
+            "positive": 48,
+            "negative": 52,
+            "near_zero": 0
+          },
+          {
+            "positive": 29,
+            "negative": 71,
+            "near_zero": 0
+          }
+        ]
+      },
+      "raw_dphi": {
+        "balanced_sign_by_seed": [
+          0.9924242424242424,
+          0.3261742272179847,
+          0.5688300950806118
+        ],
+        "mean_balanced_sign": 0.6291428549076129,
+        "seed_range": [
+          0.3261742272179847,
+          0.9924242424242424
+        ],
+        "mae_by_seed": [
+          5.4141411781311035,
+          9.164857864379883,
+          5.727944850921631
+        ],
+        "counts_by_seed": [
+          {
+            "positive": 34,
+            "negative": 66,
+            "near_zero": 0
+          },
+          {
+            "positive": 47,
+            "negative": 53,
+            "near_zero": 0
+          },
+          {
+            "positive": 41,
+            "negative": 59,
+            "near_zero": 0
+          }
+        ]
+      }
+    }
+  }
+]

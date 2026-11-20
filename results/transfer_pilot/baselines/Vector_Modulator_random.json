@@ -1,0 +1,13 @@
+{
+  "held_out": "Vector_Modulator",
+  "mode": "random",
+  "n": 40,
+  "bounds": "electrical",
+  "switch_model": "ideal",
+  "eligible_rate": 0.65,
+  "prior_pass_rate": 0.575,
+  "sim_success_rate": 0.575,
+  "strict_compliance": 0.0,
+  "mean_physical_reward": -2.003850641718099,
+  "best_physical_reward": 0.46660802395827927
+}

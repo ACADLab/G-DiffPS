@@ -1,0 +1,7 @@
+topology,config,strict_compliance_mean,best_physical_reward_mean,n_seeds,encoder,action_space,fc_mode,bounds
+All_Pass,circuit_device,0.0,0.4879910391010487,1,circuit,device,spec,electrical
+All_Pass,gin_device,0.0,0.46705280312607644,1,gin,device,spec,electrical
+Reflection_Type,circuit_device,0.0,0.47516664095555744,1,circuit,device,spec,electrical
+Reflection_Type,gin_device,0.0,0.23697540623944982,1,gin,device,spec,electrical
+Vector_Modulator,circuit_device,0.0,0.4827929526082374,1,circuit,device,spec,electrical
+Vector_Modulator,gin_device,0.0,0.511125811999981,1,gin,device,spec,electrical

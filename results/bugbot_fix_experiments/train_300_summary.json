@@ -1,0 +1,94 @@
+{
+  "env": "gdiffps Python 3.12",
+  "specset_train": 256,
+  "runs": [
+    {
+      "run_dir": "results/bugbot_fix_experiments/train_gin_device_300",
+      "config": {
+        "encoder": "gin",
+        "action_space": "device",
+        "bounds": "electrical",
+        "switch_model": "ideal"
+      },
+      "steps": 300,
+      "overall": {
+        "mean_reward": -1.797,
+        "success_rate": 0.58,
+        "prior_pass_rate": 0.58,
+        "best_reward": 1.914,
+        "best_step": 277,
+        "best_topology": "Loaded_Line"
+      },
+      "first_half": {
+        "n": 150,
+        "mean": -1.879,
+        "success_rate": 0.567,
+        "best": 0.795
+      },
+      "second_half": {
+        "n": 150,
+        "mean": -1.715,
+        "success_rate": 0.593,
+        "best": 1.914
+      },
+      "by_topology_mean": {
+        "All_Pass": -4.712,
+        "Loaded_Line": -0.198,
+        "Reflection_Type": -3.783,
+        "Switched_Filter": -0.765,
+        "Switched_Line": 0.488,
+        "Vector_Modulator": -1.96
+      },
+      "checkpoints": [
+        "actor.pt",
+        "critic.pt",
+        "gnn_encoder.pt",
+        "value_net.pt"
+      ]
+    },
+    {
+      "run_dir": "results/bugbot_fix_experiments/train_circuit_device_realistic_300",
+      "config": {
+        "encoder": "circuit",
+        "action_space": "device",
+        "bounds": "electrical",
+        "switch_model": "realistic"
+      },
+      "steps": 300,
+      "overall": {
+        "mean_reward": -1.847,
+        "success_rate": 0.573,
+        "prior_pass_rate": 0.573,
+        "best_reward": 1.603,
+        "best_step": 124,
+        "best_topology": "Loaded_Line"
+      },
+      "first_half": {
+        "n": 150,
+        "mean": -2.225,
+        "success_rate": 0.5,
+        "best": 1.603
+      },
+      "second_half": {
+        "n": 150,
+        "mean": -1.469,
+        "success_rate": 0.647,
+        "best": 0.764
+      },
+      "by_topology_mean": {
+        "All_Pass": -4.402,
+        "Loaded_Line": 0.261,
+        "Reflection_Type": -3.896,
+        "Switched_Filter": -1.044,
+        "Switched_Line": 0.483,
+        "Vector_Modulator": -2.68
+      },
+      "checkpoints": [
+        "actor.pt",
+        "critic.pt",
+        "gnn_encoder.pt",
+        "value_net.pt"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+{
+  "hardware": {
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "processor": "arm",
+    "python_version": "3.14.6",
+    "torch_version": "2.15.0.dev20260913",
+    "device": "cpu",
+    "torch_num_threads": 1
+  },
+  "benchmark_config": {
+    "run_dir": "results/transfer_pilot/dry_circuit_device",
+    "encoder": "circuit",
+    "action_space": "device",
+    "bounds": "electrical",
+    "switch_model": "ideal",
+    "coupled_actions": false,
+    "num_diffusion_steps": 10,
+    "n_specs_benchmarked": 20,
+    "n_warmup": 10,
+    "fc_ghz_range": [
+      2.195400742033679,
+      34.07343728268509
+    ],
+    "determinism_pass": true,
+    "checkpoint_warned_missing_weights": false,
+    "official_path": "evaluate_all_size_six_mna_rank_prior_pmax"
+  },
+  "latency_ms": {
+    "cold_evaluate_all": 6.704333005473018,
+    "sizing_only_single_topo": {
+      "Loaded_Line": {
+        "mean": 1.4279832423198968,
+        "p50": 1.7499794776085764,
+        "p95": 1.9580187858082354,
+        "max": 2.02487496426329
+      },
+      "Switched_Line": {
+        "mean": 5.298035440500826,
+        "p50": 1.676791493082419,
+        "p95": 5.816719407448601,
+        "max": 80.34916699398309
+      },
+      "Reflection_Type": {
+        "mean": 1.6146938054589555,
+        "p50": 1.8556459981482476,
+        "p95": 2.247333643026651,
+        "max": 3.708750009536743
+      },
+      "Switched_Filter": {
+        "mean": 1.4743875479325652,
+        "p50": 1.86172901885584,
+        "p95": 1.955677050864324,
+        "max": 2.0041660172864795
+      },
+      "Vector_Modulator": {
+        "mean": 1.7557189537910745,
+        "p50": 2.2402710164897144,
+        "p95": 2.430481245392002,
+        "max": 2.5132500450126827
+      },
+      "All_Pass": {
+        "mean": 1.5872292424319312,
+        "p50": 1.952208491275087,
+        "p95": 2.3949420283315708,
+        "max": 2.863292000256479
+      }
+    },
+    "sizing_only_all_six_topologies": {
+      "mean": 13.16046649881173,
+      "p50": 11.590812006033957,
+      "p95": 17.46280625520745,
+      "max": 90.64000000944361
+    },
+    "mna_simulator_all_six_topologies": {
+      "mean": 2.5702458049636334,
+      "p50": 2.538208005717024,
+      "p95": 2.8309541783528402,
+      "max": 2.9535830253735185
+    },
+    "manual_size_plus_mna_pipeline": {
+      "mean": 15.759291758877225,
+      "p50": 14.138666505459696,
+      "p95": 19.963561004260608,
+      "max": 93.20812503574416
+    },
+    "evaluate_all_official": {
+      "mean": 6.814799897256307,
+      "p50": 6.884728994918987,
+      "p95": 7.301860427833162,
+      "max": 7.389459002297372
+    },
+    "valuenet_plus_one_size": {
+      "skipped": true,
+      "reason": "ValueNet loader expects encoder=gin (TopologyEncoder); re-run with --encoder gin on a gin checkpoint for this baseline."
+    }
+  },
+  "compliance": {
+    "mean_prior_ok_count_of_six": 3.15,
+    "prior_ok_counts": [
+      4,
+      4,
+      2,
+      3,
+      5,
+      5,
+      4,
+      3,
+      4,
+      2,
+      2,
+      4,
+      3,
+      3,
+      2,
+      2,
+      4,
+      3,
+      1,
+      3
+    ]
+  }
+}

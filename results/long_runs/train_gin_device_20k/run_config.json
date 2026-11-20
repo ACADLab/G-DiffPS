@@ -1,0 +1,9 @@
+{
+  "event": "training_start",
+  "time": "2026-09-14T06:08:29.290781Z",
+  "switch_model": "ideal",
+  "bounds": "electrical",
+  "encoder": "gin",
+  "action_space": "device",
+  "slot_action_dim": 6
+}

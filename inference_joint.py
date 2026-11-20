@@ -1,7 +1,9 @@
 """Evaluate-all joint topology + sizing via MNA (no ValueNet ranker).
 
 For a spec, size all 6 topologies with the trained CFM policy, score each
-with the differentiable MNA scorer at true fc, and return argmax.
+with the differentiable MNA scorer at true fc, filter by physics priors
+(including VM ``pmax_mw``), and return argmax among prior-feasible designs
+(falling back to the full ranking if none pass).
 """
 from __future__ import annotations
 
@@ -26,6 +28,7 @@ from models.diffusion_policy import (
 )
 from env.param_semantics import PARAM_CONTEXT_DIM
 from sim.mna_scorer import mna_evaluate
+from sim.physics_priors import check_physics_priors
 from train_diffusion import action_to_params, device_action_to_params
 from inference_topology_select import normalize_spec  # wraps specset.schema.normalize_spec → torch
 from specset.schema import SPEC_DIM
@@ -55,7 +58,10 @@ def _resolve_flag(cli_value, run_cfg, key, default):
 
 
 def _load_state(module, path, device):
-    state = torch.load(path, map_location=device, weights_only=True)
+    try:
+        state = torch.load(path, map_location=device, weights_only=True)
+    except Exception:
+        state = torch.load(path, map_location=device, weights_only=False)
     if any(k.startswith("module.") for k in state):
         state = {k.replace("module.", "", 1): v for k, v in state.items()}
     # Strict load so a renamed layer cannot silently become random weights.
@@ -148,6 +154,7 @@ def evaluate_all(
     n_samples: int = 1,
     bounds: str = "electrical",
     switch_model: str = "ideal",
+    coupled_actions: bool = False,
 ) -> list[dict]:
     """Size each topology (optionally multi-sample), MNA-score, sort best-first."""
     device = device or torch.device("cpu")
@@ -155,7 +162,10 @@ def evaluate_all(
     topo_graphs = None
     if encoder == "gin":
         topo_graphs = {t: get_topology_graph(t) for t in TOPOLOGY_NAMES}
+    # Match training: coupled_actions from run_config OR param-node encoders.
+    coupled = bool(coupled_actions) or uses_param_nodes(encoder)
 
+    pmax_mw = float(spec.get("pmax_mw", 1e9))
     results = []
     for topo in TOPOLOGY_NAMES:
         best = None
@@ -164,12 +174,16 @@ def evaluate_all(
                 actor, gnn, topo, spec, spec_norm,
                 encoder, action_space, device, topo_graphs,
                 bounds=bounds, switch_model=switch_model,
-                coupled_actions=uses_param_nodes(encoder),
+                coupled_actions=coupled,
             )
             score, metrics = mna_evaluate(topo, params, spec)
+            prior_ok = bool(check_physics_priors(
+                topo, params, float(spec["fc_ghz"]), pmax_mw=pmax_mw,
+            ))
             cand = {
                 "topology": topo,
                 "score": float(score),
+                "prior_ok": prior_ok,
                 "params": params,
                 "metrics": {
                     k: (float(v) if isinstance(v, (int, float, np.floating)) else None)
@@ -179,10 +193,15 @@ def evaluate_all(
                 "switch_model": switch_model,
                 "bounds": bounds,
             }
-            if best is None or cand["score"] > best["score"]:
+            # Prefer prior-feasible candidates; among equals, higher MNA score.
+            if best is None:
+                best = cand
+            elif (cand["prior_ok"], cand["score"]) > (best["prior_ok"], best["score"]):
                 best = cand
         results.append(best)
-    results.sort(key=lambda r: r["score"], reverse=True)
+    # Rank: prior/pmax passers first, then by MNA score. If none pass, still
+    # return a full ranking (honest fallback; winner will have prior_ok=False).
+    results.sort(key=lambda r: (r["prior_ok"], r["score"]), reverse=True)
     return results
 
 
@@ -230,12 +249,14 @@ def main():
         encoder=args.encoder, action_space=args.action_space,
         device=device, n_samples=args.n_samples,
         bounds=args.bounds, switch_model=args.switch_model,
+        coupled_actions=coupled,
     )
     print("\nSpec:", json.dumps(spec, indent=2))
-    print(f"\nEvaluate-all ranking (MNA, bounds={args.bounds}, "
+    print(f"\nEvaluate-all ranking (MNA+prior/pmax, bounds={args.bounds}, "
           f"switch_model={args.switch_model}):")
     for i, r in enumerate(ranked):
-        print(f"  {i+1}. {r['topology']:20s}  score={r['score']:+.4f}")
+        flag = "ok" if r["prior_ok"] else "FAIL_PRIOR"
+        print(f"  {i+1}. {r['topology']:20s}  score={r['score']:+.4f}  prior={flag}")
     out = {
         "switch_model": args.switch_model,
         "bounds": args.bounds,
